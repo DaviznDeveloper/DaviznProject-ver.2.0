@@ -66,11 +66,11 @@ public class QandAboard {
    }
 
    // 게시글 상세보기
-   public QandAboardDTO noticeDetail(String boardseq) throws ClassNotFoundException, SQLException {
+   public QandAboardDTO noticeDetail(int boardseq) throws ClassNotFoundException, SQLException {
 
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
-      QandAboardDao.boardCount(Integer.parseInt(boardseq) );
+      QandAboardDao.boardCount(boardseq);
 
       return notice;
    }
@@ -93,7 +93,7 @@ public class QandAboard {
    }
 
    //게시글 수정
-   public QandAboardDTO noticeEdit1(String boardseq) throws ClassNotFoundException, SQLException {
+   public QandAboardDTO noticeEdit1(int boardseq) throws ClassNotFoundException, SQLException {
       
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDTO notice = QandAboardDao.getNotice(boardseq);

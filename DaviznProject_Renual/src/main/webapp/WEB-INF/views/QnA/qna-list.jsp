@@ -72,7 +72,7 @@
 									<c:forEach items="${list}" var="n">
 										<tr>
 											<td class="boardseq">${n.boardseq}</td>
-											<td class="boardsubject"><a href="${pageContext.request.contextPath}/QnA/Qnadetail.dvn?seq=${n.boardseq}">${n.boardsubject}</a></td>
+											<td class="boardsubject"><a href="${pageContext.request.contextPath}/QnA/Qnadetail.dvn?boardseq=${n.boardseq}">${n.boardsubject}</a></td>
 											<td class="nickname">${n.nickname}</td>
 											<td class="boarddate">${n.boarddate}</td>
 											<td class="boardreadcount">${n.boardreadcount}</td>

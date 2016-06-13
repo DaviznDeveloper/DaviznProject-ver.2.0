@@ -32,8 +32,8 @@ public class QandAboardController {
 	}
     //글상세보기
 	 @RequestMapping("Qnadetail.dvn")
-    public String noticeDetail(String seq , Model model ) throws ClassNotFoundException, SQLException{
-		 QandAboardDTO notice = QandAboardservice.noticeDetail(seq);
+    public String noticeDetail(int boardseq , Model model ) throws ClassNotFoundException, SQLException{
+		 QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
 		 model.addAttribute("notice", notice);
 		 return "QnA.qna-detail";
 	
@@ -73,7 +73,7 @@ public class QandAboardController {
 	 //글수정하기 (수정하기 화면 , 수정처리)
 	 //주소같고 처리(GET , POST) 처리
 	 @RequestMapping(value = "QnAEdit.dvn", method = RequestMethod.GET)
-	 public String noticeEdit(String boardseq, Model model)
+	 public String noticeEdit(int boardseq, Model model)
 	   throws ClassNotFoundException, SQLException {
 		 QandAboardDTO notice = QandAboardservice.noticeEdit1(boardseq);
 	    model.addAttribute("notice", notice);
