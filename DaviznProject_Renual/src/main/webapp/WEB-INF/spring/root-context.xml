@@ -15,6 +15,11 @@ http://www.springframework.org/schema/context/spring-context.xsd
         <property name="password" value="1004"></property>
   </bean>
   
+  <bean id="multipartResolver" 
+	   class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+             <property name="maxUploadSize" value="10485760"/>
+  </bean>
+  
   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
   		<property name="dataSource" ref="driverManagerDataSource" />
   </bean>

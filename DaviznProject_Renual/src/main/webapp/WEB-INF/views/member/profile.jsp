@@ -14,11 +14,19 @@
 					<div class="col-md-3 no-padding">
 
 						<a href="" class="thumbnail profile-thumbnail no-margin" data-toggle="tooltip" title="프로필 수정하기"> 
-							<img id="c" src="${pageContext.request.contextPath}/resources/img/avatar2.png" alt="...">
+							<c:set var="profile_img" value="${member.profile_img}" />
+							<c:if test="${empty profile_img}">
+								<img id="profile-preview" src="${pageContext.request.contextPath}/resources/img/avatar2.png" alt="...">
+							</c:if>
+									
+							<c:if test="${!empty profile_img}">
+								<img id="profile-preview" src="${pageContext.request.contextPath}/resources/upload/${member.profile_img}" alt="...">
+							</c:if>
+							
 						</a>
 						
 						<div class="col-md-12 no-padding">
-							<span class="profile-nickname">Hwang</span>
+							<span class="profile-nickname">${member.nickname}</span>
 							<a href="${pageContext.request.contextPath}/member/profileModi.dvn">
 								<span class="label label-primary">프로필 수정하기</span>
 							</a>
@@ -27,14 +35,14 @@
 						<div class="col-md-12 no-padding">
 							<span class="profile-font">
 								<i class="fa fa-envelope profile-font-icon" aria-hidden="true"></i>
-								&nbsp;&nbsp;leafgreen.hwang@gmail.com
+								&nbsp;&nbsp;${member.userid}
 							</span>
 						</div>
 						
 						<div class="col-md-12 no-padding">
 							<span class="profile-font">
 								<i class="fa fa-phone profile-font-icon" aria-hidden="true"></i>
-								&nbsp;&nbsp;010-2932-4718
+								&nbsp;&nbsp;${member.phone}
 							</span>
 							<hr>
 						</div>
@@ -42,7 +50,7 @@
 						<div class="col-md-12 no-padding">
 							<span class="profile-font">
 								<i class="fa fa-product-hunt profile-font-icon" aria-hidden="true"></i>
-								&nbsp;&nbsp;100
+								&nbsp;&nbsp;${member.point}
 							</span>
 							<hr>
 						</div>
@@ -50,7 +58,7 @@
 						<div class="col-md-12 no-padding">
 							<span class="profile-font">
 								<i class="fa fa-clock-o profile-font-icon" aria-hidden="true"></i>
-								&nbsp;&nbsp;2016년 1월 12일에 가입.
+								&nbsp;&nbsp;${member.joindate}에 가입
 							</span>
 						</div>
 				
