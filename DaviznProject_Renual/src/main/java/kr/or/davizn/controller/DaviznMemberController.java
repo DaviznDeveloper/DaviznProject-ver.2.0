@@ -1,5 +1,6 @@
 package kr.or.davizn.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,9 +59,23 @@ public class DaviznMemberController {
 	
 	//프로필 창 이동
 	@RequestMapping("profile.dvn")
-	public String moveProfile(){
+	public String moveProfile(Principal principal, Model model){
+		System.out.println("프로필 창 이동(기존 정보 확인)");
+		String view = null;
+		String userid = principal.getName();
+		DaviznMemberDTO member = service.selectOneMember(userid);
 		
-		return "member.profile";
+		if(member != null){
+			model.addAttribute("member", member);
+			view = "member.profile";
+			System.out.println("프로필 검색 성공");
+		}else{
+			view = "home.index";
+			System.out.println("프로필 검색 실패");
+		}
+		
+		return view;
+		
 	}
 	
 	//회원 정보 수정 창 이동(기존 정보 확인)
@@ -84,29 +99,25 @@ public class DaviznMemberController {
 		return view;
 	}
 	
+	//회원 정보 수정 창 이동(회원 정보 업데이트)
 	@RequestMapping("profileModiAction.dvn")
-	public String ProfileModiAction(DaviznMemberDTO member, HttpServletRequest request){
+	public String ProfileModiAction(DaviznMemberDTO member, HttpServletRequest request,Principal principal) 
+			throws IOException{
 		System.out.println("회원 정보 수정(회원 정보 수정) 컨트롤러");
 		String view = null;
-		System.out.println("1111");
-		CommonsMultipartFile file = member.getUploadImage();
-		if(file != null && file.getSize() > 0 ){
-			String filename = file.getOriginalFilename();
-			String path = request.getRealPath("/resources/upload");
+		int result = service.updateMember(member, request, principal);
+		if(result > 0){
+			System.out.println("회원 정보 업로드 완료");
+			view = "redirect:profileModi.dvn";
+		}else{
+			System.out.println("회원 정보 업로드 실패");
+			view = "home.index";
 		}
 		
-		System.out.println("222");
-		String filename = file.getOriginalFilename();
-		System.out.println("33");
-		String path = request.getRealPath("/resources/upload");
-		System.out.println("44");
-		String fullpath = path + "\\" + filename;
-		System.out.println("55");
-		System.out.println(filename + " / " + path + " / " + fullpath);
-		
-		
-		return null;
+		return view;
+	
 	}
+	
 	
 	
 	

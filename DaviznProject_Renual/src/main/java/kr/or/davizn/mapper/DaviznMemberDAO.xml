@@ -23,12 +23,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--회원 정보 수정 (기존 회원 정보 검색)-->
 	<select id="selectOneMember" parameterType="String" resultType="kr.or.davizn.model.dto.DaviznMemberDTO">
-		select nickname, userid, password, phone from dvnmember where userid=#{userid}
+		select nickname, userid, password, phone, profile_img, point, joindate from dvnmember where userid=#{userid}
 	</select>
 	
 	<!--회원 정보 수정(회원 정보 수정)-->
 	<update id="updateMember" parameterType="kr.or.davizn.model.dto.DaviznMemberDTO">
-		update dvnmember set nickname=#{nickname},password=#{password},phone=#{phone} 
+		update dvnmember set nickname=#{nickname},
+		password=#{password},
+		phone=#{phone},
+		profile_img=#{profile_img, jdbcType=VARCHAR} 
 		where userid=#{userid}
 	</update>
 

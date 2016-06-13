@@ -1,5 +1,7 @@
 package kr.or.davizn.model.dto;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DaviznMemberDTO {
@@ -11,8 +13,16 @@ public class DaviznMemberDTO {
 	private int phone;
 	private int point;
 	private String profile_img;
+	private Date joindate;
 	private CommonsMultipartFile uploadImage;
 	
+	
+	public Date getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
 	public CommonsMultipartFile getUploadImage() {
 		return uploadImage;
 	}

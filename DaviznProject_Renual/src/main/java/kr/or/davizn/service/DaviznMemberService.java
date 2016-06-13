@@ -1,8 +1,15 @@
 package kr.or.davizn.service;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import kr.or.davizn.model.dto.DaviznMemberDTO;
 import kr.or.davizn.model.interfaces.DaviznMemberDAO;
@@ -46,9 +53,30 @@ public class DaviznMemberService {
 	}
 	
 	//회원정보 수정(회원정보 수정)
-	public int updateMember(DaviznMemberDTO member){
+	public int updateMember(DaviznMemberDTO member, HttpServletRequest request, Principal principal) throws IOException{
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
+		CommonsMultipartFile file = member.getUploadImage();
+		 if(file != null){
+			 String fname = file.getOriginalFilename(); //파일명 얻기
+			 String path  = request.getRealPath("/resources/upload");
+			 String fullpath = path + "\\" + fname;
+			 System.out.println("경로 테스트");
+			 System.out.println(fullpath);
+			 
+			 if(!fname.equals("")){
+				 //서버에 파일 쓰기 작업 
+				  FileOutputStream fs = new FileOutputStream(fullpath);
+				  fs.write(file.getBytes());
+				  fs.close();
+			  }
+			 member.setProfile_img(fname);
+			 member.setUserid(principal.getName());
+
+		 }
+		 System.out.println("멤버 아이디");
+		 System.out.println("멤버 아이디 체크 : "+member.getUserid());
 		int result = dao.updateMember(member);
+		
 		return result;
 	}
 }
