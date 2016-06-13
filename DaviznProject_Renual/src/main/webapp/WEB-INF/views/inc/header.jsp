@@ -43,12 +43,12 @@
 				</li>
 				 -->
 				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/community.dvn">
+					<a href="${pageContext.request.contextPath}/community/community.dvn">
 						<i class="fa fa-comments-o" aria-hidden="true"></i> &nbsp;커뮤니티
 					</a>
 				</li>
 				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/QnA.dvn">
+					<a href="${pageContext.request.contextPath}/QnA/QnA.dvn">
 						<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;1:1 문의&건의
 					</a>
 				</li>

@@ -16,6 +16,7 @@ import kr.or.davizn.model.dto.QandAboardDTO;
 import kr.or.davizn.service.QandAboard;
 
 @Controller
+@RequestMapping("/QnA/")
 public class QandAboardController {
 	
 	@Autowired
@@ -24,17 +25,13 @@ public class QandAboardController {
 	//글목록보기
 	@RequestMapping("QnA.dvn")
 	public String notices(String pg, Model model) throws ClassNotFoundException , SQLException {
-		System.out.println("dvn 컨트롤!!");
 		List<QandAboardDTO> list = QandAboardservice.notices(pg, model);
-		System.out.println("pg :"+pg+"model : "+model);
 		model.addAttribute("list", list); 
-		System.out.println("adsfsdafadsf"+list);
 		return "QnA.qna-list";
 	}
     //글상세보기
 	 @RequestMapping("Qnadetail.dvn")
     public String noticeDetail(String seq , Model model ) throws ClassNotFoundException, SQLException{
-
 		 QandAboardDTO notice = QandAboardservice.noticeDetail(seq);
 		 model.addAttribute("notice", notice);
 		 return "QnA.qna-detail";
@@ -51,8 +48,6 @@ public class QandAboardController {
 	 @RequestMapping(value = "qnaWrite.dvn", method = RequestMethod.POST)
 	public String noticeReg(QandAboardDTO dto, HttpServletRequest request)
 	   throws IOException, ClassNotFoundException, SQLException {
-		 System.out.println("등록 컨트롤");
-		 System.out.println(dto);
 		 String url = "redirect:qna-list";
 		 try{
 			 url = QandAboardservice.noticeReg(dto, request);
