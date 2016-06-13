@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="kr.or.davizn.model.interfaces.CommunityBoardDAO">
+	
+	<!-- 게시물 개수  String field, String query -->
+	<select id="getCount" resultType="Integer">
+	SELECT COUNT(*) CNT
+		FROM CMBOARD
+		WHERE ${param1} LIKE '%${param2}%'
+	</select>
+
+	<!-- 글 목록 보기 -->
+	<select id="getNotices" resultType="kr.or.davizn.model.dto.CommunityBoardDTO">
+	SELECT * FROM
+               ( SELECT ROWNUM NUM, N.* 
+                 FROM 
+                     ( SELECT * 
+                       FROM CMBOARD 
+                       WHERE ${param2} LIKE '%${param3}%' ORDER BY BOARDDATE DESC) N
+                ) WHERE NUM BETWEEN 1 + (${param1}-1)*5 AND 10 + (${param1}-1)*5
+	</select>
+	
+	<!-- 글 상세 보기 -->
+	
+	<select id="getNotice" resultType="kr.or.davizn.model.dto.CommunityBoardDTO">
+	SELECT * FROM CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
+	</select>
+	
+	<!-- 글 입력하기   -->
+	<insert id="insert">
+	      insert into CMBOARD (BOARDSEQ,BOARDSUBJECT,boardcontent,BOARDDATE,BOARDREADCOUNT)
+		  values((SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD), #{boardsubject}, #{boardcontent}, SYSDATE, 0)
+	</insert>
+	
+	<!-- <insert id="insert">
+    <selectKey order="BEFORE" keyProperty="seq" resultType="String">
+    	SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD
+    </selectKey>
+	    INSERT INTO CMBOARD(BOARDSEQ, BOARDSUBJECT, BOARDCONTENT, BOARDDATE, BOARDREADCOUNT, BOARDREF, BOARDLEV, BOARDNOTICE, USERID, NICKNAME)
+		VALUES(#{BOARDSEQ}, #{BOARDSUBJECT}, #{BOARDCONTENT}, #{BOARDDATE}, #{BOARDREADCOUNT}, #{BOARDREF}, #{BOARDLEV}, #{BOARDNOTICE}, #{USERID}, #{NICKNAME})
+	</insert> -->
+	
+	<!-- 글 수정하기 -->
+	<update id="update">
+		UPDATE CMBOARD SET BOARDSUBJECT=#{BOARDSUBJECT}, BOARDCONTENT=#{BOARDCONTENT} WHERE BOARDNUM=#{BOARDNUM}
+	</update>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="delete">
+		DELETE  CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
+	</delete>
+	
+	<!-- 게시글 조회수 증가 
+	<update id="boardCount">
+		UPDATE CMBOARD SET BOARDREADCOUNT=(SELECT BOARDREDACOUNT FROM CMBOARD WHERE BOARDSEQ=#{BOARDSEQ})+1 WHERE BOARDSEQ=#{BOARDSEQ}
+	</update>
+	-->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
