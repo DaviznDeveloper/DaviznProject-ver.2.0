@@ -1,5 +1,7 @@
 package kr.or.davizn.controller;
 
+import java.security.Principal;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -38,14 +40,9 @@ public class navigationController {
 		
 		//데이터 관리 창 이동
 		@RequestMapping("datamanage.dvn")
-		public String moveDataMain(){
-			UserDetails userinfo =  (UserDetails)SecurityContextHolder.getContext().
-                    getAuthentication().
-                    getPrincipal();
-			
-					System.out.println("인증된 ID"+userinfo.getUsername()); //인증  ID
-			
-			return "datamanage.data-repo";
+		public String moveDataMain(Principal principal){
+			if(principal == null){return "datamanage.data-repo";}
+	         return "redirect:/datamanage/showStorageList.dvn";
 		}
 		
 		//대시보드 창 이동
