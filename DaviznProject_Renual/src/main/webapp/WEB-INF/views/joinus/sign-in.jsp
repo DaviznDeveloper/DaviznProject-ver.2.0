@@ -79,7 +79,7 @@
 									</div>
 								</li>
 								<li><a href="#" class="get-id-pw">아이디 또는 비밀번호 찾기</a></li>
-								<li><a href="">
+								<li><a href="${pageContext.request.contextPath}/signup.dvn">
 										<button type="button" class="btn btn-success btn-block">
 											회원가입</button>
 								</a></li>

@@ -21,6 +21,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 <select id="getNotice" resultType="kr.or.davizn.model.dto.QandAboardDTO">
 	        SELECT * FROM qnaboard WHERE boardseq=#{boardseq}
 	 </select>
+<!-- 	 <select id="replylist" resultType="kr.or.davizn.model.dto.QandAReplyDTO">
+	 		select * from qnareply order by boardseq desc
+	 </select> -->
 	 <!-- 게시글 삭제 -->
 	 <delete id="delete" >
 	      DELETE qnaboard WHERE boardseq=#{boardseq}

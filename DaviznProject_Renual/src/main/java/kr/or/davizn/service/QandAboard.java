@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import kr.or.davizn.model.dto.QandAReplyDTO;
 import kr.or.davizn.model.dto.QandAboardDTO;
 import kr.or.davizn.model.interfaces.QandAboardDAO;
 
@@ -37,13 +38,8 @@ public class QandAboard {
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       int total = QandAboardDao.getCount();
       
-      System.out.println("start_page : " +  start);
-      System.out.println("end_page :  " +  end );
-      System.out.println("총 게시물 건수 : " + total);
-      
       //... 목록
       int allPage = (int) Math.ceil(total / (double) rowSize); // 페이지수
-      System.out.println("페이지수 : " + allPage);
 
       int block = 5; 
       int fromPage = ((page - 1) / block * block) + 1; // 보여줄 페이지의 시작
@@ -66,16 +62,16 @@ public class QandAboard {
       model.addAttribute("block",block);
       model.addAttribute("fromPage",fromPage);
       model.addAttribute("toPage",toPage);   
-      System.out.println("서비스 단 list"+list);
       return list;
    }
 
    // 게시글 상세보기
-   public QandAboardDTO noticeDetail(String boardseq) throws ClassNotFoundException, SQLException {
+   public QandAboardDTO noticeDetail(int boardseq) throws ClassNotFoundException, SQLException {
 
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
-      QandAboardDao.boardCount(Integer.parseInt(boardseq) );
+      QandAboardDao.boardCount(boardseq);
+
       return notice;
    }
 
@@ -97,7 +93,7 @@ public class QandAboard {
    }
 
    //게시글 수정
-   public QandAboardDTO noticeEdit1(String boardseq) throws ClassNotFoundException, SQLException {
+   public QandAboardDTO noticeEdit1(int boardseq) throws ClassNotFoundException, SQLException {
       
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
@@ -108,12 +104,11 @@ public class QandAboard {
    //게시글 수정 확인!
    public String noticeEdit2(QandAboardDTO n, HttpServletRequest request)
          throws ClassNotFoundException, SQLException, IOException {
-      System.out.println("adsjlfksdahasdlkfhgasdklfj"+n);
-      // Mybatis 적용
+	   
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDao.update(n);
-      System.out.println(QandAboardDao);
-      return "redirect:QnAEdit.dvn?boardseq=" + n.getBoardseq();
+     
+      return "redirect:QnA.dvn";
 
    }
 }

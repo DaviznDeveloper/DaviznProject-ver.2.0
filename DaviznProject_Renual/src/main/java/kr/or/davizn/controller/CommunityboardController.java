@@ -16,6 +16,7 @@ import kr.or.davizn.model.dto.CommunityBoardDTO;
 import kr.or.davizn.service.CommunityBoard;
 
 @Controller
+@RequestMapping("/community/")
 public class CommunityboardController {
 
 	@Autowired

@@ -74,8 +74,7 @@
 										<!-- 글 번호 -->
 										<td scope="col" class="ellipsis board-l-no boardseq">${n.boardseq}</td>
 										<td scope="col" id="board-title" name="auth" class="ellipsis board-l-title boardsubject">
-											<a href="communitydetail.dvn?seq=${n.boardseq}">${n.boardsubject}</a>
-											<%-- <img src="${pageContext.request.contextPath}/resources/img/new.gif"> --%>
+											<a href="${pageContext.request.contextPath}/community/communitydetail.dvn?seq=${n.boardseq}">${n.boardsubject}</a>
 										</td>
 										
 										
@@ -93,7 +92,7 @@
 						</div>
 						
 						<div class="col-md-12">
-							<a href="${pageContext.request.contextPath}/communitywrite.dvn" class="btn btn-success pull-right">글쓰기</a>
+							<a href="${pageContext.request.contextPath}/community/communitywrite.dvn" class="btn btn-success pull-right">글쓰기</a>
 						</div>
 
 						<div class="text-center">
@@ -116,35 +115,6 @@
 							</ul>
 						</div>
 				
-						<!-- 
-						<table class="col-md-12 no-padding table table-hover">
-						
-							<tr class="board-tr">
-								<th class="board-th board-no">글번호</th>
-								<th class="board-th board-title">글제목</th>
-								<th class="board-th board-writer">작성자</th>
-								<th class="board-th board-date">작성일</th>
-								<th class="board-th board-lookup">조회수</th>
-							</tr>
-							
-							<tr>
-								<td class="board board-no">1</td>
-								<td class="board board-title">안뇽하세용</td>
-								<td class="board board-writer">kglim</td>
-								<td class="board board-date">2016.06.08</td>
-								<td class="board board-lookup">1</td>
-							</tr>
-							
-							<tr>
-								<td class="board board-no">2</td>
-								<td class="board board-title">반갑습니당당당</td>
-								<td class="board board-writer">kglim</td>
-								<td class="board board-date">2016.06.08</td>
-								<td class="board board-lookup">1</td>
-							</tr>
-						
-						</table>
-						 -->
 						
 						<br>
 					

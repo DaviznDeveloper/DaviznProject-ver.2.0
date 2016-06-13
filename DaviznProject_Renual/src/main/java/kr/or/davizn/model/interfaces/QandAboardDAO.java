@@ -17,7 +17,7 @@ public interface QandAboardDAO {
 		//게시물 수정
 		public int update(QandAboardDTO notice) throws ClassNotFoundException, SQLException;
 		//게시물 상세
-		public QandAboardDTO getNotice(String boardseq) throws ClassNotFoundException, SQLException;
+		public QandAboardDTO getNotice(int boardseq) throws ClassNotFoundException, SQLException;
 		//조회수 증가
 		public int boardCount(int boardseq) throws ClassNotFoundException, SQLException;
 		//게시물 입력
@@ -25,6 +25,8 @@ public interface QandAboardDAO {
 		//트랜잭션 TEST
 		public boolean insertOfMemberPoint(String userid) throws ClassNotFoundException, SQLException;
 		
+		//댓글 조회
+		public List<QandAReplyDTO> replylist(int boardseq) throws ClassNotFoundException, SQLException;
 		//답변
 		public int replyBoard(QandAboardDTO n) throws ClassNotFoundException, SQLException;
 		//최상위 부모글 번호 생성
