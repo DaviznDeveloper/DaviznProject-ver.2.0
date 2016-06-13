@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import kr.or.davizn.model.dto.QandAReplyDTO;
 import kr.or.davizn.model.dto.QandAboardDTO;
 import kr.or.davizn.model.interfaces.QandAboardDAO;
 
@@ -70,6 +71,7 @@ public class QandAboard {
       QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
       QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
       QandAboardDao.boardCount(Integer.parseInt(boardseq) );
+
       return notice;
    }
 

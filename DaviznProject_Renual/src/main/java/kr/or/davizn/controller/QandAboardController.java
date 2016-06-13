@@ -26,6 +26,7 @@ public class QandAboardController {
 	@RequestMapping("QnA.dvn")
 	public String notices(String pg, Model model) throws ClassNotFoundException , SQLException {
 		List<QandAboardDTO> list = QandAboardservice.notices(pg, model);
+		
 		model.addAttribute("list", list); 
 		return "QnA.qna-list";
 	}
