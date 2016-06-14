@@ -23,12 +23,13 @@ public class navigationController {
 	}
 
 	// 데이터 관리 창 이동
-	@RequestMapping("datamanage.dvn")
+	@RequestMapping("userStrg.dvn")
 	public String moveDataMain(Principal principal) {
 		if (principal == null) {
 			return "datamanage.data-repo";
 		}
-		return "redirect:/datamanage/showStorageList.dvn";
+		String userid = principal.getName();
+		return "redirect:/userStrg/showStorageList.dvn?userid="+userid;
 	}
 
 	//커뮤니티 게시판 이동
