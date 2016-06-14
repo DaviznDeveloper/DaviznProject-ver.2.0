@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.davizn.model.interfaces.NoteDAO">
+	
+	<insert id="addNoteData" parameterType="String">
+		insert into note 
+		(dataseq,datatype,filepath) 
+		values(
+				(select dataseq 
+					from (select rownum r,dataseq from personaldata order by dataseq desc)
+				where r = 1),1,#{filepath})
+	</insert>
+	
+	<select id="detailNoteData" resultType="kr.or.davizn.model.dto.NoteDTO">
+		select *from note 
+		where dataseq=
+			(select dataseq from
+					(select rownum r, dataseq from note order by dataseq desc)
+			where r=1)
+	</select>
+	
+</mapper>

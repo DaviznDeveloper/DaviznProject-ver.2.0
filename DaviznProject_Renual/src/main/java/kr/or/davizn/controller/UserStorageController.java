@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.davizn.model.dto.PersonalDataDTO;
 import kr.or.davizn.model.dto.UserStrgDTO;
 import kr.or.davizn.service.UserStrg;
 
@@ -46,5 +47,15 @@ public class UserStorageController {
 		model.addAttribute("storagelist", list);
 		return "datamanage.data-repo";
 	}
+	
+
+	//데이터 추가하기(노트)
+	@RequestMapping("moveNoteCreate.dvn")
+	public String moveNoteCreate(Model model, String strgseq){
+		model.addAttribute("strgseq",strgseq);
+		return "datamanage.data-note-create";
+	}
+	
+	
 	
 }

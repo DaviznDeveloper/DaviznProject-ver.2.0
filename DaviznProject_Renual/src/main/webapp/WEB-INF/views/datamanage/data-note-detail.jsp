@@ -30,9 +30,9 @@
 							<small class="note-detail-date">2016.06.14</small>
 						</h3>
 					</div>
-					<div class="panel-body">Panel content</div>
+					<div class="panel-body">${note}</div>
 				</div>
-		
+					
 				<div id="push"></div>
 						
 			</div>

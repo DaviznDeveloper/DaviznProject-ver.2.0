@@ -3,12 +3,13 @@ package kr.or.davizn.model.dto;
 import java.sql.Date;
 
 public class PersonalDataDTO {
-	public int dataseq;
-	public int strgseq;
-	public String dataname;
-	public int datatype;
-	public Date datacreate;
 	
+	private int dataseq;
+	private int strgseq;
+	private String dataname;
+	private int datatype;
+	private Date datacreate;
+	private String ckeditor;
 	public int getDataseq() {
 		return dataseq;
 	}
@@ -39,6 +40,14 @@ public class PersonalDataDTO {
 	public void setDatacreate(Date datacreate) {
 		this.datacreate = datacreate;
 	}
+	public String getCkeditor() {
+		return ckeditor;
+	}
+	public void setCkeditor(String ckeditor) {
+		this.ckeditor = ckeditor;
+	}
+	
+	
 	
 	
 }

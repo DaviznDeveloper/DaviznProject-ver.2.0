@@ -31,14 +31,16 @@ $(function() {
 			    					+'&realDir=upload'
 	});
 	
-	var sendNoteData;
+	var sendNoteDataaa;
 	
-	$(".sendNoteData").click(function() {
-		sendNoteData = CKEDITOR.instances.ckeditor.getData();
-		
-		console.log("데이터" + " : " + sendNoteData);
-		
-	});
+	$("#sendNoteData").click(function() {
+        var sendNoteData = CKEDITOR.instances.ckeditor.getData();
+        var noteText = $('#ckeditor').val(sendNoteData);
+        $("#noteForm").submit();   
+        
+     });
+	
+	
 	
 	$("button[type='reset']").click(function() {
 		CKEDITOR.instances.ckeditor.setData(sendNoteData);

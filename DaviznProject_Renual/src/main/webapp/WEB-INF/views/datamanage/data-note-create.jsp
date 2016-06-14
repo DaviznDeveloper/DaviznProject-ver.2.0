@@ -16,14 +16,16 @@
 							<li class="active">노트형 데이터 만들기</li>
 						</ol>
 						
-						<form action="" method="post">
+						<form action="${pageContext.request.contextPath}/personalData/addPersonalData.dvn?strgseq=${strgseq}&datatype=1" method="post" id="noteForm">
+
 							
-							<button type="button" class="btn btn-info sendNoteData">저장</button>
+							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
 							<button type="reset" class="btn btn-default">취소</button>
+							
 							
 							<hr>
 						
-							<input type="text" name="" class="form-control input-lg note-title" placeholder="제목을 입력하세요">
+							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요">
 							
 							<br>
 							

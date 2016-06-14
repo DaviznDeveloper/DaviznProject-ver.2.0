@@ -8,4 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="showPersonalDataList" parameterType="String" resultType="kr.or.davizn.model.dto.PersonalDataDTO">
 		select * from personaldata where strgseq=#{strgseq}
 	</select>
+	
+	<!--개인 데이터 추가하기-->
+	<insert id="addPersonalData" parameterType="kr.or.davizn.model.dto.PersonalDataDTO">
+		insert into personaldata (dataseq,strgseq,dataname,datatype,datacreate)
+		values (data_seq.nextval,#{strgseq},#{dataname},#{datatype},sysdate)
+	</insert>
 </mapper>
+

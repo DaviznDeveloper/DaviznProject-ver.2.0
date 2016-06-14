@@ -46,7 +46,7 @@
 															<h3>노트형 데이터</h3>
 															<p>노트형 데이터는 글과 사진, 동영상 등을 입력할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/note/*.dvn" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/userStrg/moveNoteCreate.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
@@ -91,7 +91,7 @@
 															<h3>앨범형 데이터</h3>
 															<p>앨범형 데이터는 사진을 앨범처럼 저장할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/datamanage/goStoreData.dvn" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/datamanage/goStoreData.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>

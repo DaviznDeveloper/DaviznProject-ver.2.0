@@ -23,4 +23,11 @@ public class PersonalData {
 		List<PersonalDataDTO> result = dao.showPersonalDataList(strgseq);
 		return result;
 	}
+	
+	//개인데이터 추가
+	public int addPersonalData(PersonalDataDTO pdata){
+		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
+		int result = dao.addPersonalData(pdata);
+		return result;
+	}
 }
