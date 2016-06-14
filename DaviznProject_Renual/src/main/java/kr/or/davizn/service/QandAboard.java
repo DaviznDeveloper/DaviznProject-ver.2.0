@@ -77,10 +77,11 @@ public class QandAboard {
 	// 게시글 등록
 	public String noticeReg(QandAboardDTO n, HttpServletRequest request) throws Exception {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
-
+		System.out.println("등록 서비스");
+		System.out.println(n);
 		QandAboardDao.insert(n);
 
-		return "redirect:QnAList.dvn";
+		return "redirect:/QnAList.dvn";
 	}
 
 	// 게시글 삭제
@@ -88,7 +89,7 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
 
-		return "redirect:QnAList.dvn";
+		return "redirect:/QnAList.dvn";
 	}
 
 	// 게시글 수정
@@ -107,7 +108,7 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.update(n);
 
-		return "redirect:QnAList.dvn";
+		return "redirect:/QnAList.dvn";
 
 	}
 

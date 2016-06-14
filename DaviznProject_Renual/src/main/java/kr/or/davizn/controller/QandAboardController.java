@@ -1,6 +1,7 @@
 package kr.or.davizn.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -46,7 +47,9 @@ public class QandAboardController {
 
 	// 글등록 화면 처리
 	 @RequestMapping(value="/QnA/qnaWrite.dvn", method = RequestMethod.GET)
-	public String noticeReg() {
+	public String noticeReg(Principal principal, Model model) {
+		 String userid = principal.getName();
+		 model.addAttribute("userid", userid);
 		 return  "QnA.qna-write";	   
 	 }
 
@@ -54,7 +57,10 @@ public class QandAboardController {
 	 @RequestMapping(value = "/QnA/qnaWrite.dvn", method = RequestMethod.POST)
 	public String noticeReg(QandAboardDTO dto, HttpServletRequest request)
 	   throws IOException, ClassNotFoundException, SQLException {
-		 String url = "redirect:qna-list";
+		 System.out.println("실 등록 등장");
+		 
+		 String url = "QnA.qna-list";
+		 
 		 try{
 			 url = QandAboardservice.noticeReg(dto, request);
 		 }catch(Exception e){

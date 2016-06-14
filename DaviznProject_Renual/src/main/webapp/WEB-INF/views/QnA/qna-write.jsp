@@ -31,9 +31,9 @@
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-1 control-label board-w-t">제목</label>
 												<div class="col-sm-11">
-													<input type="text" class="form-control" id="board-subject" name="boardsubject" placeholder="제목을 입력하세요.">
-													<input type="hidden" name="userid" value="${userid}">
+													<input type="text" class="form-control" id="board-subject" name="boardsubject" placeholder="제목을 입력하세요.">																										
 												</div>
+												<input type="hidden" class="form-control" name="userid" value="${userid}" readonly="true">
 											</div>
 										</td>
 										

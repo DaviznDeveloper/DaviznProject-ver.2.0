@@ -99,7 +99,7 @@
 								<c:forEach begin="${fromPage}" end="${toPage}" var="i">
 										<c:if test="${i==pg}"><li>${i}</li></c:if>
 										<c:if test="${i!=pg}">
-											<li><a  class="board-pager" href="${pageContext.request.contextPath}/QnA.dvn?pg=${i}">${i}</a></li>
+											<li><a  class="board-pager" href="${pageContext.request.contextPath}/QnAList.dvn?pg=${i}">${i}</a></li>
 										</c:if>
 								</c:forEach>			
 								<li>
