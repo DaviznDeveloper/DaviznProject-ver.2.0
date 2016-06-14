@@ -21,4 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where r=1)
 	</select>
 	
+	<!-- 
+	select n.dataseq, n.filepath, p.dataname
+	from personaldata p join note n
+	on p.dataseq = n.dataseq
+	where p.dataseq=(
+                  (select dataseq from
+                      (select rownum r, dataseq from note order by dataseq desc)
+                  where r=1)
+                );
+	 -->
+	
 </mapper>
