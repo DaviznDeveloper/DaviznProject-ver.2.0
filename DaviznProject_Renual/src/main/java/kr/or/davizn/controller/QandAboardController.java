@@ -16,14 +16,13 @@ import kr.or.davizn.model.dto.QandAboardDTO;
 import kr.or.davizn.service.QandAboard;
 
 @Controller
-@RequestMapping("/QnA/")
 public class QandAboardController {
 	
 	@Autowired
 	private QandAboard QandAboardservice;
 	
 	//글목록보기
-	@RequestMapping("QnA.dvn")
+	@RequestMapping("QnAList.dvn")
 	public String notices(String pg, Model model) throws ClassNotFoundException , SQLException {
 		List<QandAboardDTO> list = QandAboardservice.notices(pg, model);
 		
