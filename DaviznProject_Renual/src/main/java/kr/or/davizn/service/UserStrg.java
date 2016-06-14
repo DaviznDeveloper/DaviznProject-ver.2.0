@@ -15,9 +15,9 @@ public class UserStrg {
 	SqlSession sqlsession;
 	
 	//저장소 추가
-	public int addStorage(UserStrgDTO userstrgdto){
+	public int addStorage(String strgname, String userid){
 		UserStrgDAO dao = sqlsession.getMapper(UserStrgDAO.class);
-		int result = dao.addStorage(userstrgdto);
+		int result = dao.addStorage(strgname, userid);
 		return result;
 	}
 	
@@ -32,6 +32,8 @@ public class UserStrg {
 	public List<UserStrgDTO> showStorageList(String userid){
 		UserStrgDAO dao = sqlsession.getMapper(UserStrgDAO.class);
 		List<UserStrgDTO> result = dao.showStorageList(userid);
+		System.out.println("아이디"+userid);
+		System.out.println("저장소 리스트 : "+result.toString());
 		return result;
 	}
 }
