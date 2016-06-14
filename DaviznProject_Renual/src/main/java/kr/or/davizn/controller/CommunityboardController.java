@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +14,13 @@ import kr.or.davizn.model.dto.CommunityBoardDTO;
 import kr.or.davizn.service.CommunityBoard;
 
 @Controller
-@RequestMapping("/community/")
 public class CommunityboardController {
 
 	@Autowired
 	private CommunityBoard communityboardservice;
 	
 	//글 목록보기
-	@RequestMapping("community.dvn")
+	@RequestMapping("communityList.dvn")
 	public String notices(String pg , String f , String q , Model model) throws ClassNotFoundException , SQLException {
 		System.out.println("목록!!");
 		List<CommunityBoardDTO> list = communityboardservice.notices(pg, f , q);
