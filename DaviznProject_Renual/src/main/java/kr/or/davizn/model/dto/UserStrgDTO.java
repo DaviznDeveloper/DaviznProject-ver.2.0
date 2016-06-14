@@ -3,6 +3,7 @@ package kr.or.davizn.model.dto;
 import java.sql.Date;
 
 public class UserStrgDTO {
+	
 	private int strgseq;
 	private String strgname;
 	private String userid;
