@@ -80,7 +80,7 @@ public class QandAboard {
 
 		QandAboardDao.insert(n);
 
-		return "redirect:QnA.dvn";
+		return "redirect:QnAList.dvn";
 	}
 
 	// 게시글 삭제
@@ -88,7 +88,7 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
 
-		return "redirect:QnA.dvn";
+		return "redirect:QnAList.dvn";
 	}
 
 	// 게시글 수정
@@ -107,7 +107,7 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.update(n);
 
-		return "redirect:QnA.dvn";
+		return "redirect:QnAList.dvn";
 
 	}
 

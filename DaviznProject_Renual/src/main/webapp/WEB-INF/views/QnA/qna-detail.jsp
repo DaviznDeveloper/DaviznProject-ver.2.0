@@ -32,7 +32,7 @@
 
 							<tr>
 
-								<th scope="col" class="board-d-writer">${notice.nickname}</th>
+								<th scope="col" class="board-d-writer">${notice.userid}</th>
 								<th scope="col" class="board-d-lookup">${notice.boardreadcount}</th>
 
 							</tr>
