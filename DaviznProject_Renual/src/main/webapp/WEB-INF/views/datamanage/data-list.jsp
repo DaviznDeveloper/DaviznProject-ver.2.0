@@ -3,7 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@include file="/WEB-INF/views/renual/header2.jsp"%>
+
 				
 				<!-- content -->
 				<div class="container">
@@ -270,4 +270,3 @@
 			
 		</div>
 
-<%@include file="/WEB-INF/views/renual/footer.jsp"%>
