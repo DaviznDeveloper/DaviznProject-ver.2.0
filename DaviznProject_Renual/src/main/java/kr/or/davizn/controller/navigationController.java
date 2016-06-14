@@ -1,7 +1,7 @@
 package kr.or.davizn.controller;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,17 +35,23 @@ public class navigationController {
 			
 			return "member.profile-modi";
 		}*/
+		//커뮤니티 게시판 이동
+		@RequestMapping("communityNavigation.dvn")
+		public String moveCommunity(){
+			return "redirect:/communityList.dvn ";
+		}
 		
+		//1:1 게시판 창 이동
+		@RequestMapping("QnANavigation.dvn")
+		public String moveQnA(){
+			
+			return "redirect:/QnA.dvn";
+		}
 		//데이터 관리 창 이동
 		@RequestMapping("datamanage.dvn")
-		public String moveDataMain(){
-			UserDetails userinfo =  (UserDetails)SecurityContextHolder.getContext().
-                    getAuthentication().
-                    getPrincipal();
-			
-					System.out.println("인증된 ID"+userinfo.getUsername()); //인증  ID
-			
-			return "datamanage.data-repo";
+		public String moveDataMain(Principal principal){
+			if(principal == null){return "datamanage.data-repo";}
+	         return "redirect:/datamanage/showStorageList.dvn";
 		}
 		
 		//대시보드 창 이동

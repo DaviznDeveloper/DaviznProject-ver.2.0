@@ -61,10 +61,10 @@
 									<div class="">
 										<a class="btn btn-default"
 											href="QnAEdit.dvn?boardseq=${notice.boardseq}" role="button">수정</a>
-										  <!-- delete modal -->
-                                          <button type="button" class="btn btn-default"
-                                             data-toggle="modal" data-target=".bs-example-modal-sm">삭제</button>
-                                             
+										<!-- delete modal -->
+										<button type="button" class="btn btn-default"
+											data-toggle="modal" data-target=".bs-example-modal-sm">삭제</button>
+
 										<div class="modal fade bs-example-modal-sm" tabindex="-1"
 											role="dialog" aria-labelledby="mySmallModalLabel"
 											aria-hidden="true" style="display: none;">
@@ -100,19 +100,20 @@
 
 							</tr>
 
+							
+							<c:forEach items="${replylist}" var="n">
 							<tr>
-
 								<td scope="col" class="ellipsis">
 
 									<div class="row">
-										<span class="reply-writer">leafgreen</span> <span
-											class="reply-date">2016.06.09</span> <input type="hidden"
-											value="1">
+										<span class="reply-writer" name="">${n.userid} </span> 
+										<span class="reply-date" name="">${n.replydate}</span>
+										<input type="hidden" value="1">
 									</div>
 
 									<div class="row">
-										<p class="ellipsis reply-content">
-											<span></span>오오오오
+										<p class="ellipsis reply-content" name="replycontnet">
+											<span>${n.replycontnet}</span>
 										</p>
 									</div>
 
@@ -132,14 +133,15 @@
 									<div id="reply-navbar" class="navbar-collapse collapse">
 										<ul class="nav navbar-nav navbar-right">
 											<!-- <li class="nav_menu"><a href="#" class="btn btn-default">댓글</a></li>
-															<li class="nav_menu"><a href="#" class="btn btn-default">수정</a></li> -->
+											 <li class="nav_menu"><a href="#" class="btn btn-default">수정</a></li> -->
 											<li class="nav_menu"><a href="" class="btn btn-default">삭제</a></li>
 										</ul>
 									</div>
-
 								</td>
+
 								<!-- 댓글 끝 -->
 							</tr>
+							</c:forEach>
 
 							<tr>
 
@@ -161,7 +163,7 @@
 
 										<div id="reply-navbar" class="navbar-collapse collapse">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="nav_menu"><a href="" class="btn btn-default">확인</a></li>
+												<li class="nav_menu"><a href="" class="btn btn-default" name="">확인</a></li>
 											</ul>
 										</div>
 
