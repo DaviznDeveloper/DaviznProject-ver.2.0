@@ -24,16 +24,12 @@
    					</security:authorize> 
    					
 					<security:authorize access="hasRole('ROLE_USER')">
-    					<c:forEach var="b" items="${list}">
-    						
-    							
-								<div class="data-repo-box" data-toggle="tooltip" title="${b.strgname}">
-									<a href="${pageContext.request.contextPath}/datamanage/showDataList.dvn?userstrg=${b.userstrg} " type="button" class="btn btn-info data-repo-btn">
-										<i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
-									</a>
-								</div>
-							
-							
+    					<c:forEach var="b" items="${storagelist}">
+							<div class="data-repo-box" data-toggle="tooltip" title="${b.strgname}">
+								<a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${b.strgseq} " type="button" class="btn btn-info data-repo-btn">
+									<i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
+								</a>
+							</div>
 						</c:forEach>
    					</security:authorize>
 		
