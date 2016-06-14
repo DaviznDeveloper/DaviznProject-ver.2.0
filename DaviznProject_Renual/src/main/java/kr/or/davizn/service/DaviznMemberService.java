@@ -57,7 +57,8 @@ public class DaviznMemberService {
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 		CommonsMultipartFile file = member.getUploadImage();
 		 if(file != null){
-			 String fname = file.getOriginalFilename(); //파일명 얻기
+			 
+			 String fname = System.currentTimeMillis()+file.getOriginalFilename(); //파일명 얻기
 			 String path  = request.getRealPath("/resources/upload");
 			 String fullpath = path + "\\" + fname;
 			 System.out.println("경로 테스트");

@@ -26,13 +26,15 @@ public class DaviznMemberController {
 	//회원가입
 	@RequestMapping("joinMember.dvn")
 	public String joinMember(DaviznMemberDTO member){
-		
+		System.out.println("회원가입 컨트롤러");
 		String view = null;
 		int result = service.insertMember(member);
 		String userid = member.getUserid();
 		if(result > 0){
+			System.out.println("회원가입 성공/권한부여하러감");
 			view = "redirect:grantAuth.dvn?userid="+userid;
 		}else{
+			System.out.println("회원가입실패");
 			view = "joinus.signup";
 		}
 		return view;
