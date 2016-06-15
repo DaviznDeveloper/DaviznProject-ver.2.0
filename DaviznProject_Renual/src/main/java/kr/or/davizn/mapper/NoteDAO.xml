@@ -13,16 +13,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				where r = 1),1,#{filepath})
 	</insert>
 	
-	<select id="detailNoteData" resultType="kr.or.davizn.model.dto.NoteDTO">
+	<!-- <select id="detailNoteData" resultType="kr.or.davizn.model.dto.NoteDTO">
 		select *from note 
 		where dataseq=
 			(select dataseq from
 					(select rownum r, dataseq from note order by dataseq desc)
 			where r=1)
-	</select>
+	</select> -->
 	
-	<!-- 
-	select n.dataseq, n.filepath, p.dataname
+	<select id="detailNoteData" resultType="kr.or.davizn.model.dto.PersonalDataNoteDTO">
+		select n.dataseq, n.filepath, p.dataname
+		from personaldata p join note n
+		on p.dataseq = n.dataseq
+		where p.dataseq=(
+                  			(select dataseq from
+                      			(select rownum r, dataseq from note order by dataseq desc)
+                   			where r=1)
+                		 )
+	</select> 
+	<!-- select n.dataseq, n.filepath, p.dataname
 	from personaldata p join note n
 	on p.dataseq = n.dataseq
 	where p.dataseq=(
@@ -30,6 +39,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                       (select rownum r, dataseq from note order by dataseq desc)
                   where r=1)
                 );
-	 -->
+	 --> 
 	
 </mapper>

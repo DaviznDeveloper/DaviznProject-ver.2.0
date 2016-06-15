@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.model.dto.NoteDTO;
 import kr.or.davizn.model.dto.PersonalDataDTO;
+import kr.or.davizn.model.dto.PersonalDataNoteDTO;
 import kr.or.davizn.model.dto.UserStrgDTO;
 import kr.or.davizn.service.NoteData;
 import kr.or.davizn.service.PersonalData;
@@ -74,8 +75,8 @@ public class PersonalDataController {
  	@RequestMapping("detailNoteData")
  	public String detailNoteData(Model model, HttpServletRequest request) 
  			throws IOException{
- 		NoteDTO note =notedataService.detailNoteData(request);
- 		model.addAttribute("note", note.getValue());
+ 		PersonalDataNoteDTO note =notedataService.detailNoteData(request);
+ 		model.addAttribute("note", note);
  		return "datamanage.data-note-detail";
  	}
  	

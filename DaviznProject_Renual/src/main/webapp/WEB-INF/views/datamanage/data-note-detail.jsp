@@ -26,11 +26,11 @@
 				<div class="panel panel-success note-detail-content">
 					<div class="panel-heading note-detail-title">
 						<h3 class="panel-title">
-							가나다라&nbsp;&nbsp;&nbsp;&nbsp;
+							${note.dataname}&nbsp;&nbsp;&nbsp;&nbsp;
 							<small class="note-detail-date">2016.06.14</small>
 						</h3>
 					</div>
-					<div class="panel-body">${note}</div>
+					<div class="panel-body">${note.value}</div>
 				</div>
 					
 				<div id="push"></div>

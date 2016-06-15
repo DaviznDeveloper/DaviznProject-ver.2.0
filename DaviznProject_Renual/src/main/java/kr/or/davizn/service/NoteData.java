@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.davizn.model.dto.NoteDTO;
+import kr.or.davizn.model.dto.PersonalDataNoteDTO;
 import kr.or.davizn.model.interfaces.NoteDAO;
 
 import java.io.BufferedReader;
@@ -30,11 +31,11 @@ public class NoteData {
 	}
 	
 	//노트 추가 후 상세 조회
-	public NoteDTO detailNoteData(HttpServletRequest request) throws IOException{
+	public PersonalDataNoteDTO detailNoteData(HttpServletRequest request) throws IOException{
 		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
-		NoteDTO note = dao.detailNoteData();
+		///NoteDTO note = dao.detailNoteData();
+		PersonalDataNoteDTO note =dao.detailNoteData();
 
-		
 		String fname = note.getFilepath();
 	    String fpath = request.getRealPath("/resources/notefile");
 	    String fullPath = fpath + "\\" + fname;
