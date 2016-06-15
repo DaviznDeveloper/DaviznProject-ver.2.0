@@ -10,5 +10,5 @@ public interface PersonalDataDAO {
 	public List<PersonalDataDTO> showPersonalDataList(int strgseq);
 	
 	//개인 데이터 추가하기
-	public int addPersonalData(PersonalDataDTO pdata);
+	/*public int addPersonalData(PersonalDataDTO pdata);*/
 }
