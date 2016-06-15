@@ -25,11 +25,8 @@ public class PersonalDataController {
 	//데이터 리스트 보기
 	@RequestMapping("showPersonalDataList.dvn")
 	public String showPersonalDataList(Model model, int strgseq){
-		System.out.println("Enter [showPersonDataList.dvn Controller]");
-		System.out.println("Storage Number : " + strgseq);
 		List<PersonalDataDTO> list = personalDataService.showPersonalDataList(strgseq);
 		model.addAttribute("pdatalist", list);
-		System.out.println("Result : "+list);
 		return "datamanage.data-list";
 	}
 }

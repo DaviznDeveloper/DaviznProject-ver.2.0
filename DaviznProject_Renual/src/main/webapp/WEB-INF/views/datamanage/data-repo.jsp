@@ -26,7 +26,7 @@
 					<security:authorize access="hasRole('ROLE_USER')">
     					<c:forEach var="b" items="${storagelist}">
 							<div class="data-repo-box" data-toggle="tooltip" title="${b.strgname}">
-								<a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${b.strgseq} " type="button" class="btn btn-info data-repo-btn">
+								<a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${b.strgseq}" type="button" class="btn btn-info data-repo-btn">
 									<i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
 								</a>
 							</div>
@@ -59,10 +59,10 @@
 								
 									<div class="row col-md-12 center-block">
 									
-										<form action="${pageContext.request.contextPath}/datamanage/addStorage.dvn" method="post">
+										<form action="${pageContext.request.contextPath}/userStrg/addStorage.dvn" method="post">
 											
 						                	<div class="form-group">
-						                		<input type="text" name="strgname" class="form-control" 
+						                		<input type="text" id="strgname" name="strgname" class="form-control" 
 						                			placeholder="저장소 제목을 입력하세요">
 						                	</div>
 						                	
