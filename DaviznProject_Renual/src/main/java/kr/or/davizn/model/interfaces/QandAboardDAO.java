@@ -26,23 +26,11 @@ public interface QandAboardDAO {
 		public boolean insertOfMemberPoint(String userid) throws ClassNotFoundException, SQLException;
 		//댓글 조회
 		public List<QandAReplyDTO> replylist(int boardseq) throws ClassNotFoundException, SQLException;
-		
-		
-		
-		//답변
-		public int replyBoard(QandAboardDTO n) throws ClassNotFoundException, SQLException;
-		//댓글쓰기
-		public int noticeReqly(QandAReplyDTO n) throws ClassNotFoundException, SQLException;
 		//덧글 리스트
 		public List<QandAReplyDTO> replyList(int boardseq) throws ClassNotFoundException, SQLException;
-		//모든댓글 삭제
-		public int deleteAllReply(String boardseq) throws ClassNotFoundException, SQLException;
-		//해당덧글 삭제
-		public int deleteReply(int seq_pk) throws ClassNotFoundException, SQLException;
-		//덧글삭제시 참조키
-		public int replySeq(int seq_pk) throws ClassNotFoundException, SQLException;
-		//최상위 덧글
-		public int getReplyMax() throws ClassNotFoundException, SQLException;
+		
+		
+	
 		
 
 		

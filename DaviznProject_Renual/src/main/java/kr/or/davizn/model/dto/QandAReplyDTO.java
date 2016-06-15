@@ -5,21 +5,16 @@ import java.sql.Date;
 public class QandAReplyDTO {
 	private int replynum;
 	private String userid;
-	private String replycontnet;
+	private String replycontent;
 	private int boardseq;
 	private Date replydate;
 	
 	
+	
 	@Override
 	public String toString() {
-		return "QandAReplyDTO [replynum=" + replynum + ", userid=" + userid + ", replycontnet=" + replycontnet
+		return "QandAReplyDTO [replynum=" + replynum + ", userid=" + userid + ", replycontent=" + replycontent
 				+ ", boardseq=" + boardseq + ", replydate=" + replydate + "]";
-	}
-	public Date getReplydate() {
-		return replydate;
-	}
-	public void setReplydate(Date replydate) {
-		this.replydate = replydate;
 	}
 	public int getReplynum() {
 		return replynum;
@@ -33,17 +28,29 @@ public class QandAReplyDTO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getReplycontnet() {
-		return replycontnet;
+	public String getReplycontent() {
+		return replycontent;
 	}
-	public void setReplycontnet(String replycontnet) {
-		this.replycontnet = replycontnet;
+	public void setReplycontent(String replycontent) {
+		this.replycontent = replycontent;
 	}
 	public int getBoardseq() {
 		return boardseq;
 	}
-	public void setBoardseq(int boardseq) {
+	public void setBoardseq(int boardseq) { 
 		this.boardseq = boardseq;
 	}
+	public Date getReplydate() {
+		return replydate;
+	}
+	public void setReplydate(Date replydate) {
+		this.replydate = replydate;
+	}
+	
+	
+	
+	
+	
+
 	
 }

@@ -31,7 +31,7 @@
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-1 control-label board-w-t">제목</label>
 												<div class="col-sm-11">
-													<input type="text" class="form-control" id="board-subject" name="boardsubject" placeholder="제목을 입력하세요.">																										
+													<input type="text" class="form-control" id="board-subject" name="boardsubject" placeholder="제목을 입력하세요." required="required">																										
 												</div>
 												<input type="hidden" class="form-control" name="userid" value="${userid}" readonly="true">
 											</div>
@@ -45,7 +45,7 @@
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-1 control-label board-w-t">비밀번호</label>
 												<div class="col-sm-11">
-													<input type="password" class="form-control" id="board-subject" name="boardpwd"
+													<input type="password" class="form-control" id="board-subject" name="boardpwd" required="required"
 														placeholder="이 글의 비밀번호을 설정하세요.">
 												</div>
 											</div>
@@ -73,7 +73,7 @@
 										<div class="form-group">
 											
 											<td colspan="3">
-												 <textarea id="summernote" class="summernote" name="boardcontent" rows="20"></textarea>			        
+												 <textarea id="summernote" class="summernote" name="boardcontent" rows="20" required="required"></textarea>			        
 											</td>
 										
 										</div>

@@ -66,18 +66,17 @@ public class QandAboard {
 
 	// 게시글 상세보기
 	public QandAboardDTO noticeDetail(int boardseq) throws ClassNotFoundException, SQLException {
-		System.out.println("그냥 상세");
+		System.out.println("상새");
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
 		QandAboardDao.boardCount(boardseq);
-
+		System.out.println(notice);
 		return notice;
 	}
 
 	// 게시글 등록
 	public String noticeReg(QandAboardDTO n, HttpServletRequest request) throws Exception {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
-		System.out.println("등록 서비스");
 		System.out.println(n);
 		QandAboardDao.insert(n);
 
@@ -88,7 +87,7 @@ public class QandAboard {
 	public String noticeDel(String boardseq) throws ClassNotFoundException, SQLException {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
-
+		
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -114,14 +113,9 @@ public class QandAboard {
 
 	public List<QandAReplyDTO> replyDetail(int boardseq) throws ClassNotFoundException, SQLException {
 
-		System.out.println("리플 서비스");
-		System.out.println("시퀀스 : 	"+boardseq);
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		List<QandAReplyDTO> reqlylist = QandAboardDao.replylist(boardseq);
 		
-		System.out.println("사이즈 : "+reqlylist.size());
-		System.out.println(reqlylist);
-
 		return reqlylist;
 
 	}

@@ -34,12 +34,10 @@ public class QandAboardController {
     //글상세보기
 	 @RequestMapping("/QnA/Qnadetail.dvn")
     public String noticeDetail(int boardseq , Model model ) throws ClassNotFoundException, SQLException{
-		 System.out.println("상세 페이지 등장");
 		 QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
 		 List<QandAReplyDTO> replylist =QandAboardservice.replyDetail(boardseq);
 		 
 		 model.addAttribute("replylist",replylist);
-		 System.out.println(replylist);
 		 model.addAttribute("notice", notice);
 		 return "QnA.qna-detail";
 	
@@ -56,11 +54,8 @@ public class QandAboardController {
 	// 글등록 처리(실제 글등록 처리)
 	 @RequestMapping(value = "/QnA/qnaWrite.dvn", method = RequestMethod.POST)
 	public String noticeReg(QandAboardDTO dto, HttpServletRequest request)
-	   throws IOException, ClassNotFoundException, SQLException {
-		 System.out.println("실 등록 등장");
-		 
-		 String url = "QnA.qna-list";
-		 
+	   throws IOException, ClassNotFoundException, SQLException {		 
+		 String url = "QnA.qna-list";		 
 		 try{
 			 url = QandAboardservice.noticeReg(dto, request);
 		 }catch(Exception e){
@@ -95,8 +90,6 @@ public class QandAboardController {
 	 @RequestMapping(value = "/QnA/QnAEdit.dvn", method = RequestMethod.POST)
 	 public String noticeEdit(QandAboardDTO n ,HttpServletRequest request) throws ClassNotFoundException,
 	   SQLException, IOException {
-		 System.out.println("실제 에디트");
-		 System.out.println("seq : " + n.getBoardseq());
 		String url = QandAboardservice.noticeEdit2(n, request);
 		System.out.println(url);
 		return url;

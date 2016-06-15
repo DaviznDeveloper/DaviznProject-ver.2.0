@@ -107,13 +107,13 @@
 
 									<div class="row">
 										<span class="reply-writer" name="">${n.userid} </span> 
-										<span class="reply-date" name="">${n.replydate}</span>
+										<span class="reply-date" name="" >${n.replydate}</span>
 										<input type="hidden" value="1">
 									</div>
 
 									<div class="row">
-										<p class="ellipsis reply-content" name="replycontnet">
-											<span>${n.replycontnet}</span>
+										<p class="ellipsis reply-content" name="">
+											<span>${n.replycontent}</span>
 										</p>
 									</div>
 
@@ -134,7 +134,8 @@
 										<ul class="nav navbar-nav navbar-right">
 											<!-- <li class="nav_menu"><a href="#" class="btn btn-default">댓글</a></li>
 											 <li class="nav_menu"><a href="#" class="btn btn-default">수정</a></li> -->
-											<li class="nav_menu"><a href="" class="btn btn-default">삭제</a></li>
+											<li class="nav_menu">
+												<a href="${pageContext.request.contextPath}/QnA/deleteReply.dvn?boardseq=${n.boardseq}&replynum=${n.replynum}" class="btn btn-default">삭제</a></li>
 										</ul>
 									</div>
 								</td>
@@ -144,17 +145,17 @@
 							</c:forEach>
 
 							<tr>
-
-								<form action="" method="get">
+							
+								<form action="${pageContext.request.contextPath}/QnA/replyWrite.dvn" method="post">
 
 									<td scope="col" class="">
-
+									
 										<div class="form-group">
-											<input type="hidden" name="commentId" value=""> <input
-												type="hidden" name="commentNo" value="">
-											<textarea rows="" class="form-control"
-												placeholder="댓글을 입력하세요." name="commentText"></textarea>
-
+											
+											<textarea rows="" class="form-control" name="replycontent"
+												placeholder="댓글을 입력하세요." required="required"></textarea>
+											<input type="hidden" class="form-control" name="userid" value="${notice.userid}" >
+											<input type="hidden" class="form-control" name="boardseq" value="${notice.boardseq}" >
 										</div>
 
 									</td>
@@ -163,7 +164,8 @@
 
 										<div id="reply-navbar" class="navbar-collapse collapse">
 											<ul class="nav navbar-nav navbar-right">
-												<li class="nav_menu"><a href="" class="btn btn-default" name="">확인</a></li>
+												<li class="nav_menu">
+												<button type="submit" class="btn btn-success" id = "write_submit">작성</button>
 											</ul>
 										</div>
 
