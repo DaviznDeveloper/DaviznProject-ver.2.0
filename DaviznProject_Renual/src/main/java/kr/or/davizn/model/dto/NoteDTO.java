@@ -6,15 +6,6 @@ public class NoteDTO {
 	private int datatype;
 	private String filepath;
 	private String value;
-	
-	
-	
-	public String getValue() {
-		return value;
-	}
-	public void setValue(String value) {
-		this.value = value;
-	}
 	public int getDataseq() {
 		return dataseq;
 	}
@@ -33,6 +24,16 @@ public class NoteDTO {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
+	
+	
+	
 	
 	
 	

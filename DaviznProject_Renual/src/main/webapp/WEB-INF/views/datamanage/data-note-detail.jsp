@@ -17,17 +17,19 @@
 				</ol>
 		
 				<div class="note-detail-option">
-					<span class="glyphicon glyphicon-pencil note-detail-modi" 
-						data-toggle="tooltip" title="노트 수정하기" aria-hidden="true"></span>
-					<span class="glyphicon glyphicon-trash note-detail-modi" 
-						data-toggle="tooltip" title="노트 삭제하기" aria-hidden="true"></span>
+					<a href="${pageContext.request.contextPath}/personalData/modifyNote.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}"><span class="glyphicon glyphicon-pencil note-detail-modi" 
+						data-toggle="tooltip" title="노트 수정하기" aria-hidden="true">
+					
+						</span></a>
+					<a href="${pageContext.request.contextPath}/personalData/deleteNote.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}"><span class="glyphicon glyphicon-trash note-detail-modi" 
+						data-toggle="tooltip" title="노트 삭제하기" aria-hidden="true"></span></a>
 				</div>
 		
 				<div class="panel panel-success note-detail-content">
 					<div class="panel-heading note-detail-title">
 						<h3 class="panel-title">
 							${note.dataname}&nbsp;&nbsp;&nbsp;&nbsp;
-							<small class="note-detail-date">2016.06.14</small>
+							<small class="note-detail-date">${note.datacreate}</small>
 						</h3>
 					</div>
 					<div class="panel-body">${note.value}</div>

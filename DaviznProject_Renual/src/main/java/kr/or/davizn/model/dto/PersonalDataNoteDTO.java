@@ -53,11 +53,6 @@ public class PersonalDataNoteDTO {
 	public void setDatacreate(Date datacreate) {
 		this.datacreate = datacreate;
 	}
-
-	
-	
-	
-	
 	
 	
 }

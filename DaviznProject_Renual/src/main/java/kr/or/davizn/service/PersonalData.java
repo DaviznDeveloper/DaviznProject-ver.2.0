@@ -54,4 +54,11 @@ public class PersonalData {
 		
 		return fileName;
 	}
+	
+	//개인 데이터 삭제
+	public int deleteNote(int dataseq){
+		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
+		int result=dao.deletePersonalData(dataseq);
+		return result;
+	}
 }

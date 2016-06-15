@@ -13,16 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				where r = 1),1,#{filepath})
 	</insert>
 	
-	<!-- <select id="detailNoteData" resultType="kr.or.davizn.model.dto.NoteDTO">
-		select *from note 
-		where dataseq=
-			(select dataseq from
-					(select rownum r, dataseq from note order by dataseq desc)
-			where r=1)
-	</select> -->
 	
+	<!--노트 추가 후 삭제-->
 	<select id="detailNoteData" resultType="kr.or.davizn.model.dto.PersonalDataNoteDTO">
-		select n.dataseq, n.filepath, p.dataname
+		select n.dataseq, n.filepath, p.dataname, p.datacreate
 		from personaldata p join note n
 		on p.dataseq = n.dataseq
 		where p.dataseq=(
@@ -30,15 +24,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                       			(select rownum r, dataseq from note order by dataseq desc)
                    			where r=1)
                 		 )
+	</select>
+	
+	<!--목록에서 상세 조회-->
+	<select id="detailNote" resultType="kr.or.davizn.model.dto.PersonalDataNoteDTO">
+		select n.dataseq, n.filepath, p.dataname, p.datacreate, p.strgseq
+		from personaldata p join note n
+		on p.dataseq=n.dataseq
+		where n.dataseq=#{dataseq}
 	</select> 
-	<!-- select n.dataseq, n.filepath, p.dataname
-	from personaldata p join note n
-	on p.dataseq = n.dataseq
-	where p.dataseq=(
-                  (select dataseq from
-                      (select rownum r, dataseq from note order by dataseq desc)
-                  where r=1)
-                );
-	 --> 
+	
+	<!--노트 데이터 삭제-->
+	<delete id="deleteNote">
+		delete from note where dataseq=#{dataseq}
+	</delete>
+	
+	
+	
 	
 </mapper>

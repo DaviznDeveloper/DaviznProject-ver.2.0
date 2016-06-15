@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 				
@@ -43,11 +42,10 @@
 
 <script src="${pageContext.request.contextPath}/resources/lib/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/data-note.js"></script>
-
 <script type="text/javascript">
 
 	$(function() {
-		var sendNoteData = ${}
+		var sendNoteData;
 		CKEDITOR.instances.ckeditor.setData(sendNoteData);
 	});
 

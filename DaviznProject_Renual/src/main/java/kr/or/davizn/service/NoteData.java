@@ -60,6 +60,44 @@ public class NoteData {
 			
 		return note;
 	}
+	
+	//목록에서 상세조회
+	public PersonalDataNoteDTO detailNote(HttpServletRequest request,int dataseq) throws IOException{
+		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
+		///NoteDTO note = dao.detailNoteData();
+		PersonalDataNoteDTO note =dao.detailNote(dataseq);
+
+		String fname = note.getFilepath();
+	    String fpath = request.getRealPath("/resources/notefile");
+	    String fullPath = fpath + "\\" + fname;
+		
+	    FileReader fr = new FileReader(fullPath);
+		BufferedReader br = new BufferedReader(fr);
+		//Buffer 장점 : Line 단위의 처리 가능(한줄씩 read 가능)
+			
+		String value="";
+		String newValue="";
+		
+			for(int i =1 ; (value = br.readLine()) != null ; i++){
+				
+				newValue += value;
+			}
+			System.out.println("newvalue뿌리기 :"+newValue);
+			
+			br.close();
+			fr.close(); 
+			
+			note.setValue(newValue);
+			
+		return note;
+	}
+	
+	//노트 데이터 삭제
+	public int deleteNote(int dataseq){
+		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
+		int result = dao.deleteNote(dataseq);
+		return result;
+	}
 
 
 }

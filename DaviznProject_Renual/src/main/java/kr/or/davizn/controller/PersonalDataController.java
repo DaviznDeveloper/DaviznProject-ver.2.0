@@ -1,23 +1,26 @@
 package kr.or.davizn.controller;
 
-import java.io.FileWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URLDecoder;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import kr.or.davizn.model.dto.NoteDTO;
 import kr.or.davizn.model.dto.PersonalDataDTO;
 import kr.or.davizn.model.dto.PersonalDataNoteDTO;
-import kr.or.davizn.model.dto.UserStrgDTO;
 import kr.or.davizn.service.NoteData;
 import kr.or.davizn.service.PersonalData;
 
@@ -51,6 +54,29 @@ public class PersonalDataController {
  		return "redirect:addNoteData.dvn?filepath="+result;
  	}
  	
+ 	//개인 데이터 상세보기
+ 	@RequestMapping("detailPersonalData.dvn")
+ 	public String detailPersonalData(@RequestParam int datatype,
+ 									 @RequestParam int strgseq,
+ 									 @RequestParam int dataseq){
+ 		String view = null;
+ 		if(datatype==1){
+ 			//노트 데이터 상세 보기
+ 			view ="redirect:detailNote.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
+ 		}else if(datatype==2){
+ 			//스케치 상세 보기
+ 		}else if(datatype==3){
+ 			//일정 상세 보기
+ 		}else if(datatype==4){
+ 			//목표 상세보기
+ 		}else{
+ 			
+ 		}
+ 			
+ 		
+ 		return view;
+ 	}
+ 	
  	//note데이터 추가하기
  	@RequestMapping("addNoteData.dvn")
  	public String addNoteData(@RequestParam String filepath){
@@ -60,15 +86,99 @@ public class PersonalDataController {
  		return "redirect:detailNoteData.dvn";
  	}
  	
+ 	//목록에서 note 데이터 상세조회
+ 	@RequestMapping("detailNote.dvn")
+ 	public String detailNote(@RequestParam int dataseq,
+ 							 Model model, HttpServletRequest request) throws IOException{
+ 		
+ 		PersonalDataNoteDTO note = notedataService.detailNote(request, dataseq);
+ 		model.addAttribute("note", note);
+ 		return "datamanage.data-note-detail";
+ 	}
+ 	
+ 	//상세 화면에서 데이터 삭제
+ 	@RequestMapping("deleteNote.dvn")
+ 	public String deleteNote(@RequestParam int dataseq,
+ 							 @RequestParam int strgseq){
+ 		
+ 		int noteResult = notedataService.deleteNote(dataseq);
+ 		System.out.println("노트 삭제");
+ 		int pdataResult = personalDataService.deleteNote(dataseq);
+ 		System.out.println("개인 데이터 삭제");
+ 		
+ 		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
+ 	}
+ 	
+ 	//상세 화면에서 데이터 수정
+ 	@RequestMapping("modifyNote.dvn")
+ 	public String modifyNote(@RequestParam int dataseq,
+ 							 @RequestParam int strgseq){
+ 		
+ 		return "datamanage.data-note-modi";
+ 	}
+ 	
  	//note 데이터 상세 조회
  	@RequestMapping("detailNoteData.dvn")
  	public String detailNoteData(Model model, HttpServletRequest request) 
  			throws IOException{
- 		PersonalDataNoteDTO note =notedataService.detailNoteData(request);
+ 		PersonalDataNoteDTO note=notedataService.detailNoteData(request);
  		model.addAttribute("note", note);
  		return "datamanage.data-note-detail";
  	}
  	
  	
- 	
+ 	@RequestMapping(value = "imageUpload.dvn", method = RequestMethod.POST)
+    public void communityImageUpload(HttpServletRequest request,FileBean dto, HttpServletResponse response, @RequestParam MultipartFile upload) {
+      System.out.println("컨트롤러 들어옴");
+      
+      OutputStream out = null;
+      OutputStream out2 = null;
+        PrintWriter printWriter = null;
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+ 
+        try{
+           
+    
+           
+            String fileName = upload.getOriginalFilename();
+            byte[] bytes = upload.getBytes();
+            String uploadPath = "C:\\Kosta_112th\\testProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\DaviznProject_Renual\\resources\\upload\\upload2/" + fileName;//저장경로
+            String uploadPath2 = "C:\\Kosta_112th\\testProject\\DaviznProject_Renual\\src\\main\\webapp\\resources\\upload/"+fileName;
+            out = new FileOutputStream(new File(uploadPath));
+            out.write(bytes);
+            
+            out2 = new FileOutputStream(new File(uploadPath2));
+            out2.write(bytes);
+            String callback = request.getParameter("CKEditorFuncNum");
+ 
+            printWriter = response.getWriter();
+            String fileUrl = "localhost:8090/kosta/resources/upload/" + fileName;//url경로
+ 
+            printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
+                    + callback
+                    + ",'"
+                    + fileUrl
+                    + "','이미지를 업로드 하였습니다.'"
+                    + ")</script>");
+            printWriter.flush();
+ 
+        }catch(IOException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (printWriter != null) {
+                    printWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+ 
+        return;
+    
+   }
 }
