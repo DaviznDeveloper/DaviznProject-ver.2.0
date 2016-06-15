@@ -51,7 +51,7 @@ public class PersonalDataController {
  		return "redirect:addNoteData.dvn?filepath="+result;
  	}
  	
- 	//note데이터
+ 	//note데이터 추가하기
  	@RequestMapping("addNoteData.dvn")
  	public String addNoteData(@RequestParam String filepath){
  		
@@ -61,7 +61,7 @@ public class PersonalDataController {
  	}
  	
  	//note 데이터 상세 조회
- 	@RequestMapping("detailNoteData")
+ 	@RequestMapping("detailNoteData.dvn")
  	public String detailNoteData(Model model, HttpServletRequest request) 
  			throws IOException{
  		PersonalDataNoteDTO note =notedataService.detailNoteData(request);
