@@ -17,7 +17,7 @@
 			
 				<table class="table" style=TABLE-layout:fixed>
 					
-					<form action="" method="get" name="boardform" id="writeform" enctype="multipart/form-data">
+					<form action="communityedit.dvn" method="post" name="boardform" id="writeform" >
 				
 						<thead class="board-thead">
 						
@@ -31,8 +31,9 @@
 									<div class="form-group">
 										<label for="inputTitle" class="col-sm-1 control-label board-w-t">제목</label>
 										<div class="col-sm-11">
-											<input type="text" class="form-control" id="board-subject"
-												placeholder="제목을 입력하세요." value="안뇽하세용~">
+											<input type="hidden" value="${notice.boardseq}" name="boardseq">
+											<input type="text" class="form-control" id="board-subject" name="boardsubject" 
+											value="${notice.boardsubject}">
 										</div>
 									</div>
 								</td>
@@ -59,7 +60,7 @@
 								<div class="form-group">
 									
 									<td colspan="3">
-										<div id="summernote">안녕하세요~오늘 가입했습니다 반가워요~</div>
+										<textarea id="summernote" class="" name="boardcontent">${notice.boardcontent}</textarea>
 									</td>
 								
 								</div>
@@ -73,8 +74,8 @@
 									<td colspan="3" scope="col" class="">
 									
 										<div class="text-center">
-											<button type="button" class="btn btn-success" id = "write_submit">수정</button>
-											<a class="btn btn-default" href="" role="button">취소</a>
+											<button type="submit" class="btn btn-success" id = "write_submit">수정</button>
+											<a class="btn btn-default" href="${pageContext.request.contextPath}/communityList.dvn" role="button">취소</a>
 										</div>
 										
 									</td>

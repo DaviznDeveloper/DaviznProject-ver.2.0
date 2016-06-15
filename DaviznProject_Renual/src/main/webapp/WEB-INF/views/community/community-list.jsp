@@ -8,7 +8,7 @@
 					<div class="col-md-12 content-container">
 	
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">홈</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
 							<li class="active">커뮤니티</li>
 						</ol>
 						
@@ -78,7 +78,7 @@
 										</td>
 										
 										
-										<td scope="col" class="ellipsis board-l-writer userid">${n.nickname}</td>
+										<td scope="col" class="ellipsis board-l-writer userid">${n.userid}</td>
 										<td scope="col" class="ellipsis board-l-date boarddate">${n.boarddate}</td>
 										<td scope="col" class="ellipsis board-l-lookup boardreadcount">${n.boardreadcount}</td>
 										

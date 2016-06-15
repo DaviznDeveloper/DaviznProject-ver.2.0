@@ -7,9 +7,7 @@
 	
 	<!-- 게시물 개수  String field, String query -->
 	<select id="getCount" resultType="Integer">
-	SELECT COUNT(*) CNT
-		FROM CMBOARD
-		WHERE ${param1} LIKE '%${param2}%'
+	SELECT COUNT(*) FROM cmboard
 	</select>
 
 	<!-- 글 목록 보기 -->
@@ -19,8 +17,8 @@
                  FROM 
                      ( SELECT * 
                        FROM CMBOARD 
-                       WHERE ${param2} LIKE '%${param3}%' ORDER BY BOARDDATE DESC) N
-                ) WHERE NUM BETWEEN 1 + (${param1}-1)*5 AND 10 + (${param1}-1)*5
+                       ORDER BY BOARDDATE DESC) N
+                ) WHERE NUM >= #{start} and NUM &lt;= #{end}
 	</select>
 	
 	<!-- 글 상세 보기 -->
@@ -31,8 +29,8 @@
 	
 	<!-- 글 입력하기   -->
 	<insert id="insert">
-	      insert into CMBOARD (BOARDSEQ,BOARDSUBJECT,boardcontent,BOARDDATE,BOARDREADCOUNT)
-		  values((SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD), #{boardsubject}, #{boardcontent}, SYSDATE, 0)
+	      insert into CMBOARD (  boardseq, userid, boardsubject, boardcontent, boarddate, boardreadcount)
+		  values((SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD), #{userid}, #{boardsubject}, #{boardcontent}, SYSDATE, 0)
 	</insert>
 	
 	<!-- <insert id="insert">
@@ -45,7 +43,7 @@
 	
 	<!-- 글 수정하기 -->
 	<update id="update">
-		UPDATE CMBOARD SET BOARDSUBJECT=#{BOARDSUBJECT}, BOARDCONTENT=#{BOARDCONTENT} WHERE BOARDNUM=#{BOARDNUM}
+		UPDATE CMBOARD SET boardsubject=#{boardsubject}, boardcontent=#{boardcontent} WHERE boardseq=#{boardseq}
 	</update>
 	
 	<!-- 글 삭제하기 -->
@@ -53,12 +51,20 @@
 		DELETE  CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
 	</delete>
 	
-	<!-- 게시글 조회수 증가 
+	<!-- 게시글 조회수 증가  -->
 	<update id="boardCount">
-		UPDATE CMBOARD SET BOARDREADCOUNT=(SELECT BOARDREDACOUNT FROM CMBOARD WHERE BOARDSEQ=#{BOARDSEQ})+1 WHERE BOARDSEQ=#{BOARDSEQ}
+		UPDATE cmboard SET boardreadcount=(SELECT boardreadcount FROM cmboard WHERE boardseq=#{boardseq})+1 WHERE boardseq=#{boardseq}
 	</update>
-	-->
 	
+	
+	
+	
+	<!-- 댓 글 보기 -->
+	 <select id="replylist" resultType="kr.or.davizn.model.dto.QandAReplyDTO">
+	 		SELECT * FROM cmreply WHERE boardseq=#{boardseq}
+	 </select> 
+	 
+	 
 </mapper>
 
 
