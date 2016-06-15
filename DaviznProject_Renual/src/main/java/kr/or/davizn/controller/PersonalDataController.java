@@ -46,19 +46,9 @@ public class PersonalDataController {
  			@RequestParam String inputArticleContents,Principal principal,
  			HttpServletRequest request) throws IOException{
  		
- 		System.out.println("개인데이터 성공");
- 		int result = personalDataService.addPersonalData(pdata);
+ 		String result = personalDataService.addPersonalData(pdata,inputArticleContents,principal,request);
  		
- 		  String fname = principal.getName()+System.currentTimeMillis();
-	      String endformat = ".txt";
-	      String fpath = request.getRealPath("/resources/notefile");
-	      String fullPath = fpath + "\\" + fname + endformat;
-	      System.out.println(fullPath);
-	      FileWriter fw = new FileWriter(fullPath);
-	      fw.write(inputArticleContents);
-	      fw.close();
- 		
- 		return "redirect:addNoteData.dvn?filepath="+fname+endformat;
+ 		return "redirect:addNoteData.dvn?filepath="+result;
  	}
  	
  	//note데이터
@@ -67,7 +57,6 @@ public class PersonalDataController {
  		
  		int result = notedataService.addNoteData(filepath);
  
- 		
  		return "redirect:detailNoteData.dvn";
  	}
  	

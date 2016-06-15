@@ -1,6 +1,11 @@
 package kr.or.davizn.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +30,21 @@ public class PersonalData {
 	}
 	
 	//개인데이터 추가
-	public int addPersonalData(PersonalDataDTO pdata){
+	public String addPersonalData(PersonalDataDTO pdata,String inputArticleContents, 
+			Principal principal, HttpServletRequest request) throws IOException{
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
 		int result = dao.addPersonalData(pdata);
-		return result;
+		
+		  String fname = principal.getName()+System.currentTimeMillis();
+	      String endformat = ".txt";
+	      String fpath = request.getRealPath("/resources/notefile");
+	      String fullPath = fpath + "\\" + fname + endformat;
+	      String fileName = fname+endformat;
+	      System.out.println(fullPath);
+	      FileWriter fw = new FileWriter(fullPath);
+	      fw.write(inputArticleContents);
+	      fw.close();
+		
+		return fileName;
 	}
 }
