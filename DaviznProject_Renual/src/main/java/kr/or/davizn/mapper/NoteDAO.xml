@@ -52,10 +52,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteNote">
 		delete from note where dataseq=#{dataseq}
 	</delete>
-	
-	
-	
-	
-	
-	
+
 </mapper>
