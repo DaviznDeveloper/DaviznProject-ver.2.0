@@ -43,7 +43,7 @@ public class QandAReplyController {
 		String url = "QnA.qna-list";
 		try {
 			url = QandAReplyService.delReply(replynum, url)+"?boardseq="+boardseq;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return url;
