@@ -25,6 +25,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   		
+  		<!-- Bootstrap-datepicker -->
+  		<link href="${pageContext.request.contextPath}/resources/lib/datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/lib/datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  		
   		<!-- jQery-ui -->
   		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -32,29 +37,29 @@
 		<!-- font-awesome -->
 		<link href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 		
-		<!-- summernote -->
+		<!-- footable -->
+		<link href="${pageContext.request.contextPath}/resources/lib/footable-bootstrap/css/footable.bootstrap.min.css" rel="stylesheet" />
+		
+		<!-- gorl -->
+		<link href="${pageContext.request.contextPath}/resources/lib/gorl/progress.css" rel="stylesheet">
+		
+		<!-- TimeCircles -->
+		<link href="${pageContext.request.contextPath}/resources/lib/TimeCircles/inc/TimeCircles.css" rel="stylesheet">
+		
+		<!-- include summernote css/js-->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
-		
-		<!-- ipgrid -->
-		<link href="${pageContext.request.contextPath}/resources/lib/ipgrid-master/ip.grid.css" rel="stylesheet" />
-		
-		<!-- editTable -->
-		<link href="${pageContext.request.contextPath}/resources/lib/editTable/jquery.edittable.css" rel="stylesheet" />
-		
-		<!-- angular-gridster -->
-		<link href="${pageContext.request.contextPath}/resources/lib/angular-gridster/jquery.grid-test.css" rel="stylesheet" />
-		<link href="${pageContext.request.contextPath}/resources/lib/angular-gridster/style.css" rel="stylesheet" />
-		<link href="${pageContext.request.contextPath}/resources/lib/angular-gridster/grid-test.css" rel="stylesheet" />
 		
 		<!-- Custom CSS -->
 		<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sideBar.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
+		<link href="${pageContext.request.contextPath}/resources/css/sideBar.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/board.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/dashboard-style.css" rel="stylesheet">
 		
 		<!-- Custom Script -->
 		<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/sideBar.js"></script>
 		
+
 	</head>
 
 	<body>

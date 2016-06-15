@@ -73,7 +73,6 @@ public class PersonalDataController {
  			
  		}
  			
- 		
  		return view;
  	}
  	
@@ -85,6 +84,7 @@ public class PersonalDataController {
  
  		return "redirect:detailNoteData.dvn";
  	}
+ 	
  	
  	//목록에서 note 데이터 상세조회
  	@RequestMapping("detailNote.dvn")
