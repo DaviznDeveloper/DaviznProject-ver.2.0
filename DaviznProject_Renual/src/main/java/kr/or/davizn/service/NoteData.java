@@ -10,6 +10,7 @@ import kr.or.davizn.model.interfaces.NoteDAO;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,7 +83,7 @@ public class NoteData {
 				
 				newValue += value;
 			}
-			System.out.println("newvalue뿌리기 :"+newValue);
+			
 			
 			br.close();
 			fr.close(); 
@@ -90,6 +91,48 @@ public class NoteData {
 			note.setValue(newValue);
 			
 		return note;
+	}
+	
+	//노트 데이터 수정(기존 정보 확인)
+	public PersonalDataNoteDTO modifyNote(int dataseq, HttpServletRequest request) 
+			throws IOException{
+		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
+		PersonalDataNoteDTO note = dao.modifyNote(dataseq);
+		String fname = note.getFilepath();
+		String fpath = request.getRealPath("/resources/notefile");
+		String fullPath = fpath + "\\" + fname;
+		FileReader fr = new FileReader(fullPath);
+		BufferedReader br = new BufferedReader(fr);
+		
+		String value="";
+		String newValue="";
+		
+			for(int i =1 ; (value = br.readLine()) != null ; i++){
+				
+				newValue += value;
+			}
+			
+			br.close();
+			fr.close();
+			note.setValue(newValue);
+			System.out.println("노트 데이터 수정 :"+note.getValue());
+			System.out.println("뿌리기 완료");
+			return note;
+	}
+	
+	//노트 데이터 파일 수정
+	public void modifyNoteFile(int dataseq, HttpServletRequest request, String inputArticleContents) 
+			throws IOException{
+		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
+		NoteDTO note = dao.selectOneNote(dataseq);
+		String fpath = request.getRealPath("/resources/notefile");
+		String fname = note.getFilepath();
+		String fullPath = fpath + "\\" + fname;
+	    FileWriter fw = new FileWriter(fullPath);
+	    fw.write(inputArticleContents);
+	    fw.close();
+		System.out.println("파일 쓰기 완료");
+		
 	}
 	
 	//노트 데이터 삭제

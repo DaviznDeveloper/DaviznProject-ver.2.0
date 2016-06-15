@@ -26,7 +26,9 @@ $(function() {
 			 ['NumberedList','BulletedList'],
 			 ['Link','Image'],
 			 ['Table','HorizontalRule']],
-			 filebrowserImageUploadUrl: '${pageContext.request.contextPath}/personalData/imageUpload.dvn'
+		filebrowserImageUploadUrl: '${pageContext.request.contextPath}/resources/lib/ckeditor/upload.jsp?'
+			    					+'realUrl=http://localhost:8090/davizn/resources/upload/'
+			    					+'&realDir=upload'
 	});
 	
 	var sendNoteDataaa;

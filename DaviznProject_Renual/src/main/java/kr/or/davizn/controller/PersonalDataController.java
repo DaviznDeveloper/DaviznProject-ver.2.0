@@ -109,13 +109,39 @@ public class PersonalDataController {
  		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
  	}
  	
- 	//상세 화면에서 데이터 수정
+ 	//상세 화면에서 데이터 수정 창 이동
  	@RequestMapping("modifyNote.dvn")
  	public String modifyNote(@RequestParam int dataseq,
- 							 @RequestParam int strgseq){
- 		
+ 							 @RequestParam int strgseq,
+ 							 HttpServletRequest request,
+ 							 Model model) 
+ 									 throws IOException{
+ 		PersonalDataNoteDTO note = notedataService.modifyNote(dataseq,request);
+ 		model.addAttribute("note", note);
  		return "datamanage.data-note-modi";
  	}
+ 	
+ 	@RequestMapping("modifyNoteAction.dvn")
+ 	public String modifyNoteAction(@RequestParam int dataseq,
+			 					   @RequestParam int strgseq,
+			 					   @RequestParam String dataname,
+			 					   @RequestParam String inputArticleContents,
+			 					   HttpServletRequest request
+			 					   ) throws IOException{
+ 		System.out.println("파일 overwrite 확인");
+ 		notedataService.modifyNoteFile(dataseq, request, inputArticleContents);
+ 		int result = personalDataService.updatePersonaldata(dataseq, dataname);
+ 		
+ 		
+ 		return "redirect:detailNote.dvn?dataseq="+dataseq;
+ 	}
+ 	
+ 	/*@RequestMapping("modifyNoteFile.dvn")
+ 	public String modifyNoteFile(@RequestParam int dataseq, HttpServletRequest request){
+ 		notedataService.modifyNoteFile(dataseq, request);
+ 	}*/
+ 	
+ 	
  	
  	//note 데이터 상세 조회
  	@RequestMapping("detailNoteData.dvn")
@@ -127,7 +153,7 @@ public class PersonalDataController {
  	}
  	
  	
- 	@RequestMapping(value = "imageUpload.dvn", method = RequestMethod.POST)
+/* 	@RequestMapping(value = "imageUpload.dvn", method = RequestMethod.POST)
     public void communityImageUpload(HttpServletRequest request,FileBean dto, HttpServletResponse response, @RequestParam MultipartFile upload) {
       System.out.println("컨트롤러 들어옴");
       
@@ -180,5 +206,5 @@ public class PersonalDataController {
  
         return;
     
-   }
+   }*/
 }

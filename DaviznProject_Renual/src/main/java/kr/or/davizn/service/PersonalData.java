@@ -55,6 +55,13 @@ public class PersonalData {
 		return fileName;
 	}
 	
+	//개인데이터 수정
+	public int updatePersonaldata(int dataseq, String dataname){
+		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
+		int result = dao.updatePersonaldata(dataname, dataseq);
+		return result;
+	}
+	
 	//개인 데이터 삭제
 	public int deleteNote(int dataseq){
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);

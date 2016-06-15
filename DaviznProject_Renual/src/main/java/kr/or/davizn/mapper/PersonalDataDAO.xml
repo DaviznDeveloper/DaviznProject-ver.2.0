@@ -20,6 +20,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (data_seq.nextval,#{strgseq},#{dataname},#{datatype},sysdate)
 	</insert>
 	
+	<!--개인 데이터 수정하기-->
+	<update id="updatePersonaldata">
+		update personaldata set dataname=#{param1} where dataseq=#{param2}
+	</update>
+	
 	<!--개인데이터 삭제하기-->
 	<delete id="deletePersonalData">
 		delete from personaldata where dataseq=#{dataseq}
