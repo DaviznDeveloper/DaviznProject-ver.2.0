@@ -21,8 +21,15 @@ public class PersonalData {
 	@Autowired
 	SqlSession sqlsession;
 	
+	//데이터 저장
+	public int addPersonalData(PersonalDataDTO personaldto){
+		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
+		int result = dao.addPersonalData(personaldto);
+		return result;
+	}
 	
-	//저장소 리스트 출력
+	
+	//데이터 리스트 출력
 	public List<PersonalDataDTO> showPersonalDataList(int strgseq){
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
 		List<PersonalDataDTO> result = dao.showPersonalDataList(strgseq);

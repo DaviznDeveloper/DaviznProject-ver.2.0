@@ -24,9 +24,6 @@ public class CommunityboardController {
 	public String notices(String pg , String f , String q , Model model) throws ClassNotFoundException , SQLException {
 		System.out.println("목록!!");
 		List<CommunityBoardDTO> list = communityboardservice.notices(pg, f , q);
-
-		//System.out.println(pg + " / " + f + " / " + q);
-		//System.out.println("^^^^^^^^^^"+list);
 		
 		model.addAttribute("list" , list);
 		System.out.println(list);
@@ -34,7 +31,7 @@ public class CommunityboardController {
 			
 	}
 	//글상세보기
-	@RequestMapping("communitydetail.dvn")
+	@RequestMapping("/community/communitydetail.dvn")
 	public String noticeDetail(String seq, Model model) throws ClassNotFoundException, SQLException{
 		
 		CommunityBoardDTO notice = communityboardservice.noticeDetail(seq);
@@ -44,14 +41,14 @@ public class CommunityboardController {
 	}
 	
 	//글 입력 화면처리
-	@RequestMapping(value = "communitywrite.dvn", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/communitywrite.dvn", method = RequestMethod.GET)
 	public String noticeReg() {
 		System.out.println("등록 경로 컨드롤러1");
 		return "community.community-write";
 	}
 	
 	//글 등록 처리
-	@RequestMapping(value = "communitywrite.dvn",method= RequestMethod.POST)
+	@RequestMapping(value = "/community/communitywrite.dvn",method= RequestMethod.POST)
 	public String noticeReg(CommunityBoardDTO dto) 
 			throws IOException, ClassNotFoundException, SQLException {
 		

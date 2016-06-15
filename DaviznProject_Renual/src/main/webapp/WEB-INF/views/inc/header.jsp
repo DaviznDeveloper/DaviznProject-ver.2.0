@@ -7,6 +7,7 @@
 
 	<div class="container-fluid">
 		
+
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -16,6 +17,7 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</button>
+
 			
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.dvn">
 				<img class="brand_img" src="${pageContext.request.contextPath}/resources/img/Davizn.png" height="40px">
