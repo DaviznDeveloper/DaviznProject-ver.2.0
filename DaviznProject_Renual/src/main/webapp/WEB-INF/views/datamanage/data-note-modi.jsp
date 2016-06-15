@@ -15,7 +15,7 @@
 							<li class="active">노트형 데이터 제목</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/personalData/modifyNoteAction?strgseq=${note.strgseq}&dataseq=${note.dataseq}" method="post" id="noteForm">
+						<form action="${pageContext.request.contextPath}/personalData/modifyNoteAction.dvn?strgseq=${note.strgseq}&dataseq=${note.dataseq}" method="post" id="noteForm">
 							
 							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
 							<button type="reset" class="btn btn-default">취소</button>
@@ -26,7 +26,7 @@
 							
 							<br>
 							
-							<textarea name="inputArticleContents" id="ckeditor" class="ckeditor-box" rows="50" cols="50" value=""></textarea>
+							<textarea name="inputArticleContents" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
 							
 						</form>
 				

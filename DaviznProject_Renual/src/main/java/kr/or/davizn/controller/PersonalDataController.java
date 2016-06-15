@@ -50,7 +50,6 @@ public class PersonalDataController {
  			HttpServletRequest request) throws IOException{
  		
  		String result = personalDataService.addPersonalData(pdata,inputArticleContents,principal,request);
- 		
  		return "redirect:addNoteData.dvn?filepath="+result;
  	}
  	
@@ -65,6 +64,7 @@ public class PersonalDataController {
  			view ="redirect:detailNote.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
  		}else if(datatype==2){
  			//스케치 상세 보기
+ 			
  		}else if(datatype==3){
  			//일정 상세 보기
  		}else if(datatype==4){
@@ -102,14 +102,12 @@ public class PersonalDataController {
  							 @RequestParam int strgseq){
  		
  		int noteResult = notedataService.deleteNote(dataseq);
- 		System.out.println("노트 삭제");
  		int pdataResult = personalDataService.deleteNote(dataseq);
- 		System.out.println("개인 데이터 삭제");
  		
  		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
  	}
  	
- 	//상세 화면에서 데이터 수정 창 이동
+ 	//상세 화면에서 데이터 수정 창 이동(기존 정보 확인)
  	@RequestMapping("modifyNote.dvn")
  	public String modifyNote(@RequestParam int dataseq,
  							 @RequestParam int strgseq,
@@ -132,16 +130,8 @@ public class PersonalDataController {
  		notedataService.modifyNoteFile(dataseq, request, inputArticleContents);
  		int result = personalDataService.updatePersonaldata(dataseq, dataname);
  		
- 		
  		return "redirect:detailNote.dvn?dataseq="+dataseq;
  	}
- 	
- 	/*@RequestMapping("modifyNoteFile.dvn")
- 	public String modifyNoteFile(@RequestParam int dataseq, HttpServletRequest request){
- 		notedataService.modifyNoteFile(dataseq, request);
- 	}*/
- 	
- 	
  	
  	//note 데이터 상세 조회
  	@RequestMapping("detailNoteData.dvn")
@@ -152,59 +142,4 @@ public class PersonalDataController {
  		return "datamanage.data-note-detail";
  	}
  	
- 	
-/* 	@RequestMapping(value = "imageUpload.dvn", method = RequestMethod.POST)
-    public void communityImageUpload(HttpServletRequest request,FileBean dto, HttpServletResponse response, @RequestParam MultipartFile upload) {
-      System.out.println("컨트롤러 들어옴");
-      
-      OutputStream out = null;
-      OutputStream out2 = null;
-        PrintWriter printWriter = null;
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
- 
-        try{
-           
-    
-           
-            String fileName = upload.getOriginalFilename();
-            byte[] bytes = upload.getBytes();
-            String uploadPath = "C:\\Kosta_112th\\testProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\DaviznProject_Renual\\resources\\upload\\upload2/" + fileName;//저장경로
-            String uploadPath2 = "C:\\Kosta_112th\\testProject\\DaviznProject_Renual\\src\\main\\webapp\\resources\\upload/"+fileName;
-            out = new FileOutputStream(new File(uploadPath));
-            out.write(bytes);
-            
-            out2 = new FileOutputStream(new File(uploadPath2));
-            out2.write(bytes);
-            String callback = request.getParameter("CKEditorFuncNum");
- 
-            printWriter = response.getWriter();
-            String fileUrl = "localhost:8090/kosta/resources/upload/" + fileName;//url경로
- 
-            printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
-                    + callback
-                    + ",'"
-                    + fileUrl
-                    + "','이미지를 업로드 하였습니다.'"
-                    + ")</script>");
-            printWriter.flush();
- 
-        }catch(IOException e){
-            e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-                if (printWriter != null) {
-                    printWriter.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
- 
-        return;
-    
-   }*/
 }
