@@ -1,23 +1,26 @@
 package kr.or.davizn.controller;
 
-import java.io.FileWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URLDecoder;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import kr.or.davizn.model.dto.NoteDTO;
 import kr.or.davizn.model.dto.PersonalDataDTO;
 import kr.or.davizn.model.dto.PersonalDataNoteDTO;
-import kr.or.davizn.model.dto.UserStrgDTO;
 import kr.or.davizn.service.NoteData;
 import kr.or.davizn.service.PersonalData;
 
@@ -27,9 +30,7 @@ public class PersonalDataController {
 
    @Autowired
    private PersonalData personalDataService;
-   
-   @Autowired
-   private NoteData notedataService;
+  
    
    //데이터 리스트 보기
    @RequestMapping("showPersonalDataList.dvn")
@@ -40,35 +41,54 @@ public class PersonalDataController {
       return "datamanage.data-list";
    }
    
-   //개인 데이터 추가하기
- 	@RequestMapping("addPersonalData.dvn")
+   //개인 데이터에 노트 데이터 추가하기
+ 	@RequestMapping("addPersonalNoteData.dvn")
  	public String addPersonalData(Model model,PersonalDataDTO pdata, 
  			@RequestParam String inputArticleContents,Principal principal,
  			HttpServletRequest request) throws IOException{
  		
  		String result = personalDataService.addPersonalData(pdata,inputArticleContents,principal,request);
+ 		return "redirect:/note/addNoteData.dvn?filepath="+result;
+ 	}
+ 	
+ 	//개인 데이터 상세보기
+ 	@RequestMapping("detailPersonalData.dvn")
+ 	public String detailPersonalData(@RequestParam int datatype,
+ 									 @RequestParam int strgseq,
+ 									 @RequestParam int dataseq){
+ 		String view = null;
+ 		if(datatype==1){
+ 			//노트 데이터 상세 보기
+ 			view ="redirect:/note/detailNote.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
+ 		}else if(datatype==2){
+ 			//스케치 상세 보기
+ 			
+ 		}else if(datatype==3){
+ 			//일정 상세 보기
+ 		}else if(datatype==4){
+ 			//목표 상세보기
+ 		}else{
+ 			
+ 		}
+ 			
+ 		return view;
+ 	}
+ 	
+ 	
+ 	@RequestMapping("deletePersonalNoteData.dvn")
+ 	public String deletePersonalNoteData(@RequestParam int dataseq,
+ 										@RequestParam int strgseq){
+ 		int pdataResult = personalDataService.deleteNote(dataseq);
+ 		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
  		
- 		return "redirect:addNoteData.dvn?filepath="+result;
  	}
  	
- 	//note데이터 추가하기
- 	@RequestMapping("addNoteData.dvn")
- 	public String addNoteData(@RequestParam String filepath){
+ 	@RequestMapping("updatePersonalNoteData.dvn")
+ 	public String updatePersonalNoteData(@RequestParam int dataseq,
+ 										@RequestParam String dataname){
  		
- 		int result = notedataService.addNoteData(filepath);
- 
- 		return "redirect:detailNoteData.dvn";
+ 		int result = personalDataService.updatePersonaldata(dataseq, dataname);
+ 		return "redirect:/note/detailNote.dvn?dataseq="+dataseq;
  	}
- 	
- 	//note 데이터 상세 조회
- 	@RequestMapping("detailNoteData.dvn")
- 	public String detailNoteData(Model model, HttpServletRequest request) 
- 			throws IOException{
- 		PersonalDataNoteDTO note =notedataService.detailNoteData(request);
- 		model.addAttribute("note", note);
- 		return "datamanage.data-note-detail";
- 	}
- 	
- 	
  	
 }

@@ -13,7 +13,6 @@ html, body {
 }
 
 #push, #footer {
-	margin-top: 60px;
 	height: 60px;
 }
 
@@ -314,6 +313,150 @@ html, body {
 	border-bottom: 1px solid #eee;
 }
 
+/* note data */
+.note-title {
+	border: 0px;
+	box-shadow: none;
+	color: #2dbe60;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.note-title::-webkit-input-placeholder {
+	color: #2dbe60;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.note-title:-moz-placeholder {
+	color: #2dbe60;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.note-title::-ms-input-placeholder {
+	color: #2dbe60;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.note-detail-date {
+	font-size: 80%;
+}
+
+.note-detail-option {
+	margin-bottom: 20px;
+}
+
+.note-detail-modi {
+	padding: 10px;
+	font-size: 25px;
+	color: #565656;
+	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
+    transition: color 0.5s, transform 0.3s;
+}
+
+.note-detail-modi:hover {
+	color: #2dbe60;
+	cursor: pointer;
+}
+
+/* gorl-data */
+.circle-plus {
+	background: #2dbe60;
+	border-radius: 100%;
+}
+
+.gorl-create {
+	padding: 5px;
+	font-size: 18px;
+	color: #2dbe60;
+	border: 2px solid #2dbe60;
+	border-radius: 100px;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
+    transition: color 0.5s, transform 0.3s;
+}
+
+.gorl-create:hover {
+	color: #fff;
+	background: #2dbe60;
+	cursor: pointer;
+}
+
+.gorl-checklist {
+	color: #2472b4;
+	font-weight: bold;
+}
+
+.gorl-check-create {
+	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
+    transition: color 0.5s, transform 0.3s;
+}
+
+.gorl-check-create:hover {
+	color: #2dbe60;
+	cursor: pointer;
+}
+
+.gorl-timeover {
+	color: #de3e6a;
+	font-weight: bold;
+}
+
+.gorl-atag:link {text-decoration: none; color: #777;}
+.gorl-atag:visited {text-decoration: none; color: #777;}
+.gorl-atag:hover {text-decoration: none; color: #777;}
+.gorl-atag:active {text-decoration: none; color: #777;}
+
+.gorl-list-title {
+	text-indent: 30px;
+}
+
+.gorl-check-input-box {
+	position: relative;
+}
+
+.gorl-check-input-box-close {
+	position: absolute;
+	top: 7px;
+	right: 10px;
+}
+
+.gorl-detail-checklist {
+	background: #fff;
+}
+
+.gorl-detail-title {
+	font-weight: bold;
+	color: #2dbe60;
+}
+
+.sketchbook {
+	z-index: 2;
+}
+
+.sketchform {
+	z-index: 3;
+	position: fixed;
+	top: 300;
+	left: 100;
+	background: rgba(0, 0, 0, 0.7);
+	padding: 1em;
+	color:white;
+}
+
+.sketchform * {
+	margin-bottom: 1em;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+	.sketchform * {
+		font-size: 1.5em;
+	}
+}
+
 #chartdiv {
 	height: 400px;
 }
@@ -420,6 +563,10 @@ html, body {
 	opacity: 0.8;
 }
 
+.margin-top-10 {
+	margin-top: 10px;
+}
+
 .margin-right-10 {
 	margin-right: 10px;
 }
@@ -428,7 +575,15 @@ html, body {
 	margin-bottom: 10px;
 }
 
+.margin-left-10 {
+	margin-left: 10px;
+}
+
 .text-center {
 	text-align: center;
+}
+
+.vertical-middle {
+	vertical-align: middle;
 }
 /* 쉬운 공통 설정 */

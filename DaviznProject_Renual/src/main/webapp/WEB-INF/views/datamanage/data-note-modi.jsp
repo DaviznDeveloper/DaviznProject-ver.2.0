@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 				
@@ -16,14 +15,14 @@
 							<li class="active">노트형 데이터 제목</li>
 						</ol>
 						
-						<form action="" method="post">
+						<form action="${pageContext.request.contextPath}/note/modifyNoteAction.dvn?strgseq=${note.strgseq}&dataseq=${note.dataseq}" method="post" id="noteForm">
 							
-							<button type="button" class="btn btn-info sendNoteData">저장</button>
+							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
 							<button type="reset" class="btn btn-default">취소</button>
 							
 							<hr>
 						
-							<input type="text" name="" class="form-control input-lg note-title" placeholder="제목을 입력하세요" value="${d}">
+							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" value="${note.dataname}">
 							
 							<br>
 							
@@ -43,12 +42,13 @@
 
 <script src="${pageContext.request.contextPath}/resources/lib/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/data-note.js"></script>
-
 <script type="text/javascript">
 
 	$(function() {
-		var sendNoteData = ${}
+		var sendNoteData='${note.value}'
 		CKEDITOR.instances.ckeditor.setData(sendNoteData);
+		$('#ckeditor').val(sendNoteData);
+		
 	});
 
 </script>

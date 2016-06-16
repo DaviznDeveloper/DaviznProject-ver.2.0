@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.or.davizn.service.AuthorityService;
 
 @Controller
+@RequestMapping("/auth/")
 public class AuthController {
 	
 	@Autowired
@@ -15,7 +16,7 @@ public class AuthController {
 	
 	
 	//권한 부여
-	@RequestMapping("/member/grantAuth.dvn")
+	@RequestMapping("grantAuth.dvn")
 	public String grantAuth(@RequestParam String userid){
 		String view = null;
 		int result = service.grantAuth(userid);

@@ -16,7 +16,7 @@
 							<li class="active">노트형 데이터 만들기</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/personalData/addPersonalData.dvn?strgseq=${strgseq}&datatype=1" method="post" id="noteForm">
+						<form action="${pageContext.request.contextPath}/personalData/addPersonalNoteData.dvn?strgseq=${strgseq}&datatype=1" method="post" id="noteForm">
 
 							
 							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
