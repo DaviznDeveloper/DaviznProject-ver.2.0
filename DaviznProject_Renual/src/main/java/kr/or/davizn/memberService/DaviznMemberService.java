@@ -38,7 +38,7 @@ public class DaviznMemberService {
 
 	
 	//이메일 중복확인
-		public String checkMemberid(String memberid){
+	public String checkMemberid(String memberid){
 			DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 			int checkResult = dao.checkMemberid(memberid);
 			if(checkResult == 0) return "You can use this memberid";
@@ -61,8 +61,7 @@ public class DaviznMemberService {
 			 String fname = System.currentTimeMillis()+file.getOriginalFilename(); //파일명 얻기
 			 String path  = request.getRealPath("/resources/upload");
 			 String fullpath = path + "\\" + fname;
-			 System.out.println("경로 테스트");
-			 System.out.println(fullpath);
+			
 			 
 			 if(!fname.equals("")){
 				 //서버에 파일 쓰기 작업 
@@ -74,8 +73,7 @@ public class DaviznMemberService {
 			 member.setUserid(principal.getName());
 
 		 }
-		 System.out.println("멤버 아이디");
-		 System.out.println("멤버 아이디 체크 : "+member.getUserid());
+		
 		int result = dao.updateMember(member);
 		
 		return result;

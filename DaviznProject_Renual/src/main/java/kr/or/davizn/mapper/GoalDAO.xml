@@ -2,6 +2,21 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.davizn.dataInterface.NoteDAO">
+<mapper namespace="kr.or.davizn.dataInterface.GoalDAO">
+	
+	<!--목표 데이터 상세보기-->
+	<select id="detailGoal" resultType="kr.or.davizn.dataDTO.PersonalDataGoalDTO">
+		select dataname, (finaldate-startdate)*60*60*24 as goaldate, goalname, state, detailgoalseq, commentmsg
+		from personaldata p join goal g
+		on p.dataseq=g.dataseq
+		join detailgoal d
+		on g.dataseq = d.dataseq
+		where p.dataseq=#{dataseq}
+	</select>
+		
+	<!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->
+	<update id="updateDetailGoalState" parameterType="int">
+		update detailgoal set state=1 where detailgoalseq=#{detailgoalseq}
+	</update>
 	
 </mapper>
