@@ -3,9 +3,11 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 				
 		<!-- content -->
 		<div class="container">
+		
 		
 		<c:forEach items="${gdata}" var="goal" begin="0" end="0">
 			<c:set var="dataname" value="${goal.dataname}" />
@@ -21,7 +23,7 @@
 					<li class="active">${dataname}</li>
 				</ol>
 		
-			<div class="note-detail-option">
+				<div class="note-detail-option">
 					<span class="gorl-detail-modi-btn" data-toggle="modal" data-target="#gorl-modi-modal">
 						<span class="glyphicon glyphicon-pencil note-detail-modi" 
 							data-toggle="tooltip" title="목표 수정하기" aria-hidden="true"></span>
@@ -233,7 +235,7 @@
 		        type: "get",
 		        data : { "detailgoalseq" : $(this).val() },
 		        success : function(responseData){
-		           alert('db insert 성공')
+		           
 		        }
 		    });
 			
