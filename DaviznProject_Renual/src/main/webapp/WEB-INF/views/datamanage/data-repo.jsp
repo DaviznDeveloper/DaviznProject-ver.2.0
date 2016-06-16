@@ -11,7 +11,7 @@
                   <li class="active">데이터 관리(경로 체크)</li>
                </ol>
                
-               <%-- 
+             
                <security:authorize access="!hasRole('ROLE_USER')">
                    
                    
@@ -32,14 +32,8 @@
                      </div>
                   </c:forEach>
                   </security:authorize>
-       --%>
-        <c:forEach var="b" items="${storagelist}">
-                     <div class="data-repo-box" data-toggle="tooltip" title="${b.strgname}">
-                        <a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${b.strgseq}" type="button" class="btn btn-info data-repo-btn">
-                           <i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
-                        </a>
-                     </div>
-                  </c:forEach>
+      
+       
                <!-- Button trigger modal -->
                <div class="data-repo-box" data-toggle="tooltip" title="저장소 확장하기">
                   <button type="button" class="btn btn-default data-repo-create-btn"
