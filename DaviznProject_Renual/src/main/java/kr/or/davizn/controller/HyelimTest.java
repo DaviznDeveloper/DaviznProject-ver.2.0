@@ -1,5 +1,14 @@
 package kr.or.davizn.controller;
 
-public class HyelimTest {
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Controller;
 
+
+@Controller
+public class HyelimTest {
+	
+	@Scheduled
+	public void main(){
+		
+	}
 }

@@ -3,6 +3,7 @@ package kr.or.davizn.model.interfaces;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.davizn.model.dto.QandAReplyDTO;
 import kr.or.davizn.model.dto.QandAboardDTO;
@@ -26,12 +27,8 @@ public interface QandAboardDAO {
 		public boolean insertOfMemberPoint(String userid) throws ClassNotFoundException, SQLException;
 		//댓글 조회
 		public List<QandAReplyDTO> replylist(int boardseq) throws ClassNotFoundException, SQLException;
-		//덧글 리스트
-		public List<QandAReplyDTO> replyList(int boardseq) throws ClassNotFoundException, SQLException;
-		
-		
-	
-		
+		//게시글 검색
+		public List<QandAboardDTO> boardSearch(Map<String, String> map) throws ClassNotFoundException, SQLException;
 
 		
 		

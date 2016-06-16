@@ -49,4 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userid = #{userid}
 	</update>
 	
+	<!-- 게시글 검색  -->
+	<select id="boardSearch" parameterType="map" resultType="kr.or.davizn.model.dto.QandAboardDTO">
+        select * from qnaboard where  ${keyfield} like '%${keyword}%' order by boardseq desc
+    </select>
+	
 </mapper>
