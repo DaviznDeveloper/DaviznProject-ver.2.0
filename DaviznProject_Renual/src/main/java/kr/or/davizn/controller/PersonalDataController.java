@@ -74,7 +74,6 @@ public class PersonalDataController {
  			
  		}
  			
- 		
  		return view;
  	}
  	
@@ -86,6 +85,7 @@ public class PersonalDataController {
  
  		return "redirect:detailNoteData.dvn";
  	}
+ 	
  	
  	//목록에서 note 데이터 상세조회
  	@RequestMapping("detailNote.dvn")
@@ -127,7 +127,7 @@ public class PersonalDataController {
 			 					   @RequestParam String inputArticleContents,
 			 					   HttpServletRequest request
 			 					   ) throws IOException{
- 		System.out.println("파일 overwrite 확인");
+ 		
  		notedataService.modifyNoteFile(dataseq, request, inputArticleContents);
  		int result = personalDataService.updatePersonaldata(dataseq, dataname);
  		

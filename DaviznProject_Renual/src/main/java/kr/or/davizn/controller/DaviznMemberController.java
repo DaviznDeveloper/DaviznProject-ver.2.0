@@ -32,7 +32,7 @@ public class DaviznMemberController {
 		String userid = member.getUserid();
 		if(result > 0){
 			System.out.println("회원가입 성공/권한부여하러감");
-			view = "redirect:grantAuth.dvn?userid="+userid;
+			view = "redirect:/auth/grantAuth.dvn?userid="+userid;
 		}else{
 			System.out.println("회원가입실패");
 			view = "joinus.signup";
