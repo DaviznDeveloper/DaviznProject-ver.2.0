@@ -3,7 +3,7 @@ $(function() {
 	$('#nickname').keyup(function() {
 		$.ajax({
 			type : 'post',
-			url : 'member/checkNickname.dvn',
+			url : 'join/checkNickname.dvn',
 			data : {
 				nickname : $('#nickname').val()
 			},
@@ -20,7 +20,7 @@ $(function() {
 	$('#userid').keyup(function() {
 		$.ajax({
 			type : 'post',
-			url : 'member/checkUserid.dvn',
+			url : 'join/checkUserid.dvn',
 			data : {
 				userid : $('#userid').val()
 			},

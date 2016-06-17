@@ -18,7 +18,7 @@
 			
 								<br>
 			
-								<form action="member/joinMember.dvn" method="post">
+								<form action="${pageContext.request.contextPath}/join/joinMember.dvn" method="post">
 									<div class="form-group">
 										<label for="UserName">이름</label> 
 										<input type="text" class="form-control" 

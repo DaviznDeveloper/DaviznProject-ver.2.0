@@ -12,16 +12,7 @@
                </ol>
                
              
-               <security:authorize access="!hasRole('ROLE_USER')">
-                   
-                   
-                  <div class="data-repo-box" data-toggle="tooltip" title="저장소 제목">
-                     <a href="${pageContext.request.contextPath}/data-list.jsp" type="button" class="btn btn-info data-repo-btn">
-                        <i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
-                     </a>
-                  </div>
-               
-                  </security:authorize> 
+              
                   
                <security:authorize access="hasRole('ROLE_USER')">
                    <c:forEach var="b" items="${storagelist}">
@@ -57,27 +48,19 @@
                         </div>
                         
                         <div class="modal-body">
-                        
-                           <div class="row col-md-12 center-block">
-                           
-                              <form action="${pageContext.request.contextPath}/userStrg/addStorage.dvn" method="post">
-                                 
-                                     <div class="form-group">
-                                        <input type="text" id="strgname" name="strgname" class="form-control" 
-                                           placeholder="저장소 제목을 입력하세요">
-                                     </div>
-                                     
-                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-info">
-                                           확장하기
-                                        </button>
-                                     </div>
-                              
-                              </form>
-                              
-                           </div>
-                        
-                        </div>
+							<div class="row col-md-12 center-block">
+                				<form action="${pageContext.request.contextPath}/userStrg/addStorage.dvn" method="post">
+									<div class="form-group">
+                            	       	<input type="text" id="strgname" name="strgname" class="form-control" placeholder="저장소 제목을 입력하세요">
+                                  	</div>
+									<div class="form-group">
+                                     	<button type="submit" class="form-control btn btn-info">
+                                     	   확장하기
+                               			</button>
+                        			</div>
+                           		</form>	
+							</div>
+						</div>
 
                         <div class="modal-footer">
                            <div class="row col-md-12 center-block">
