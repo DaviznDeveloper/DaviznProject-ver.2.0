@@ -53,13 +53,7 @@
 								</div>	
 							</form>
 							<!-- 게시글 개수 조절 끝 -->
-							<script type="text/javascript">
-								$(function() {
-										$(".search-select").on("change", function() {
-											console.log($(this).val());
-										});
-									});						
-						    </script>
+					
 						</div>
 						
 						<div class="col-md-12 table-responsive no-padding">

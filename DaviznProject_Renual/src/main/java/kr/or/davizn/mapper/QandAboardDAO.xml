@@ -3,13 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.or.davizn.model.interfaces.QandAboardDAO">
+<mapper namespace="kr.or.davizn.boardInterface.QandAboardDAO">
 	<!-- 총 게시글 수  -->
 	<select id="getCount" resultType="Integer">
 	  SELECT COUNT(*) FROM qnaboard 
 	 </select> 
 	 
-	<select id="getNotices" resultType="kr.or.davizn.model.dto.QandAboardDTO">
+	<select id="getNotices" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
 	        SELECT * FROM
 	               ( SELECT ROWNUM NUM, N.* FROM 
 							                     ( SELECT * 
@@ -18,11 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					) WHERE NUM >= #{start} and NUM &lt;= #{end}	
 	    </select>
 	 <!-- 게시글 상세보기 -->
-	 <select id="getNotice" resultType="kr.or.davizn.model.dto.QandAboardDTO">
+	 <select id="getNotice" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
 	        SELECT * FROM qnaboard WHERE boardseq=#{boardseq}
 	 </select>
 	 <!-- 댓글 상세보기 -->
- 	 <select id="replylist" resultType="kr.or.davizn.model.dto.QandAReplyDTO">
+ 	 <select id="replylist" resultType="kr.or.davizn.boardDTO.QandAReplyDTO">
 	 		SELECT * FROM qnareply WHERE boardseq=#{boardseq}
 	 </select> 
 	 <!-- 게시글 삭제 -->
@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 게시글 검색  -->
-	<select id="boardSearch" parameterType="map" resultType="kr.or.davizn.model.dto.QandAboardDTO">
+	<select id="boardSearch" parameterType="map" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
         select * from qnaboard where  ${keyfield} like '%${keyword}%' order by boardseq desc
     </select>
 	

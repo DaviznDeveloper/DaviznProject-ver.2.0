@@ -20,7 +20,7 @@
 
 							
 							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
-							<button type="reset" class="btn btn-default">취소</button>
+							<a class="btn btn-default" href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${strgseq}" role="button">취소</a>
 							
 							
 							<hr>
