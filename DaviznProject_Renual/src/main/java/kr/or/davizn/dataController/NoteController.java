@@ -20,6 +20,13 @@ public class NoteController{
 	@Autowired
 	NoteService notedataService;
 	
+	// 데이터 추가하기(노트)
+		@RequestMapping("moveNoteCreate.dvn")
+		public String moveNoteCreate(Model model, String strgseq) {
+			model.addAttribute("strgseq", strgseq);
+			return "datamanage.data-note-create";
+		}
+	
 	//노트 데이터 추가하기
 	@RequestMapping("addNoteData.dvn")
  	public String addNoteData(@RequestParam String filepath){

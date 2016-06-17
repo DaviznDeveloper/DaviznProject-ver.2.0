@@ -46,7 +46,7 @@
 															<h3>노트형 데이터</h3>
 															<p>노트형 데이터는 글과 사진, 동영상 등을 입력할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/userStrg/moveNoteCreate.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/note/moveNoteCreate.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
@@ -204,8 +204,8 @@
 									</div>
 								</td>
 								<td>
-									<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="데이터 수정하기">
-										<i class="fa fa-pencil chart-list-option" aria-hidden="true"></i>
+									<a href="" class="btn chart-list-option-btn">
+										
 									</a>
 									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
 										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
@@ -213,7 +213,7 @@
 									<!-- <a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
 										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
 									</a> -->
-									<a href="" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
+									<a href="${pageContext.request.contextPath}/personalData/deletePersonalNoteData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
 										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
 									</a>
 								</td>

@@ -53,7 +53,7 @@ $(function() {
 		if(goalCheckList.length < 10) {
 			
 			$('<div class="goal-check-input-box">' +
-					'<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10" placeholder="세부 목표를 입력하세요">' +
+					'<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10" placeholder="세부 목표를 입력하세요" required="required">' +
 					'<button type="button" class="close goal-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 					'</div>').appendTo(".goal-Check-List-Box").click(function() {
 				$('.goal-check-input-box-close').click(function() {
