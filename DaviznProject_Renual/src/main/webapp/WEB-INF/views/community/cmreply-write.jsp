@@ -12,12 +12,12 @@
 							<li><a href="${pageContext.request.contextPath}/communityList.dvn">커뮤니티</a></li>
 							<li class="active">글쓰기</li>
 						</ol>
+							
+						<form action="cmreplyReg.dvn" method="post" name="boardform" id="writeform" >
 						
 						<div class="table-responsive">
 					
 						<table class="table" style=TABLE-layout:fixed>
-							
-							<form action="communitywrite.dvn" method="post" name="boardform" id="writeform" >
 						
 								<thead class="board-thead">
 								
@@ -33,23 +33,21 @@
 												<div class="col-sm-11">
 													<input type="text" class="form-control" id="board-subject" name="boardsubject"
 														placeholder="제목을 입력하세요." required>
-												</div>
-												<input type="hidden" class="form-control" name="userid" value="${userid}" readonly="true">
+												</div> 
+												
+												
+												<input type="hidden" class="form-control" name="userid" value="${blist.userid}" readonly="true">
+												<input type="hidden" class="form-control" name="boardref" value="${blist.boardref}" readonly="true">	
+												<input type="hidden" class="form-control" name="boardlev" value="${blist.boardlev}" readonly="true">											
+												<input type="hidden" class="form-control" name="boardorder" value="${blist.boardorder}" readonly="true">
+												<%-- <input type="hidden" name="boardref" value="${dto.boardref}">
+												<input type="hidden" name="boardref" value="${dto.boardorder}"> --%> 
 											</div>
 										</td>
 										
 									</tr>
 									
-									<tr>
-									
-										<div class="form-group">
-											<th colspan="1" scope="col" class="">
-												<input type="checkbox" id="notice_check" class="" name="boardnotice">
-												&nbsp;&nbsp;공지
-											</th>
-										</div>
-										
-									</tr>
+							
 								
 								</thead>
 								
@@ -85,8 +83,6 @@
 									</tr>
 								
 								</tbody>
-							
-							</form>
 						
 						</table>
 						
@@ -96,6 +92,9 @@
 					
 					</div>
 					
+							
+							</form>
+				
 				</div>
 			
 			</div>
