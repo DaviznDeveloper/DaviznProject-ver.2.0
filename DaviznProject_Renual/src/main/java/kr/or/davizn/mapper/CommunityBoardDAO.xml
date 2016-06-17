@@ -26,7 +26,7 @@
 	<!-- 글 상세 보기 -->
 	
 	<select id="getNotice" resultType="kr.or.davizn.boardDTO.CommunityBoardDTO">
-	SELECT * FROM CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
+	SELECT * FROM CMBOARD WHERE BOARDSEQ=#{boardseq}
 	</select>
 	
 	<!-- 글 입력하기   -->
@@ -45,12 +45,12 @@
 	
 	<!-- 글 수정하기 -->
 	<update id="update">
-		UPDATE CMBOARD SET BOARDSUBJECT=#{BOARDSUBJECT}, BOARDCONTENT=#{BOARDCONTENT} WHERE BOARDNUM=#{BOARDNUM}
+		UPDATE CMBOARD SET BOARDSUBJECT=#{boardsubject}, BOARDCONTENT=#{boardcontent} WHERE BOARDNUM=#{boardnum}
 	</update>
 	
 	<!-- 글 삭제하기 -->
 	<delete id="delete">
-		DELETE  CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
+		DELETE  CMBOARD WHERE BOARDSEQ=#{boardseq}
 	</delete>
 	
 	<!-- 게시글 조회수 증가 

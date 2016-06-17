@@ -121,7 +121,7 @@
 															<h3>목표달성형 데이터</h3>
 															<p>목표달성형 데이터는 D-day를 지정하고 목표를 등록할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/goal/*.dvn" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>

@@ -46,6 +46,11 @@
      	<filter-name>springSecurityFilterChain</filter-name>
      	<url-pattern>/*</url-pattern>
    </filter-mapping>
+    <!-- 세션설정, 5분후 세션 자동소멸 -->
+	<!--  <session-config>
+	  <session-timeout>5</session-timeout>
+	 </session-config> -->
+
 </web-app>
 
 

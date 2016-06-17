@@ -26,9 +26,7 @@ $(function() {
 			 ['NumberedList','BulletedList'],
 			 ['Link','Image'],
 			 ['Table','HorizontalRule']],
-		filebrowserImageUploadUrl: '${pageContext.request.contextPath}/resources/lib/ckeditor/upload.jsp?'
-			    					+'realUrl=http://localhost:8090/davizn/resources/upload/'
-			    					+'&realDir=upload'
+		filebrowserImageUploadUrl: '${pageContext.request.contextPath}/personalData/imageUpload.dvn'
 	});
 	
 	var sendNoteDataaa;
@@ -41,7 +39,7 @@ $(function() {
      });
 	
 	
-	
+	/*
 	$("button[type='reset']").click(function() {
 		CKEDITOR.instances.ckeditor.setData(sendNoteData);
 
@@ -55,7 +53,7 @@ $(function() {
 		setTimeout("noteAjax()", 3000);
 	});
 
-	setInterval("noteAjax()", 60000);
+	setInterval("noteAjax()", 60000);*/
 
 });
 

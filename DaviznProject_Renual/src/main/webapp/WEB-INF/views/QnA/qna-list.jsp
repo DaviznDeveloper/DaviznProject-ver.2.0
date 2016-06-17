@@ -13,40 +13,47 @@
 						</ol>
 						
 						<div class="col-md-12 no-padding margin-bottom-10">
-						
-							<form action="" method="post">
+							<!-- 게시글 조회 -->
+							<form action=<c:url value="/QnA/search.dvn"/>>
 	
 								<div class="col-md-2 col-xs-2 no-padding margin-right-10">
-									<select class="form-control">
-										<option>작성자</option>
-										<option>글제목</option>
-										<option>글번호</option>
+									<select name="keyfield" class="form-control ">
+										<option value="userid" selected="selected" >작성자</option>
+										<option value="boardsubject">글제목</option>
+										<option value="boardseq">글번호</option>
 									</select>
 								</div>
-	
+								
+								
 								<div class="col-md-3 col-xs-2 no-padding">
 									<div class="input-group">
 										<span class="input-group-btn">
-											<button class="btn btn-info" type="button">
+											<button class="btn btn-info" type="submit">
 												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 											</button>
 										</span>
-										<input type="text" class="form-control" placeholder="Search for...">
+										<input type="text" name="keyword" class="form-control" placeholder="Search for..." required="required">
 									</div>
 									<!-- /input-group -->
 								</div>
 					
 							</form>
-								
-							<div class="col-md-2 col-xs-2 no-padding pull-right">
-								<select class="form-control">
-									<option>5개씩 보기</option>
-									<option>10개씩 보기</option>
-									<option>15개씩 보기</option>
-									<option>20개씩 보기</option>
-								</select>
-							</div>
+							<!-- 게시글 조회  끝 -->
 							
+							<!-- 게시글 개수 조절 -->
+							<form action=<c:url value="QnAList.dvn"/> name="sizeForm" method="post">
+								<%-- <c:set var="list" value="list" /> --%>
+								<div class="col-md-2 col-xs-2 no-padding pull-right ">
+									<select class="form-control search-select" name="rowSize" onchange="sizeForm.submit()" >
+										<option value="5" <c:if test="${rSize == '5' }">selected="selected"</c:if>>5개씩 보기</option>
+										<option value="10" <c:if test="${rSize == '10' }">selected="selected"</c:if>>10개씩 보기</option>
+										<option value="15" <c:if test="${rSize == '15' }">selected="selected"</c:if>>15개씩 보기</option>
+										<option value="20" <c:if test="${rSize == '20' }">selected="selected"</c:if>>20개씩 보기</option>
+									</select>
+								</div>	
+							</form>
+							<!-- 게시글 개수 조절 끝 -->
+					
 						</div>
 						
 						<div class="col-md-12 table-responsive no-padding">
@@ -91,22 +98,30 @@
 
 						<div class="text-center">
 							<ul class="pagination">
-								<li>
-									<a href="#" aria-label="Previous">
-										<span aria-hidden="true">&laquo;</span>
-									</a>
-								</li>
+								<c:if test="${pg gt 5}">
+									<li>
+										<a href="${pageContext.request.contextPath}/QnAList.dvn?pg=${fromPage-1}&rowSize=${rSize}" aria-label="Previous">
+											<span aria-hidden="true">&laquo;</span>
+										</a>
+									</li>
+								</c:if>
 								<c:forEach begin="${fromPage}" end="${toPage}" var="i">
-										<c:if test="${i==pg}"><li>${i}</li></c:if>
-										<c:if test="${i!=pg}">
-											<li><a  class="board-pager" href="${pageContext.request.contextPath}/QnAList.dvn?pg=${i}">${i}</a></li>
-										</c:if>
-								</c:forEach>			
-								<li>
-									<a href="#" aria-label="Next">
-										<span aria-hidden="true">&raquo;</span>
-									</a>
-								</li>
+									<c:choose>
+										<c:when test="${i==pg}">
+											<li class="active"><a class="board-pager">${i}</a></li>
+										</c:when>
+										<c:when test="${i!=pg}">
+											<li><a class="board-pager" href="${pageContext.request.contextPath}/QnAList.dvn?pg=${i}&rowSize=${rSize}">${i}</a></li>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${toPage lt allPage}">			
+									<li>
+										<a href="${pageContext.request.contextPath}/QnAList.dvn?pg=${toPage+1}&rowSize=${rSize}" aria-label="Next" >
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</c:if>
 							</ul>
 						</div>
 						

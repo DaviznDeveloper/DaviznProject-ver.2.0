@@ -41,7 +41,7 @@
 		<link href="${pageContext.request.contextPath}/resources/lib/footable-bootstrap/css/footable.bootstrap.min.css" rel="stylesheet" />
 		
 		<!-- gorl -->
-		<link href="${pageContext.request.contextPath}/resources/lib/gorl/progress.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/lib/goal/progress.css" rel="stylesheet">
 		
 		<!-- TimeCircles -->
 		<link href="${pageContext.request.contextPath}/resources/lib/TimeCircles/inc/TimeCircles.css" rel="stylesheet">

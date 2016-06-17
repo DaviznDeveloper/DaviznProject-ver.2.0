@@ -33,6 +33,8 @@ public class PersonalService {
 	public List<PersonalDataDTO> showPersonalDataList(int strgseq){
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
 		List<PersonalDataDTO> result = dao.showPersonalDataList(strgseq);
+		System.out.println(strgseq);
+		System.out.println("result"+result);
 		return result;
 	}
 	
