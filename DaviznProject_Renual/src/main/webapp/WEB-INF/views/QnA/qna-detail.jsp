@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!-- content -->
 <div class="container">
 	<div class="col-md-12 content-container">
@@ -59,12 +59,21 @@
 
 								<td colspan="2" scope="col" class="">
 									<div class="">
+										<c:if test="${notice.userid == user || user == 'admin'}"> 
 										<a class="btn btn-default"
-											href="QnAEdit.dvn?boardseq=${notice.boardseq}" role="button">수정</a>
-										<!-- delete modal -->
-										<button type="button" class="btn btn-default"
+										href="QnAEdit.dvn?boardseq=${notice.boardseq}" role="button">수정</a>
+									    </c:if>
+										<!-- delete modal -->	
+																		
+										<c:if test="${notice.userid == user || user == 'admin'}"> 
+										<security:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">		
+											<button type="button" class="btn btn-default"
 											data-toggle="modal" data-target=".bs-example-modal-sm">삭제</button>
-
+										</security:authorize>
+										</c:if>
+									
+									  
+									   
 										<div class="modal fade bs-example-modal-sm" tabindex="-1"
 											role="dialog" aria-labelledby="mySmallModalLabel"
 											aria-hidden="true" style="display: none;">

@@ -64,7 +64,6 @@ public class QandAboard {
 
 	// 게시글 상세보기
 	public QandAboardDTO noticeDetail(int boardseq) throws ClassNotFoundException, SQLException {
-		System.out.println("상새");
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
 		QandAboardDao.boardCount(boardseq);
