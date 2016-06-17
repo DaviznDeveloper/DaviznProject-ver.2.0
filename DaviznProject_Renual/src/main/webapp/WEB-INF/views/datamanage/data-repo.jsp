@@ -48,27 +48,19 @@
                         </div>
                         
                         <div class="modal-body">
-                        
-                           <div class="row col-md-12 center-block">
-                           
-                              <form action="${pageContext.request.contextPath}/userStrg/addStorage.dvn" method="post">
-                                 
-                                     <div class="form-group">
-                                        <input type="text" id="strgname" name="strgname" class="form-control" 
-                                           placeholder="저장소 제목을 입력하세요">
-                                     </div>
-                                     
-                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-info">
-                                           확장하기
-                                        </button>
-                                     </div>
-                              
-                              </form>
-                              
-                           </div>
-                        
-                        </div>
+							<div class="row col-md-12 center-block">
+                				<form action="${pageContext.request.contextPath}/userStrg/addStorage.dvn" method="post">
+									<div class="form-group">
+                            	       	<input type="text" id="strgname" name="strgname" class="form-control" placeholder="저장소 제목을 입력하세요">
+                                  	</div>
+									<div class="form-group">
+                                     	<button type="submit" class="form-control btn btn-info">
+                                     	   확장하기
+                               			</button>
+                        			</div>
+                           		</form>	
+							</div>
+						</div>
 
                         <div class="modal-footer">
                            <div class="row col-md-12 center-block">
