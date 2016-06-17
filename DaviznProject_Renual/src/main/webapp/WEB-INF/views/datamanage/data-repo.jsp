@@ -12,16 +12,7 @@
                </ol>
                
              
-               <security:authorize access="!hasRole('ROLE_USER')">
-                   
-                   
-                  <div class="data-repo-box" data-toggle="tooltip" title="저장소 제목">
-                     <a href="${pageContext.request.contextPath}/data-list.jsp" type="button" class="btn btn-info data-repo-btn">
-                        <i class="fa fa-folder-o data-repo-icon" aria-hidden="true"></i>
-                     </a>
-                  </div>
-               
-                  </security:authorize> 
+              
                   
                <security:authorize access="hasRole('ROLE_USER')">
                    <c:forEach var="b" items="${storagelist}">

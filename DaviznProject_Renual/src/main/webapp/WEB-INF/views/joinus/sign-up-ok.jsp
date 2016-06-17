@@ -19,10 +19,10 @@
 							<h4 class="font-center">간단한 이용방법을 알아볼까요?</h4>
 							<hr>
 							<div class="col-md-6 no-padding">
-								<a href="" class="sign-up-ok-box sign-up-ok-left">네</a>
+								<a href="#" class="sign-up-ok-box sign-up-ok-left">네</a>
 							</div>
 							<div class="col-md-6 no-padding">
-								<a href="" class="sign-up-ok-box sign-up-ok-right">아니요. 이미 알고 있습니다.</a>
+								<a href="${pageContext.request.contextPath}/index.dvn" class="sign-up-ok-box sign-up-ok-right">아니요. 이미 알고 있습니다.</a>
 							</div>
 							<br>
 						</div>
