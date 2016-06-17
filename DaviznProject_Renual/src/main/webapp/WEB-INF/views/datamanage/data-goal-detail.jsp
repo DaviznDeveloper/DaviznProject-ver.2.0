@@ -29,7 +29,7 @@
 							data-toggle="tooltip" title="목표 수정하기" aria-hidden="true"></span>
 					</span>
 					
-					<a href="">
+					<a href="${pageContext.request.contextPath}/goal/deleteGoal.dvn">
 						<span class="glyphicon glyphicon-trash note-detail-modi" 
 							data-toggle="tooltip" title="목표 삭제하기" aria-hidden="true"></span>
 					</a>
@@ -114,7 +114,7 @@
 				<hr>
 				
 				<div class="col-sm-8 col-sm-offset-2">
-					<h2 class="text-center gorl-detail-title">3차 프로젝트</h2>
+					<h2 class="text-center gorl-detail-title">${dataname}</h2>
 					<br>
 				</div>
 				
