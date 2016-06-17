@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-				
+	
 		<!-- content -->
 		<div class="container">
-		
 		
 		<c:forEach items="${gdata}" var="goal" begin="0" end="0">
 			<c:set var="dataname" value="${goal.dataname}" />
 			<c:set var="goaldate" value="${goal.goaldate}" />
+			<c:set var="strgseq" value="${goal.strgseq}" />
+			<c:set var="dataseq" value="${goal.dataseq}"/>
+			<c:set var="startdate" value="${goal.startdate}" />
+			<c:set var="finaldate" value="${goal.finaldate}" />
 		</c:forEach>
 		
 			<div class="col-md-12 content-container">
@@ -29,7 +29,7 @@
 							data-toggle="tooltip" title="목표 수정하기" aria-hidden="true"></span>
 					</span>
 					
-					<a href="${pageContext.request.contextPath}/goal/deleteGoal.dvn">
+					<a href="${pageContext.request.contextPath}/goal/deleteGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}">
 						<span class="glyphicon glyphicon-trash note-detail-modi" 
 							data-toggle="tooltip" title="목표 삭제하기" aria-hidden="true"></span>
 					</a>
@@ -56,21 +56,25 @@
 										<label for="inputGorlTitle" class="col-sm-2 control-label">목표 이름</label>
 										<div class="col-sm-10">
 											<input type="text" name="gorlTitle" class="form-control" id="inputGorlTitle"
-												placeholder="이루고 싶은 목표를 입력하세요">
+												placeholder="이루고 싶은 목표를 입력하세요" value="${dataname}">
 										</div>
 									</div>
 									
 									<br>
 									
 									<div class="row">
-										<label class="col-sm-2 control-label gorl-check-create"><i class="fa fa-plus-circle" aria-hidden="true"></i> 목표 추가</label>
+										<label class="col-sm-2 control-label gorl-check-create"><i class="fa fa-plus-circle" aria-hidden="true"></i>목표 추가</label>
+										
 										<div class="col-sm-10  gorl-Check-List-Box">
+										<c:forEach items="${gdata}" var="goal">
 											<div class="gorl-check-input-box">
 												<input type="text" name="gorlCheckList" class="form-control gorlCheckList margin-bottom-10"
-													placeholder="세부 목표를 입력하세요">
+													placeholder="세부 목표를 입력하세요" value="${goal.goalname}">
 												<button type="button" class="close gorl-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 											</div>
+											</c:forEach>
 										</div>
+										
 									</div>
 									
 									<br>
@@ -80,7 +84,7 @@
 										<div class="col-sm-10">
 											<label class="col-sm-2 control-label">시작일</label>
 											<div class='col-sm-10 input-group date' id='datetimepicker1'>
-								                <input type='text' name="gorlStartDate" class="form-control" placeholder="시작일을 설정하세요(우측의 달력 버튼)">
+								                <input type='text' name="gorlStartDate" class="form-control" placeholder="${startdate}">
 								                <span class="input-group-addon">
 								                    <span class="glyphicon glyphicon-calendar"></span>
 								                </span>
@@ -90,7 +94,7 @@
 								            
 								            <label class="col-sm-2 control-label">종료일</label>
 								            <div class='col-sm-10 input-group date' id='datetimepicker2'>
-								                <input type='text' name="gorlEndDate" class="form-control" placeholder="종료일을 설정하세요(우측의 달력 버튼)">
+								                <input type='text' name="gorlEndDate" class="form-control" placeholder="${finaldate}">
 								                <span class="input-group-addon">
 								                    <span class="glyphicon glyphicon-calendar"></span>
 								                </span>
@@ -143,22 +147,20 @@
 								<span class="input-group-addon">
 									<c:choose>
 										<c:when test="${goal.state==0}">
-											<input type="checkbox" class="gorl-detail-checkbox" value="${goal.detailgoalseq}">
-											<input type="hidden" value="${goal.detailgoalseq}">
+										<input type="checkbox" class="gorl-detail-checkbox" value="${goal.detailgoalseq}">
 										</c:when>
 										<c:otherwise>
-											<input type="checkbox" class="gorl-detail-checkbox" checked="checked" value="${goal.detailgoalseq}">
-											<input type="hidden" value="${goal.detailgoalseq}">
+										<input type="checkbox" class="gorl-detail-checkbox" value="${goal.detailgoalseq}" checked="checked">
 										</c:otherwise>
 									</c:choose>
 									
 								</span>
-								<input type="text" name="gorl-detail-checklist" class="form-control gorl-detail-checklist" value="${goal.goalname}" readonly>
+								<input type="text" name="gorl-detail-checklist" class="form-control gorl-detail-checklist" value="${goal.dataname}" readonly>
 							</div>
 							
 							<div id="gorl-check-success" class="col-sm-12 height-30 margin-bottom-10 display-none">
 								<span class="col-sm-10 no-padding gorl-success-message"> 
-	         						${goal.goalname}를 달성하였습니다.
+	         						${goal.dataname} 목표를 달성하였습니다.
 	         					</span>
 	         					<span class="col-sm-2 no-padding">
 	         						<span class="glyphicon glyphicon-pencil gorl-success-message-modi"
@@ -169,11 +171,13 @@
 							<div id="gorl-check-success-mody-box" class="col-sm-12 no-padding margin-vertical display-none">
 								<textarea class="gorl-success-message-modi-area" name="" rows="2">${goal.commentmsg}</textarea>
 								<button type="button" class="btn btn-primary gorl-success-message-modi-save">저장</button>
+								<input type="hidden" value="${goal.detailgoalseq}">
 							</div>
 						</div>
 						
 						<br>
 						</c:forEach>
+					
 						
 					</div>
 					
@@ -221,8 +225,6 @@
 		        	gorlChecking();
 		        }
 			   
-			   
-			   
 			});
 		
 		
@@ -235,6 +237,8 @@
 		        type: "get",
 		        data : { "detailgoalseq" : $(this).val() },
 		        success : function(responseData){
+		        	
+		        	
 		           
 		        }
 		    });
@@ -269,9 +273,24 @@
 			$(this).parent().parent().hide();
 		});
 		
-		// 체크리스트 완료 시, 내용 수정 코드
+		 // 체크리스트 완료 시, 내용 수정 코드
 		$(".gorl-success-message-modi-save").click(function() {
 			//ajax 함수 호출
+			var contextPath='${pageContext.request.contextPath}'
+			
+			$.ajax({
+		        url : contextPath+"/goal/updateDetailComment.dvn",
+		        type: "get",
+		        data : { "detailgoalseq" : $(this).next().val(),
+		        		 "commentmsg" : $(this).prev().val() },
+		        success : function(responseData){
+		        
+		        },
+		        error :function(data){
+		        	alert(data);
+		        }
+		    });
+			
 			
 			// ajax 성공 시, (success)
 			$(this).parent().siblings('#gorl-check-success').show();
@@ -279,7 +298,7 @@
 			
 			var gorlSuccessModyContent = $(this).siblings(".gorl-success-message-modi-area").val();
 			$(this).parent().siblings('#gorl-check-success').children('.gorl-success-message').text(gorlSuccessModyContent);
-		});
+		}); 
 		
 	});
 	
@@ -291,4 +310,3 @@
 		$(".pieProgress").asPieProgress('go',gorlPercent);;
 	}
 </script>
-

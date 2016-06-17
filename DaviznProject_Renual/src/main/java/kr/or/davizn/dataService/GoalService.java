@@ -29,4 +29,10 @@ public class GoalService {
 		return result;
 	}
 	
+	public int updateDetailComment(String commentmsg, int detailgoalseq){
+		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
+		int result = goaldao.updateDetailComment(commentmsg, detailgoalseq);
+		return result;
+	}
+	
 }

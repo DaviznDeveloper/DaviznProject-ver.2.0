@@ -76,7 +76,7 @@ public class PersonalDataController {
  		return view;
  	}
  	
- 	
+ 	//개인 데이터 삭제
  	@RequestMapping("deletePersonalNoteData.dvn")
  	public String deletePersonalNoteData(@RequestParam int dataseq,
  										@RequestParam int strgseq){
@@ -84,13 +84,20 @@ public class PersonalDataController {
  		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
  		
  	}
- 	
+ 	//개인 데이터 업데이트
  	@RequestMapping("updatePersonalNoteData.dvn")
  	public String updatePersonalNoteData(@RequestParam int dataseq,
  										@RequestParam String dataname){
  		
  		int result = personalDataService.updatePersonaldata(dataseq, dataname);
  		return "redirect:/note/detailNote.dvn?dataseq="+dataseq;
+ 	}
+ 	
+ 	@RequestMapping("deleteGoalData.dvn")
+ 	public String deleteGoalData(@RequestParam int dataseq,
+ 								@RequestParam int strgseq){
+ 		int result = personalDataService.deleteNote(dataseq);
+ 		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;
  	}
  	
 }

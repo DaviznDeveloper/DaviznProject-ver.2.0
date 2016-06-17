@@ -35,11 +35,21 @@ public class GoalController {
 		return "DB update 성공";
 	}
 	
-	/*//목표 데이터 삭제
+	//목표 데이터 삭제
 	@RequestMapping("deleteGoal.dvn")
-	public String deleteGoal(){
+	public String deleteGoal(@RequestParam int dataseq,
+							@RequestParam int strgseq){
+		return "redirect:/personalData/deleteGoalData.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
+	}
+	
+	@RequestMapping("updateDetailComment.dvn")
+	public @ResponseBody String updateDetailComment(@RequestParam int detailgoalseq,
+									  @RequestParam String commentmsg){
 		
-	}*/
+		int result = goalservice.updateDetailComment(commentmsg, detailgoalseq);
+		
+		return "comment update 성공";
+	}
 	
 	
 }
