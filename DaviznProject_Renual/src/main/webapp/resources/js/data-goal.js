@@ -23,18 +23,18 @@ $(function() {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
 	
-	$(".gorl-check-create").click(function() {
-		var gorlCheckList = $(".gorl-Check-List-Box").children();
-		console.log(gorlCheckList);
-		console.log(gorlCheckList.length);
+	$(".goal-check-create").click(function() {
+		var goalCheckList = $(".goal-Check-List-Box").children();
+		console.log(goalCheckList);
+		console.log(goalCheckList.length);
 		
-		if(gorlCheckList.length < 10) {
+		if(goalCheckList.length < 10) {
 			
-			$('<div class="gorl-check-input-box">' +
-					'<input type="text" name="gorlCheckList" class="form-control gorlCheckList margin-bottom-10" placeholder="세부 목표를 입력하세요">' +
-					'<button type="button" class="close gorl-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-					'</div>').appendTo(".gorl-Check-List-Box").click(function() {
-				$('.gorl-check-input-box-close').click(function() {
+			$('<div class="goal-check-input-box">' +
+					'<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10" placeholder="세부 목표를 입력하세요">' +
+					'<button type="button" class="close goal-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+					'</div>').appendTo(".goal-Check-List-Box").click(function() {
+				$('.goal-check-input-box-close').click(function() {
 					$(this).parent().remove();
 				});
 			});
@@ -42,8 +42,8 @@ $(function() {
 		}
 	});
 	
-	$(".gorl-check-input-box-close").click(function() {
-		var close = $(".gorl-check-input-box-close");
+	$(".goal-check-input-box-close").click(function() {
+		var close = $(".goal-check-input-box-close");
 		console.log(close);
 		
 		if(close > 1) {
@@ -53,31 +53,32 @@ $(function() {
 		}
 	});
 	
-	// gorl-save
-	$(".gorl-save").click(function() {
-		var checklist = $("input[name=gorlCheckList]");
+	// goal-save
+	$(".goal-save").click(function() {
+		var checklist = $("input[name=detailnames]");
 		console.log(checklist);
 		console.log(checklist.length);
 		
-		$.each(checklist, function(index, obj) {
-			$(obj).attr('name','gorlCheckList'+index);
-		});
+		/*$.each(checklist, function(index, obj) {
+			$(obj).attr('name','goalCheckList'+index);
+		});*/
 		
 	});
 	
-	// gorl-detail-checklist
-	$(".gorl-detail-checkbox").change(function(){
+	// goal-detail-checklist
+	$(".goal-detail-checkbox").change(function(){
         if($(this).is(":checked")){
             $(this).parent().css('background','#9cff80');
             $(this).parent().css('border','1px solid #2dbe60');
             $(this).parent().siblings().css('border','1px solid #2dbe60');
-            gorlChecking();
+            goalChecking();
         }else{
         	$(this).parent().css('background','#eee');
         	$(this).parent().css('border','1px solid #ccc');
         	$(this).parent().siblings().css('border','1px solid #ccc');
-        	gorlChecking();
+        	goalChecking();
         }
 	});
 	
+       
 });
