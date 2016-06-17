@@ -2,15 +2,8 @@ package kr.or.davizn.etcController;
 
 import java.security.Principal;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import kr.or.davizn.memberDTO.DaviznMemberDTO;
-import kr.or.davizn.memberService.DaviznMemberService;
 
 @Controller
 public class navigationController {
