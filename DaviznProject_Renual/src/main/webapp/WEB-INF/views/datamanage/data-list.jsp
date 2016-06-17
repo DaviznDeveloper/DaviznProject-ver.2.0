@@ -10,8 +10,8 @@
 					<div class="col-md-12 content-container">
 	
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/ui/data-repo.jsp">데이터 관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
+							<li><a href="${pageContext.request.contextPath}/userStrg.dvn">데이터 관리</a></li>
 							<li class="active">저장소 제목</li>
 						</ol>
 						
