@@ -44,7 +44,15 @@
 							<form action=<c:url value="QnAList.dvn"/> name="sizeForm" method="post">
 								<%-- <c:set var="list" value="list" /> --%>
 								<div class="col-md-2 col-xs-2 no-padding pull-right ">
-									<select class="form-control search-select" name="rowSize" onchange="sizeForm.submit()" >
+								<script>
+								
+								rowSubmit = function(sel){
+									var url = "/kosta/QnAList.dvn?rowSize=" + sel.options[sel.selectedIndex].value;
+									location.href= url;
+								
+								}
+								</script>
+									<select class="form-control search-select" name="rowSize" onchange="rowSubmit(this)" >
 										<option value="5" <c:if test="${rSize == '5' }">selected="selected"</c:if>>5개씩 보기</option>
 										<option value="10" <c:if test="${rSize == '10' }">selected="selected"</c:if>>10개씩 보기</option>
 										<option value="15" <c:if test="${rSize == '15' }">selected="selected"</c:if>>15개씩 보기</option>

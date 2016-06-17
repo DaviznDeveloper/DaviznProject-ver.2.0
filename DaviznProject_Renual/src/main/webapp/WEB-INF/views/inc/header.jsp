@@ -223,7 +223,7 @@
                 </li>
                 <li>
                 	<div class="form-group">
-                		<input type="button" id="loginBtn" class="btn btn-info btn-block" value="로그인">
+                		<input type="submit" id="loginBtn" class="btn btn-info btn-block" value="로그인">
                 	</div>
                 </li>
                 <li>
@@ -265,7 +265,7 @@
       </div>
 
 <br>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	
 $('#loginBtn').click(function() {
     
@@ -279,8 +279,10 @@ $('#loginBtn').click(function() {
        data: params,
        /* dataType: 'text', */
         success: function(data){
+        	
         	console.log('성공 메세지');
         	console.log(data);
+        	
            if(data != null) {
               $('#loginBtn').trigger('click');
            }
@@ -294,4 +296,4 @@ $('#loginBtn').click(function() {
     });
  });
 	
-</script>
+</script> -->
