@@ -110,7 +110,7 @@ public class DaviznMemberController {
 		int result = service.updateMember(member, request, principal);
 		if(result > 0){
 			System.out.println("회원 정보 업로드 완료");
-			view = "redirect:profileModi.dvn";
+			view = "redirect:profile.dvn";
 		}else{
 			System.out.println("회원 정보 업로드 실패");
 			view = "home.index";

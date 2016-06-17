@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataDTO.UserStrgDTO;
@@ -18,6 +19,13 @@ public class UserStorageController {
 
 	@Autowired
 	private UserStrgService storageService;
+	
+	//회원 가입 시 1개의 저장소 부여
+	@RequestMapping("newStorage.dvn")
+	public String newStorage(String strgname, String userid){
+		storageService.addStorage(strgname, userid);
+		return "joinus.sign-up-ok";
+	}
 	
 	
 	//저장소 추가하기
