@@ -1,9 +1,9 @@
 package kr.or.davizn.boardService;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,15 +22,13 @@ public class QandAboard {
 	@Autowired
 	private SqlSession SqlSession;
 
-	public List<QandAboardDTO> notices(String pg, Model model) throws ClassNotFoundException, SQLException {
+	public List<QandAboardDTO> notices(String pg, Model model, int rowSize) throws ClassNotFoundException, SQLException {
 
 		int page = 1;
-		String Strpg = pg;
-		if (Strpg != null) {
-			page = Integer.parseInt(Strpg);
+		if (pg != null) {
+			page = Integer.parseInt(pg);
 		}
 
-		int rowSize = 5;
 		int start = (page * rowSize) - (rowSize - 1);
 		int end = page * rowSize;
 
@@ -39,7 +37,6 @@ public class QandAboard {
 
 		// ... 목록
 		int allPage = (int) Math.ceil(total / (double) rowSize); // 페이지수
-
 		int block = 5;
 		int fromPage = ((page - 1) / block * block) + 1; // 보여줄 페이지의 시작
 		int toPage = ((page - 1) / block * block) + block; // 보여줄 페이지의 끝
@@ -56,6 +53,7 @@ public class QandAboard {
 		List<QandAboardDTO> list = QandAboardDao.getNotices(map);
 
 		model.addAttribute("list", list);
+		model.addAttribute("rowSize",rowSize);
 		model.addAttribute("pg", page);
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("block", block);
@@ -110,13 +108,29 @@ public class QandAboard {
 		return "redirect:/QnAList.dvn";
 
 	}
-
+	//댓글 상세보기 
 	public List<QandAReplyDTO> replyDetail(int boardseq) throws ClassNotFoundException, SQLException {
 
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		List<QandAReplyDTO> reqlylist = QandAboardDao.replylist(boardseq);
 		
 		return reqlylist;
-
 	}
+	 
+	 public List<QandAboardDTO> boardList(String keyfield, String keyword) throws ClassNotFoundException, SQLException {
+	        
+		 	QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
+            Map<String, String> map = new HashMap<String, String> ();
+            map.put("keyfield" , keyfield);
+            map.put("keyword", keyword);
+		 	List<QandAboardDTO> serchlist= QandAboardDao.boardSearch(map);
+
+	        System.out.println("정상적으로 값이 들어옴");
+	        System.out.println(keyfield + "//" + keyword);
+	        System.out.println(serchlist.size());
+	        return serchlist;
+	    }
+
+	
+
 }

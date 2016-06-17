@@ -102,8 +102,9 @@
 							<hr>
 							
 							<c:forEach items="${goalList}" var="goal">
+							
 								<input type="hidden" name="dataseq" value="${goal.dataseq}">
-								<a href="" class="goal-atag">
+								<a href="${pageContext.request.contextPath}/goal/detailGoal.dvn?dataseq=${goal.dataseq}&strgseq=${strgseq}" class="goal-atag">
 									<div class="panel panel-success">
 										<div class="panel-body">
 											<div class="col-sm-12 no-padding">

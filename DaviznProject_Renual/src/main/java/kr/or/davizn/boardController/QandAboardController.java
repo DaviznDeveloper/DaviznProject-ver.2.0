@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.davizn.boardDTO.QandAReplyDTO;
 import kr.or.davizn.boardDTO.QandAboardDTO;
@@ -24,18 +26,21 @@ public class QandAboardController {
 	private QandAboard QandAboardservice;
 	
 	//글목록보기
-	@RequestMapping("QnAList.dvn")
-	public String notices(String pg, Model model) throws ClassNotFoundException , SQLException {
-		List<QandAboardDTO> list = QandAboardservice.notices(pg, model);
-		
+	@RequestMapping("QnAList.dvn" )
+	public String notices( String pg, Model model, @RequestParam(defaultValue="5", required=false)String rowSize) throws ClassNotFoundException , SQLException {
+		System.out.println("리스트 컨트롤러");
+		List<QandAboardDTO> list = QandAboardservice.notices(pg, model, Integer.parseInt(rowSize));
 		model.addAttribute("list", list); 
+		model.addAttribute("rSize",rowSize);
+		
 		return "QnA.qna-list";
 	}
-    //글상세보기
+	 //글상세보기
 	 @RequestMapping("/QnA/Qnadetail.dvn")
-    public String noticeDetail(int boardseq , Model model ) throws ClassNotFoundException, SQLException{
+	 public String noticeDetail(int boardseq , Model model ) throws ClassNotFoundException, SQLException{
 		 QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
 		 List<QandAReplyDTO> replylist =QandAboardservice.replyDetail(boardseq);
+		 
 		 
 		 model.addAttribute("replylist",replylist);
 		 model.addAttribute("notice", notice);
@@ -46,7 +51,9 @@ public class QandAboardController {
 	// 글등록 화면 처리
 	 @RequestMapping(value="/QnA/qnaWrite.dvn", method = RequestMethod.GET)
 	public String noticeReg(Principal principal, Model model) {
+		 System.out.println("게시글 컨트롤");
 		 String userid = principal.getName();
+		 System.out.println(userid);
 		 model.addAttribute("userid", userid);
 		 return  "QnA.qna-write";	   
 	 }
@@ -94,5 +101,17 @@ public class QandAboardController {
 		System.out.println(url);
 		return url;
 	 }
+	 
+	 //게시글 검색
+	 @RequestMapping(value="/QnA/search.dvn")
+	 public ModelAndView boardList(String keyfield, String keyword) throws ClassNotFoundException,
+	   SQLException, IOException{
+		 	System.out.println("게시글 검색 컨트롤러");
+	        List<QandAboardDTO> list = null;
+
+	            list = QandAboardservice.boardList(keyfield, keyword);
+	            System.out.println(list);
+	            return new ModelAndView("QnA.qna-list", "list", list);
+	    }
 
 }

@@ -33,6 +33,8 @@ public class PersonalService {
 	public List<PersonalDataDTO> showPersonalDataList(int strgseq){
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
 		List<PersonalDataDTO> result = dao.showPersonalDataList(strgseq);
+		System.out.println(strgseq);
+		System.out.println("result"+result);
 		return result;
 	}
 	
@@ -47,7 +49,7 @@ public class PersonalService {
 	      String fpath = request.getRealPath("/resources/notefile");
 	      String fullPath = fpath + "\\" + fname + endformat;
 	      String fileName = fname+endformat;
-	      System.out.println(fullPath);
+	     
 	      FileWriter fw = new FileWriter(fullPath);
 	      fw.write(inputArticleContents);
 	      fw.close();
