@@ -49,7 +49,7 @@ public class PersonalService {
 	      String fpath = request.getRealPath("/resources/notefile");
 	      String fullPath = fpath + "\\" + fname + endformat;
 	      String fileName = fname+endformat;
-	      System.out.println(fullPath);
+	     
 	      FileWriter fw = new FileWriter(fullPath);
 	      fw.write(inputArticleContents);
 	      fw.close();

@@ -43,16 +43,16 @@ public class NoteService {
 		
 	    FileReader fr = new FileReader(fullPath);
 		BufferedReader br = new BufferedReader(fr);
-		//Buffer 장점 : Line 단위의 처리 가능(한줄씩 read 가능)
+		
 			
 		String value="";
 		String newValue="";
-		String testvalue="테스트 el 뿌리기";
+		
 			for(int i =1 ; (value = br.readLine()) != null ; i++){
 				
 				newValue += value;
 			}
-			System.out.println("newvalue뿌리기 :"+newValue);
+			
 			
 			br.close();
 			fr.close(); 
