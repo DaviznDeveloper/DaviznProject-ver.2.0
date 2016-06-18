@@ -106,7 +106,7 @@
 															<h3>일정관리형 데이터</h3>
 															<p>일정관리형 데이터는 날짜를 지정하고 그 날에 해야할 일을 등록할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/schedule/*.dvn" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
