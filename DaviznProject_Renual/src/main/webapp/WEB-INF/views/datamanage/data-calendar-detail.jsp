@@ -82,7 +82,7 @@
 						            			</div>
 						            		</div>
 						            		<div class='col-sm-10 input-group date' id='datetimepicker3'>
-						                		<input type='text' class="form-control" name="alramdate" value="${schedule.alramdate}">
+						                		<input type="text" class="form-control" name="alramdate" placeholder="${schedule.alramdate}" value="${schedule.alramdate}">
 						                		<span class="input-group-addon">
 						                		    <i class="fa fa-bell-o" aria-hidden="true"></i>
 						                		</span>
