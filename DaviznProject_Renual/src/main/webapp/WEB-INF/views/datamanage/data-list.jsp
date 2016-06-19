@@ -139,7 +139,7 @@
 						<br>
 		
 						<div class="row no-padding">
-							<h3 class="col-md-9">내가 저장한 데이터 (4)</h3>
+							<h3 class="col-md-9">내가 저장한 데이터 (${listsize})</h3>
 							<div  class="col-md-3">
 								<select class="form-control data-m-repo-select">
 									<option>내 저장소 선택</option>
@@ -150,9 +150,6 @@
 						</div>
 						<%-- <table class="table table-hover data-list-table">
 							<colgroup>
-								<col width="" data-key="title">
-								<col width="200" data-key="buttons">
-							</colgroup>
 							<tbody>
 									<c:forEach var="d" items="${list2}">
 							<tr>

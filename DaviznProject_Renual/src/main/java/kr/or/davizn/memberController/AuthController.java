@@ -23,10 +23,10 @@ public class AuthController {
 		String newStrgname = "저장소이름";
 		int result = service.grantAuth(userid);
 		if(result > 0){
-			System.out.println("회원가입성공/권한부여성공");
+			
 			view = "redirect:/userStrg/newStorage.dvn?strgname="+newStrgname+"&userid="+userid;
 		}else{
-			System.out.println("회원가입성공/권한부여실패");
+			
 			view = "joinus.signup";
 		}
 		return view;
