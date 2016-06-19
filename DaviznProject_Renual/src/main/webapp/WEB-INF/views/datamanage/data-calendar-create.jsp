@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -23,6 +22,9 @@
 							</div>
 
 							<form action="${pageContext.request.contextPath}/schedule/createSchedule.dvn" method="post" class="form-horizontal">
+								
+								<input type="hidden" name="strgseq" value="${strgseq}">
+								
 								<div id="schedule-create-modal" class="modal fade">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
@@ -42,7 +44,7 @@
 												<div class="row">
 													<label for="inputscheduleTitle" class="col-sm-2 control-label">일정 이름</label>
 													<div class="col-sm-10">
-														<input type="text" name="schname" class="form-control" id="inputscheduleTitle"
+														<input type="text" name="dataname" class="form-control" id="inputscheduleTitle"
 															placeholder="일정 이름을 입력하세요">
 													</div>
 												</div>
@@ -74,7 +76,7 @@
 											            
 											            <label class="col-sm-2 control-label">종료일</label>
 											            <div class='col-sm-10 input-group date' id='datetimepicker2'>
-											                <input type='text' name="fianldate" class="form-control" placeholder="종료일을 설정하세요(우측의 달력 버튼)">
+											                <input type='text' name="finaldate" class="form-control" placeholder="종료일을 설정하세요(우측의 달력 버튼)">
 											                <span class="input-group-addon">
 											                    <span class="glyphicon glyphicon-calendar"></span>
 											                </span>
@@ -163,7 +165,7 @@
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-												<button type="button" class="btn btn-primary goal-save">저장</button>
+												<button type="submit" class="btn btn-primary goal-save">저장</button>
 											</div>
 										</div>
 										<!-- /.modal-content -->
@@ -179,70 +181,90 @@
 							<div class="col-sm-6">
 								<h5>진행중인 일정</h5>
 															
-								<!-- foreach -->
-								<a href="">
+							<c:forEach items="${clist}" var="cschedule">
+								<a href="${pageContext.request.contextPath}/schedule/detailSchedule.dvn?dataseq=${cschedule.dataseq}">
 									<div class="panel panel-info">
 										<div class="panel-body">
 											
 											<div class="col-sm-9 no-padding">
 												<div class="calendar-title word-ellipsis">
-													3차 프로젝트 종료
+													${cschedule.dataname}
 												</div>
 												
 												<div class="calendar-date word-ellipsis">
-													2016.06.18 ~ 2016.06.24
+													${cschedule.startdate} ~ ${cschedule.finaldate}
 												</div>
 											</div>
 											
 											<div class="col-sm-3 no-padding margin-top-10">
 												<div class="text-center">
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+												 	<c:forEach var="i" begin="1" end="${cschedule.priority}">
+														<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													</c:forEach>
+													
+													<c:if test="${5-cschedule.priority}>0">
+													<c:forEach var="i" begin="1" end="${5-cschedule.priority}">
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+													</c:forEach>
+													</c:if>
+													<!-- <i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i> -->
 												</div>
 											</div>
 											
 										</div>
 									</div>
 								</a>						
-								<!-- foreach -->
+								</c:forEach> 
 								
 							</div>
 							
 							<div class="col-sm-6">
 								<h5>완료된 일정</h5>
 															
-								<!-- foreach -->
-								<a href="">
+						 		 <c:forEach items="${elist}" var="eschedule">
+						 		
+								<a href="${pageContext.request.contextPath}/schedule/detailSchedule.dvn?dataseq=${eschedule.dataseq}">
 									<div class="panel panel-danger">
 										<div class="panel-body">
 											
 											<div class="col-sm-9 no-padding">
 												<div class="calendar-title word-ellipsis">
-													3차 프로젝트 종료
+													${eschedule.dataname}
 												</div>
 												
 												<div class="calendar-date word-ellipsis">
-													2016.06.18 ~ 2016.06.24
+													${eschedule.startdate} ~ ${eschedule.finaldate}
 												</div>
 											</div>
 											
 											<div class="col-sm-3 no-padding margin-top-10">
 												<div class="text-center">
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+												
+												<c:forEach var="i" begin="1" end="${eschedule.priority}">
+														<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+												</c:forEach>
+													
+													<c:if test="${5-eschedule.priority}>0">
+													<c:forEach var="i" begin="1" end="${5-eschedule.priority}">
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+													</c:forEach>
+													</c:if>
+													<!-- <i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i> -->
 												</div>
 											</div>
 											
 										</div>
 									</div>			
 								</a>						
-								<!-- foreach -->
+								</c:forEach>  
 								
 							</div>
 							

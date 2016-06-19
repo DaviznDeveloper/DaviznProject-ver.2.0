@@ -1,7 +1,9 @@
 package kr.or.davizn.dataDTO;
 
-public class ScheduleDTO {
-	
+import java.sql.Date;
+
+public class PersonaldataSchDTO {
+
 	private int dataseq;
 	private int datatype;
 	private String schname;
@@ -11,6 +13,9 @@ public class ScheduleDTO {
 	private String alramdate;
 	private int priority;
 	private int state;
+	private int strgseq;
+	private String dataname;
+	private Date datacreate;
 	public int getDataseq() {
 		return dataseq;
 	}
@@ -65,10 +70,26 @@ public class ScheduleDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
+	public int getStrgseq() {
+		return strgseq;
+	}
+	public void setStrgseq(int strgseq) {
+		this.strgseq = strgseq;
+	}
+	public String getDataname() {
+		return dataname;
+	}
+	public void setDataname(String dataname) {
+		this.dataname = dataname;
+	}
+	public Date getDatacreate() {
+		return datacreate;
+	}
+	public void setDatacreate(Date datacreate) {
+		this.datacreate = datacreate;
+	}
 	
 	
 	
 	
-	
-
 }
