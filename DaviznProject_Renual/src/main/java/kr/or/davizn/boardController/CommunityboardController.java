@@ -22,7 +22,6 @@ public class CommunityboardController {
 	//글 목록보기
 	@RequestMapping("communityList.dvn")
 	public String notices(String pg , String f , String q , Model model) throws ClassNotFoundException , SQLException {
-		System.out.println("목록!!");
 		List<CommunityBoardDTO> list = communityboardservice.notices(pg, f , q);
 		
 		model.addAttribute("list" , list);

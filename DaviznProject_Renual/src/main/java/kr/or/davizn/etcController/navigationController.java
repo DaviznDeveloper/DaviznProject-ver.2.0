@@ -38,7 +38,6 @@ public class navigationController {
 	//커뮤니티 게시판 이동
     @RequestMapping("communityNavigation.dvn")
     public String moveCommunity(){
-    	System.out.println("커뮤니티 네이 등장");
        return "redirect:/communityList.dvn";
     }
     

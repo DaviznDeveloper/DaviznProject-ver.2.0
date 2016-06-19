@@ -18,7 +18,15 @@ public class PersonalDataGoalDTO {
 	private String goalname;
 	private int state;
 	private String commentmsg;
+	private String uesrid;
 	
+	
+	public String getUesrid() {
+		return uesrid;
+	}
+	public void setUesrid(String uesrid) {
+		this.uesrid = uesrid;
+	}
 	public int getGoaldate() {
 		return goaldate;
 	}

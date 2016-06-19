@@ -7,7 +7,7 @@
 
 	<div class="container-fluid">
 		
-
+	
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -37,11 +37,12 @@
 								<li class="nav_menu">
 									<a href="${pageContext.request.contextPath}/userStrg.dvn">
 										<i class="fa fa-database" aria-hidden="true"></i> &nbsp;내 데이터 관리
+										${alram}
 									</a>
 								</li>
 								<li class="nav_menu">
 									<a href="${pageContext.request.contextPath}/data-main.jsp">
-										<i class="fa fa-users" aria-hidden="true"></i></i> &nbsp;내 그룹
+										<i class="fa fa-users" aria-hidden="true"></i> &nbsp;내 그룹
 									</a>
 								</li>
 								<!-- // 데이터 마켓 구현 시, 코드 추가 
@@ -79,7 +80,7 @@
                        <ul class="dropdown-menu">
                           <li>
                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  id : 제목제목??
+                                  id : 제목제목?? 
                               </a>
                           </li>
                           <li>
@@ -112,16 +113,14 @@
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
 						<span class="badge h-menu-tran-badge-notice">2</span>
-                       </a>
+                       </a>ㅇㄹ
                        <ul class="dropdown-menu">
                           <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  type : 알림알림??
+                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                 
                               </a>
                           </li>
                           <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  type : 알림알림??
+                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                
                               </a>
                           </li>
                        </ul>
@@ -150,7 +149,7 @@
     		</li>
    		</se:authorize>
 				  -->
-				
+			
 				<li>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					<se:authentication property="name" var="LoingUser" />

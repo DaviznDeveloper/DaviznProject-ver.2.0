@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.davizn.dataDTO.PersonalDataDTO;
-import kr.or.davizn.dataDTO.UserStrgDTO;
 import kr.or.davizn.dataInterface.PersonalDataDAO;
-import kr.or.davizn.dataInterface.UserStrgDAO;
 
 @Service
 public class PersonalService {
@@ -42,7 +40,6 @@ public class PersonalService {
 	public String addPersonalData(PersonalDataDTO pdata,String inputArticleContents, 
 			Principal principal, HttpServletRequest request) throws IOException{
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
-		int result = dao.addPersonalData(pdata);
 		
 		  String fname = principal.getName()+System.currentTimeMillis();
 	      String endformat = ".txt";

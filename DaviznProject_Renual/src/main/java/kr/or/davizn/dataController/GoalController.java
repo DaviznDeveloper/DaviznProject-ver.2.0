@@ -45,7 +45,7 @@ public class GoalController {
 		System.out.println("addGoal.dvn에 들어옴");
 		System.out.println(newGoal.getDetailnames().length);
 		System.out.println(newGoal.getStartdate());
-		System.out.println(newGoal.getFinaldate());
+		System.out.println("종료일 : "+newGoal.getFinaldate());
 		
 		
 		goalService.addNewGoal(newGoal,strgseq);
