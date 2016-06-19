@@ -30,6 +30,7 @@ public class PersonalDataController {
       List<PersonalDataDTO> list = personalDataService.showPersonalDataList(strgseq);
       model.addAttribute("pdatalist", list);
       model.addAttribute("strgseq",strgseq);
+      model.addAttribute("listsize",list.size());
       return "datamanage.data-list";
    }
    
