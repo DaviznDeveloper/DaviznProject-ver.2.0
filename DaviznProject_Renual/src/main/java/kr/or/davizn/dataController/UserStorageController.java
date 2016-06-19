@@ -20,12 +20,7 @@ public class UserStorageController {
 	@Autowired
 	private UserStrgService storageService;
 
-	// 회원 가입 시 1개의 저장소 부여
-	@RequestMapping("newStorage.dvn")
-	public String newStorage(String strgname, String userid) {
-		storageService.addStorage(strgname, userid);
-		return "joinus.sign-up-ok";
-	}
+
 
 	// 저장소 추가하기
 	@RequestMapping("addStorage.dvn")

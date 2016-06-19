@@ -40,7 +40,7 @@
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/data-main.jsp">
+									<a href="${pageContext.request.contextPath}/group.dvn">
 										<i class="fa fa-users" aria-hidden="true"></i></i> &nbsp;내 그룹
 									</a>
 								</li>
@@ -114,17 +114,68 @@
 						<span class="badge h-menu-tran-badge-notice">2</span>
                        </a>
                        <ul class="dropdown-menu">
-                          <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  type : 알림알림??
-                              </a>
-                          </li>
-                          <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  type : 알림알림??
-                              </a>
-                          </li>
-                       </ul>
+			                        
+										<!-- for-each -->
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <!-- choose(이모티콘) -->
+			                                   <i class="fa fa-trophy" aria-hidden="true"></i>
+			                                   <!-- choose(이모티콘) -->
+			                                   &nbsp;
+			                                   <span class="notice-header-span">3차 프로젝트가 종료되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <!-- for-each -->
+			                           
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-calendar" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">슬기 생일 3일 전</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-users" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-users" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-users" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-users" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <i class="fa fa-users" aria-hidden="true"></i>
+			                                   &nbsp;
+			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
+			                               </a>
+			                           </li>
+			                           <li class="vertical-middle padding-vertical text-center">
+			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
+			                                   <span class="notice-header-span notice-header-all">전체보기</span>
+			                               </a>
+			                           </li>
+			                        </ul>
+			                    
                        
                        <%-- 
 					<li>

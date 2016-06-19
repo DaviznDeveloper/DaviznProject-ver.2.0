@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/message/test.dvn" class="btn btn-primary" role="button">선택</a>
+<a href="${pageContext.request.contextPath}/group.group-info-master" class="btn btn-primary" role="button">group-info-master.jsp</a>
+<a href="${pageContext.request.contextPath}/group.group-info" class="btn btn-primary" role="button">group-info.jsp</a>
+<a href="${pageContext.request.contextPath}/group.group-main" class="btn btn-primary" role="button">group-main.jsp</a>
 </body>
 </html>

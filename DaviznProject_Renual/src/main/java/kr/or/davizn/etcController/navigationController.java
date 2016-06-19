@@ -2,15 +2,8 @@ package kr.or.davizn.etcController;
 
 import java.security.Principal;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import kr.or.davizn.memberDTO.DaviznMemberDTO;
-import kr.or.davizn.memberService.DaviznMemberService;
 
 @Controller
 public class navigationController {
@@ -21,7 +14,6 @@ public class navigationController {
 
 		return "joinus.signup";
 	}
-	
 	
 	// 로그인 창 이동
 	@RequestMapping("signin.dvn")
@@ -41,7 +33,13 @@ public class navigationController {
 		return "redirect:/userStrg/showStorageList.dvn?userid="+userid;
 
 	}
-
+	
+	//
+	@RequestMapping("group.dvn")
+	public String moveGroup(){
+		return "group.group-main";
+	}
+	
 	//커뮤니티 게시판 이동
     @RequestMapping("communityNavigation.dvn")
     public String moveCommunity(){
@@ -49,7 +47,7 @@ public class navigationController {
        return "redirect:/communityList.dvn";
     }
     
-  //1:1 게시판 창 이동
+    //1:1 게시판 창 이동
     @RequestMapping("QnANavigation.dvn")
     public String moveQnA(){
        
