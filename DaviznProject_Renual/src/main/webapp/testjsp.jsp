@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/goal/test.dvn" class="btn btn-primary" role="button">선택</a>
+<a href="${pageContext.request.contextPath}/message/test.dvn" class="btn btn-primary" role="button">선택</a>
 </body>
 </html>
