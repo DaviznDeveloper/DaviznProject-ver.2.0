@@ -63,7 +63,7 @@
 								<li>
 									<div class="form-group">
 										<input type="text" name="username" class="form-control"
-											placeholder="이메일 계정을 입력하세요">
+											placeholder="아이디를 입력하세요">
 									</div>
 								</li>
 								<li>

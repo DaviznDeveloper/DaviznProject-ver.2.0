@@ -20,16 +20,16 @@
 			
 								<form action="${pageContext.request.contextPath}/join/joinMember.dvn" method="post">
 									<div class="form-group">
-										<label for="UserName">이름</label> 
+										<label for="UserName">아이디</label> 
 										<input type="text" class="form-control" 
-											id="nickname" name="nickname" placeholder="사용하실 이름을 입력하세요">
-										<span id="checknickname" class="sign-up-input-info">이름은 닉네임과도 같습니다. 단, 사용자끼리 중복되는 이름은 허용하지 않습니다.</span>
+											id="userid" name="userid" placeholder="사용하실 아이디를 입력하세요">
+										<span id="checkuserid" class="sign-up-input-info">사용할 아이디를 입력하세요. 단, 사용자끼리 중복되는 아이디는 허용하지 않습니다.</span>
 									</div>
 									<div class="form-group">
 										<label for="UserEmail">이메일 주소</label>
 										<input type="email" class="form-control" 
-											id="userid" name="userid" placeholder="사용하실 이메일을 입력하세요">
-										<span id="checkuserid" class="sign-up-input-info">이메일이 당신의 계정 아이디가 될 것입니다.</span>
+											id="account" name="account" placeholder="사용하실 이메일을 입력하세요">
+										<span id="checkaccount" class="sign-up-input-info">이메일이 당신의 계정으로 될 것입니다.</span>
 									</div>
 									<div class="form-group">
 										<label for="UserPassword">비밀번호</label>

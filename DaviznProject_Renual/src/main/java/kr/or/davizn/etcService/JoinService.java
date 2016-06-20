@@ -22,20 +22,20 @@ public class JoinService {
 		return result;
 	}
 	
-	//닉네임 중복확인
-	public String checkNickname(String nickname){
+	//이메일 중복확인
+	public String checkAccount(String account){
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
-		int checkResult = dao.checkNickname(nickname);
-		if(checkResult == 0) return "You can use this nickname";
-		else return "You can't use this nickname. Alreay exist";
+		int checkResult = dao.checkAccount(account);
+		if(checkResult == 0) return "You can use this account";
+		else return "You can't use this account. Alreay exist";
 	}
 
 	
-	//이메일 중복확인
-	public String checkMemberid(String memberid){
+	//아이디 중복확인
+	public String checkUserid(String userid){
 			DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
-			int checkResult = dao.checkMemberid(memberid);
-			if(checkResult == 0) return "You can use this memberid";
-			else return "You can't use this memberid. Alreay exist";
+			int checkResult = dao.checkUserid(userid);
+			if(checkResult == 0) return "You can use this id";
+			else return "You can't use this id. Alreay exist";
 		}
 }

@@ -10,11 +10,11 @@ public interface DaviznMemberDAO {
 	//로그인 
 	public String loginMember(DaviznMemberDTO member);
 	
-	//중복 nickname check
-	public int checkNickname(String nickname);
+	//중복 account check
+	public int checkAccount(String account);
 	
-	//중복 이메일(memberid) check
-	public int checkMemberid(String memberid);
+	//중복 userid check
+	public int checkUserid(String userid);
 	
 	//회원정보 수정(기존 정보 검색)
 	public DaviznMemberDTO selectOneMember(String userid);

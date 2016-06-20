@@ -22,7 +22,8 @@ public class AuthController {
 		String newStrgname = "저장소이름";
 		int result = service.grantAuth(userid);
 		if(result > 0){
-			view = "redirect:/userStrg/newStorage.dvn?strgname="+newStrgname+"&userid="+userid;
+			System.out.println("회원가입 완료 // 저장소 추가하러 출발");
+			view = "redirect:/join/newStorage.dvn?strgname="+newStrgname+"&userid="+userid;
 		}else{
 			view = "joinus.signup";
 		}
