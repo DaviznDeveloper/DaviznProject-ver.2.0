@@ -91,7 +91,7 @@
 													<div id="notice-box" class="col-sm-10">
 														<div class='col-sm-2'>
 															<div id="calendar-notice-btn" class="pull-right margin-top-5">
-										                		<input type="checkbox" id="myswitch" value="checked">
+										                		<input type="checkbox" id="myswitch" name="state" checked="checked" value="1">
 											            	</div>
 											            </div>
 											             <div class='col-sm-10 input-group date' id='datetimepicker3'>

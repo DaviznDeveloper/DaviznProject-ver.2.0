@@ -19,23 +19,18 @@ public class NoteController {
 
 	@Autowired
 	NoteService notedataService;
-/*<<<<<<< HEAD
 
-	// 노트 데이터 추가하기
-=======*/
-	
 	// 데이터 추가하기(노트)
-		@RequestMapping("moveNoteCreate.dvn")
-		public String moveNoteCreate(Model model, String strgseq) {
-			model.addAttribute("strgseq", strgseq);
-			return "datamanage.data-note-create";
-		}
-	
-/*	//노트 데이터 추가하기
->>>>>>> refs/remotes/origin/master*/
+	@RequestMapping("moveNoteCreate.dvn")
+	public String moveNoteCreate(Model model, String strgseq) {
+		model.addAttribute("strgseq", strgseq);
+		return "datamanage.data-note-create";
+	}
+
+
+	//노트 데이터 추가하기
 	@RequestMapping("addNoteData.dvn")
 	public String addNoteData(@RequestParam String filepath) {
-
 		int result = notedataService.addNoteData(filepath);
 		return "redirect:detailNoteData.dvn";
 	}
@@ -51,7 +46,6 @@ public class NoteController {
 	// 목록에서 note 데이터 상세조회
 	@RequestMapping("detailNote.dvn")
 	public String detailNote(@RequestParam int dataseq, Model model, HttpServletRequest request) throws IOException {
-
 		PersonalDataNoteDTO note = notedataService.detailNote(request, dataseq);
 		model.addAttribute("note", note);
 		return "datamanage.data-note-detail";
@@ -70,7 +64,6 @@ public class NoteController {
 	@RequestMapping("modifyNoteAction.dvn")
 	public String modifyNoteAction(@RequestParam int dataseq, @RequestParam int strgseq, @RequestParam String dataname,
 			@RequestParam String inputArticleContents, HttpServletRequest request) throws IOException {
-
 		notedataService.modifyNoteFile(dataseq, request, inputArticleContents);
 		return "redirect:/personalData/updatePersonalNoteData.dvn?dataseq=" + dataseq + "&dataname=" + dataname;
 
@@ -79,7 +72,6 @@ public class NoteController {
 	// 상세 화면에서 데이터 삭제
 	@RequestMapping("deleteNote.dvn")
 	public String deleteNote(@RequestParam int dataseq, @RequestParam int strgseq) {
-
 		int noteResult = notedataService.deleteNote(dataseq);
 		return "redirect:/personalData/deletePersonalNoteData.dvn?dataseq=" + dataseq + "&strgseq=" + strgseq;
 

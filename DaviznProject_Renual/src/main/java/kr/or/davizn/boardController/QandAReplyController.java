@@ -23,22 +23,18 @@ public class QandAReplyController {
 	@RequestMapping(value = "replyWrite.dvn", method = RequestMethod.POST)
 	public String noticeReg(QandAReplyDTO dto, HttpServletRequest request)
 			throws IOException, ClassNotFoundException, SQLException {
-		System.out.println("댓글 입력 컨트롤러");
 		String url = "QnA.qna-list";
-		System.out.println(dto);
 		try {
 			url = QandAReplyService.replyReg(dto, request);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
 		return url;
 
 	}
 	
 	@RequestMapping(value="deleteReply.dvn")
 	public String deleteReply(int boardseq, int replynum){
-		System.out.println("딜리트 댓글");
 		String url = "QnA.qna-list";
 		try {
 			url = QandAReplyService.delReply(replynum, url)+"?boardseq="+boardseq;

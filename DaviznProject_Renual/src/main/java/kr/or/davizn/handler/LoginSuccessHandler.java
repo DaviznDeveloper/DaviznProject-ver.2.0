@@ -19,9 +19,5 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		
 		//로그인 성공 후 경로
 		 response.sendRedirect(request.getContextPath() + "/index.dvn");
-		 System.out.println("로그인 성공");
-		
 	}
-	
-	
 }

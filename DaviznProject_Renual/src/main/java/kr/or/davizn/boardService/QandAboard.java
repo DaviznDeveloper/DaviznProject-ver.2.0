@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import kr.or.davizn.boardDTO.QandAReplyDTO;
@@ -63,21 +64,18 @@ public class QandAboard {
 	}
 
 	// 게시글 상세보기
+	@Transactional
 	public QandAboardDTO noticeDetail(int boardseq) throws ClassNotFoundException, SQLException {
-		System.out.println("상새");
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
 		QandAboardDao.boardCount(boardseq);
-		System.out.println(notice);
 		return notice;
 	}
 
 	// 게시글 등록
 	public String noticeReg(QandAboardDTO n, HttpServletRequest request) throws Exception {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
-		System.out.println(n);
 		QandAboardDao.insert(n);
-
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -85,49 +83,37 @@ public class QandAboard {
 	public String noticeDel(String boardseq) throws ClassNotFoundException, SQLException {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
-		
 		return "redirect:/QnAList.dvn";
 	}
 
 	// 게시글 수정
 	public QandAboardDTO noticeEdit1(int boardseq) throws ClassNotFoundException, SQLException {
-
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
-
 		return notice;
 	}
 
 	// 게시글 수정 확인!
 	public String noticeEdit2(QandAboardDTO n, HttpServletRequest request)
 			throws ClassNotFoundException, SQLException, IOException {
-
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.update(n);
-
 		return "redirect:/QnAList.dvn";
 
 	}
 	//댓글 상세보기 
 	public List<QandAReplyDTO> replyDetail(int boardseq) throws ClassNotFoundException, SQLException {
-
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		List<QandAReplyDTO> reqlylist = QandAboardDao.replylist(boardseq);
-		
 		return reqlylist;
 	}
 	 
 	 public List<QandAboardDTO> boardList(String keyfield, String keyword) throws ClassNotFoundException, SQLException {
-	        
 		 	QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
             Map<String, String> map = new HashMap<String, String> ();
             map.put("keyfield" , keyfield);
             map.put("keyword", keyword);
 		 	List<QandAboardDTO> serchlist= QandAboardDao.boardSearch(map);
-
-	        System.out.println("정상적으로 값이 들어옴");
-	        System.out.println(keyfield + "//" + keyword);
-	        System.out.println(serchlist.size());
 	        return serchlist;
 	    }
 

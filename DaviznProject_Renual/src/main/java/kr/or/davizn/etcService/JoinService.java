@@ -24,7 +24,6 @@ public class JoinService {
 	
 	//닉네임 중복확인
 	public String checkNickname(String nickname){
-		System.out.println("checkNickname");
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 		int checkResult = dao.checkNickname(nickname);
 		if(checkResult == 0) return "You can use this nickname";

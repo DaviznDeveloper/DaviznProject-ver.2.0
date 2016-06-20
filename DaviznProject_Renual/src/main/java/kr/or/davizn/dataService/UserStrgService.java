@@ -32,8 +32,6 @@ public class UserStrgService {
 	public List<UserStrgDTO> showStorageList(String userid){
 		UserStrgDAO dao = sqlsession.getMapper(UserStrgDAO.class);
 		List<UserStrgDTO> result = dao.showStorageList(userid);
-		System.out.println("아이디"+userid);
-		System.out.println("저장소 리스트 : "+result.toString());
 		return result;
 	}
 }

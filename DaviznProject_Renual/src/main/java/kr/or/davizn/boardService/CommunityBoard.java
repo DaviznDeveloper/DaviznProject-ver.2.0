@@ -33,14 +33,8 @@ public class CommunityBoard {
       if(q != null && q.equals("")){
          query = q;
       }
-      
-      
       CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
-      //System.out.println(communityBoardDAO.toString());
-      //System.out.println("서비스2");
-      
       List<CommunityBoardDTO> list = communityBoardDAO.getNotices(page, field, query);
-      System.out.println("list" + list);
       
       return list;
       
@@ -48,20 +42,16 @@ public class CommunityBoard {
    
    //글 상세보기
    public CommunityBoardDTO noticeDetail(String boardseq) throws ClassNotFoundException, SQLException{
-      
       CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
       CommunityBoardDTO notice = communityBoardDAO.getNotice(boardseq);
-      //communityBoardDAO.boardCount(Integer.parseInt(boardseq));
       return notice;
       
    }
    
    //글  등록하기
    public String noticeReg(CommunityBoardDTO n) throws Exception {
-      System.out.println("들어왔다아아아");
       CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
       communityBoardDAO.insert(n);
-      System.out.println("등록 서비스");
       return "redirect:community.dvn";
    }
    

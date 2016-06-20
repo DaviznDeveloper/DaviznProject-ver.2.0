@@ -26,7 +26,6 @@ public class PersonalDataController {
    //데이터 리스트 보기
    @RequestMapping("showPersonalDataList.dvn")
    public String showPersonalDataList(Model model, int strgseq){
-	   System.out.println("데이터 리스트 등장");
       List<PersonalDataDTO> list = personalDataService.showPersonalDataList(strgseq);
       model.addAttribute("pdatalist", list);
       model.addAttribute("strgseq",strgseq);

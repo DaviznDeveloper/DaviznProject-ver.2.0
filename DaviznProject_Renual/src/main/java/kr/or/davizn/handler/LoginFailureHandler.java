@@ -18,8 +18,6 @@ public class LoginFailureHandler implements AuthenticationFailureHandler{
 			throws IOException, ServletException {
 		//인증 실패 시 경로
 		response.sendRedirect(request.getContextPath() + "/signin.dvn");
-		System.out.println("로그인 실패");
-		
 	}
 
 }

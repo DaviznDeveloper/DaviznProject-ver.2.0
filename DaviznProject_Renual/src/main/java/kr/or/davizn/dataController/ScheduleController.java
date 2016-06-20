@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class ScheduleController {
 	
 	//일정 리스트 가기
 	@RequestMapping("goScheduleList.dvn")
+	@Transactional
 	public String goScheduleList(@RequestParam int strgseq,Model model){
 		
 		List<PersonaldataSchDTO> clist = schservice.currentSchedule(strgseq);
@@ -51,9 +53,7 @@ public class ScheduleController {
 	//일정 데이터 삭제하기
 	@RequestMapping("deleteSchedule.dvn")
 	public String deleteSchedule(int dataseq,int strgseq){
-		System.out.println("삭제");
 		int result = schservice.deleteSchedule(dataseq);
-		System.out.println("삭제완료");
 		return "redirect:goScheduleList.dvn?strgseq="+strgseq;
 	}
 	

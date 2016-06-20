@@ -25,8 +25,6 @@ public class GoalController {
 	
 	@RequestMapping("goGoalList.dvn")
 	public String goGoalList(@RequestParam int strgseq){
-		//List<GoalListDTO> goalList = goalService.showGoalList(strgseq);
-		//model.addAttribute(goalList);
 		return "redirect:showGoalList.dvn?strgseq=" + strgseq;
 	}
 	
@@ -42,14 +40,7 @@ public class GoalController {
 	
 	@RequestMapping("addGoal.dvn")
 	public String addGoal(NewGoal newGoal, @RequestParam int strgseq) throws ParseException{
-		System.out.println("addGoal.dvn에 들어옴");
-		System.out.println(newGoal.getDetailnames().length);
-		System.out.println(newGoal.getStartdate());
-		System.out.println(newGoal.getFinaldate());
-		
-		
 		goalService.addNewGoal(newGoal,strgseq);
-		//추가 함수 
 		return "redirect:goGoalList.dvn?strgseq="+strgseq;
 	}
 	
@@ -66,7 +57,6 @@ public class GoalController {
 	//세부 목표 상태 비동기 변경
 	@RequestMapping("updateDetailState.dvn")
 	public @ResponseBody String updateDetailState(@RequestParam int detailgoalseq){
-		
 		int result = goalService.updateDetailGoalState(detailgoalseq);
 		return "DB update 성공";
 	}
@@ -84,7 +74,6 @@ public class GoalController {
 									  @RequestParam String commentmsg){
 		
 		int result = goalService.updateDetailComment(commentmsg, detailgoalseq);
-		
 		return "comment update 성공";
 	}
 	
