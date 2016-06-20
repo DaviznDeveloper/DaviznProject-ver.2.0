@@ -41,8 +41,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	
-	
-	
 	<!--목표 데이터 상세보기-->
 	<select id="detailGoal" resultType="kr.or.davizn.dataDTO.PersonalDataGoalDTO">
 		select p.dataseq, dataname, startdate,finaldate,
@@ -64,6 +62,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateDetailComment">
 		update detailgoal set commentmsg=#{param1} where detailgoalseq=#{param2}
 	</update>
+	
+	<!--상세 화면에서 달성 퍼센트 변경하기-->
+	<update id="updateGoalPercent">
+		update goal
+		set goalpercent=(select trunc(100/(select count(*) from detailgoal where dataseq=#{dataseq})
+		*(select count(*) from detailgoal where state=1 and dataseq=#{dataseq})) from dual)
+		where dataseq=#{dataseq}
+	</update>
+	
+	<!--목표 데이터 삭제하기-->
+	<delete id="deleteGoal">
+		delete from personaldata where dataseq=#{dataseq}
+	</delete>
 
 	
 	

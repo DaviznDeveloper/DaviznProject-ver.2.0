@@ -52,6 +52,12 @@ public interface GoalDAO {
 	
 	//상세 목표의 달성 메세지 변경
 	public int updateDetailComment(String commentmsg, int detailgoalseq);
+	
+	//상세 화면에서 달성 퍼센트 변경
+	public int updateGoalPercent(int dataseq);
+	
+	//목표 데이터 삭제
+	public int deleteGoal(int dataseq);
 
 	
 }

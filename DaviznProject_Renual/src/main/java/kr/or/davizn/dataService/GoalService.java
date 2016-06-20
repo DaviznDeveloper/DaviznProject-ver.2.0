@@ -34,11 +34,26 @@ public class GoalService {
 		int result = goaldao.updateDetailGoalState(detailgoalseq);
 		return result;
 	}
+	
+	//상세화면에서 달성 퍼센트 변경
+	public int updateGoalPercent(int dataseq){
+		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
+		int result = goaldao.updateGoalPercent(dataseq);
+		return result;
+	}
+	
 
 	//상세 수정
 	public int updateDetailComment(String commentmsg, int detailgoalseq) {
 		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
 		int result = goaldao.updateDetailComment(commentmsg, detailgoalseq);
+		return result;
+	}
+	
+	//목표 데이터 삭제
+	public int deleteGoal(int dataseq){
+		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
+		int result = goaldao.deleteGoal(dataseq);
 		return result;
 	}
 
@@ -58,6 +73,7 @@ public class GoalService {
 			dao.addDetailGoal(goalname);
 		}
 	}
+	
 
 	
 	

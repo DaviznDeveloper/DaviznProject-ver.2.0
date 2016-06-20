@@ -78,7 +78,15 @@
 										<div id="notice-box" class="col-sm-10">
 											<div class='col-sm-2'>
 												<div id="calendar-notice-btn" class="pull-right margin-top-5">
-					                				<input type="checkbox" id="myswitch" value="checked">
+												<c:choose>
+													<c:when test="${schedule.state==1}">
+														<input type="checkbox" name="state" id="myswitch" value="1" checked="checked">
+													</c:when>
+													<c:otherwise>
+														<input type="checkbox" name="state" id="myswitch" value="0">
+													</c:otherwise>
+												</c:choose>
+					                				
 						            			</div>
 						            		</div>
 						            		<div class='col-sm-10 input-group date' id='datetimepicker3'>
@@ -98,6 +106,11 @@
 											<div class="col-sm-2"></div>
 
 											<div class="btn-group" data-toggle="buttons">
+											
+											<c:if test="${schedule.alramdate}">
+											
+											</c:if>
+											
 												<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="5" id="priority1" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
@@ -114,8 +127,8 @@
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 												</label>
-												<label class="btn btn-default calender-priority active">
-													<input type="radio" name="priority" value="3" id="priority3" autocomplete="off" checked>
+												<label class="btn btn-default calender-priority">
+													<input type="radio" name="priority" value="3" id="priority3" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>

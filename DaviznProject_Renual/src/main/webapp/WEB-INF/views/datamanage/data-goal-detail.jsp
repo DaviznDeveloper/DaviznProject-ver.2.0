@@ -36,7 +36,7 @@
 					</a>
 				</div>
 				
-				<form action="${pageContext.request.contextPath}/goal/updateDetailComment.dvn?detailgoalseq=${detailgoalseq}&commentmsg=${commentmsg}" method="post" class="form-horizontal">
+				<form action="${pageContext.request.contextPath}/goal/updateGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}" method="post" class="form-horizontal">
 					<div id="goal-modi-modal" class="modal fade">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
@@ -56,7 +56,8 @@
 									<div class="row">
 										<label for="inputgoalTitle" class="col-sm-2 control-label">목표 이름</label>
 										<div class="col-sm-10">
-											<input type="text" name="goalTitle" class="form-control" id="inputgoalTitle"
+											<input type="hidden" id="dataseq" value="${dataseq}">
+											<input type="text" name="dataname" class="form-control" id="inputgoalTitle"
 												placeholder="이루고 싶은 목표를 입력하세요" value="${dataname}">
 										</div>
 									</div>
@@ -69,7 +70,7 @@
 										<div class="col-sm-10  goal-Check-List-Box">
 										<c:forEach items="${gdata}" var="goal">
 											<div class="goal-check-input-box">
-												<input type="text" name="goalCheckList" class="form-control goalCheckList margin-bottom-10"
+												<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10"
 													placeholder="세부 목표를 입력하세요" value="${goal.goalname}">
 												<button type="button" class="close goal-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 											</div>
@@ -85,7 +86,7 @@
 										<div class="col-sm-10">
 											<label class="col-sm-2 control-label">시작일</label>
 											<div class='col-sm-10 input-group date' id='datetimepicker1'>
-								                <input type='text' name="goalStartDate" class="form-control" placeholder="${startdate}">
+								                <input type='text' name="startdate" class="form-control" placeholder="${startdate}">
 								                <span class="input-group-addon">
 								                    <span class="glyphicon glyphicon-calendar"></span>
 								                </span>
@@ -95,7 +96,7 @@
 								            
 								            <label class="col-sm-2 control-label">종료일</label>
 								            <div class='col-sm-10 input-group date' id='datetimepicker2'>
-								                <input type='text' name="goalEndDate" class="form-control" placeholder="${finaldate}">
+								                <input type='text' name="finaldate" class="form-control" placeholder="${finaldate}">
 								                <span class="input-group-addon">
 								                    <span class="glyphicon glyphicon-calendar"></span>
 								                </span>
@@ -207,16 +208,6 @@
 		   $(".goal-detail-checkbox").each(function(index,element){
 				
 			   if($(element).is(":checked")){
-/* =======
-   $(function() {
-      // goal-countdown
-      $("#CountDownTimer").TimeCircles();
-      
-         $(".goal-detail-checkbox").each(function(index,element){
-            
-            if($(element).is(":checked")){
->>>>>>> refs/remotes/origin/master */
-
 
 		            $(element).parent().css('background','#9cff80');
 		            $(element).parent().css('border','1px solid #2dbe60');
@@ -251,54 +242,25 @@
 		        success : function(responseData){
 		        	
 		        	
-		           
+		        }
+		   });
+			
+			
+			//체크 리스트 클릭 시 달성 퍼센트 비동기로 update
+			
+			$.ajax({
+		        url : contextPath+"/goal/updateGoalpercent.dvn",
+		        type: "get",
+		        data : { "dataseq" : $('#dataseq').val()},
+		        success : function(responseData){
+		        
+		        },
+		        error :function(data){
+		        	
 		        }
 		    });
 			
-			
 	        if($(this).is(":checked")){
-/* =======
-                  $(element).parent().css('background','#9cff80');
-                  $(element).parent().css('border','1px solid #2dbe60');
-                  $(element).parent().siblings().css('border','1px solid #2dbe60');
-                  
-                  $(element).attr('disabled','disabled');
-                  
-                  $(element).parent().parent().siblings('#goal-check-success').show();
-                  
-                  goalChecking();
-                  
-                  $(".goal-detail-modi-btn").fadeOut();
-              
-              } else {
-                 $(element).parent().css('background','#eee');
-                 $(element).parent().css('border','1px solid #ccc');
-                 $(element).parent().siblings().css('border','1px solid #ccc');
-                 goalChecking();
-              }
-            
-         });
-      
-      
-      // goal-detail-checklist
-      $(".goal-detail-checkbox").change(function(){
-      
-         var contextPath='${pageContext.request.contextPath}'
-         $.ajax({
-              url : contextPath+"/goal/updateDetailState.dvn",
-              type: "get",
-              data : { "detailgoalseq" : $(this).val() },
-              success : function(responseData){
-                 
-                 
-                 
-              }
-          });
-         
-         
-           if($(this).is(":checked")){
->>>>>>> refs/remotes/origin/master */
-
 
 	            $(this).parent().css('background','#9cff80');
 	            $(this).parent().css('border','1px solid #2dbe60');
@@ -341,7 +303,7 @@
 		        
 		        },
 		        error :function(data){
-		        	alert(data);
+		        	
 		        }
 		    });
 			
@@ -364,69 +326,4 @@
 		$(".pieProgress").asPieProgress('go',goalPercent);;
 	}
 </script>
-<%-- =======
-               $(this).parent().css('background','#9cff80');
-               $(this).parent().css('border','1px solid #2dbe60');
-               $(this).parent().siblings().css('border','1px solid #2dbe60');
-               
-               $(this).attr('disabled','disabled');
-               
-               $(this).parent().parent().siblings('#goal-check-success').show();
-               
-               goalChecking();
-               
-               $(".goal-detail-modi-btn").fadeOut();
-           
-           } else {
-              $(this).parent().css('background','#eee');
-              $(this).parent().css('border','1px solid #ccc');
-              $(this).parent().siblings().css('border','1px solid #ccc');
-              goalChecking();
-           }
-      });
-      
-   
-      
-      $(".goal-success-message-modi").click(function() {
-         $(this).parent().parent().siblings('#goal-check-success-mody-box').show();
-         $(this).parent().parent().hide();
-      });
-      
-       // 체크리스트 완료 시, 내용 수정 코드
-      $(".goal-success-message-modi-save").click(function() {
-         //ajax 함수 호출
-         var contextPath='${pageContext.request.contextPath}'
-         
-         $.ajax({
-              url : contextPath+"/goal/updateDetailComment.dvn",
-              type: "get",
-              data : { "detailgoalseq" : $(this).next().val(),
-                     "commentmsg" : $(this).prev().val() },
-              success : function(responseData){
-              
-              },
-              error :function(data){
-                 alert(data);
-              }
-          });
-         
-         
-         // ajax 성공 시, (success)
-         $(this).parent().siblings('#goal-check-success').show();
-         $(this).parent().hide();
-         
-         var goalSuccessModyContent = $(this).siblings(".goal-success-message-modi-area").val();
-         $(this).parent().siblings('#goal-check-success').children('.goal-success-message').text(goalSuccessModyContent);
-      }); 
-      
-   });
-   
-   function goalChecking() {
-      var checklist = $("input[type=checkbox]").length;
-      var checked = $("input:checked").length;
-      var goalPercent = Math.round(eval((checked / checklist) * 100));
-      
-      $(".pieProgress").asPieProgress('go',goalPercent);;
-   }
-</script>
->>>>>>> refs/remotes/origin/master --%>
+
