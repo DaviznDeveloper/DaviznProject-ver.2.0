@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			4,#{schcontext},
 		 	To_date(#{startdate},'MM/DD/YYYY HH24:MI'),
 		 	To_date(#{finaldate},'MM/DD/YYYY HH24:MI'),
-		 	To_date(#{alramdate},'MM/DD/YYYY HH24:MI'),
+		 	To_date(#{alramdate, jdbcType=VARCHAR},'MM/DD/YYYY HH24:MI'),
 		 	#{priority},0)
 	</insert>
 	
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update schedule set schcontext=#{schcontext},
                     startdate=To_date(#{startdate},'MM/DD/YYYY HH24:MI'),
                     finaldate=To_date(#{finaldate},'MM/DD/YYYY HH24:MI'),
-                    alramdate=To_date(#{alramdate},'MM/DD/YYYY HH24:MI'),
+                    alramdate=To_date(#{alramdate, jdbcType=VARCHAR},'MM/DD/YYYY HH24:MI'),
                     priority=#{priority}
 	</update>
 	
