@@ -17,7 +17,7 @@
 						
 						<div class="col-sm-3 no-padding margin-bottom-10">
 
-							<a href="#" class="thumbnail profile-thumbnail no-margin" data-toggle="tooltip" title="그룹정보 수정하기"> 
+							<a href="#" class="thumbnail profile-thumbnail no-margin"> 
 								<img id="profile-preview" src="${pageContext.request.contextPath}/resources/img/avatar.png" alt="...">
 							</a>
 							
@@ -114,7 +114,21 @@
 												<!-- Default panel contents -->
 												<div class="panel-heading">
 													<div class="checkbox no-margin">
-															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#group-join-application">이 그룹에 가입 신청</button>
+														<!-- 그룹원일 경우 보여져야 하는 버튼 -->
+														<div class="pull-right">
+															<!-- 그룹탈퇴 컨트롤러로 바로 찍어주기 -->
+															<a href="" id="group-info-member-delete" class="btn btn-danger btn-xs">
+																<i class="fa fa-user-times" aria-hidden="true"></i>
+																그룹 탈퇴
+															</a>
+														</div>
+														<!-- 그룹원일 경우 보여져야 하는 버튼 -->
+														
+														<!-- 그룹원이 아닐 경우 보여져야 하는 버튼 -->
+														<div class="pull-right margin-right-10">
+															<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#group-create">
+																이 그룹에 가입 신청
+															</button>
 															
 															<!-- modal form -->
 															<form action="" method="post" class="form-horizontal">
@@ -157,6 +171,9 @@
 																<!-- /.modal -->
 															</form>
 															<!-- modal form -->
+														</div>
+														<!-- 그룹원이 아닐 경우 보여져야 하는 버튼 -->
+														DaviznDeveloper 의 그룹원
 													</div>
 												</div>
 
@@ -203,110 +220,147 @@
 									<div role="tabpanel" class="tab-pane" id="groupGorl">
 
 										<br>
-
-										<div class="group-info-gorl-persent">전체 달성률</div>
-										<div class="progress">
-											<div class="progress-bar progress-bar-info" role="progressbar"
-												aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-												style="width: 20%">20%
+										<div class="col-sm-12 no-padding">
+											<div class="group-info-gorl-persent">전체 달성률</div>
+											<div class="progress">
+												<div class="progress-bar progress-bar-info" role="progressbar"
+													aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+													style="width: 20%">20%
+												</div>
 											</div>
 										</div>
 				
 										<br>
-										<div class="list-group">
-											<a href="#" class="list-group-item">
-												<span class="badge">7</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;내 데이터 관리
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">38</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;내 그룹
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">1</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;커뮤니티
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">1</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;1:1 문의&건의
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">3</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;알림
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">3</span>
-												<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;쪽지 
+										
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										<div class="col-sm-12 no-padding margin-bottom-10">
+											<a href="">
+												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 목표 페이지로 이동
 											</a>
 										</div>
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										
+										<div class="col-sm-12 no-padding">
+											<div class="list-group">
+												<a href="#" class="list-group-item">
+													<span class="badge">7</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;사용자 요구사항 정의서
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">38</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;유스케이스 명세서
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">1</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;시스템 요구사항 명세서
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">1</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;클래스 설계서
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">3</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;엔티티 관계 모형 정의서
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">3</span>
+													<i class="fa fa-check-square-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;데이터베이스 설계서
+												</a>
+											</div>
+										</div>
+										
 									</div>
 									
 									<div role="tabpanel" class="tab-pane" id="groupData">
 										<br>
-										<div class="list-group">
-											<a href="#" class="list-group-item">
-												<span class="badge">7</span>
-												<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;kosta 112기 활동 내역
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">4</span>
-												<i class="fa fa-calendar profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;java 일일 강의 내용
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">6</span>
-												<i class="fa fa-trophy profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;web - client 일일 강의 내용
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">0</span>
-												<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;Database
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">0</span>
-												<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;Spring
+										
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										<div class="col-sm-12 no-padding margin-bottom-10">
+											<a href="">
+												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 데이터 페이지로 이동
 											</a>
 										</div>
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										
+										<div class="col-sm-12 no-padding margin-bottom-10">
+											<div class="list-group">
+												<a href="#" class="list-group-item">
+													<span class="badge">7</span>
+													<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;kosta 112기 활동 내역
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">4</span>
+													<i class="fa fa-calendar profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;java 일일 강의 내용
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">6</span>
+													<i class="fa fa-trophy profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;web - client 일일 강의 내용
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">0</span>
+													<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;Database
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">0</span>
+													<i class="fa fa-file-o profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;Spring
+												</a>
+											</div>
+										</div>
+										
 									</div>
 									
 									<div role="tabpanel" class="tab-pane" id="groupDataHistory">
 										<br>
-										<div class="list-group">
-											<a href="#" class="list-group-item">
-												<span class="badge">7</span>
-												<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;kosta 112기 활동 내역
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">4</span>
-												<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;java 일일 강의 내용
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">6</span>
-												<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;web - client 일일 강의 내용
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">0</span>
-												<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;Database
-											</a>
-											<a href="#" class="list-group-item">
-												<span class="badge">0</span>
-												<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
-												&nbsp;&nbsp;Spring
+										
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										<div class="col-sm-12 no-padding margin-bottom-10">
+											<a href="">
+												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 데이터 히스토리 페이지로 이동
 											</a>
 										</div>
+										<!-- 그룹원일 경우 보여져야 하는 링크 -->
+										
+										<div class="col-sm-12 no-padding margin-bottom-10">
+											<div class="list-group">
+												<a href="#" class="list-group-item">
+													<span class="badge">7</span>
+													<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;kosta 112기 활동 내역
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">4</span>
+													<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;java 일일 강의 내용
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">6</span>
+													<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;web - client 일일 강의 내용
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">0</span>
+													<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;Database
+												</a>
+												<a href="#" class="list-group-item">
+													<span class="badge">0</span>
+													<i class="fa fa-code-fork profile-font-icon" aria-hidden="true"></i>
+													&nbsp;&nbsp;Spring
+												</a>
+											</div>
+										</div>
+										
 									</div>
 									
 								</div>
@@ -325,6 +379,5 @@
 			
 		</div>
 
-<script src="${pageContext.request.contextPath}/resources/lib/ckeditor/ckeditor.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/data-note.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/group-info.js"></script>
 

@@ -32,7 +32,7 @@ public class navigationController {
 	}
 	
 	//
-	@RequestMapping("group.dvn")
+	@RequestMapping("groupNavi.dvn")
 	public String moveGroup(){
 		return "group.group-main";
 	}
