@@ -316,6 +316,7 @@
 			$(this).parent().siblings('#goal-check-success').children('.goal-success-message').text(goalSuccessModyContent);
 		}); 
 		
+		 
 	});
 	
 	function goalChecking() {
@@ -323,7 +324,6 @@
 		var checked = $("input:checked").length;
 		var goalPercent = Math.round(eval((checked / checklist) * 100));
 		
-		$(".pieProgress").asPieProgress('go',goalPercent);;
+		$(".pieProgress").asPieProgress('go',goalPercent);
 	}
 </script>
-
