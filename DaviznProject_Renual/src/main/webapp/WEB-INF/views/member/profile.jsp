@@ -26,7 +26,7 @@
 						</a>
 						
 						<div class="col-md-12 no-padding">
-							<span class="profile-nickname">${member.nickname}</span>
+							<span class="profile-nickname">${member.account}</span>
 							<a href="${pageContext.request.contextPath}/member/profileModi.dvn">
 								<span class="label label-primary">프로필 수정하기</span>
 							</a>

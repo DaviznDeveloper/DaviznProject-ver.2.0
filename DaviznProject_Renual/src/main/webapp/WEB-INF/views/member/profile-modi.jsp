@@ -37,7 +37,7 @@
 								<br>
 								
 								<div class="col-md-12 no-padding">
-									<input type="text" value ="${member.nickname}" name="nickname" class="form-control" placeholder="변경하실 닉네임을 입력하세요.">
+									<input type="text" value ="${member.account}" name="account" class="form-control" placeholder="변경하실 닉네임을 입력하세요.">
 								</div>
 								
 								<div class="col-md-12 no-padding">
