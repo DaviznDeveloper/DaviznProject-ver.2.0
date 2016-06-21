@@ -260,7 +260,7 @@
 																					<div class="col-sm-12">
 																						<div class="input-group">
 																							<span class="input-group-btn">
-																								<button class="btn btn-primary" type="button">
+																								<button class="btn btn-primary" type="button" id="inviteBtn">
 																									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 																								</button>
 																							</span>
@@ -555,3 +555,25 @@
 		</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/group-info-master.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var contextPath='${pageContext.request.contextPath}'
+		
+		$('#inviteBtn').click(function(){
+			$.ajax({
+		        url : contextPath+"/groupNavi/searchGroupList.dvn",
+		        type: "get",
+		        data : { "keyword" : $('#keyword').val() },
+		        success : function(data){
+		        	
+		        	
+		        },
+		        error :function(data){
+		        	alert('실패');
+		        }
+		    });
+		});
+	});
+	
+</script>

@@ -1,5 +1,14 @@
 package kr.or.davizn.groupService;
 
-public class GroupMemberService {
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class GroupMemberService {
+	
+	@Autowired
+	SqlSession sqlsession;
+	
+	
 }

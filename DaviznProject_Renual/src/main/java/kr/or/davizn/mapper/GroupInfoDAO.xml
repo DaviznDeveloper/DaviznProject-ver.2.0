@@ -2,7 +2,23 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="kr.or.davizn.groupInterface.GroupInfoDAO">
+
+	<!--그룹 목록 random select-->
+	<select id="randomGroupList" resultType="kr.or.davizn.groupDTO.GroupInfoDTO">
+	 <![CDATA[ 
+	 	select groupname, groupmaster
+ 	 	from groupinfo
+ 	 	where rownum <=5
+ 	 	order by dbms_random.value
+ 	 ]]> 
+	</select>
+	
+	<!--검색한 그룹 리스트 가져오기-->
+	<select id="searchGroupList" resultType="kr.or.davizn.groupDTO.GroupInfoDTO" parameterType="String">
+		select groupname, groupmaster
+		from groupinfo
+		where groupname like '%'||#{keyword}||'%'
+	</select>
 </mapper>
 
