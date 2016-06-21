@@ -10,10 +10,8 @@
                   <li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
                   <li class="active">데이터 관리(경로 체크)</li>
                </ol>
-               
              
-              
-                  
+            
                <security:authorize access="hasRole('ROLE_USER')">
                    <c:forEach var="b" items="${storagelist}">
                      <div class="data-repo-box" data-toggle="tooltip" title="${b.strgname}">

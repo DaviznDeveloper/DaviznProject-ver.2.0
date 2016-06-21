@@ -1,19 +1,26 @@
 package kr.or.davizn.groupController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.or.davizn.groupDTO.GroupInfoDTO;
 
 @Controller
 @RequestMapping("/group/")
 public class GroupController {
 	
 	@RequestMapping("addGroup.dvn")
-	public @ResponseBody List addGroup(){
-		List list = new ArrayList();
-		return list;
+	public String addGroup(GroupInfoDTO groupInfoDTO){
+		
+		//insert userid, auth ... into authodesign (table)
+		//insert userid, groupseq,auth ... into groupmember (table)
+		//insert userid(master), groupname, g_introduce ... into groupinfo(table)
+		
+		return "redirect:/group/showGroupList.dvn";
+	}
+	
+	@RequestMapping("showGroupList.dvn")
+	public String showGroupList(){
+		return "group.group-main";
 	}
 }
