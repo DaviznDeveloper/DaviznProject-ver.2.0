@@ -21,7 +21,7 @@ public class Alarm {
 
 	// goal 알람
 	public void insertAlram() throws Exception {
-
+		System.out.println("1번");
 		AlramDAO AlramDao = sqlsession.getMapper(AlramDAO.class);
 		AlramDao.goalAlarm();
 		
@@ -30,6 +30,7 @@ public class Alarm {
 	
 	//scheduelAlarm 알람
 	public void insertscheduel() throws Exception{
+		System.out.println("2번");
 		AlramDAO AlramDao=sqlsession.getMapper(AlramDAO.class);
 		AlramDao.scheduelAlarm();
 	}
