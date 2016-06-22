@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="kr.or.davizn.boardInterface.CommunityBoardDAO">
+	
+	<!-- 게시물 개수  String field, String query -->
+	<select id="getCount" resultType="Integer">
+	SELECT COUNT(*) FROM cmboard
+	</select>
+
+	<!-- 글 목록 보기 -->
+	<select id="getNotices" resultType="kr.or.davizn.boardDTO.CommunityBoardDTO">
+	SELECT * FROM
+               ( SELECT ROWNUM NUM, N.* 
+                 FROM 
+                     ( SELECT * 
+                       FROM CMBOARD 
+                       ORDER BY boardref desc, boardorder asc) N
+                ) WHERE NUM >= #{start} and NUM &lt;= #{end}
+	</select>
+	
+	<!-- 글 상세 보기 -->
+	<select id="getNotice" resultType="kr.or.davizn.boardDTO.CommunityBoardDTO">
+	SELECT * FROM CMBOARD WHERE boardseq=#{boardseq}
+	</select>
+	
+	<!-- 댓 글 상세보기 -->
+	<select id="replylist" resultType="kr.or.davizn.boardDTO.CommunityReplyDTO">
+		SELECT * FROM cmreply WHERE boardseq=#{boardseq}
+	</select>
+	
+	<!-- 글 입력하기   -->
+	<insert id="insert">
+	<!-- <selectKey order="BEFORE" keyProperty="BOARDREF" resultType="integer">
+		SELECT NVL(MAX(TO_NUMBER(BOARDREF)),0)+1 FROM CMBOARD
+	</selectKey> -->
+	      insert into CMBOARD (  boardseq, userid, boardsubject, boardcontent, boarddate, boardreadcount, boardref, boardlev, boardorder)
+		  values((SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD), #{userid}, #{boardsubject}, #{boardcontent}, SYSDATE, 0,(SELECT NVL(MAX(TO_NUMBER(BOARDREF)),0)+1 FROM CMBOARD), 0 , 0)
+	</insert>
+	
+	<!-- <insert id="insert">
+    <selectKey order="BEFORE" keyProperty="seq" resultType="String">
+    	SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD
+    </selectKey>
+	    INSERT INTO CMBOARD(BOARDSEQ, BOARDSUBJECT, BOARDCONTENT, BOARDDATE, BOARDREADCOUNT, BOARDREF, BOARDLEV, BOARDNOTICE, USERID, NICKNAME)
+		VALUES(#{BOARDSEQ}, #{BOARDSUBJECT}, #{BOARDCONTENT}, #{BOARDDATE}, #{BOARDREADCOUNT}, #{BOARDREF}, #{BOARDLEV}, #{BOARDNOTICE}, #{USERID}, #{NICKNAME})
+	</insert> -->
+	
+	<!-- 글 수정하기 -->
+	<update id="update">
+		UPDATE CMBOARD SET boardsubject=#{boardsubject}, boardcontent=#{boardcontent} WHERE boardseq=#{boardseq}
+	</update>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="delete">
+		DELETE  CMBOARD WHERE BOARDSEQ=#{BOARDSEQ}
+	</delete>
+	
+	<!-- 게시글 조회수 증가  -->
+	<update id="boardCount">
+		UPDATE cmboard SET boardreadcount=(SELECT boardreadcount FROM cmboard WHERE boardseq=#{boardseq})+1 WHERE boardseq=#{boardseq}
+	</update>
+	
+	<!-- 게시글 검색 -->
+	<select id="boardSearch" parameterType="map" resultType="kr.or.davizn.boardDTO.CommunityBoardDTO">
+		select * from cmboard where ${keyfield} like '%${keyword}%' order by boardseq desc
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 답글의 순번 생성 , 최상위 부모값을 가진 것 중 현재 답글을 달 게시물의순번보다 +1하여 밀리게 -->
+	<!--  boardorder = step , ref = boardref , boardlev = depth -->		
+	<update id="updateCommunityDepth">
+		update cmboard set boardorder = boardorder + 1 where boardref=#{boardref} and boardorder>#{boardorder}
+	</update>
+	
+	<!-- 답 글 쓰기    | boardorder = step , boardref = ref , boardlev = depth-->
+	<insert id="replyBoard">
+		INSERT INTO cmboard(boardseq, userid, boardsubject, boardcontent, boarddate, boardreadcount, boardref, boardorder , boardlev ,boardnotice)
+		VALUES((SELECT NVL(MAX(TO_NUMBER(BOARDSEQ)),0)+1 FROM CMBOARD), #{userid}, #{boardsubject}, #{boardcontent}, SYSDATE, 0, #{boardref}, #{boardorder}+1, #{boardlev}+1,  '1')
+	</insert>
+	
+	 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
