@@ -28,7 +28,6 @@ public class GoalService {
       return gdata;
    }
 
-
 	// 상세 목표 데이터 상태 변경	
 	public int updateDetailGoalState(int detailgoalseq) {
 		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
@@ -43,9 +42,6 @@ public class GoalService {
 		return result;
 	}
 	
-
-
-
 	//상세 수정
 	public int updateDetailComment(String commentmsg, int detailgoalseq) {
 		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);

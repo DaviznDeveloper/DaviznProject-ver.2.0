@@ -40,7 +40,7 @@
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/groupNavi.dvn">
+									<a href="${pageContext.request.contextPath}/group/goGroupMain.dvn">
 										<i class="fa fa-users" aria-hidden="true"></i></i> &nbsp;내 그룹
 									</a>
 								</li>
@@ -264,7 +264,7 @@
             <ul class="sidebar-nav">
                 <li>
                 	<div class="form-group">
-                		<input type="text" name="username" class="form-control" placeholder="이메일">
+                		<input type="text" name="username" class="form-control" placeholder="아이디">
                 	</div>
                 </li>
                 <li>
