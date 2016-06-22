@@ -197,6 +197,14 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		
+		<!-- 쪽지 관련 -->
+		<dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.0.4</version>
+        </dependency>
 	</dependencies>
     <build>
         <plugins>
