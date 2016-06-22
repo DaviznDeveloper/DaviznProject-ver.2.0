@@ -54,5 +54,12 @@ public class navigationController {
 	public String moveAdmin() {
 		return "admin.site-manage";
 	}
+	
+	//쪽지 창 이동
+	@RequestMapping("messageNavigation.dvn")
+	public String movemessage() {
+
+		return "redirect:/message/message.dvn"; //redirect:/message.dvn
+	}
 
 }
