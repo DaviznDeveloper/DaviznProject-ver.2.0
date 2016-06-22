@@ -141,7 +141,7 @@
 						<div class="row no-padding">
 							<h3 class="col-md-9">내가 저장한 데이터 (${listsize})</h3>
 							<div  class="col-md-3">
-								<select class="form-control data-m-repo-select">
+								<select class="form-control data-m-repo-select" name="selectStrg">
 									<option>내 저장소 선택</option>
 									<option>2</option>
 									<option>3</option>

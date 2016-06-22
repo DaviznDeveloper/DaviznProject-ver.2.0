@@ -62,6 +62,13 @@
 										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;1:1 문의&건의
 									</a>
 								</li>
+								
+								<li class="nav_menu">
+									<a href="${pageContext.request.contextPath}/messageNavigation.dvn">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;쪽지
+									</a>
+								</li>
+								
 								<!-- 
 								<li class="nav_menu">
 									<a href="#">
@@ -270,35 +277,3 @@
       </div>
 
 <br>
-<!-- <script type="text/javascript">
-	
-$('#loginBtn').click(function() {
-    
-    var params = $('#loginForm').serialize();
-    
-    console.log(params);
-    var contextPath='${pageContext.request.contextPath}'
-    $.ajax({
-       url : contextPath+'login',
-       type: 'POST',
-       data: params,
-       /* dataType: 'text', */
-        success: function(data){
-        	
-        	console.log('성공 메세지');
-        	console.log(data);
-        	
-           if(data != null) {
-              $('#loginBtn').trigger('click');
-           }
-        },
-        error: function(e){
-        	console.log('실패메세지');
-        	console.log(e);
-          $('#login-fail').fadeIn();
-        },
-        timeout: 10000
-    });
- });
-	
-</script> -->
