@@ -54,7 +54,7 @@ public class PersonalDataController {
  			view ="redirect:/note/detailNote.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
  		}else if(datatype==2){
  			//스케치 상세 보기
- 			
+ 			view ="redirect:/sketch/detailsketch.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
  		}else if(datatype==3){
  			//목표 상세 보기
  			view = "redirect:/goal/detailGoal.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
@@ -79,7 +79,7 @@ public class PersonalDataController {
  	}
  	
  	
- 	//데이터 리스트에서 수정하기
+ 	/*//데이터 리스트에서 수정하기
  	@RequestMapping("modifyPersonalData.dvn")
  	public String modifyPersonalData(@RequestParam int datatype,
  									 @RequestParam int strgseq,
@@ -102,7 +102,7 @@ public class PersonalDataController {
  		}
  			
  		return view;
- 	}
+ 	}*/
  	
  	
  	

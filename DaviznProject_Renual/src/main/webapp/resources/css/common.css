@@ -1,12 +1,4 @@
-
 @CHARSET "UTF-8";
-
-/* a 태그 */
-a:link { color: #777; }
-a:visited { color: #777; }
-a:hover { color: #777; }
-a:active { color: #777; }
-
 
 /* content 고정폭  */
 html, body {
@@ -410,13 +402,13 @@ html, body {
 	cursor: pointer;
 }
 
-/* gorl-data */
+/* goal-data */
 .circle-plus {
 	background: #2dbe60;
 	border-radius: 100%;
 }
 
-.gorl-create {
+.goal-create {
 	padding: 5px;
 	font-size: 18px;
 	color: #2dbe60;
@@ -428,67 +420,67 @@ html, body {
     transition: color 0.5s, transform 0.3s;
 }
 
-.gorl-create:hover {
+.goal-create:hover {
 	color: #fff;
 	background: #2dbe60;
 	cursor: pointer;
 }
 
-.gorl-checklist {
+.goal-checklist {
 	color: #2472b4;
 	font-weight: bold;
 }
 
-.gorl-check-create {
+.goal-check-create {
 	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
     transition: color 0.5s, transform 0.3s;
 }
 
-.gorl-check-create:hover {
+.goal-check-create:hover {
 	color: #2dbe60;
 	cursor: pointer;
 }
 
-.gorl-timeover {
+.goal-timeover {
 	color: #de3e6a;
 	font-weight: bold;
 }
 
-.gorl-atag:link {text-decoration: none; color: #777;}
-.gorl-atag:visited {text-decoration: none; color: #777;}
-.gorl-atag:hover {text-decoration: none; color: #777;}
-.gorl-atag:active {text-decoration: none; color: #777;}
+.goal-atag:link {text-decoration: none; color: #777;}
+.goal-atag:visited {text-decoration: none; color: #777;}
+.goal-atag:hover {text-decoration: none; color: #777;}
+.goal-atag:active {text-decoration: none; color: #777;}
 
-.gorl-list-title {
+.goal-list-title {
 	text-indent: 30px;
 }
 
-.gorl-check-input-box {
+.goal-check-input-box {
 	position: relative;
 }
 
-.gorl-check-input-box-close {
+.goal-check-input-box-close {
 	position: absolute;
 	top: 7px;
 	right: 10px;
 }
 
-.gorl-detail-checklist {
+.goal-detail-checklist {
 	background: #fff;
 }
 
-.gorl-detail-title {
+.goal-detail-title {
 	font-weight: bold;
 	color: #2dbe60;
 }
 
-.gorl-success-message {
+.goal-success-message {
 	line-height: 30px;
 	color: #70b300;
 	font-weight: bold;
 }
 
-.gorl-success-message-modi {
+.goal-success-message-modi {
 	float: right;
 	line-height: 30px;
 	font-size: 18px;
@@ -498,19 +490,19 @@ html, body {
     transition: color 0.5s, transform 0.3s;
 }
 
-.gorl-success-message-modi:hover {
+.goal-success-message-modi:hover {
 	color: #2dbe60;
 	cursor: pointer;
 }
 
-.gorl-success-message-modi-area {
+.goal-success-message-modi-area {
 	float: left;
 	width: 80%;
 	resize: none;
 	border-radius: 4px;
 }
 
-.gorl-success-message-modi-save {
+.goal-success-message-modi-save {
 	float: left;
 	width: 15%;
 	height: 46px;
@@ -728,4 +720,47 @@ html, body {
 	resize: none;
 }
 
+.a-font {
+	color: #777;
+}
+
+.panel-green {
+	border: 1px solid #4cae4c;
+}
+
+.panel-green > .panel-heading {
+	background: #5cb85c;
+	color: #fff;
+}
+
+.panel-purple {
+	border: 1px solid #6a009d;
+}
+
+.panel-purple-l {
+	border: 1px solid #e2b2f9;
+}
+
+.panel-purple > .panel-heading, .btn-purple {
+	background: #71448d;
+	color: #fff;
+}
+
+.panel-purple-l > .panel-heading {
+	background: #e1c8fe;
+	color: #7a24aa;
+}
+
+.active-purple {
+	background: #f1e6ff;
+}
+
+.btn-purple:hover {
+	background: #5d008d;
+	color: #fff;
+}
+
+.text-bold {
+	font-weight: bold;
+}
 /* 쉬운 공통 설정 */

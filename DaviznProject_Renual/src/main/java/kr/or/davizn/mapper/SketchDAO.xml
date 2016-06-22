@@ -2,6 +2,42 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.davizn.dataInterface.NoteDAO">
+<mapper namespace="kr.or.davizn.dataInterface.SketchDAO">
+	
+	<!--개인 저장소에 스케치 데이터 추가-->
+	<insert id="addPersonalSketch">
+		insert into personaldata(dataseq,strgseq,dataname,datatype,datacreate)
+		values(data_seq.nextval,#{param1},#{param2},2,sysdate)
+	</insert>
+	
+	<!-- 스케치 데이터 추가 -->
+	<insert id="addSketch">
+		insert into sketch (dataseq,datatype,filepath) 
+		values((select nvl(max(dataseq),0) from personaldata),2,#{filepath})
+	</insert>
+	
+	<!--스케치 데이터의 파일 이름 가져오기-->
+	<select id="detailSketch" resultType="kr.or.davizn.dataDTO.PersonalDataSketchDTO">
+		select p.dataseq,p.strgseq,p.dataname,p.datacreate,s.filepath
+		from personaldata p join sketch s
+		on p.dataseq=s.dataseq
+		where p.dataseq=#{dataseq}
+	</select>
+	
+	<!--스케치 데이터 삭제-->
+	<delete id="deleteSketch">
+		delete from personaldata where dataseq=#{dataseq}
+	</delete>
+	
+	<!--스케치 데이터 수정(제목 수정)-->
+	<update id="updateDataName">
+		update personaldata set dataname=#{param1} where dataseq=#{param2}
+	</update>
+	
+	<!--스케치 데이터 파일 이름 가져오기-->
+	<select id="getFilePath" resultType="String">
+		select filepath from sketch where dataseq=#{dataseq}
+	</select>
+	
 	
 </mapper>

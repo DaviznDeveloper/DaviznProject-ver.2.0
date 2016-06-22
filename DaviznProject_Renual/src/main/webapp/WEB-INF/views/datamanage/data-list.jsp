@@ -76,7 +76,7 @@
 															<h3>스케치형 데이터</h3>
 															<p>스케치형 데이터는 스케치북에 그림이나 글을 펜으로 그리듯이 작성할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/sketch/*.dvn" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/sketch/moveSketchCreate.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
