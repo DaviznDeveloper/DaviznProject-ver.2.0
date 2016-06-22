@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.davizn.boardInterface.QandAboardDAO">
+	<!-- 총 게시글 수  -->
+	<select id="getCount" resultType="Integer">
+	  SELECT COUNT(*) FROM qnaboard 
+	 </select> 
+	 
+	<select id="getNotices" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
+	        SELECT * FROM
+	               ( SELECT ROWNUM NUM, N.* FROM 
+							                     ( SELECT * 
+							                       FROM qnaboard 
+							                       ORDER BY boarddate DESC) N
+					) WHERE NUM >= #{start} and NUM &lt;= #{end}	
+	    </select>
+	 <!-- 게시글 상세보기 -->
+	 <select id="getNotice" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
+	        SELECT * FROM qnaboard WHERE boardseq=#{boardseq}
+	 </select>
+	 <!-- 댓글 상세보기 -->
+ 	 <select id="replylist" resultType="kr.or.davizn.boardDTO.QandAReplyDTO">
+	 		SELECT * FROM qnareply WHERE boardseq=#{boardseq}
+	 </select> 
+	 <!-- 게시글 삭제 -->
+	 <delete id="delete" >
+	      DELETE qnaboard WHERE boardseq=#{boardseq}
+	 </delete>
+	 <!-- 게시글 수정 -->
+	 <update id="update" >
+	      UPDATE qnaboard SET boardsubject=#{boardsubject}, boardcontent=#{boardcontent} WHERE boardseq=#{boardseq}
+	 </update>
+	<!--  게시글 작성 -->
+	 <insert id="insert">	      
+		  insert into qnaboard (boardseq,boardsubject,boardpwd,boardcontent,boarddate,boardreadcount,userid)
+				  values((SELECT NVL(MAX(TO_NUMBER(boardseq)),0)+1 FROM qnaboard), #{boardsubject}, #{boardpwd}, #{boardcontent},SYSDATE,0,#{userid})
+	</insert>
+	<!-- 게시글 조회수 증가 -->
+	<update id="boardCount">
+		 update qnaboard set boardreadcount=(select boardreadcount from qnaboard where boardseq=#{boardseq})+1 where boardseq=#{boardseq}
+	</update>
+	
+	<update id="insertOfMemberPoint">
+		update member
+		set point = nvl(point,0) + 1
+		where userid = #{userid}
+	</update>
+	
+	<!-- 게시글 검색  -->
+	<select id="boardSearch" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
+        select * from qnaboard where  ${keyfield} like '%${keyword}%' order by boardseq desc
+    </select>
+	
+</mapper>
