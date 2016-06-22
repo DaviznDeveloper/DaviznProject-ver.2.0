@@ -2,6 +2,7 @@ package kr.or.davizn.memberController;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -73,6 +74,12 @@ public class DaviznMemberController {
 	
 	}
 	
+/*//	//그룹장이 회원 초대
+//	@RequestMapping("inviteMember.dvn")
+//	public @ResponseBody List<DaviznMemberDTO> inviteMember(){
+//		
+//	}
+*/	
 	
 	
 	

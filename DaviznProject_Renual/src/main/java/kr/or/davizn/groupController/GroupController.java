@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupListDTO;
@@ -25,9 +26,18 @@ public class GroupController {
 	
 	@RequestMapping("goGroupMain.dvn")
 	public String goGroupMain(Principal principal,Model model){
+		
+		//생성한 그룹 리스트
 		List<GroupListDTO> groupList = groupInfoService.getGroupList(principal.getName());
+		//랜덤으로 그룹 리스트 출력
+		List<GroupInfoDTO> randomList = groupInfoService.randomGroupList();
+	
+		
 		model.addAttribute("groupList",groupList);
+		model.addAttribute("rlist", randomList);
+		
 		System.out.println("controller에서의 userid" + principal.getName());
+		
 		return "group.group-main";
 	}
 	
@@ -74,5 +84,17 @@ public class GroupController {
 	public String goGroupInfo(Principal principal){
 		//해당 id의 그룹권한 체크
 		return "group.group-info";
+	}
+	
+	
+	
+		
+	//그룹 검색 리스트 얻기
+	@RequestMapping("searchGroupList.dvn")
+	public @ResponseBody List<GroupInfoDTO> searchGroupList(String keyword){
+		
+		List<GroupInfoDTO> searchList = groupInfoService.searchGroupList(keyword);
+		System.out.println("검색 리스트 : "+searchList);
+		return searchList;
 	}
 }
