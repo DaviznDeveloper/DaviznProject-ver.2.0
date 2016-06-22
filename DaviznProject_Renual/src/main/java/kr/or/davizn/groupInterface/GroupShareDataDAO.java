@@ -1,5 +1,7 @@
 package kr.or.davizn.groupInterface;
 
-public interface GroupShareDataDAO {
+import kr.or.davizn.groupDTO.GroupShareDataDTO;
 
+public interface GroupShareDataDAO {
+	public int addShareData(GroupShareDataDTO groupsharedto);
 }

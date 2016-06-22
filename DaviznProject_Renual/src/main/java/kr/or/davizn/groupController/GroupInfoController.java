@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.davizn.groupDTO.GroupDataDTO;
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
@@ -17,7 +19,7 @@ import kr.or.davizn.memberDTO.AuthorityDTO;
 
 @Controller
 @RequestMapping("/group/")
-public class GroupController {
+public class GroupInfoController {
 	
 	@Autowired
 	GroupInfoService groupInfoService;
@@ -76,8 +78,14 @@ public class GroupController {
 		return "group.group-info";
 	}
 	
+	
 	@RequestMapping("goGroupDataList.dvn")
-	public String goGroupDataList(){
-		return "";
+	public String goGroupDataList(@RequestParam int groupseq){
+		return "redirect:/group/showGroupDataList.dvn?groupseq="+groupseq;
+	}
+	
+	@RequestMapping("showGroupDataList.dvn")
+	public String showGroupDataList(@RequestParam int groupseq){
+		return "group.group-data-list";
 	}
 }

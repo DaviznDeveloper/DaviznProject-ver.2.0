@@ -1,5 +1,7 @@
 package kr.or.davizn.groupInterface;
 
-public interface GroupDataDAO {
+import kr.or.davizn.groupDTO.GroupDataDTO;
 
+public interface GroupDataDAO {
+	public int addGroupData(GroupDataDTO groupdatadto);
 }

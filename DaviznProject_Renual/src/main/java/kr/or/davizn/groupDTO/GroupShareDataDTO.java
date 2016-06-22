@@ -3,12 +3,7 @@ package kr.or.davizn.groupDTO;
 import java.sql.Date;
 
 public class GroupShareDataDTO {
-	/*SHARE_DATASEQ	NUMBER
-GROUPSEQ	NUMBER
-DATASEQ	NUMBER
-USERID	VARCHAR2(50 BYTE)
-SHAREDATE	DATE
-DATATYPE	NUMBER*/
+
 	private int share_dataseq;
 	private int groupseq;
 	private int dataseq;

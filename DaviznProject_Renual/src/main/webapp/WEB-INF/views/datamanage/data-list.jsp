@@ -214,7 +214,9 @@
 											</div>
 										</span>
 										<!-- modal -->
-										<form action="${pageContext.request.contextPath}/group/goGroupDataList.dvn" method="post">
+										<form action="${pageContext.request.contextPath}/sharedata/addShareData.dvn" method="post">
+											<input type="hidden" id="dataseq" name="dataseq" value="${pdata.strgseq}">
+											<input type="hidden" id="datatype" name="datatype" value="${pdata.datatype}">
                      						<div class="modal fade" id="data-share" tabindex="-1" role="dialog"
 											aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog modal-lg">
@@ -237,8 +239,8 @@
 																				<div class="radio">
 																					<label>
 																					<!-- input[type=radio] name값 = 데이터일련번호 멤버필드명 / value값 = "데이터 일련번호값" -->
-																						<input type="radio" name="optionsRadios"
-																							id="optionsRadios1" value="${group.groupseq}">
+																						<input type="radio" name="groupseq"
+																							id="groupseq" value="${group.groupseq}">
 																							<h3>${group.groupname}</h3>
 																					</label>
 																				</div>
