@@ -40,7 +40,7 @@
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/groupNavi.dvn">
+									<a href="${pageContext.request.contextPath}/group/goGroupMain.dvn">
 										<i class="fa fa-users" aria-hidden="true"></i></i> &nbsp;내 그룹
 									</a>
 								</li>
