@@ -24,7 +24,7 @@
 								</button>
 								<br><br>
 								
-								<form action="" method="post" class="form-horizontal">
+								<form action="${pageContext.request.contextPath}/group/addGroup.dvn" method="post" class="form-horizontal">
 									<div id="group-create" class="modal fade">
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
@@ -46,7 +46,7 @@
 													<div class="row">
 														<label for="inputgroupName" class="col-sm-2 control-label">그룹 이름</label>
 														<div class="col-sm-10">
-															<input type="text" name="groupName" class="form-control" id="inputgroupName"
+															<input type="text" name="groupname" class="form-control" id="inputgroupName"
 																placeholder="그룹 이름을 입력하세요">
 														</div>
 													</div>
@@ -56,7 +56,7 @@
 													<div class="row">
 														<label for="inputgroupIntroduce" class="col-sm-2 control-label">그룹 소개</label>
 														<div class="col-sm-10">
-															<textarea name="groupIntroduce" class="form-control textarea-size-fix" rows="3" id="inputgroupIntroduce"
+															<textarea name="g_introduce" class="form-control textarea-size-fix" rows="3" id="inputgroupIntroduce"
 																placeholder="그룹에 대해 간략하게 소개하세요"></textarea>
 														</div>
 													</div>
@@ -77,19 +77,20 @@
 							</div>
 							
 							
+						
 							
 							<div class="col-sm-12 no-padding">
-							
-                 		 		<a href="${pageContext.request.contextPath}/groupNavi/goGroupInfo.dvn">
+								<c:forEach var="grouplist" items="${groupList}">
+                 		 		<a href="${pageContext.request.contextPath}/group/goGroupInfo.dvn">
 									<div class="panel panel-primary">
 										<div class="panel-body">
 										
 											<div class="group-main-groupbox-groupname">
-												DaviznDeveloper
+												${grouplist.groupname}
 											</div>
 											
 											<div>
-												그룹장 : Davizn
+												그룹장 : ${grouplist.groupmaster}
 											</div>
 											
 											<br>
@@ -101,7 +102,7 @@
 												</div>
 												
 												<div class="col-xs-12 center-block text-center">
-													3
+													${grouplist.g_membercount}
 												</div>
 												
 											</div>
@@ -113,7 +114,7 @@
 												</div>
 												
 												<div class="col-xs-12 center-block text-center">
-													1
+													${grouplist.g_datacount}
 												</div>
 												
 											</div>
@@ -125,7 +126,7 @@
 												</div>
 												
 												<div class="col-xs-12 center-block text-center">
-													2
+													${grouplist.g_goalcount}
 												</div>
 												
 											</div>
@@ -133,65 +134,10 @@
 										</div>
 									</div>
 								</a>
-                 		
-                 		 		<a href="${pageContext.request.contextPath}/groupNavi/groupInfo.dvn">
-									<div class="panel panel-primary">
-										<div class="panel-body">
-										
-											<div class="group-main-groupbox-groupname">
-												DaviznDeveloper
-											</div>
-											
-											<div>
-												그룹장 : Davizn
-											</div>
-											
-											<br>
-											
-											<div class="col-xs-4 no-padding border-right">
-												
-												<div class="col-xs-12 center-block text-center margin-bottom-10" data-toggle="tooltip" title="그룹 멤버">
-													<i class="fa fa-users vertical-middle group-main-icon-fonts" aria-hidden="true"></i>
-												</div>
-												
-												<div class="col-xs-12 center-block text-center">
-													3
-												</div>
-												
-											</div>
-											
-											<div class="col-xs-4 no-padding border-right">
-												
-												<div class="col-xs-12 center-block text-center margin-bottom-10" data-toggle="tooltip" title="그룹 데이터">
-													<i class="fa fa-files-o vertical-middle group-main-icon-fonts" aria-hidden="true"></i>
-												</div>
-												
-												<div class="col-xs-12 center-block text-center">
-													1
-												</div>
-												
-											</div>
-											
-											<div class="col-xs-4 no-padding">
-												
-												<div class="col-xs-12 center-block text-center margin-bottom-10" data-toggle="tooltip" title="그룹 목표">
-													<i class="fa fa-list-alt vertical-middle group-main-icon-fonts" aria-hidden="true"></i>
-												</div>
-												
-												<div class="col-xs-12 center-block text-center">
-													2
-												</div>
-												
-											</div>
-										
-										</div>
-									</div>
-								</a>
-
-								
-								
+                 				
+                 		 		
 								<br><br>
-								
+								</c:forEach>
 							</div>
 							
 						</div>
@@ -201,85 +147,37 @@
 							<div class="col-sm-12 no-padding">
 								<div class="input-group">
 									<span class="input-group-btn">
-										<button class="btn btn-warning" type="button">
+										
+										<button class="btn btn-warning" type="button" id="searchBtn">
 											<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 										</button>
 									</span>
-									<input type="text" class="form-control" placeholder="그룹명">
+									<input type="text" class="form-control" name="keyword" id="keyword" placeholder="그룹명">
 								</div>
 								<br>
 							</div>
 							
-							<a href="">
-								<div class="col-sm-12 no-padding">
-									<div class="panel panel-warning">
-										<div class="panel-body">
-											<div class="group-main-groupbox-groupname">
-												한글이 제일 쉬웠어요
-											</div>
-											
-											<div>
-												그룹장 : 세종대왕
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-								
-							<a href="">
-								<div class="col-sm-12 no-padding">
-									<div class="panel panel-warning">
-										<div class="panel-body">
-										
-											<div class="group-main-groupbox-groupname">
-												남자의 불꽃 드리블 강좌
-											</div>
-											
-											<div>
-												그룹장 : 루니
-											</div>
-										
-										</div>
-									</div>
-								</div>
-							</a>
 							
-							<a href="">	
-								<div class="col-sm-12 no-padding">
-									<div class="panel panel-warning">
-										<div class="panel-body">
-										
-											<div class="group-main-groupbox-groupname">
-												혁신은 무엇인가
-											</div>
-											
-											<div>
-												그룹장 : 스티브 잡스
-											</div>
-										
-										</div>
-									</div>
-								</div>
-							</a>
-								
+						<div id="removeList">
+							<c:forEach items="${rlist}" var="rgroup">
 							<a href="">
 								<div class="col-sm-12 no-padding">
 									<div class="panel panel-warning">
-										<div class="panel-body">
-										
-											<div class="group-main-groupbox-groupname">
-												가슴으로 외치는 샤우팅
-											</div>
+											<div class="panel-body">
+												<div class="group-main-groupbox-groupname">
+												${rgroup.groupname}
+												</div>
 											
-											<div>
-												그룹장 : 우리동네 골목대장
+												<div>
+												그룹장 : ${rgroup.groupmaster}
+												</div>
 											</div>
-										
-										</div>
 									</div>
 								</div>
 							</a>
 						
+							</c:forEach>
+						</div>
 						</div>
 						
 					</div>
@@ -293,4 +191,42 @@
 		</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/group-main.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$('#searchBtn').click(function(){
+			
+			var contextPath='${pageContext.request.contextPath}' 
+			var searchList="";
+			$.ajax({
+		        url : contextPath+"/group/searchGroupList.dvn",
+		        type: "get",
+		        data : { "keyword" : $('#keyword').val() },
+		        success : function(data){
+		        	$('#removeList').empty();
+		        	//동적으로 검색 리스트 만들기
+		        	$(data).each(function(index,element){
+		        	  
+		        	    searchList +='<a href="">';
+		        	    searchList +='<div class="col-sm-12 no-padding">';
+		        	    searchList += '<div class="panel panel-warning">';
+		        	    searchList += '<div class="panel-body">';
+		        	    searchList += '<div class="group-main-groupbox-groupname">';
+		        	    searchList += element.groupname+'</div><div>';
+		        	    searchList += '그룹장 :'+element.groupmaster+'</div></div></div></div></a>';
+		        	   
+		        	   });
+		        	
+		        	$('#removeList').html(searchList);
+		        	
+		        },
+		        error :function(data){
+		        	alert('실패');
+		        }
+		    });
+			
+		});
+	});
+
+</script>
 

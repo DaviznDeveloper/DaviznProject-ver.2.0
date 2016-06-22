@@ -254,7 +254,7 @@
 				            <ul class="sidebar-nav">
 				                <li>
 				                	<div class="form-group">
-				                		<input type="text" id="username" name="username" class="form-control" placeholder="이메일">
+				                		<input type="text" id="username" name="username" class="form-control" placeholder="아이디">
 				                	</div>
 				                </li>
 				                <li>

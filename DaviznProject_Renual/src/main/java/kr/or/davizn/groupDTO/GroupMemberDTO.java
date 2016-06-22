@@ -7,16 +7,8 @@ public class GroupMemberDTO {
 	private int g_memberseq;
 	private int groupseq;
 	private String userid;
-	private String role_name;
-	
-	public String getRole_name() {
-		return role_name;
-	}
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
-	}
 	private Date joinindate;
-	
+
 	public int getG_memberseq() {
 		return g_memberseq;
 	}

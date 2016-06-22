@@ -3,12 +3,7 @@ package kr.or.davizn.groupDTO;
 import java.sql.Date;
 
 public class GroupInfoDTO {
-	/*GROUPSEQ	NUMBER
-	GROUPNAME	VARCHAR2(50 BYTE)
-	G_INTRODUCE	VARCHAR2(200 BYTE)
-	GROUPMASTER	VARCHAR2(50 BYTE)
-	GROUPCREATE	DATE*/
-	
+
 	private int groupseq;
 	private String groupname;
 	private String g_introduce;
