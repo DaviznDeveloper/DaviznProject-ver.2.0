@@ -8,9 +8,6 @@ public interface GroupInfoDAO {
 
 	public int addGroup(GroupInfoDTO groupInfoDTO);
 	
-	//public int deleteGroup();
-	//public int updateGroup();
-	
 	//그룹 랜덤으로 5개 가져오기
 	public List<GroupInfoDTO> randomGroupList();
 	

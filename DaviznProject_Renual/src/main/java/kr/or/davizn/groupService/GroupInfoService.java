@@ -23,7 +23,6 @@ public class GroupInfoService {
 		return randomList;
 	}
 	
-	
 	//검색한 그룹 리스트 출력
 	public List<GroupInfoDTO> searchGroupList(String keyword){
 		GroupInfoDAO ginfodao =  sqlsession.getMapper(GroupInfoDAO.class);

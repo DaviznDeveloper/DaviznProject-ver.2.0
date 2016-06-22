@@ -22,9 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       values(detailgoal_seq.nextval, (select max(dataseq) from personaldata), #{goalname},0)
    </insert>
    
-   
-   
-   
+
    <!-- 목표 번호, 제목 가져오기 위해 PersonalData DTO 가져오기 -->
    <select id="getPersonalDatas" parameterType="Integer" resultType="kr.or.davizn.dataDTO.PersonalDataDTO">
       select * from personaldata where strgseq=#{strgseq} and datatype=3
