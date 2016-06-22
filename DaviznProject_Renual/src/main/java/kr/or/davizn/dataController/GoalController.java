@@ -18,9 +18,7 @@ import kr.or.davizn.dataService.GoalService;
 @Controller
 @RequestMapping("/goal/")
 public class GoalController {
-   
    @Autowired
-
    GoalService goalService;
    
    @RequestMapping("goGoalList.dvn")

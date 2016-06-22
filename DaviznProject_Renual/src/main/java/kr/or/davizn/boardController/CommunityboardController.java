@@ -24,8 +24,10 @@ public class CommunityboardController {
 	@RequestMapping("communityList.dvn")
 	@Transactional
 	public String notices(String pg , String f , String q , Model model) throws ClassNotFoundException , SQLException {
-		List<CommunityBoardDTO> list = communityboardservice.notices(pg, f , q);	
-		model.addAttribute("list" , list);	
+		List<CommunityBoardDTO> list = communityboardservice.notices(pg, f , q);
+		
+		model.addAttribute("list" , list);
+		System.out.println(list);
 		return "community.community-list";
 			
 	}

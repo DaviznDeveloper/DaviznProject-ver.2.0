@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.davizn.dataDTO.PersonalDataDTO;
-import kr.or.davizn.dataDTO.UserStrgDTO;
 import kr.or.davizn.dataInterface.PersonalDataDAO;
-import kr.or.davizn.dataInterface.UserStrgDAO;
 
 @Service
 public class PersonalService {
@@ -41,17 +39,18 @@ public class PersonalService {
 	public String addPersonalData(PersonalDataDTO pdata, String inputArticleContents, Principal principal,
 			HttpServletRequest request) throws IOException {
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
+		
+		  String fname = principal.getName()+System.currentTimeMillis();
+	      String endformat = ".txt";
+	      String fpath = request.getRealPath("/resources/notefile");
+	      String fullPath = fpath + "\\" + fname + endformat;
+	      String fileName = fname+endformat;
+	     
+	      FileWriter fw = new FileWriter(fullPath);
+	      fw.write(inputArticleContents);
+	      fw.close();
+		
 		int result = dao.addPersonalData(pdata);
-
-		String fname = principal.getName() + System.currentTimeMillis();
-		String endformat = ".txt";
-		String fpath = request.getRealPath("/resources/notefile");
-		String fullPath = fpath + "\\" + fname + endformat;
-		String fileName = fname + endformat;
-
-		FileWriter fw = new FileWriter(fullPath);
-		fw.write(inputArticleContents);
-		fw.close();
 
 		return fileName;
 	}

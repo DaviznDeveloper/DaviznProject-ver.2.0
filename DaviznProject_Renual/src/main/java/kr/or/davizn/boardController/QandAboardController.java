@@ -38,16 +38,20 @@ public class QandAboardController {
 	}
 
 	// 글상세보기
-	@Transactional
 	@RequestMapping("/QnA/Qnadetail.dvn")
-	public String noticeDetail(int boardseq, Model model) throws ClassNotFoundException, SQLException {
+	public String noticeDetail(int boardseq, Model model, Principal principal)
+			throws ClassNotFoundException, SQLException {
 		QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
 		List<QandAReplyDTO> replylist = QandAboardservice.replyDetail(boardseq);
+		String user = principal.getName();
+		System.out.println("user : " + user);
+		model.addAttribute("user", user);
 		model.addAttribute("replylist", replylist);
 		model.addAttribute("notice", notice);
 		return "QnA.qna-detail";
 
 	}
+
 
 	// 글등록 화면 처리
 	@Transactional

@@ -28,6 +28,7 @@ public class GoalService {
       return gdata;
    }
 
+
 	// 상세 목표 데이터 상태 변경	
 	public int updateDetailGoalState(int detailgoalseq) {
 		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
@@ -56,15 +57,12 @@ public class GoalService {
 		return result;
 	}
 
-
-   
    /*
     * 목표 저장하기
     * 
     */
    @Transactional
    public void addNewGoal(NewGoal newGoal, int strgseq) throws ParseException {
-
 
 		GoalDAO dao = sqlsession.getMapper(GoalDAO.class);
 		dao.addPdata(strgseq, newGoal.getDataname());

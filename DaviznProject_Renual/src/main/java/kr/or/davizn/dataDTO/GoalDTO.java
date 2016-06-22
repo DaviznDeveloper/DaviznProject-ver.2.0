@@ -1,6 +1,7 @@
 package kr.or.davizn.dataDTO;
 
 import java.sql.Date;
+import java.util.List;
 
 public class GoalDTO {
 	
@@ -9,6 +10,14 @@ public class GoalDTO {
 	private Date startdate;
 	private Date finaldate;
 	private int goalpercent;
+	private List<DetailGoalDTO> detailGoal;
+	
+	public List<DetailGoalDTO> getDetailGoal() {
+		return detailGoal;
+	}
+	public void setDetailGoal(List<DetailGoalDTO> detailGoal) {
+		this.detailGoal = detailGoal;
+	}
 	public int getDataseq() {
 		return dataseq;
 	}

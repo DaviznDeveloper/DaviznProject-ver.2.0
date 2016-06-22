@@ -82,7 +82,7 @@
 
 	<div class="container-fluid">
 		
-
+	
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -112,11 +112,12 @@
 								<li class="nav_menu">
 									<a href="${pageContext.request.contextPath}/userStrg.dvn">
 										<i class="fa fa-database" aria-hidden="true"></i> &nbsp;내 데이터 관리
+										${alram}
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/group/goGroupMain.dvn">
-										<i class="fa fa-users" aria-hidden="true"></i></i> &nbsp;내 그룹
+									<a href="${pageContext.request.contextPath}/data-main.jsp">
+										<i class="fa fa-users" aria-hidden="true"></i> &nbsp;내 그룹
 									</a>
 								</li>
 								<!-- // 데이터 마켓 구현 시, 코드 추가 
@@ -161,7 +162,7 @@
                        <ul class="dropdown-menu">
                           <li>
                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-                                  id : 제목제목??
+                                  id : 제목제목?? 
                               </a>
                           </li>
                           <li>
@@ -191,74 +192,27 @@
 				</li>
 				
 				<li>
+				 <c:if test="${userid != null}">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-						<span class="badge h-menu-tran-badge-notice">2</span>
+						
+						<span class="badge h-menu-tran-badge-notice">${alarmCount}</span>
                        </a>
                        <ul class="dropdown-menu">
-			                        
-										<!-- for-each -->
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <!-- choose(이모티콘) -->
-			                                   <i class="fa fa-trophy" aria-hidden="true"></i>
-			                                   <!-- choose(이모티콘) -->
-			                                   &nbsp;
-			                                   <span class="notice-header-span">3차 프로젝트가 종료되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <!-- for-each -->
-			                           
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-calendar" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">슬기 생일 3일 전</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-users" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-users" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-users" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-users" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <i class="fa fa-users" aria-hidden="true"></i>
-			                                   &nbsp;
-			                                   <span class="notice-header-span">'Davizn'에 가입 승인되었습니다.</span>
-			                               </a>
-			                           </li>
-			                           <li class="vertical-middle padding-vertical text-center">
-			                               <a href="${pageContext.request.contextPath}/main-profile.navigation">
-			                                   <span class="notice-header-span notice-header-all">전체보기</span>
-			                               </a>
-			                           </li>
-			                        </ul>
-			                    
-                       
+	                      
+		                       <c:forEach items="${alarmList}" var="al">
+		                          <li>
+		                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                 
+		                               ${al.datatype} ${al.dataname}일정이 종료되었습니다.</a>
+		                          </li>
+		                          </c:forEach>
+		                          <li class="vertical-middle padding-vertical text-center">
+                                      <a href="${pageContext.request.contextPath}/main-profile.navigation">
+                                          <span class="notice-header-span notice-header-all">전체보기</span> </a>
+                       			  </li>
+                       </ul>
+                            	  
+                      </c:if>
                        <%-- 
 					<li>
 						<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
@@ -283,7 +237,7 @@
     		</li>
    		</se:authorize>
 				  -->
-				
+			
 				<li>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					<se:authentication property="name" var="LoingUser" />
@@ -346,7 +300,7 @@
             <ul class="sidebar-nav">
                 <li>
                 	<div class="form-group">
-                		<input type="text" name="username" class="form-control" placeholder="아이디">
+                		<input type="text" name="username" class="form-control" placeholder="이메일">
                 	</div>
                 </li>
                 <li>

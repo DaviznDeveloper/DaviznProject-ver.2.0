@@ -73,6 +73,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from personaldata where dataseq=#{dataseq}
 	</delete>
 
-
-
 </mapper>
