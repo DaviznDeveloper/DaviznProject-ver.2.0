@@ -200,20 +200,79 @@
 										<span class="data-list-span">${pdata.datacreate}</span>
 									</div>
 								</td>
+								
 								<td>
-									<a href="" class="btn chart-list-option-btn">
+										<span class="pull-right margin-right-10">
+											<a href="${pageContext.request.contextPath}/personalData/deletePersonalNoteData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
+												<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
+											</a>
+										</span>
 										
-									</a>
-									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
-										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-									</a>
-									<!-- <a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
-										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
-									</a> -->
-									<a href="${pageContext.request.contextPath}/personalData/deletePersonalNoteData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-									</a>
-								</td>
+										<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
+											<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share">
+												<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
+											</div>
+										</span>
+										<!-- modal -->
+										<form action="${pageContext.request.contextPath}/group/goGroupDataList.dvn" method="post">
+                     						<div class="modal fade" id="data-share" tabindex="-1" role="dialog"
+											aria-labelledby="myModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-lg">
+													<div class="modal-content">
+									
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h4 class="modal-title" id="myModalLabel">데이터 공유하기</h4>
+														</div>
+													
+														<div class="modal-body">
+															<div class="row col-xs-12 center-block">
+												 				<c:forEach var="group" items="${groupList}">
+																	<div class="col-sm-4">
+																		<div class="panel panel-info">
+																			<div class="panel-heading">
+																				<div class="radio">
+																					<label>
+																					<!-- input[type=radio] name값 = 데이터일련번호 멤버필드명 / value값 = "데이터 일련번호값" -->
+																						<input type="radio" name="optionsRadios"
+																							id="optionsRadios1" value="${group.groupseq}">
+																							<h3>${group.groupname}</h3>
+																					</label>
+																				</div>
+																			</div>
+																			<div class="panel-body">
+																				<div class="list-group">
+																					<h4 class="list-group-item-heading">
+																					그룹장 : ${group.groupmaster}
+																					</h4>
+																					
+																					<p class="list-group-item-text">
+																						현재 ${group.g_datacount}건의 데이터가 저장되어있습니다.
+																					</p>
+																				</div>
+																			
+																			</div>
+																		</div>
+																	</div>
+																</c:forEach>
+															</div>
+														</div>
+					
+														<div class="modal-footer">
+															<button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
+															<button type="submit" class="btn btn-info">확인</button>
+														</div>
+													</div>
+												</div>
+											</div>
+                  						
+										
+										</form>
+										<!-- modal -->
+									</td>
 							</tr>
 							
 							</c:forEach>

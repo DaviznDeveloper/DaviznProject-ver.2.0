@@ -75,4 +75,9 @@ public class GroupController {
 		//해당 id의 그룹권한 체크
 		return "group.group-info";
 	}
+	
+	@RequestMapping("goGroupDataList.dvn")
+	public String goGroupDataList(){
+		return "";
+	}
 }

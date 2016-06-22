@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataService.PersonalService;
+import kr.or.davizn.dataService.UserStrgService;
+import kr.or.davizn.groupDTO.GroupListDTO;
+import kr.or.davizn.groupService.GroupInfoService;
 
 @Controller
 @RequestMapping("/personalData/")
@@ -21,15 +24,18 @@ public class PersonalDataController {
 
    @Autowired
    private PersonalService personalDataService;
-  
+   @Autowired
+   private GroupInfoService groupInfoService;
    
    //데이터 리스트 보기
    @RequestMapping("showPersonalDataList.dvn")
-   public String showPersonalDataList(Model model, int strgseq){
-      List<PersonalDataDTO> list = personalDataService.showPersonalDataList(strgseq);
-      model.addAttribute("pdatalist", list);
+   public String showPersonalDataList(Model model, int strgseq,Principal principal){
+      List<PersonalDataDTO> pdatalist = personalDataService.showPersonalDataList(strgseq);
+      List<GroupListDTO> grouplist = groupInfoService.getGroupList(principal.getName());
+      model.addAttribute("pdatalist", pdatalist);
+      model.addAttribute("groupList",grouplist);
       model.addAttribute("strgseq",strgseq);
-      model.addAttribute("listsize",list.size());
+      model.addAttribute("listsize",pdatalist.size());
       return "datamanage.data-list";
    }
    
