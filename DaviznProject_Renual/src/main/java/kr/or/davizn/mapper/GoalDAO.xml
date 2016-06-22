@@ -39,8 +39,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getGoals" parameterType="Integer" resultType="kr.or.davizn.dataDTO.GoalDTO">
 		select * from goal where dataseq = #{dataseq}
 	</select>
-
-	
 	
 	
 	<!--목표 데이터 상세보기-->
@@ -52,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on p.dataseq=g.dataseq
 		join detailgoal d
 		on g.dataseq = d.dataseq
-		where p.dataseq=#{dataseq}
+		where p.dataseq=#{dataseq} order by detailgoalseq asc
 	</select>
 		
 	<!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->

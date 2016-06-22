@@ -38,7 +38,7 @@ public class CommunityBoard {
       CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
       //System.out.println(communityBoardDAO.toString());
       //System.out.println("서비스2");
-      
+      System.out.println("comm : " + communityBoardDAO.hashCode());
       List<CommunityBoardDTO> list = communityBoardDAO.getNotices(page, field, query);
       System.out.println("list" + list);
       
@@ -52,6 +52,7 @@ public class CommunityBoard {
       CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
       CommunityBoardDTO notice = communityBoardDAO.getNotice(boardseq);
       //communityBoardDAO.boardCount(Integer.parseInt(boardseq));
+      
       return notice;
       
    }

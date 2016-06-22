@@ -10,6 +10,29 @@ import kr.or.davizn.memberService.AuthorityService;
 @Controller
 @RequestMapping("/auth/")
 public class AuthController {
+/*<<<<<<< HEAD*/
+	
+	@Autowired
+	private AuthorityService service;
+	
+	
+	//권한 부여
+	@RequestMapping("grantAuth.dvn")
+	public String grantAuth(@RequestParam String userid){
+		String view = null;
+		String newStrgname = "저장소이름";
+		int result = service.grantAuth(userid);
+		if(result > 0){
+			System.out.println("회원가입성공/권한부여성공");
+			view = "redirect:/userStrg/newStorage.dvn?strgname="+newStrgname+"&userid="+userid;
+		}else{
+			System.out.println("회원가입성공/권한부여실패");
+			view = "joinus.signup";
+		}
+		return view;
+	}
+}
+/*=======
    
    @Autowired
    private AuthorityService service;
@@ -31,3 +54,4 @@ public class AuthController {
       return view;
    }
 }
+>>>>>>> refs/remotes/origin/master*/

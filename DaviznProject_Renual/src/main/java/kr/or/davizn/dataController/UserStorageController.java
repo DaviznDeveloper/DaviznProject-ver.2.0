@@ -19,6 +19,18 @@ public class UserStorageController {
 
 	@Autowired
 	private UserStrgService storageService;
+/*<<<<<<< HEAD*/
+	
+	//회원 가입 시 1개의 저장소 부여
+	@RequestMapping("newStorage.dvn")
+	public String newStorage(String strgname, String userid){
+		storageService.addStorage(strgname, userid);
+		return "joinus.sign-up-ok";
+	}
+	
+	
+/*	//저장소 추가하기
+=======
 
 	// 회원 가입 시 1개의 저장소 부여
 	@RequestMapping("newStorage.dvn")
@@ -28,6 +40,7 @@ public class UserStorageController {
 	}
 
 	// 저장소 추가하기
+>>>>>>> refs/remotes/origin/master*/
 	@RequestMapping("addStorage.dvn")
 	public String addStorage(Principal principal, String strgname) {
 		System.out.println("Enter [addStorage.dvn]");

@@ -178,3 +178,8 @@
 <script src="${pageContext.request.contextPath}/resources/lib/goal/progress.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/lib/sugar/sugar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/data-goal.js"></script>
+
+<!--
+
+//-->
+</script>

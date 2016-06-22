@@ -51,7 +51,7 @@ public class QandAboard {
 		map.put("end", end);
 
 		List<QandAboardDTO> list = QandAboardDao.getNotices(map);
-
+System.out.println("hash : " + QandAboardDao);
 		model.addAttribute("list", list);
 		model.addAttribute("rowSize",rowSize);
 		model.addAttribute("pg", page);
@@ -68,6 +68,7 @@ public class QandAboard {
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
 		QandAboardDao.boardCount(boardseq);
 		System.out.println(notice);
+		System.out.println("hash : " + QandAboardDao);
 		return notice;
 	}
 
@@ -76,7 +77,7 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		System.out.println(n);
 		QandAboardDao.insert(n);
-
+		System.out.println("hash : " + QandAboardDao);
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -84,7 +85,7 @@ public class QandAboard {
 	public String noticeDel(String boardseq) throws ClassNotFoundException, SQLException {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
-		
+		System.out.println("hash : " + QandAboardDao);
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -112,7 +113,7 @@ public class QandAboard {
 
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		List<QandAReplyDTO> reqlylist = QandAboardDao.replylist(boardseq);
-		
+		System.out.println("hash : " + QandAboardDao);
 		return reqlylist;
 	}
 	 

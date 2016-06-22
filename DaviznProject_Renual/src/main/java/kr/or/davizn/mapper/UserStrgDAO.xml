@@ -19,4 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="showStorageList" parameterType="String" resultType="kr.or.davizn.dataDTO.UserStrgDTO">
 		select * from userstrg where userid=#{userid} order by strgseq
 	</select>
+	
+	
 </mapper>

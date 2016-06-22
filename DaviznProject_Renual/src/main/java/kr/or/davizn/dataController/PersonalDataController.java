@@ -60,7 +60,7 @@ public class PersonalDataController {
  			view = "redirect:/goal/detailGoal.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
  		}else if(datatype==4){
  			//일정 상세보기
- 			
+ 			view = "redirect:/schedule/detailSchedule.dvn?dataseq="+dataseq+"&strgseq="+strgseq;
  		}else{
  			
  		}

@@ -110,21 +110,23 @@
 				</li>
 				
 				<li>
+				 <c:if test="${userid != null}">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-						<span class="badge h-menu-tran-badge-notice">2</span>
-                       </a>ㅇㄹ
+						
+						<span class="badge h-menu-tran-badge-notice">${alarmCount}</span>
+                       </a>
                        <ul class="dropdown-menu">
-                          <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                 
-                              </a>
-                          </li>
-                          <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                
-                              </a>
-                          </li>
+	                      
+		                       <c:forEach items="${alarmList}" var="al">
+		                          <li>
+		                              <a href="${pageContext.request.contextPath}/main-profile.navigation">                                 
+		                              ${al.dataname} ${al.datatype}</a>
+		                          </li>
+		                          </c:forEach>
+	                        
                        </ul>
-                       
+                      </c:if>
                        <%-- 
 					<li>
 						<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
@@ -208,7 +210,7 @@
 					<strong id="login-fail">잘못된 아이디 또는 비밀번호 입니다.</strong>
 		</div>
       	
-      		<form action="${pageContext.request.contextPath}/login" id="" method="post">
+      		<form action="${pageContext.request.contextPath}/login" id="loginForm" method="post">
             <ul class="sidebar-nav">
                 <li>
                 	<div class="form-group">
@@ -222,7 +224,7 @@
                 </li>
                 <li>
                 	<div class="form-group">
-                		<input type="submit" class="btn btn-info btn-block" value="로그인">
+                		<input type="submit" id="loginBtn" class="btn btn-info btn-block" value="로그인">
                 	</div>
                 </li>
                 <li>
@@ -264,3 +266,35 @@
       </div>
 
 <br>
+<!-- <script type="text/javascript">
+	
+$('#loginBtn').click(function() {
+    
+    var params = $('#loginForm').serialize();
+    
+    console.log(params);
+    var contextPath='${pageContext.request.contextPath}'
+    $.ajax({
+       url : contextPath+'login',
+       type: 'POST',
+       data: params,
+       /* dataType: 'text', */
+        success: function(data){
+        	
+        	console.log('성공 메세지');
+        	console.log(data);
+        	
+           if(data != null) {
+              $('#loginBtn').trigger('click');
+           }
+        },
+        error: function(e){
+        	console.log('실패메세지');
+        	console.log(e);
+          $('#login-fail').fadeIn();
+        },
+        timeout: 10000
+    });
+ });
+	
+</script> -->
