@@ -14,6 +14,12 @@ public class GroupShareDataService {
 	SqlSession sqlsession;
 	
 	public int addShareData(GroupShareDataDTO groupsharedto){
+		System.out.println("-------- grousharedto 정보 ------------");
+		System.out.println("datatype : " + groupsharedto.getDatatype());
+		System.out.println("dataseq : " + groupsharedto.getDataseq());
+		System.out.println("groupseq : " + groupsharedto.getGroupseq());
+		System.out.println("userid : " + groupsharedto.getUserid());
+		System.out.println("------------------------------------------");
 		GroupShareDataDAO shareDataDAO = sqlsession.getMapper(GroupShareDataDAO.class);
 		int result = shareDataDAO.addShareData(groupsharedto);
 		return result;

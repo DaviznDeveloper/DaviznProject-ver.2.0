@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.or.davizn.groupInterface.GroupShareDataDAO">
 	<insert id="addShareData" parameterType="kr.or.davizn.groupDTO.GroupShareDataDTO">
 		insert into groupsharedata(share_dataseq,groupseq,dataseq,userid,sharedate,datatype)
-		values (sharedata_seq,#{groupseq},#{dataseq},#{userid},sysdate,#{datatype})
+		values (sharedata_seq.nextval,#{groupseq},#{dataseq},#{userid},sysdate,#{datatype})
 	</insert>
 </mapper>
 

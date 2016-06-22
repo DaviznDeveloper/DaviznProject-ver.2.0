@@ -17,24 +17,12 @@ public class ShareDataController {
 	@Autowired
 	GroupShareDataService groupshareService;
 	
-	/*@RequestMapping("addShareData.dvn")
-	public String addShareData(@RequestParam int dataseq, @RequestParam int datatype, @RequestParam int groupseq, Principal principal){
-		System.out.println("addShareData.dvn 컨트롤러 시작");
-		GroupShareDataDTO groupsharedto = new GroupShareDataDTO();
-		groupsharedto.setDataseq(dataseq);
-		groupsharedto.setDatatype(datatype);
+	@RequestMapping("addShareData.dvn")
+	public String addShareData(GroupShareDataDTO groupsharedto, Principal principal){
+		System.out.println("dataseq : "+groupsharedto.getDataseq()+"/ groupseq : " + groupsharedto.getGroupseq() + "/ datatype : " + groupsharedto.getDatatype());
 		groupsharedto.setUserid(principal.getName());
 		groupshareService.addShareData(groupsharedto);
-		return "redirect:/group/goGroupList.dvn?groupseq="+groupsharedto.getGroupseq();
-	}*/
-	
-	@RequestMapping("addShareData.dvn")
-	public String addShareData(@RequestParam int dataseq, @RequestParam int datatype, Principal principal){
-		System.out.println("addShareData.dvn 컨트롤러 시작");
-		System.out.println("dataseq : " + dataseq +"datatype : " + datatype);
-		GroupShareDataDTO groupsharedto = new GroupShareDataDTO();
-		
-		return "group.group-data-list";
+		return "redirect:/group/goGroupDataList.dvn?groupseq=" + groupsharedto.getGroupseq();
 	}
 	
 	@RequestMapping("modifyNote.dvn")
