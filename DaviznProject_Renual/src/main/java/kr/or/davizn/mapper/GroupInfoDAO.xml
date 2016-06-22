@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.davizn.groupInterface.GroupInfoDAO">
+
+
+	<!--그룹 목록 random select-->
+	<select id="randomGroupList" resultType="kr.or.davizn.groupDTO.GroupInfoDTO">
+	 <![CDATA[ 
+	 	select groupname, groupmaster
+ 	 	from groupinfo
+ 	 	where rownum <=5
+ 	 	order by dbms_random.value
+ 	 ]]> 
+	</select>
+	
+	<!--검색한 그룹 리스트 가져오기-->
+	<select id="searchGroupList" resultType="kr.or.davizn.groupDTO.GroupInfoDTO" parameterType="String">
+		select groupname, groupmaster
+		from groupinfo
+		where groupname like '%'||#{keyword}||'%'
+	</select>
+
+	<select id="getGMembercount" parameterType="Integer" resultType="Integer">
+		select count(g_memberseq) from groupmember where groupseq=#{groupseq}
+	</select>
+	
+	<select id="getGDatacount" parameterType="Integer" resultType="Integer">
+		select count(dataseq) from groupdata where groupseq=#{groupseq} and datatype!=5
+	</select>
+	
+	<select id="getGroupseq" resultType="int">
+		select Max(groupseq) from groupinfo
+	</select>
+	
+	<insert id="addGroupInfo" parameterType="kr.or.davizn.groupDTO.GroupInfoDTO">
+		insert into groupinfo(groupseq,groupname,g_introduce,groupmaster,groupcreate) 
+		values(group_seq.nextval,#{groupname},#{g_introduce},#{groupmaster},sysdate)
+	</insert>
+	
+	<insert id="addGroupMember" parameterType="kr.or.davizn.groupDTO.GroupMemberDTO">
+		insert into groupmember(g_memberseq,joinindate,groupseq,userid) 
+		values(gmember_seq.nextval,sysdate,#{groupseq},#{userid})
+	</insert>
+	
+	<insert id="addGroupAuth" parameterType="kr.or.davizn.groupDTO.GroupAuthDTO">
+		insert into groupauth(role_name,groupseq)
+        values (#{role_name},#{groupseq})
+	</insert>
+	
+	<insert id="addAuth" parameterType="String">
+		insert into auth(role_name)
+        values (#{role_name})
+	</insert>
+	
+	<insert id="addAuthDesign" parameterType="kr.or.davizn.memberDTO.AuthorityDTO">
+		insert into authdesign(userid,role_name) 
+		values(#{userid},#{role_name})
+	</insert>
+	
+	<select id="getGroupList" parameterType="String" resultType="kr.or.davizn.groupDTO.GroupInfoDTO">
+		select * 
+		from groupinfo info
+		join groupmember member
+		on info.groupseq = member.groupseq
+		where userid = #{userid}
+		order by groupcreate
+	</select>
+	
+
+</mapper>
+
