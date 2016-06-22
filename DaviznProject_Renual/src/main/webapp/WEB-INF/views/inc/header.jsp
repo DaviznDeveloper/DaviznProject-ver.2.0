@@ -124,8 +124,12 @@
 		                               ${al.datatype} ${al.dataname}일정이 종료되었습니다.</a>
 		                          </li>
 		                          </c:forEach>
-	                        
+		                          <li class="vertical-middle padding-vertical text-center">
+                                      <a href="${pageContext.request.contextPath}/main-profile.navigation">
+                                          <span class="notice-header-span notice-header-all">전체보기</span> </a>
+                       			  </li>
                        </ul>
+                            	  
                       </c:if>
                        <%-- 
 					<li>
