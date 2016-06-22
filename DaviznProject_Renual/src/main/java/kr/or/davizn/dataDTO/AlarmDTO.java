@@ -10,7 +10,7 @@ public class AlarmDTO {
 	private int checkedstate;//데이터 체크 여부
 	private Date finaldate;//종료일
 	private Date alarmdate;//지정 알람일 
-	private int strgseq;
+	private int strgseq;//저장소 시퀀스(이 값으로 사용자의 알람 가져옴)
 	
 	
 	public int getStrgseq() {
