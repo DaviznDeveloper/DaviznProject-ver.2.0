@@ -108,6 +108,13 @@
 										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;1:1 문의&건의
 									</a>
 								</li>
+								
+								<li class="nav_menu">
+									<a href="${pageContext.request.contextPath}/messageNavigation.dvn">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;쪽지
+									</a>
+								</li>
+								
 								<li class="nav_menu">
 									<a href="#">
 										<i class="fa fa-eye" aria-hidden="true"></i> &nbsp;사이트 관리
@@ -144,13 +151,7 @@
 			                           </li>
 			                        </ul>
 			                        
-			                        <%-- 
-									<li>
-										<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
-											<button type="button" class="btn btn-info col-xs-12">로그인</button>
-										</a>
-									</li>
-									 --%>
+			                        
 								</li>
 								
 								<li>
@@ -171,13 +172,7 @@
 			                           </li>
 			                        </ul>
 			                        
-			                        <%-- 
-									<li>
-										<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
-											<button type="button" class="btn btn-info col-xs-12">로그인</button>
-										</a>
-									</li>
-									 --%>
+			                        
 								</li>
 								<!--  
 								<se:authentication property="name" var="LoingUser" />
@@ -216,13 +211,7 @@
 			                           </li>
 			                        </ul>
 			                        
-			                        <%-- 
-									<li>
-										<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
-											<button type="button" class="btn btn-info col-xs-12">로그인</button>
-										</a>
-									</li>
-									 --%>
+			                       
 								</li>
 								
 								<!-- login sidebar test -->

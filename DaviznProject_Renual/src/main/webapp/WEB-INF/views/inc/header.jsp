@@ -61,6 +61,13 @@
 										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;1:1 문의&건의
 									</a>
 								</li>
+								
+								<li class="nav_menu">
+									<a href="${pageContext.request.contextPath}/messageNavigation.dvn">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;쪽지
+									</a>
+								</li>
+								
 								<!-- 
 								<li class="nav_menu">
 									<a href="#">

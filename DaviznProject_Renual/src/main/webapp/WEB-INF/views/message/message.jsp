@@ -15,8 +15,10 @@
 				
 				setInterval(function() {
 					//console.log('${LoginUser}');
+				
 				      if($('#sender').val() != ''){//////////////
 				         // 쪽지기능 알림
+				         
 				         $.ajax({
 				              type : "post",
 				              url : "msgNotificationCheck.dvn",
@@ -29,6 +31,7 @@
 				                             body : data[i].sender + "님이 쪽지를 보냈습니다."
 				                       }
 				                      var notification = new Notification("제목", options);
+				                       
 				                      $.ajax({
 				                          type : "post",
 				                          url : "changeMsgNotificationState.dvn",
@@ -170,11 +173,11 @@
 			  			</th>
 			  			
 			  			<td>
-			  				<se:authentication property="name" var="LoginUser" />
+			  				
 	
 			  				<input type="text" class="form-control" id="receiver" name="receiver" >
 			  				<div><p id="div_view" style="background-color: white"></p></div>
-			  				<input type="hidden" name="sender" id="sender" value="${LoginUser}">
+			  				<input type="hidden" name="sender" id="sender" value="${userid}">
 			  			</td>
 			  		</tr>
 			  		

@@ -46,6 +46,7 @@ public class MessageController {
 		String userid = principal.getName();
 		model.addAttribute("smlist", dao.getSendMsgList(userid));
 		model.addAttribute("rmlist", dao.getReceiveMsgList(userid));
+		model.addAttribute("userid", userid);
 		
 		return "message.message";
 	}
@@ -129,6 +130,7 @@ public class MessageController {
 	
 	@RequestMapping("/message/changeMsgNotificationState.dvn")
 	public void changeNotificationStates(MessagereceiveDTO messagereceivedto) {
+		
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);
 		dao.changeNotificationState(messagereceivedto);
 	}
