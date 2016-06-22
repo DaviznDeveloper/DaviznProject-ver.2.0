@@ -34,7 +34,7 @@ public class navigationController {
 	//
 	@RequestMapping("groupNavi.dvn")
 	public String moveGroup(){
-		return "group.group-main";
+		return "redirect:/groupNavi/goGroupMain.dvn";
 	}
 	
 	//커뮤니티 게시판 이동
@@ -53,6 +53,13 @@ public class navigationController {
 	@RequestMapping("admin.dvn")
 	public String moveAdmin() {
 		return "admin.site-manage";
+	}
+	
+	//쪽지 창 이동
+	@RequestMapping("messageNavigation.dvn")
+	public String movemessage() {
+
+		return "redirect:/message/message.dvn"; //redirect:/message.dvn
 	}
 
 }

@@ -22,9 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       values(detailgoal_seq.nextval, (select max(dataseq) from personaldata), #{goalname},0)
    </insert>
    
-   
-   
-   
+
    <!-- 목표 번호, 제목 가져오기 위해 PersonalData DTO 가져오기 -->
    <select id="getPersonalDatas" parameterType="Integer" resultType="kr.or.davizn.dataDTO.PersonalDataDTO">
       select * from personaldata where strgseq=#{strgseq} and datatype=3
@@ -39,47 +37,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="getGoals" parameterType="Integer" resultType="kr.or.davizn.dataDTO.GoalDTO">
       select * from goal where dataseq = #{dataseq}
    </select>
-
-   
-   <!--목표 데이터 상세보기-->
-   <select id="detailGoal" resultType="kr.or.davizn.dataDTO.PersonalDataGoalDTO">
-      select p.dataseq, dataname, startdate,finaldate,
-      (finaldate-startdate)*60*60*24 as goaldate, 
-      goalname, state, detailgoalseq, commentmsg,strgseq
-      from personaldata p join goal g
-      on p.dataseq=g.dataseq
-      join detailgoal d
-      on g.dataseq = d.dataseq
-      where p.dataseq=#{dataseq} order by detailgoalseq asc
-   </select>
-      
-   <!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->
-   <update id="updateDetailGoalState" parameterType="int">
-      update detailgoal set state=1 where detailgoalseq=#{detailgoalseq}
-   </update>
-   
-   <!--상세 목표의 달성 메세지 변경-->
-   <update id="updateDetailComment">
-      update detailgoal set commentmsg=#{param1} where detailgoalseq=#{param2}
-   </update>
-   
-   <!--상세 화면에서 달성 퍼센트 변경하기-->
-   <update id="updateGoalPercent">
-      update goal
-      set goalpercent=(select trunc(100/(select count(*) from detailgoal where dataseq=#{dataseq})
-      *(select count(*) from detailgoal where state=1 and dataseq=#{dataseq})) from dual)
-      where dataseq=#{dataseq}
-   </update>
-   
-   <!--목표 데이터 삭제하기-->
-   <delete id="deleteGoal">
-      delete from personaldata where dataseq=#{dataseq}
-   </delete>
-
-   
-   
-   
-   
-   
+	
+	<!--목표 데이터 상세보기-->
+	<select id="detailGoal" resultType="kr.or.davizn.dataDTO.PersonalDataGoalDTO">
+		select p.dataseq, dataname, startdate,finaldate,
+		(finaldate-startdate)*60*60*24 as goaldate, 
+		goalname, state, detailgoalseq, commentmsg,strgseq
+		from personaldata p join goal g
+		on p.dataseq=g.dataseq
+		join detailgoal d
+		on g.dataseq = d.dataseq
+		where p.dataseq=#{dataseq} order by detailgoalseq asc
+	</select>
+		
+	<!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->
+	<update id="updateDetailGoalState" parameterType="int">
+		update detailgoal set state=1 where detailgoalseq=#{detailgoalseq}
+	</update>
+	
+	<!--상세 목표의 달성 메세지 변경-->
+	<update id="updateDetailComment">
+		update detailgoal set commentmsg=#{param1} where detailgoalseq=#{param2}
+	</update>
+	
+	<!--상세 화면에서 달성 퍼센트 변경하기-->
+	<update id="updateGoalPercent">
+		update goal
+		set goalpercent=(select trunc(100/(select count(*) from detailgoal where dataseq=#{dataseq})
+		*(select count(*) from detailgoal where state=1 and dataseq=#{dataseq})) from dual)
+		where dataseq=#{dataseq}
+	</update>
+	
+	<!--목표 데이터 삭제하기-->
+	<delete id="deleteGoal">
+		delete from personaldata where dataseq=#{dataseq}
+	</delete>
 
 </mapper>

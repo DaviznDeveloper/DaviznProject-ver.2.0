@@ -1,7 +1,6 @@
 package kr.or.davizn.dataDTO;
 
-public class ScheduleDTO {
-	
+public class ScheduleDTO {	
 	private int dataseq;
 	private int datatype;
 	private String schname;
@@ -65,10 +64,6 @@ public class ScheduleDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
-	
-	
-	
-	
 
 }
+

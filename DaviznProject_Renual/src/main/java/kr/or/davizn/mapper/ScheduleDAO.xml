@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	To_date(#{startdate},'MM/DD/YYYY HH24:MI'),
 		 	To_date(#{finaldate},'MM/DD/YYYY HH24:MI'),
 		 	To_date(#{alramdate, jdbcType=VARCHAR},'MM/DD/YYYY HH24:MI'),
-		 	#{priority},0)
+		 	#{priority},#{state})
 	</insert>
 	
 	<!--현재 진행 중인 일정 리스트-->
@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--일정 상세보기-->
 	<select id="detailSchedule" resultType="kr.or.davizn.dataDTO.PersonaldataSchDTO">
 		select p.dataname, s.schcontext,s.startdate,s.finaldate,
-			   s.alramdate,s.priority,p.dataseq,p.strgseq 
+			   s.alramdate,s.priority,p.dataseq,p.strgseq
 				from personaldata p join schedule s
 				on p.dataseq = s.dataseq
 				where p.dataseq=#{param1}

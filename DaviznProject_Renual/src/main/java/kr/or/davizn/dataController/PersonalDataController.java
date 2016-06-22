@@ -121,6 +121,7 @@ public class PersonalDataController {
  		return "redirect:/note/detailNote.dvn?dataseq="+dataseq;
  	}
  	
+ 	//노트 데이터 삭제하기
  	@RequestMapping("deleteGoalData.dvn")
  	public String deleteGoalData(@RequestParam int dataseq,
  								@RequestParam int strgseq){

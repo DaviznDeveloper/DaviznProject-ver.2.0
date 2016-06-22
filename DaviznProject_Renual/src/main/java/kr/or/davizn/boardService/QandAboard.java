@@ -1,4 +1,5 @@
 package kr.or.davizn.boardService;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -23,7 +24,8 @@ public class QandAboard {
 	@Autowired
 	private SqlSession SqlSession;
 
-	public List<QandAboardDTO> notices(String pg, Model model, int rowSize) throws ClassNotFoundException, SQLException {
+	public List<QandAboardDTO> notices(String pg, Model model, int rowSize)
+			throws ClassNotFoundException, SQLException {
 
 		int page = 1;
 		if (pg != null) {
@@ -52,9 +54,9 @@ public class QandAboard {
 		map.put("end", end);
 
 		List<QandAboardDTO> list = QandAboardDao.getNotices(map);
-
+		System.out.println("hash : " + QandAboardDao);
 		model.addAttribute("list", list);
-		model.addAttribute("rowSize",rowSize);
+		model.addAttribute("rowSize", rowSize);
 		model.addAttribute("pg", page);
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("block", block);
@@ -69,6 +71,8 @@ public class QandAboard {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDTO notice = QandAboardDao.getNotice(boardseq);
 		QandAboardDao.boardCount(boardseq);
+		System.out.println(notice);
+		System.out.println("hash : " + QandAboardDao);
 		return notice;
 	}
 
@@ -76,6 +80,7 @@ public class QandAboard {
 	public String noticeReg(QandAboardDTO n, HttpServletRequest request) throws Exception {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.insert(n);
+		System.out.println("hash : " + QandAboardDao);
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -83,6 +88,7 @@ public class QandAboard {
 	public String noticeDel(String boardseq) throws ClassNotFoundException, SQLException {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		QandAboardDao.delete(boardseq);
+		System.out.println("hash : " + QandAboardDao);
 		return "redirect:/QnAList.dvn";
 	}
 
@@ -101,22 +107,22 @@ public class QandAboard {
 		return "redirect:/QnAList.dvn";
 
 	}
-	//댓글 상세보기 
+
+	// 댓글 상세보기
 	public List<QandAReplyDTO> replyDetail(int boardseq) throws ClassNotFoundException, SQLException {
 		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
 		List<QandAReplyDTO> reqlylist = QandAboardDao.replylist(boardseq);
+		System.out.println("hash : " + QandAboardDao);
 		return reqlylist;
 	}
-	 
-	 public List<QandAboardDTO> boardList(String keyfield, String keyword) throws ClassNotFoundException, SQLException {
-		 	QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
-            Map<String, String> map = new HashMap<String, String> ();
-            map.put("keyfield" , keyfield);
-            map.put("keyword", keyword);
-		 	List<QandAboardDTO> serchlist= QandAboardDao.boardSearch(map);
-	        return serchlist;
-	    }
 
-	
+	public List<QandAboardDTO> boardList(String keyfield, String keyword) throws ClassNotFoundException, SQLException {
+		QandAboardDAO QandAboardDao = SqlSession.getMapper(QandAboardDAO.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		List<QandAboardDTO> serchlist = QandAboardDao.boardSearch(map);
+		return serchlist;
+	}
 
 }

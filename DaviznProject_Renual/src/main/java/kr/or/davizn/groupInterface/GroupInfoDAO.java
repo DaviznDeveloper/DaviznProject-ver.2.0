@@ -2,13 +2,18 @@ package kr.or.davizn.groupInterface;
 
 import java.util.List;
 
+
 import kr.or.davizn.groupDTO.GroupAuthDTO;
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
 import kr.or.davizn.memberDTO.AuthorityDTO;
 
 public interface GroupInfoDAO {
-	
+
+	//그룹 랜덤으로 5개 가져오기
+	public List<GroupInfoDTO> randomGroupList();
+	//검색한 그룹 리스트 가져오기
+	public List<GroupInfoDTO> searchGroupList(String keyword);
 	//방금 생성한 그룹의 고유번호 가져오기
 	public int getGroupseq();
 	//그룹원 수 가져오기
@@ -29,4 +34,5 @@ public interface GroupInfoDAO {
 	public List<GroupInfoDTO> getGroupList(String userid);
 	//public int deleteGroup();
 	//public int updateGroup();
+
 }
