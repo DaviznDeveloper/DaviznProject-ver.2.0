@@ -8,12 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
+import kr.or.davizn.groupDTO.GroupShareDataDTO;
+import kr.or.davizn.groupService.GroupDataService;
 import kr.or.davizn.groupService.GroupInfoService;
+import kr.or.davizn.groupService.GroupShareDataService;
 import kr.or.davizn.memberDTO.AuthorityDTO;
 
 @Controller
@@ -22,7 +26,10 @@ public class GroupController {
 	
 	@Autowired
 	GroupInfoService groupInfoService;
-	
+	@Autowired
+	GroupShareDataService sharedataService;
+	@Autowired
+	GroupDataService groupdataService;
 	
 	@RequestMapping("goGroupMain.dvn")
 	public String goGroupMain(Principal principal,Model model){
@@ -87,8 +94,14 @@ public class GroupController {
 	}
 	
 	
+	@RequestMapping("showGroupDataList.dvn")
+	public String goGroupDataList(@RequestParam int groupseq, Model model){
+		System.out.println("그룹의 데이터들 목록 출력하는 컨트롤러");
+		List<GroupShareDataDTO> sharedatalist = sharedataService.showShareData(groupseq);
+		model.addAttribute("sharedatalist",sharedatalist);
+		return "group.group-data-list";
+	}
 	
-		
 	//그룹 검색 리스트 얻기
 	@RequestMapping("searchGroupList.dvn")
 	public @ResponseBody List<GroupInfoDTO> searchGroupList(String keyword){

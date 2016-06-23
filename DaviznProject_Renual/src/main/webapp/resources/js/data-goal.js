@@ -1,5 +1,7 @@
 
 $(function() {
+	
+	
 	$(".pieProgress").asPieProgress({
 		namespace: 'asPieProgress',
 	    min: 0,
@@ -100,6 +102,13 @@ $(function() {
         	$(this).parent().siblings().css('border','1px solid #ccc');
         	goalChecking();
         }
+	});
+	$('#sendgoaldata').click(function(){
+		var goalText = $('#goal-modi-modal').html();
+		console.log(goalText);
+		$('#goalhtml').val(goalText);
+		$("#goalcreateForm").submit();
+		
 	});
 	
 });

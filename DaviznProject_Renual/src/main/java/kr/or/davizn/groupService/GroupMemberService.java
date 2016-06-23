@@ -9,6 +9,5 @@ public class GroupMemberService {
 	
 	@Autowired
 	SqlSession sqlsession;
-	
-	
+
 }

@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="kr.or.davizn.groupInterface.GroupDataDAO">
+
+	<insert id="addGroupData" parameterType="kr.or.davizn.groupDTO.GroupDataDTO">
+		insert into groupdata (dataseq,groupseq,datatype,g_datacreate,userid)
+		values (#{dataseq},#{groupseq},#{datatype},sysdate,#{userid})
+	</insert>
 </mapper>
 

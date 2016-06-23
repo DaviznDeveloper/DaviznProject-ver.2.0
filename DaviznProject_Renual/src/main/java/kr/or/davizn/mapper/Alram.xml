@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 알람 개수 -->
 	<select id="getCount" resultType="Integer">
 		select count(*) from alarm
-		where strgseq in (select strgseq from userstrg where userid=#{userid})
+		where strgseq in (select strgseq from userstrg where userid=#{userid} and checkedstate=0)
 	</select>
 
 	<!-- 스케줄 알람 insert -->

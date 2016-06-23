@@ -47,7 +47,32 @@
 	width: 100%;
 }
 
-.group-info-gorl-persent {
+.group-info-goal-persent {
 	font-size: 18px;
 	font-weight: bold;
+}
+
+.group-info-member-selected {
+	margin-left: 16px;
+}
+
+#group-info-member-header {
+	width: 50%;
+}
+
+.group-info-member-search-check {
+	width: 20%;
+}
+
+.group-data-share-note-modi-btn {
+	padding: 10px;
+	font-size: 25px;
+	color: #565656;
+	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
+    transition: color 0.5s, transform 0.3s;
+}
+
+.group-data-share-note-modi-btn:hover {
+	color: #ca64f7;
+	cursor: pointer;
 }

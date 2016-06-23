@@ -8,6 +8,7 @@ public class GoalListDTO {
 	private int detailcount;
 	private Date finaldate;
 	private int goalpercent;
+	
 	public int getDataseq() {
 		return dataseq;
 	}

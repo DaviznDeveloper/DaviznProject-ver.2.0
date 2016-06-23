@@ -15,7 +15,7 @@
 							<li><a href="${pageContext.request.contextPath}/renual/data-list.jsp">일정관리 리스트</a></li>
 							<li class="active">일정관리 데이터 상세보기</li>
 						</ol>
-						
+						<div id="wholehtml">
 						<div class="col-sm-10 col-sm-offset-1">
 						
 							<div class="calendar-detail-option">
@@ -165,7 +165,8 @@
 									</a>
 								</form>
 							</div>	
-						</div>		
+						</div>	
+						</div>	
 					</div>
 				
 					<div id="push"></div>
@@ -174,6 +175,7 @@
 
 <script src="${pageContext.request.contextPath}/resources/lib/switch/switchable.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/manage-file.js"></script>
 <script type="text/javascript">
 
 	$(function(){
