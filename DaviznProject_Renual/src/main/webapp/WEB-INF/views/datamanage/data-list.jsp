@@ -58,10 +58,10 @@
 													<div class="thumbnail">
 														<img src="${pageContext.request.contextPath}/resources/img/data-image.jpg" alt="..." height="150">
 														<div class="caption">
-															<h3>차트형 데이터</h3>
-															<p>차트형 데이터는 표에 숫자를 입력할 수 있어요.</p>
+															<h3>포스트잇 데이터</h3>
+															<p>포스트 잇형 데이터는 간단하게 메모가 가능해요 .</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/renual/data-create-chart.jsp" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/postit/movePostItCreate.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
