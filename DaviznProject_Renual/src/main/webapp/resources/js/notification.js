@@ -8,6 +8,8 @@
                           data: {"receiver" : $('#sender').val()},
                           success : function(data) {
                              if(data != ''){
+                            	 alert('쪽지 체크');
+                            	 console.log(data);
                                 for(var i=0; i<data.length; i++){
                                   
                                    var options = {
