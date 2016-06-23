@@ -11,38 +11,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into note 
 		(dataseq,datatype,filepath) 
 		values(
-				(select dataseq 
-					from (select rownum r,dataseq from personaldata order by dataseq desc)
-				where r = 1),1,#{filepath})
+				(select Max(dataseq) 
+					from personaldata),1,#{filepath})
 	</insert>
 	
 	
-	<!--노트 추가 후 삭제-->
-	<select id="detailNoteData" resultType="kr.or.davizn.dataDTO.PersonalDataNoteDTO">
-		select n.dataseq, n.filepath, p.dataname, p.datacreate
-		from personaldata p join note n
-		on p.dataseq = n.dataseq
-		where p.dataseq=(
-                  			(select dataseq from
-                      			(select rownum r, dataseq from note order by dataseq desc)
-                   			where r=1)
-                		 )
-	</select>
+
 	
-	<!--목록에서 상세 조회-->
+	<!-- 한 건의 노트를 상세하게 보여주기 위하여 select -->
 	<select id="detailNote" resultType="kr.or.davizn.dataDTO.PersonalDataNoteDTO">
-		select n.dataseq, n.filepath, p.dataname, p.datacreate, p.strgseq
+		select *
 		from personaldata p join note n
 		on p.dataseq=n.dataseq
 		where n.dataseq=#{dataseq}
-	</select>
-	 
-	<!--노트 데이터 수정(기존 정보 확인)-->
-	<select id="modifyNote" resultType="kr.or.davizn.dataDTO.PersonalDataNoteDTO">
-		select *
-		from personaldata p join note n
-		on p.dataseq = n.dataseq
-		where p.dataseq=#{dataseq}
 	</select>
 	
 	<!--노트 데이터 수정 (파일 overwrite)-->
@@ -50,9 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select dataseq, datatype, filepath from note where dataseq=#{dataseq}
 	</select>
 	
-	<!--노트 데이터 삭제-->
-	<delete id="deleteNote">
-		delete from note where dataseq=#{dataseq}
-	</delete>
+
 
 </mapper>

@@ -17,11 +17,11 @@
 				</ol>
 		
 				<div class="note-detail-option">
-					<a href="${pageContext.request.contextPath}/note/modifyNote.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}"><span class="glyphicon glyphicon-pencil note-detail-modi" 
+					<a href="${pageContext.request.contextPath}/note/detailNote.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}&function=m"><span class="glyphicon glyphicon-pencil note-detail-modi" 
 						data-toggle="tooltip" title="노트 수정하기" aria-hidden="true">
 					
 						</span></a>
-					<a href="${pageContext.request.contextPath}/note/deleteNote.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}"><span class="glyphicon glyphicon-trash note-detail-modi" 
+					<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${note.dataseq}&strgseq=${note.strgseq}"><span class="glyphicon glyphicon-trash note-detail-modi" 
 						data-toggle="tooltip" title="노트 삭제하기" aria-hidden="true"></span></a>
 				</div>
 		

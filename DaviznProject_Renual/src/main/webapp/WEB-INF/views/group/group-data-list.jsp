@@ -342,27 +342,42 @@
 								</div>
 							</div>
 							
+						
 							<div class="col-sm-6">
 								<div class="panel panel-purple-l">
 									<div class="panel-heading">
 										<h3 class="panel-title">그룹에 공유된 데이터</h3>
 									</div>
 									<div class="panel-body">
-										
-										<a href="" class="a-font">
+									<c:forEach var="sharedata" items="${sharedatalist}">
+										<a href="${pageContext.request.contextPath}/sharedata/datailShareData.dvn" class="a-font">
 											<div class="col-sm-6">
 												<div class="panel panel-purple">
 													<div class="panel-heading">
-														데이터 제목
+														${sharedata.dataname}
 													</div>
 													<div class="panel-body">
 														
 														<div class="list-group">
 															<h4 class="list-group-item-heading">
-																데이터 종류
+																데이터 종류 ${sharedata.datatype}
 															</h4>
-															<p class="list-group-item-text">
-																노트형 데이터
+															<p> 
+																<c:choose>
+
+   																	<c:when test="${sharedata.datatype eq '1'}">
+        																노트형 데이터입니다.
+    																</c:when>
+
+																    <c:when test="${sharedata.datatype eq '2'}">
+																        스케치형 데이터 입니다.
+																    </c:when>
+																
+																    <c:otherwise>
+																        다른 데이터입니다.
+																    </c:otherwise>
+																
+																</c:choose>
 															</p>
 														</div>
 														
@@ -371,7 +386,7 @@
 																데이터 공유자
 															</h4>
 															<p class="list-group-item-text">
-																nameLim
+																${sharedata.userid}
 															</p>
 														</div>
 														
@@ -380,7 +395,7 @@
 																데이터 최종 수정일
 															</h4>
 															<p class="list-group-item-text">
-																2016.06.22
+																${sharedata.sharedate}
 															</p>
 														</div>
 														
@@ -388,46 +403,8 @@
 												</div>
 											</div>
 										</a>
+										</c:forEach>
 										
-										<a href="" class="a-font">
-											<div class="col-sm-6">
-												<div class="panel panel-purple">
-													<div class="panel-heading">
-														데이터 제목
-													</div>
-													<div class="panel-body">
-														
-														<div class="list-group">
-															<h4 class="list-group-item-heading">
-																데이터 종류
-															</h4>
-															<p class="list-group-item-text">
-																노트형 데이터
-															</p>
-														</div>
-														
-														<div class="list-group">
-															<h4 class="list-group-item-heading">
-																데이터 공유자
-															</h4>
-															<p class="list-group-item-text">
-																nameLim
-															</p>
-														</div>
-														
-														<div class="list-group">
-															<h4 class="list-group-item-heading">
-																데이터 최종 수정일
-															</h4>
-															<p class="list-group-item-text">
-																2016.06.22
-															</p>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-										</a>
 										
 									</div>
 								</div>

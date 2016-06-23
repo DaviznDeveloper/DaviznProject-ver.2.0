@@ -10,6 +10,7 @@ public class GoalDTO {
 	private Date startdate;
 	private Date finaldate;
 	private int goalpercent;
+	
 	private List<DetailGoalDTO> detailGoal;
 	
 	public List<DetailGoalDTO> getDetailGoal() {

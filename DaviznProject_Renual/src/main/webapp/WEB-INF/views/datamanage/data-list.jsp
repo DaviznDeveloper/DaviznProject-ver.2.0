@@ -188,91 +188,91 @@
 						</colgroup>
 						<tbody>
 						
-							<c:forEach items="${pdatalist}" var="pdata">
+							<c:forEach items="${pdatalist}" var="pdata" varStatus="status">
 							
-							<tr>
-								<td>
-									<div class="data-list-div">
-										<i class="fa fa-language chart-list-type" aria-hidden="true"></i>
-										<a href="${pageContext.request.contextPath}/personalData/detailPersonalData.dvn?datatype=${pdata.datatype}&strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" data-toggle="tooltip" title="데이터 상세하기">
-											<span class="data-list-span">${pdata.dataname}</span>
-										</a>
-										<span class="data-list-span">${pdata.datacreate}</span>
-									</div>
-								</td>
-								
-								<td>
-										<span class="pull-right margin-right-10">
-											<a href="${pageContext.request.contextPath}/personalData/deletePersonalNoteData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-												<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
+								<tr>
+									<td>
+										<div class="data-list-div">
+											<i class="fa fa-language chart-list-type" aria-hidden="true"></i>
+											<a href="${pageContext.request.contextPath}/personalData/detailPersonalData.dvn?datatype=${pdata.datatype}&strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" data-toggle="tooltip" title="데이터 상세하기">
+												<span class="data-list-span">${pdata.dataname}</span>
 											</a>
-										</span>
-										
-										<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
-											<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share">
-												<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-											</div>
-										</span>
-										<!-- modal -->
-										<form action="${pageContext.request.contextPath}/sharedata/addShareData.dvn" method="post">
-											<input type="hidden" id="dataseq" name="dataseq" value="${pdata.strgseq}">
-											<input type="hidden" id="datatype" name="datatype" value="${pdata.datatype}">
-                     						<div class="modal fade" id="data-share" tabindex="-1" role="dialog"
+											<span class="data-list-span">${pdata.datacreate}</span>
+										</div>
+									</td>
+								
+									<td>
+									<span class="pull-right margin-right-10">
+										<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
+											<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
+										</a>
+									</span>
+											
+									<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
+										<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share${status.index}">
+											<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
+										</div>
+									</span>
+									<!-- modal -->
+									<form action="${pageContext.request.contextPath}/sharedata/addShareData.dvn" method="post">
+										<input type="hidden" id="dataseq" name="dataseq" value="${pdata.strgseq}">
+										<input type="hidden" id="datatype" name="datatype" value="${pdata.datatype}">
+										<input type="hidden" id="dataname" name="dataname" value="${pdata.dataname}">
+	                     				<div class="modal fade" id="data-share${status.index}" tabindex="-1" role="dialog"
 											aria-labelledby="myModalLabel" aria-hidden="true">
-												<div class="modal-dialog modal-lg">
-													<div class="modal-content">
-									
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h4 class="modal-title" id="myModalLabel">데이터 공유하기</h4>
-														</div>
-													
-														<div class="modal-body">
-															<div class="row col-xs-12 center-block">
-												 				<c:forEach var="group" items="${groupList}">
-																	<div class="col-sm-4">
-																		<div class="panel panel-info">
-																			<div class="panel-heading">
-																				<div class="radio">
-																					<label>
-																					<!-- input[type=radio] name값 = 데이터일련번호 멤버필드명 / value값 = "데이터 일련번호값" -->
-																						<input type="radio" name="groupseq"
-																							id="groupseq" value="${group.groupseq}">
-																							<h3>${group.groupname}</h3>
-																					</label>
-																				</div>
+											<div class="modal-dialog modal-lg">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title" id="myModalLabel">데이터 공유하기
+																strseq   :	${pdata.strgseq}
+																datatype :  ${pdata.datatype}
+																dataname :  ${pdata.dataname}
+														</h4>
+													</div>
+													<div class="modal-body">
+														<div class="row col-xs-12 center-block">
+											 				<c:forEach var="group" items="${groupList}">
+																<div class="col-sm-4">
+																	<div class="panel panel-info">
+																		<div class="panel-heading">
+																			<div class="radio">
+																				<label>
+																				<!-- input[type=radio] name값 = 데이터일련번호 멤버필드명 / value값 = "데이터 일련번호값" -->
+																					<input type="radio" name="groupseq"
+																						id="groupseq" value="${group.groupseq}">
+																						<h3>${group.groupname}</h3>
+																				</label>
 																			</div>
-																			<div class="panel-body">
-																				<div class="list-group">
-																					<h4 class="list-group-item-heading">
+																		</div>
+																		<div class="panel-body">
+																			<div class="list-group">
+																				<h4 class="list-group-item-heading">
 																					그룹장 : ${group.groupmaster}
-																					</h4>
-																					
-																					<p class="list-group-item-text">
-																						현재 ${group.g_datacount}건의 데이터가 저장되어있습니다.
-																					</p>
-																				</div>
-																			
+																				</h4>
+																				
+																				<p class="list-group-item-text">
+																					현재 ${group.g_datacount}건의 데이터가 저장되어있습니다.
+																				</p>
 																			</div>
 																		</div>
 																	</div>
-																</c:forEach>
-															</div>
+																</div>
+															</c:forEach>
 														</div>
-					
-														<div class="modal-footer">
-															<button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
-															<button type="submit" class="btn btn-info">확인</button>
-														</div>
+													</div>
+						
+													<div class="modal-footer">
+														<button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
+														<button type="submit" class="btn btn-info">확인</button>
 													</div>
 												</div>
 											</div>
-                  						
-										
-										</form>
+										</div>
+	                				</form>
 										<!-- modal -->
 									</td>
 							</tr>

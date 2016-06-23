@@ -16,7 +16,7 @@
 						</ol>
 						
 						<form action="${pageContext.request.contextPath}/note/modifyNoteAction.dvn?strgseq=${note.strgseq}&dataseq=${note.dataseq}" method="post" id="noteForm">
-							
+							<input type="hidden" name="datatype" value="1">
 							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
 							<button type="reset" class="btn btn-default">취소</button>
 							

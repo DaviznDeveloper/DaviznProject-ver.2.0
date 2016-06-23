@@ -11,6 +11,7 @@ public class PersonalDataNoteDTO {
 	private int strgseq;
 	private int datatype;
 	private Date datacreate;
+	
 	public int getDataseq() {
 		return dataseq;
 	}
@@ -53,6 +54,5 @@ public class PersonalDataNoteDTO {
 	public void setDatacreate(Date datacreate) {
 		this.datacreate = datacreate;
 	}
-	
 	
 }

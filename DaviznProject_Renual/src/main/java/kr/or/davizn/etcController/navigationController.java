@@ -34,7 +34,7 @@ public class navigationController {
 	//
 	@RequestMapping("groupNavi.dvn")
 	public String moveGroup(){
-		return "redirect:/groupNavi/goGroupMain.dvn";
+		return "redirect:/group/goGroupMain.dvn";
 	}
 	
 	//커뮤니티 게시판 이동

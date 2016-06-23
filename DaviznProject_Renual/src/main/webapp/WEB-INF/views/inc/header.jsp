@@ -41,7 +41,7 @@
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/data-main.jsp">
+									<a href="${pageContext.request.contextPath}/groupNavi.dvn">
 										<i class="fa fa-users" aria-hidden="true"></i> &nbsp;내 그룹
 									</a>
 								</li>

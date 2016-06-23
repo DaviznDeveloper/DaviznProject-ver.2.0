@@ -9,6 +9,7 @@ import kr.or.davizn.dataDTO.PersonalDataGoalDTO;
 
 public interface GoalDAO {
    
+	
    /* 큰 목표 추가
     * addPdata(); PersonalData 테이블에 insert
     * addGoal(); Goal 테이블에 insert

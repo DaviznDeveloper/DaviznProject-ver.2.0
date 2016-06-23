@@ -1,6 +1,7 @@
 package kr.or.davizn.dataController;
 
 import java.io.IOException;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataDTO.PersonalDataNoteDTO;
 import kr.or.davizn.dataService.NoteService;
+import kr.or.davizn.dataService.PersonalService;
 
 @Controller
 @RequestMapping("/note/")
@@ -19,62 +22,59 @@ public class NoteController {
 
 	@Autowired
 	NoteService notedataService;
+	@Autowired
+	PersonalService personalService;
 
-	// 데이터 추가하기(노트)
+	// data-list.jsp에서 modal 창을 통한 노트 데이터 추가하기 창으로 이동.
 	@RequestMapping("moveNoteCreate.dvn")
-	public String moveNoteCreate(Model model, String strgseq) {
+	public String moveNoteCreate(Model model, int strgseq) {
 		model.addAttribute("strgseq", strgseq);
 		return "datamanage.data-note-create";
 	}
 
+	// 노트 데이터 추가를 위해 personaldata 테이블에 insert
+	@RequestMapping("addPersonalNoteData.dvn")
+	public String addPersonalData(Model model, PersonalDataDTO personaldto, @RequestParam String inputArticleContents,
+			Principal principal, HttpServletRequest request) throws IOException {
 
-	//노트 데이터 추가하기
-	@RequestMapping("addNoteData.dvn")
-	public String addNoteData(@RequestParam String filepath) {
-		int result = notedataService.addNoteData(filepath);
-		return "redirect:detailNoteData.dvn";
+		String filepath = personalService.getFileName(personaldto, inputArticleContents, principal, request);
+		personalService.addPersonalData(personaldto);
+		int strgseq = personaldto.getStrgseq();
+		int dataseq = personalService.getDataseq(strgseq);
+		personalService.manageFile(dataseq,filepath);
+		return "redirect:addNoteData.dvn?filepath=" + filepath + "&strgseq=" + strgseq;
 	}
 
-	// note 데이터 상세 조회
-	@RequestMapping("detailNoteData.dvn")
-	public String detailNoteData(Model model, HttpServletRequest request) throws IOException {
-		PersonalDataNoteDTO note = notedataService.detailNoteData(request);
-		model.addAttribute("note", note);
-		return "datamanage.data-note-detail";
+	// 노트 데이터 추가를 위해 note 테이블에 insert
+	@RequestMapping("addNoteData.dvn")
+	public String addNoteData(@RequestParam String filepath, @RequestParam int strgseq) {
+
+		int result = notedataService.addNoteData(filepath);
+		int dataseq = personalService.getDataseq(strgseq);
+		return "redirect:detailNote.dvn?dataseq=" + dataseq +"&function=d";
 	}
 
 	// 목록에서 note 데이터 상세조회
 	@RequestMapping("detailNote.dvn")
-	public String detailNote(@RequestParam int dataseq, Model model, HttpServletRequest request) throws IOException {
+	public String detailNote(@RequestParam int dataseq, Model model, 
+							HttpServletRequest request, @RequestParam String function) throws IOException {
 		PersonalDataNoteDTO note = notedataService.detailNote(request, dataseq);
 		model.addAttribute("note", note);
-		return "datamanage.data-note-detail";
-	}
-
-	// 상세 화면에서 데이터 수정 창 이동(기존 정보 확인)
-	@RequestMapping("modifyNote.dvn")
-	public String modifyNote(@RequestParam int dataseq, @RequestParam int strgseq, HttpServletRequest request,
-			Model model) throws IOException {
-		PersonalDataNoteDTO note = notedataService.modifyNote(dataseq, request);
-		model.addAttribute("note", note);
-		return "datamanage.data-note-modi";
+		if(function.equals("d")) return "datamanage.data-note-detail";
+		else if(function.equals("m")) return "datamanage.data-note-modi";
+		else return "datamanage.data-note-detail";
 	}
 
 	// 노트 데이터 수정(실제 DB update)
 	@RequestMapping("modifyNoteAction.dvn")
-	public String modifyNoteAction(@RequestParam int dataseq, @RequestParam int strgseq, @RequestParam String dataname,
+	public String modifyNoteAction(PersonalDataDTO personaldataDTO,
 			@RequestParam String inputArticleContents, HttpServletRequest request) throws IOException {
+		int dataseq = personaldataDTO.getDataseq();
+		int datatype = personaldataDTO.getDatatype();
+		int strgseq = personaldataDTO.getStrgseq();
+		String dataname = personaldataDTO.getDataname();
 		notedataService.modifyNoteFile(dataseq, request, inputArticleContents);
-		return "redirect:/personalData/updatePersonalNoteData.dvn?dataseq=" + dataseq + "&dataname=" + dataname;
+		return "redirect:/personalData/updatePersonalData.dvn?dataseq=" + dataseq + "&dataname=" + dataname + "&datatype="+datatype+"&strgseq="+strgseq;
 
 	}
-
-	// 상세 화면에서 데이터 삭제
-	@RequestMapping("deleteNote.dvn")
-	public String deleteNote(@RequestParam int dataseq, @RequestParam int strgseq) {
-		int noteResult = notedataService.deleteNote(dataseq);
-		return "redirect:/personalData/deletePersonalNoteData.dvn?dataseq=" + dataseq + "&strgseq=" + strgseq;
-
-	}
-
 }

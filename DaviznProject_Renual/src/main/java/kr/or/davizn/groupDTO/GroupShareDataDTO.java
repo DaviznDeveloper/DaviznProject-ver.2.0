@@ -8,6 +8,7 @@ public class GroupShareDataDTO {
 	private int groupseq;
 	private int dataseq;
 	private String userid;
+	private String dataname;
 	private int datatype;
 	private Date sharedate;
 	
@@ -35,6 +36,12 @@ public class GroupShareDataDTO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public String getDataname() {
+		return dataname;
+	}
+	public void setDataname(String dataname) {
+		this.dataname = dataname;
+	}
 	public int getDatatype() {
 		return datatype;
 	}
@@ -47,6 +54,9 @@ public class GroupShareDataDTO {
 	public void setSharedate(Date sharedate) {
 		this.sharedate = sharedate;
 	}
+	
+
+	
 	
 	
 }
