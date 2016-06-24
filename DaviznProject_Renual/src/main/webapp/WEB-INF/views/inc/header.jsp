@@ -52,7 +52,7 @@
 					</a>
 				</li>
 				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/communityNavigation.dvn">
+					<a href="${pageContext.request.contextPath}/QnANavigation.dvn">
 						<i class="fa fa-question-circle" aria-hidden="true"></i> 
 						&nbsp;1:1 문의&건의
 					</a>
@@ -64,7 +64,7 @@
 					<se:authorize access="hasRole('ROLE_USER')">
 						<a class="btn dropdown-toggle h-menu-transition" data-toggle="dropdown" href="#"> 
 							<span class="glyphicon glyphicon-envelope h-menu-tran-icon" aria-hidden="true"></span> 
-							<span class="badge h-menu-tran-badge-mail">4</span>
+							<span class="badge h-menu-tran-badge-mail">${msgCount}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<c:set var="message" value="${messagList}" />
@@ -82,6 +82,7 @@
 								</c:otherwise>
 							</c:choose>
 							<li><a href="${pageContext.request.contextPath}/messageNavigation.dvn">전체 쪽지함 가기</a></li>
+							
 							<c:if test="${alarmList}==null">
 								<c:forEach items="${alarmList}" var="al">
 									<li><a

@@ -22,7 +22,7 @@
 							
 							<hr>
 						
-							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" value="${note.dataname}" required="required">
+							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" value="${note.dataname}" required>
 							
 							<br>
 							

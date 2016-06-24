@@ -37,13 +37,13 @@
                         <br>
                         
                         <div class="col-md-12 no-padding">
-                           <input type="text" value ="${member.userid}" name="account" class="form-control" disabled="disabled">
+                           <input type="text" value ="${member.userid}" name="userid" class="form-control" disabled="disabled">
                         </div>
                         
                         <div class="col-md-12 no-padding">
                            <span class="profile-font">
                               <i class="fa fa-envelope profile-font-icon" aria-hidden="true"></i>
-                              &nbsp;&nbsp;<input type="text" class="form-control" name="userid" value="${member.account}" placeholder="변경하실 이메일을 입력하세요.">
+                              &nbsp;&nbsp;<input type="text" class="form-control" name="account" value="${member.account}" placeholder="변경하실 이메일을 입력하세요.">
                            </span>
                         </div>
                         
