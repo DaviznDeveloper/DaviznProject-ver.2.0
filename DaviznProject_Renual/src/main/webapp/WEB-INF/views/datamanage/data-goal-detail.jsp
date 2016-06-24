@@ -39,6 +39,7 @@
 				
 				<form action="${pageContext.request.contextPath}/goal/updateGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}" method="post" class="form-horizontal" id="goalcreateForm">
 					<input type="hidden" name="goalhtml" id="goalhtml" value="">
+					<input type="hidden" name="datatype" value="3">
 					<div id="goal-modi-modal" class="modal fade">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">

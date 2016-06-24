@@ -24,7 +24,7 @@
 								<span class="glyphicon glyphicon-pencil sketch-save-btn" 
 									data-toggle="tooltip" title="스캐치 수정하기" aria-hidden="true"></span>
 							</a>
-							<a href="${pageContext.request.contextPath}/sketch/deleteSketch.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}">
+							<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}">
 								<span class="glyphicon glyphicon-trash sketch-save-btn" 
 									data-toggle="tooltip" title="스캐치 삭제하기" aria-hidden="true"></span>
 							</a>

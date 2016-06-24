@@ -32,11 +32,12 @@ public class PersonalDataController {
    
    //데이터의 모든 내용을 생성, 수정시 file로 저장하는 기능. 
    @RequestMapping("managefile.dvn")
-	public @ResponseBody String testtest(@RequestBody String datahtml){
+	public @ResponseBody String testtest(@RequestParam String datahtml,Model model, PersonalDataDTO personaldto,
+			Principal principal, HttpServletRequest request) throws IOException{
 	   
 	   //파일로...
 		String result = URLDecoder.decode(datahtml);
-		
+		String filepath = personalDataService.getFileName(personaldto, result, principal, request);
 		return result;
 	}
    

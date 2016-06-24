@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.dataDTO.GoalListDTO;
 import kr.or.davizn.dataDTO.NewGoal;
+import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataDTO.PersonalDataGoalDTO;
 import kr.or.davizn.dataService.GoalService;
 import kr.or.davizn.dataService.PersonalService;
@@ -42,10 +43,9 @@ public class GoalController {
 	}
 
 	@RequestMapping("addGoal.dvn")
-	public String addGoal(NewGoal newGoal, @RequestParam int strgseq) throws ParseException {
-		goalService.addNewGoal(newGoal, strgseq);
-		int dataseq = personalService.getDataseq(strgseq);
-		System.out.println("dataseq : " + dataseq);
+	public String addGoal(NewGoal newGoal, PersonalDataDTO personaldto) throws ParseException {
+		goalService.addNewGoal(newGoal, personaldto);
+		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
 		return "redirect:detailGoal.dvn?dataseq=" + dataseq;
 	}
 
@@ -59,12 +59,10 @@ public class GoalController {
 
 	// 목표 데이터 수정
 	@RequestMapping("updateGoal.dvn")
-	public String updateGoal(int dataseq, int strgseq, NewGoal newGoal) throws ParseException {
-		// 데이터 삭제
-		System.out.println("updataGoal.dvn 들어옴");
-		goalService.deleteGoal(dataseq);
-		goalService.addNewGoal(newGoal, strgseq);
-		return "redirect:detailGoal.dvn?dataseq=" + (dataseq + 1);
+	public String updateGoal(PersonalDataDTO personaldto, NewGoal newGoal) throws ParseException {
+		goalService.deleteGoal(personaldto.getDataseq());
+		goalService.addNewGoal(newGoal, personaldto);
+		return "redirect:detailGoal.dvn?dataseq=" + (personaldto.getDataseq() + 1);
 	}
 
 	// 세부 목표 상태 비동기 변경

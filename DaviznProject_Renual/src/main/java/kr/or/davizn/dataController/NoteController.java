@@ -42,7 +42,7 @@ public class NoteController {
 		int strgseq = personaldto.getStrgseq();
 		int dataseq = personalService.getDataseq(strgseq);
 		personalService.manageFile(dataseq,filepath);
-		return "redirect:addNoteData.dvn?filepath=" + filepath + "&strgseq=" + strgseq;
+		return "redirect:/note/addNoteData.dvn?filepath=" + filepath + "&strgseq=" + strgseq;
 	}
 
 	// 노트 데이터 추가를 위해 note 테이블에 insert
@@ -51,7 +51,7 @@ public class NoteController {
 
 		int result = notedataService.addNoteData(filepath);
 		int dataseq = personalService.getDataseq(strgseq);
-		return "redirect:detailNote.dvn?dataseq=" + dataseq +"&function=d";
+		return "redirect:/note/detailNote.dvn?dataseq=" + dataseq +"&function=d";
 	}
 
 	// 목록에서 note 데이터 상세조회

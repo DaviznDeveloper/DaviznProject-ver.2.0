@@ -40,20 +40,20 @@ public class PersonalService {
 	// 개인데이터 추가시. 모든 형에 해당
 	// file name 생성, file 내용 완성.
 	@Transactional
-	public String getFileName(PersonalDataDTO pdata, String inputArticleContents, Principal principal,
+	public String getFileName(PersonalDataDTO personaldto, String datahtml, Principal principal,
 			HttpServletRequest request) throws IOException {
 		PersonalDataDAO dao = sqlsession.getMapper(PersonalDataDAO.class);
 		String fpath = "";
-		if(pdata.getDatatype() == 1) fpath = request.getRealPath("/resources/notefile");
-		else if(pdata.getDatatype() == 2) fpath = request.getRealPath("/resources/sketchfile");
-		else if(pdata.getDatatype() == 3) fpath = request.getRealPath("/resources/goalfile");
-		else if(pdata.getDatatype() == 4) fpath = request.getRealPath("/resources/schedulefile");
+		if(personaldto.getDatatype() == 1) fpath = request.getRealPath("/resources/notefile");
+		else if(personaldto.getDatatype() == 2) fpath = request.getRealPath("/resources/sketchfile");
+		else if(personaldto.getDatatype() == 3) fpath = request.getRealPath("/resources/goalfile");
+		else if(personaldto.getDatatype() == 4) fpath = request.getRealPath("/resources/schedulefile");
 		String fname = principal.getName() + System.currentTimeMillis();
 		String endformat = ".txt";
 		String fullPath = fpath + "\\" + fname + endformat;
 		String fileName = fname + endformat;
 		FileWriter fw = new FileWriter(fullPath);
-		fw.write(inputArticleContents);
+		fw.write(datahtml);
 		fw.close();
 
 		return fileName;

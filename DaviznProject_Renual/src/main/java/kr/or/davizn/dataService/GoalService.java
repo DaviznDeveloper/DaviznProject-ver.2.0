@@ -14,6 +14,7 @@ import kr.or.davizn.dataDTO.NewGoal;
 import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataDTO.PersonalDataGoalDTO;
 import kr.or.davizn.dataInterface.GoalDAO;
+import kr.or.davizn.dataInterface.PersonalDataDAO;
 
 @Service
 public class GoalService {
@@ -62,13 +63,13 @@ public class GoalService {
     * 
     */
    @Transactional
-   public void addNewGoal(NewGoal newGoal, int strgseq) throws ParseException {
-
-		GoalDAO dao = sqlsession.getMapper(GoalDAO.class);
-		dao.addPdata(strgseq, newGoal.getDataname());
-		dao.addGoal(newGoal.getStartdate(), newGoal.getFinaldate());
+   public void addNewGoal(NewGoal newGoal, PersonalDataDTO personaldto) throws ParseException {
+	   PersonalDataDAO personaldao = sqlsession.getMapper(PersonalDataDAO.class);
+		GoalDAO goaldao = sqlsession.getMapper(GoalDAO.class);
+		personaldao.addPersonalData(personaldto);
+		goaldao.addGoal(newGoal.getStartdate(), newGoal.getFinaldate());
 		for (String goalname : newGoal.getDetailnames()) {
-			dao.addDetailGoal(goalname);
+			goaldao.addDetailGoal(goalname);
 		}
 	}
 	 
