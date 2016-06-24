@@ -2,6 +2,9 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+
+
+
 <!-- Main_Top_Nav -->
 <div class="navbar navbar-inverse navbar-fixed-top">
 
@@ -41,7 +44,7 @@
 									</a>
 								</li>
 								<li class="nav_menu">
-									<a href="${pageContext.request.contextPath}/data-main.jsp">
+									<a href="${pageContext.request.contextPath}/groupNavi.dvn">
 										<i class="fa fa-users" aria-hidden="true"></i> &nbsp;내 그룹
 									</a>
 								</li>

@@ -28,7 +28,7 @@ public class QandAboardController {
 
 	// 글목록보기
 	@RequestMapping("QnAList.dvn")
-	public String notices(String pg, Model model, @RequestParam(defaultValue = "5", required = false) String rowSize)
+	public String notices(@RequestParam(defaultValue="1",required = false) String pg, Model model, @RequestParam(defaultValue = "5", required = false) String rowSize)
 			throws ClassNotFoundException, SQLException {
 		List<QandAboardDTO> list = QandAboardservice.notices(pg, model, Integer.parseInt(rowSize));
 		model.addAttribute("list", list);
@@ -39,16 +39,24 @@ public class QandAboardController {
 
 	// 글상세보기
 	@RequestMapping("/QnA/Qnadetail.dvn")
-	public String noticeDetail(int boardseq, Model model, Principal principal)
+	public String noticeDetail(@RequestParam String boardpwd, int boardseq, Model model, Principal principal)
 			throws ClassNotFoundException, SQLException {
+		String view = null;
 		QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
 		List<QandAReplyDTO> replylist = QandAboardservice.replyDetail(boardseq);
 		String user = principal.getName();
 		System.out.println("user : " + user);
+		if(boardpwd.equals(notice.getBoardpwd())){
+			
+			view="QnA.qna-detail";
+		}else{
+			view="redirect:/QnAList.dvn";
+		}
 		model.addAttribute("user", user);
 		model.addAttribute("replylist", replylist);
 		model.addAttribute("notice", notice);
-		return "QnA.qna-detail";
+		
+		return view;
 
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.dataDTO.PersonaldataSchDTO;
 import kr.or.davizn.dataDTO.ScheduleDTO;
+import kr.or.davizn.dataService.PersonalService;
 import kr.or.davizn.dataService.ScheduleService;
 
 @Controller
@@ -19,7 +20,8 @@ public class ScheduleController {
 	
 	@Autowired
 	ScheduleService schservice;
-	
+	@Autowired
+	PersonalService personalService;
 	//일정 리스트 가기
 	@RequestMapping("goScheduleList.dvn")
 	@Transactional
@@ -33,13 +35,17 @@ public class ScheduleController {
 		model.addAttribute("strgseq",strgseq);
 		
 		return "datamanage.data-calendar-create";
+		/*return "redirect:/schedule/detailSchedule.dvn?dataseq=" + dataseq + "&model=" + model;*/
 	}
 	
 	//일정 데이터 만들기
 	@RequestMapping("createSchedule.dvn")
-	public String createSchedule(int strgseq, String dataname,ScheduleDTO schedule){
+	public String createSchedule(int strgseq, String dataname,ScheduleDTO schedule,Model model){
 		schservice.addSchedule(strgseq, dataname, schedule);
-		return "redirect:goScheduleList.dvn?strgseq="+strgseq;
+		int dataseq = personalService.getDataseq(strgseq);
+		
+		return detailSchedule(dataseq, model);
+		/*return "redirect:goScheduleList.dvn?strgseq="+strgseq;*/
 	}
 	
 	//일정 데이터 상세보기

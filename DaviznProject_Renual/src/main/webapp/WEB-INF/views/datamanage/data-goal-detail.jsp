@@ -31,13 +31,15 @@
 							data-toggle="tooltip" title="목표 수정하기" aria-hidden="true"></span>
 					</span>
 					
-					<a href="${pageContext.request.contextPath}/goal/deleteGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}">
+					<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${dataseq}&strgseq=${strgseq}">
 						<span class="glyphicon glyphicon-trash note-detail-modi" 
 							data-toggle="tooltip" title="목표 삭제하기" aria-hidden="true"></span>
 					</a>
 				</div>
 				
-				<form action="${pageContext.request.contextPath}/goal/updateGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}" method="post" class="form-horizontal">
+				<form action="${pageContext.request.contextPath}/goal/updateGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}" method="post" class="form-horizontal" id="goalcreateForm">
+					<input type="hidden" name="goalhtml" id="goalhtml" value="">
+					<input type="hidden" name="datatype" value="3">
 					<div id="goal-modi-modal" class="modal fade">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
@@ -108,7 +110,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-									<button type="submit" class="btn btn-primary goal-save">저장</button>
+									<button type="button" id="sendgoaldata" class="btn btn-primary goal-save">저장</button>
 								</div>
 							</div>
 							<!-- /.modal-content -->
@@ -119,7 +121,7 @@
 				</form>
 				
 				<hr>
-				
+				<div id="wholehtml">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h2 class="text-center goal-detail-title">${dataname}</h2>
 					<br>
@@ -185,7 +187,7 @@
 					</div>
 					
 				</div>
-						
+				</div>		
 			</div>
 			
 		</div>
@@ -200,6 +202,7 @@
 <script src="${pageContext.request.contextPath}/resources/lib/goal/progress.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/lib/TimeCircles/inc/TimeCircles.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/data-goal.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/manage-file.js"></script>
 <script type="text/javascript">
 
 

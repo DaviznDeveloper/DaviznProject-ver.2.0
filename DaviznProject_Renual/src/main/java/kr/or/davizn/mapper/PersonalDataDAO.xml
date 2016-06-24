@@ -5,6 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.or.davizn.dataInterface.PersonalDataDAO">
 
+	<!-- 가장 최근에 추가한 데이터 고유번호 가져오기 -->
+	<select id="getDataseq" parameterType="Integer" resultType="Integer">
+		select Max(dataseq) from personaldata where strgseq=#{strgseq}
+	</select>
+	
+	<!-- 가장 최근에 추가한 데이터의 파일 이름 저장하기 -->
+	<insert id="manageFile">
+		insert into managefile values(#{param1},#{param2})
+	</insert>
+	
 	<!-- 데이터 수정 -->
 	<select id="modifyPersonalData" parameterType="String" resultType="kr.or.davizn.dataDTO.PersonalDataDTO">
 		select * from personaldata where strgseq=#{strgseq}

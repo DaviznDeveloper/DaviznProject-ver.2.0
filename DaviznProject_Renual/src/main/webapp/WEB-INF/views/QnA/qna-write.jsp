@@ -82,7 +82,7 @@
 											
 												<div class="text-center">
 													<button type="submit" class="btn btn-success" id = "write_submit">완료</button>
-													<a class="btn btn-default" href="qna-list.jsp" role="button">취소</a>
+													<a class="btn btn-default" href="${pageContext.request.contextPath}/QnAList.dvn" role="button">취소</a>
 												</div>
 												
 											</td>

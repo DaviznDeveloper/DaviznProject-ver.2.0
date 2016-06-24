@@ -3,16 +3,12 @@ package kr.or.davizn.groupDTO;
 import java.sql.Date;
 
 public class GroupShareDataDTO {
-	/*SHARE_DATASEQ	NUMBER
-GROUPSEQ	NUMBER
-DATASEQ	NUMBER
-USERID	VARCHAR2(50 BYTE)
-SHAREDATE	DATE
-DATATYPE	NUMBER*/
+
 	private int share_dataseq;
 	private int groupseq;
 	private int dataseq;
 	private String userid;
+	private String dataname;
 	private int datatype;
 	private Date sharedate;
 	
@@ -40,6 +36,12 @@ DATATYPE	NUMBER*/
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public String getDataname() {
+		return dataname;
+	}
+	public void setDataname(String dataname) {
+		this.dataname = dataname;
+	}
 	public int getDatatype() {
 		return datatype;
 	}
@@ -52,6 +54,9 @@ DATATYPE	NUMBER*/
 	public void setSharedate(Date sharedate) {
 		this.sharedate = sharedate;
 	}
+	
+
+	
 	
 	
 }

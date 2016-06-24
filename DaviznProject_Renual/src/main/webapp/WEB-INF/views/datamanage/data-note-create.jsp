@@ -16,7 +16,7 @@
 							<li class="active">노트형 데이터 만들기</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/personalData/addPersonalNoteData.dvn?strgseq=${strgseq}&datatype=1" method="post" id="noteForm">
+						<form action="${pageContext.request.contextPath}/note/addPersonalNoteData.dvn?strgseq=${strgseq}&datatype=1" method="post" id="noteForm">
 
 							
 							<button type="button" id="sendNoteData" class="btn btn-info sendNoteData">저장</button>
@@ -24,12 +24,12 @@
 							
 							
 							<hr>
-						
+							<input type="hidden" name="datatype" value="1">
 							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" required="required">
 							
 							<br>
 							
-							<textarea name="inputArticleContents" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
+							<textarea name="datahtml" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
 							
 						</form>
 				

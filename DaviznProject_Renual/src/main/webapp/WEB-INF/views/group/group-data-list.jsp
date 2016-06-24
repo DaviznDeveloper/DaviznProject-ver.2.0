@@ -3,6 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+				
 				<!-- content -->
 				<div class="container">
 				
@@ -11,13 +12,13 @@
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/renual/index.jsp">홈</a></li>
 							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 그룹</a></li>
-							<li class="active">그룹 정보</li>
+							<li class="active">그룹 데이터</li>
 						</ol>
 						
 						<div class="col-sm-12 no-padding margin-bottom-10">
 							
 							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-success"
+							<button type="button" class="btn btn-primary"
 								data-toggle="modal" data-target="#group-data-create">
 								그룹 데이터 만들기
 							</button>
@@ -79,7 +80,7 @@
 							
 							<!-- 내 데이터 가져오기 버튼 -->
 							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-primary"
+							<button type="button" class="btn btn-purple"
 								data-toggle="modal" data-target="#my-data-share">
 								내 데이터 공유하기
 							</button>
@@ -103,7 +104,7 @@
 												<div class="row col-xs-12 center-block">
 												
 													<div class="col-sm-4">
-														<div class="panel panel-primary">
+														<div class="panel panel-purple">
 															<div class="panel-heading">
 																<div class="radio">
 																	<label>
@@ -147,7 +148,7 @@
 													</div>
 													
 													<div class="col-sm-4">
-														<div class="panel panel-primary">
+														<div class="panel panel-purple">
 															<div class="panel-heading">
 																<div class="radio">
 																	<label>
@@ -191,7 +192,7 @@
 													</div>
 													
 													<div class="col-sm-4">
-														<div class="panel panel-primary">
+														<div class="panel panel-purple">
 															<div class="panel-heading">
 																<div class="radio">
 																	<label>
@@ -239,7 +240,7 @@
 			
 											<div class="modal-footer">
 												<button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
-												<button type="submit" class="btn btn-primary">확인</button>
+												<button type="submit" class="btn btn-purple">확인</button>
 											</div>
 				
 										</div>
@@ -251,23 +252,160 @@
 							<hr>
 							
 							<div class="col-sm-6">
-								<div class="panel panel-success">
+								<div class="panel panel-info">
 									<div class="panel-heading">
 										<h3 class="panel-title">그룹 전용 데이터</h3>
 									</div>
 									<div class="panel-body">
-										<!-- 여기서부터 이어서 작업 -->
+										
+										<a href="" class="a-font">
+											<div class="col-sm-6">
+												<div class="panel panel-primary">
+													<div class="panel-heading">
+														데이터 제목
+													</div>
+													<div class="panel-body">
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 종류
+															</h4>
+															<p class="list-group-item-text">
+																아이디어 공유 데이터
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 생성자
+															</h4>
+															<p class="list-group-item-text">
+																nameLim
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 최종 수정일
+															</h4>
+															<p class="list-group-item-text">
+																2016.06.22
+															</p>
+														</div>
+														
+													</div>
+												</div>
+											</div>
+										</a>
+										
+										<a href="" class="a-font">
+											<div class="col-sm-6">
+												<div class="panel panel-primary">
+													<div class="panel-heading">
+														데이터 제목
+													</div>
+													<div class="panel-body">
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 종류
+															</h4>
+															<p class="list-group-item-text">
+																아이디어 공유 데이터
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 생성자
+															</h4>
+															<p class="list-group-item-text">
+																nameLim
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 최종 수정일
+															</h4>
+															<p class="list-group-item-text">
+																2016.06.22
+															</p>
+														</div>
+														
+													</div>
+												</div>
+											</div>
+										</a>
+										
 									</div>
 								</div>
 							</div>
 							
+						
 							<div class="col-sm-6">
-								<div class="panel panel-info">
+								<div class="panel panel-purple-l">
 									<div class="panel-heading">
 										<h3 class="panel-title">그룹에 공유된 데이터</h3>
 									</div>
 									<div class="panel-body">
-										<!-- 여기서부터 이어서 작업 -->
+									<c:forEach var="sharedata" items="${sharedatalist}">
+										<a href="${pageContext.request.contextPath}/sharedata/datailShareData.dvn" class="a-font">
+											<div class="col-sm-6">
+												<div class="panel panel-purple">
+													<div class="panel-heading">
+														${sharedata.dataname}
+													</div>
+													<div class="panel-body">
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 종류 ${sharedata.datatype}
+															</h4>
+															<p> 
+																<c:choose>
+
+   																	<c:when test="${sharedata.datatype eq '1'}">
+        																노트형 데이터입니다.
+    																</c:when>
+
+																    <c:when test="${sharedata.datatype eq '2'}">
+																        스케치형 데이터 입니다.
+																    </c:when>
+																
+																    <c:otherwise>
+																        다른 데이터입니다.
+																    </c:otherwise>
+																
+																</c:choose>
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 공유자
+															</h4>
+															<p class="list-group-item-text">
+																${sharedata.userid}
+															</p>
+														</div>
+														
+														<div class="list-group">
+															<h4 class="list-group-item-heading">
+																데이터 최종 수정일
+															</h4>
+															<p class="list-group-item-text">
+																${sharedata.sharedate}
+															</p>
+														</div>
+														
+													</div>
+												</div>
+											</div>
+										</a>
+										</c:forEach>
+										
+										
 									</div>
 								</div>
 							</div>
@@ -285,3 +423,4 @@
 		</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/group-info.js"></script>
+

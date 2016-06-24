@@ -46,12 +46,17 @@
 		<!-- css - switch -->
 		<link href="${pageContext.request.contextPath}/resources/lib/switch/switchable.css" rel="stylesheet">
 		
+		<!-- css - sketch -->
+		<link href="${pageContext.request.contextPath}/resources/lib/sketch/css/literallycanvas.css" rel="stylesheet">
+		
+		<!-- css - Custom CSS -->
 		<!-- css - Custom CSS -->
 		<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/css/sideBar.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/css/board.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/css/dashboard-style.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/css/group.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/data-sketch.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/data-note.css" rel="stylesheet">
 		
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -69,7 +74,7 @@
 		<!-- Custom Script -->
 		<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/sideBar.js"></script>
-		
+		<script src="${pageContext.request.contextPath}/resources/js/notification.js"></script>
 
 	</head>
 

@@ -13,6 +13,8 @@
 						</ol>
 						
 						<div class="col-md-12 no-padding margin-bottom-10">
+						
+							
 							<!-- 게시글 조회 -->
 							<form action=<c:url value="/QnA/search.dvn"/>>
 	
@@ -79,15 +81,41 @@
 										<th scope="col" class="board-l-lookup">조회</th>
 										
 									</tr>
-								
 								</thead>
 								
 								<tbody>
 									
-									<c:forEach items="${list}" var="n">
+									<c:forEach items="${list}" var="n" varStatus="status">
 										<tr>
-											<td class="boardseq">${n.boardseq}</td>								
-											<td class="boardsubject"><a href="${pageContext.request.contextPath}/QnA/Qnadetail.dvn?boardseq=${n.boardseq}">${n.boardsubject}</a></td>
+											<td class="boardseq">${n.boardseq}</td>		
+											<form action="${pageContext.request.contextPath}/QnA/Qnadetail.dvn?boardseq=${n.boardseq}" method="post" class="form-horizontal">
+												<td scope="col" id="board-title" name="auth" class="ellipsis board-l-title">
+													<span href="" class="board-l-t" data-toggle="modal"
+			                                    		data-target="#pwd-modal${status.index}">
+														${n.boardsubject}
+													</span>
+													<!-- Small modal -->
+					                                 <div id="pwd-modal${status.index}" class="modal fade board-l-t-pwd" tabindex="-1"
+					                                    role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					                                    <div class="modal-dialog modal-sm">
+						                                    <div>
+						                                    	<div class="modal-content">
+						                                       		<div class="modal-header">
+															          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+															          <h4 class="modal-title" id="mySmallModalLabel">비밀번호 확인<a class="anchorjs-link" href="#mySmallModalLabel"><span class="anchorjs-icon"></span></a></h4>
+															        </div>
+															        <div class="modal-body">
+						                                          		<input type="password" class="form-control" id="boardpwd" name="boardpwd" placeholder="이 글의 비밀번호를 입력하세요.">
+						                                          	</div>
+						                                          	<div class="modal-footer">
+						                                          		<a href="${pageContext.request.contextPath}/QnAList.dvn"><button type="button" class="form-control btn btn-info">확인</button></a>
+						                                          	</div>
+						                                       </div>
+						                                    </div>
+					                                 </div> 
+												</td>
+											</form>
+											
 											<td class="userid">${n.userid}</td>
 											<td class="boarddate">${n.boarddate}</td>
 											<td class="boardreadcount">${n.boardreadcount}</td>
