@@ -199,8 +199,5 @@
 
 </div>
 
-</div>
-
-</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/qna.js"></script>

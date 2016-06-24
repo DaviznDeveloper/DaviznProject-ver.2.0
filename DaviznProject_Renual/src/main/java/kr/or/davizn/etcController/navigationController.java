@@ -61,5 +61,10 @@ public class navigationController {
 
 		return "redirect:/message/message.dvn"; //redirect:/message.dvn
 	}
+	@RequestMapping("album.dvn")
+	public String album(){
+		
+		return "QnA.wow";
+	}
 
 }

@@ -86,7 +86,7 @@
                        </a>
                        <ul class="dropdown-menu">
                           <li>
-                              <a href="${pageContext.request.contextPath}/main-profile.navigation">
+                              <a href="${pageContext.request.contextPath}/album.dvn">
                                   id : 제목제목?? 
                               </a>
                           </li>
