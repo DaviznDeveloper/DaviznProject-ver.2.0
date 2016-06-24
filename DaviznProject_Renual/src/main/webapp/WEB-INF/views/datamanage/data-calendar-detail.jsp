@@ -9,10 +9,10 @@
 					<div class="col-sm-12 content-container">
 
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/renual/index.jsp">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 데이터 관리</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-list.jsp">저장소 제목</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-list.jsp">일정관리 리스트</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
+			               	<li><a href="${pageContext.request.contextPath}/userStrg.dvn">저장소 목록</a></li>
+			               	<li><a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${schedule.strgseq}">데이터 목록</a></li>
+							<li><a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${schedule.strgseq}">일정 목록</a></li>
 							<li class="active">일정관리 데이터 상세보기</li>
 						</ol>
 						<div id="wholehtml">

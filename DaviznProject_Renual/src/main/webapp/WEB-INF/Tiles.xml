@@ -4,12 +4,24 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-	 <!-- return home.* -->
-	<definition name="home.index" template="/WEB-INF/views/inc/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/index.jsp" />
-	</definition>
+   <!-- return home.* -->
+   <definition name="home.index" template="/WEB-INF/views/inc/layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+      <put-attribute name="content" value="/WEB-INF/views/index.jsp" />
+   </definition>
+   
+   <!-- return joinus.sign-in -->
+   <definition name="joinus.sign-in" template="/WEB-INF/views/joinus/inc/signIn-layout.jsp">
+      <put-attribute name="content" value="/WEB-INF/views/joinus/sign-in.jsp" />
+   </definition>
+   
+   <!-- return joinus.* -->
+   <definition name="joinus.*" template="/WEB-INF/views/joinus/inc/signUp-layout.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+      <put-attribute name="content" value="/WEB-INF/views/joinus/{1}.jsp" />
+   </definition>
    
    <!-- return *.* -->
    <definition name="*.*" template="/WEB-INF/views/inc/layout.jsp">

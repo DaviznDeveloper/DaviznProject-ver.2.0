@@ -10,8 +10,8 @@
 
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-              				<li><a href="${pageContext.request.contextPath}/userStrg.dvn">내 데이터 관리</a></li>
-               				<li><a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${note.strgseq}">저장소 제목</a></li>
+		        			<li><a href="${pageContext.request.contextPath}/userStrg.dvn">저장소 목록</a></li>
+		         			<li><a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${note.strgseq}">데이터 목록</a></li>
 							<li class="active">노트형 데이터 제목</li>
 						</ol>
 						

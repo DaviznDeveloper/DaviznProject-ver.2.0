@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.davizn.dataDTO.PersonalDataSketchDTO;
+import kr.or.davizn.dataService.PersonalService;
 import kr.or.davizn.dataService.SketchService;
 
 @Controller
@@ -19,7 +20,8 @@ public class SketchController {
 	
 	@Autowired
 	SketchService sketchservice;
-	
+	@Autowired
+	PersonalService personalService;
 	// 스케치 창 이동
 	@RequestMapping("moveSketchCreate.dvn")
 	public String moveNoteCreate(Model model, int strgseq) {
@@ -41,10 +43,10 @@ public class SketchController {
 	}
 	//스케치 데이터 추가
 	@RequestMapping("addSketchData.dvn")
-	public String addSketchData(String filepath, String strgseq){
+	public String addSketchData(String filepath, int strgseq){
 		int result = sketchservice.addSketchData(filepath);
-		
-		return "redirect:/personalData/showPersonalDataList.dvn?strgseq="+strgseq;
+		int dataseq = personalService.getDataseq(strgseq);
+		return "redirect:/sketch/detailsketch.dvn?strgseq="+strgseq+"&dataseq="+dataseq;
 	}
 	
 	//스케치 데이터 상세보기

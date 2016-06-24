@@ -34,10 +34,10 @@ public class NoteController {
 
 	// 노트 데이터 추가를 위해 personaldata 테이블에 insert
 	@RequestMapping("addPersonalNoteData.dvn")
-	public String addPersonalData(Model model, PersonalDataDTO personaldto, @RequestParam String inputArticleContents,
+	public String addPersonalData(Model model, PersonalDataDTO personaldto, @RequestParam String datahtml,
 			Principal principal, HttpServletRequest request) throws IOException {
 
-		String filepath = personalService.getFileName(personaldto, inputArticleContents, principal, request);
+		String filepath = personalService.getFileName(personaldto, datahtml, principal, request);
 		personalService.addPersonalData(personaldto);
 		int strgseq = personaldto.getStrgseq();
 		int dataseq = personalService.getDataseq(strgseq);

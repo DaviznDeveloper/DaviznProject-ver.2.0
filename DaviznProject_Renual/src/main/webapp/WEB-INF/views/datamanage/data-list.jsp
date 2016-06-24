@@ -11,7 +11,7 @@
 	
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/userStrg.dvn">데이터 관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/userStrg.dvn">저장소 목록</a></li>
 							<li class="active">저장소 제목</li>
 						</ol>
 						
@@ -141,10 +141,11 @@
 						<div class="row no-padding">
 							<h3 class="col-md-9">내가 저장한 데이터 (${listsize})</h3>
 							<div  class="col-md-3">
-								<select class="form-control data-m-repo-select" name="selectStrg">
+								<select class="form-control data-m-repo-select" name="selectStrg" id="selectStrg">
 									<option>내 저장소 선택</option>
-									<option>2</option>
-									<option>3</option>
+									<c:forEach items="${storagelist}" var="storage" varStatus="status">
+											<option value="${storage.strgseq}">${storage.strgname}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -187,9 +188,7 @@
 							<col width="200" data-key="buttons">
 						</colgroup>
 						<tbody>
-						
 							<c:forEach items="${pdatalist}" var="pdata" varStatus="status">
-							
 								<tr>
 									<td>
 										<div class="data-list-div">
@@ -200,19 +199,46 @@
 											<span class="data-list-span">${pdata.datacreate}</span>
 										</div>
 									</td>
-								
 									<td>
-									<span class="pull-right margin-right-10">
+										<span class="pull-right margin-right-10">
+                             				<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
+                                 				<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
+                             				</a>
+                          		 		</span>
+										<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
+											<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share${status.index}">
+												<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
+			                              	</div>
+										</span>
+										<c:if test="${pdata.datatype eq 3}">
+	                           				<span class="pull-right margin-right-10">
+	                              				<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
+	                                 				<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
+	                              				</a>
+	                           				</span>
+                           				</c:if>
+										<c:if test="${pdata.datatype eq 4}">
+	                           				<span class="pull-right margin-right-10">
+	                              				<a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
+	                                 				<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
+	                              				</a>
+	                           				</span>
+                           				</c:if>
+									<%-- <span class="pull-right margin-right-10">
 										<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
 											<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
 										</a>
 									</span>
-											
+									<span>
+										<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="목록 보기">
+                            	  			<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
+                           				</a>
+                           			</span>		
 									<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
 										<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share${status.index}">
 											<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
 										</div>
-									</span>
+									</span> --%> 
 									<!-- modal -->
 									<form action="${pageContext.request.contextPath}/sharedata/addShareData.dvn" method="post">
 										<input type="hidden" id="dataseq" name="dataseq" value="${pdata.strgseq}">
@@ -227,11 +253,7 @@
 																aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
-														<h4 class="modal-title" id="myModalLabel">데이터 공유하기
-																strseq   :	${pdata.strgseq}
-																datatype :  ${pdata.datatype}
-																dataname :  ${pdata.dataname}
-														</h4>
+														<h4 class="modal-title" id="myModalLabel">데이터 공유하기</h4>
 													</div>
 													<div class="modal-body">
 														<div class="row col-xs-12 center-block">
@@ -273,8 +295,8 @@
 											</div>
 										</div>
 	                				</form>
-										<!-- modal -->
-									</td>
+										<!-- modal --> 
+								</td>
 							</tr>
 							
 							</c:forEach>
@@ -368,4 +390,5 @@
 			</div>
 			
 		</div>
+<script src="${pageContext.request.contextPath}/resources/js/data-list.js"></script>
 

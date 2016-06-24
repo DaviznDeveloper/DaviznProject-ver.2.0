@@ -5,7 +5,9 @@ import java.util.List;
 import kr.or.davizn.dataDTO.UserStrgDTO;
 
 public interface UserStrgDAO {
-	public int addStorage(String strgname, String userid);
-	public int modifyStorageName(UserStrgDTO userstrgdto);
-	public List<UserStrgDTO> showStorageList(String userid);
+   public int addStorage(String strgname, String userid);
+   public int modifyStorageName(UserStrgDTO userstrgdto);
+   public List<UserStrgDTO> showStorageList(String userid);
+   //저장소 개수 구하기
+   public int countUserstrg(String userid);
 }

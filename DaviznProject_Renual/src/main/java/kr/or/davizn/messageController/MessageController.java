@@ -21,7 +21,7 @@ import kr.or.davizn.messageInterface.MessageDAO;
 
 
 @Controller
-
+@RequestMapping("/message/")
 public class MessageController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class MessageController {
 		return mav;
 	}*/
 	
-	@RequestMapping("/message/message.dvn")
+	@RequestMapping("message.dvn")
 	public String message( Model model, Principal principal) throws ClassNotFoundException, SQLException{
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);
 		System.out.println(dao);
@@ -52,7 +52,7 @@ public class MessageController {
 	}
 	
 	//쪽지보내기에서 아이디 검색할 때 목록 가져오는 그거
-	@RequestMapping("/message/getMemberList.dvn")
+	@RequestMapping("getMemberList.dvn")
 	public @ResponseBody List<DaviznMemberDTO> getMemberList(DaviznMemberDTO memberdto) {
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);
 		System.out.println(dao);
@@ -76,7 +76,7 @@ public class MessageController {
 		return "redirect:/message/message.dvn?userid=" + session.getAttribute("userid");
 	}*/
 	
-	@RequestMapping("/message/sendMessage.dvn")
+	@RequestMapping("sendMessage.dvn")
 	public String sendMessage(MessagesendDTO messagedto, Principal principal) {
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);
 		String userid=principal.getName();
@@ -120,7 +120,7 @@ public class MessageController {
 	}
 	
 	//알림체크하기
-	@RequestMapping("/message/msgNotificationCheck.dvn")
+	@RequestMapping("msgNotificationCheck.dvn")
 	public @ResponseBody List<HashMap<String, Object>> msgNotificationCheck(MessagereceiveDTO messagereceivedto) {
 		
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);
@@ -128,7 +128,7 @@ public class MessageController {
 		return dao.msgNotificationCheck(messagereceivedto);
 	}
 	
-	@RequestMapping("/message/changeMsgNotificationState.dvn")
+	@RequestMapping("changeMsgNotificationState.dvn")
 	public void changeNotificationStates(MessagereceiveDTO messagereceivedto) {
 		
 		MessageDAO dao = sqlsession.getMapper(MessageDAO.class);

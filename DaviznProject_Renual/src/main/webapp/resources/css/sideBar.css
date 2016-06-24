@@ -14,68 +14,68 @@
 }
 
 .sidebar-box {
-	padding: 20px;
+   padding: 20px;
 }
 
 #login-fail {
-	font-size: 13px;
+   font-size: 13px;
 }
 
 .get-id-pw {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	text-align: center;
-	line-height: 30px;
+   margin-top: -10px;
+   margin-bottom: 10px;
+   text-align: center;
+   line-height: 30px;
 }
 
 .login-border-bottom {
-	position: relative;
-	margin-top: 30px;
-	border-bottom: 1px solid #9d9d9d;
+   position: relative;
+   margin-top: 30px;
+   border-bottom: 1px solid #9d9d9d;
 }
 
 .login-or-box {
-	position: absolute;
-	width: 70px;
-	margin-top: -10px;
-	margin-left: 105px;
-	text-align: center;
-	text-indent: none;
-	line-height: 20px;
-	background: #fff;
-	color: #9d9d9d;
+   position: absolute;
+   width: 70px;
+   margin-top: -10px;
+   margin-left: 105px;
+   text-align: center;
+   text-indent: none;
+   line-height: 20px;
+   background: #fff;
+   color: #9d9d9d;
 }
 
 .login-or {
-	width: 50px;
-	text-indent: none;
+   width: 50px;
+   text-indent: none;
 }
 
 .fb-login {
-	margin-top: 30px;
-	width: 280px;
-	height: 40px;
-	padding: 0px;
-	background-image: url('../img/facebook_login_btn2.png');
-	background-size: contain;
-	opacity: 0.8;
+   margin-top: 30px;
+   width: 280px;
+   height: 40px;
+   padding: 0px;
+   background-image: url('../img/facebook_login_btn2.png');
+   background-size: contain;
+   opacity: 0.8;
 }
 
 .fb-login:hover {
-	opacity: 1;
+   opacity: 1;
 }
 
 .goo-login {
-	width: 280px;
-	height: 40px;
-	padding: 0px;
-	background-image: url('../img/google_login_btn2.png');
-	background-size: contain;
-	opacity: 0.8;
+   width: 280px;
+   height: 40px;
+   padding: 0px;
+   background-image: url('../img/google_login_btn2.png');
+   background-size: contain;
+   opacity: 0.8;
 }
 
 .goo-login:hover {
-	opacity: 1;
+   opacity: 1;
 }
 
 /* Change with of sidebar from 0 to 250px */
@@ -94,15 +94,15 @@
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li > a {
     display: block;
     text-decoration: none;
-    color: #0080ff;
+    color: #ff0059;
     font-weight: bold;
 }
 
-.sidebar-nav li a:hover {
-	color: #fff;
-	font-weight: bold;
-    background: #0080ff;
+.sidebar-nav li > a:hover {
+   color: #fff;
+   font-weight: bold;
+    background: #ff5900;
 }

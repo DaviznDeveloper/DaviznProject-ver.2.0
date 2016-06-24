@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.dataDTO.PersonalDataDTO;
+import kr.or.davizn.dataDTO.UserStrgDTO;
 import kr.or.davizn.dataService.PersonalService;
+import kr.or.davizn.dataService.UserStrgService;
 import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupService.GroupInfoService;
 
@@ -28,7 +30,8 @@ public class PersonalDataController {
    private PersonalService personalDataService;
    @Autowired
    private GroupInfoService groupInfoService;
-   
+   @Autowired
+   private UserStrgService storageService;
    
    //데이터의 모든 내용을 생성, 수정시 file로 저장하는 기능. 
    @RequestMapping("managefile.dvn")
@@ -47,6 +50,8 @@ public class PersonalDataController {
    public String showPersonalDataList(Model model, int strgseq,Principal principal){
       List<PersonalDataDTO> pdatalist = personalDataService.showPersonalDataList(strgseq);
       List<GroupListDTO> grouplist = groupInfoService.getGroupList(principal.getName());
+      List<UserStrgDTO> storagelist = storageService.showStorageList(principal.getName());
+      model.addAttribute("storagelist", storagelist);
       model.addAttribute("pdatalist", pdatalist);
       model.addAttribute("groupList",grouplist);
       model.addAttribute("strgseq",strgseq);

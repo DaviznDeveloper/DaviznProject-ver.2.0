@@ -22,7 +22,7 @@
                   </c:forEach>
                   </security:authorize>
       
-       
+       			<input type="hidden" id="userstrgCount" value="${count}">
                <!-- Button trigger modal -->
                <div class="data-repo-box" data-toggle="tooltip" title="저장소 확장하기">
                   <button type="button" class="btn btn-default data-repo-create-btn"
@@ -112,3 +112,12 @@
          </div>
          
       </div>
+  <!--저장소 개수 초과 시 경고 메시지 추가-->  
+   <script type="text/javascript">
+      $(function(){
+         var usrstrgCount=$('#userstrgCount').val();
+         if(usrstrgCount>=10){
+            alert('최대 10개의 저장소를 만들 수 있습니다.');
+         }
+      });
+   </script>

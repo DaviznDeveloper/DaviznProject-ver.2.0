@@ -38,24 +38,25 @@ public class JoinController {
 	}
 
 	// 회원가입 이메일 중복 비동기 처리
-	@RequestMapping("checkAccount.dvn")
+	@RequestMapping(value="checkAccount.dvn" ,produces="application/text; charset=utf8")
 	public @ResponseBody String checkAccount(@RequestParam String account) {
 		String result = service.checkAccount(account);
 		return result;
 	}
 
 	//회원가입 회원 아이디 중복 비동기 처리
-	@RequestMapping("checkUserid.dvn")
+	@RequestMapping(value="checkUserid.dvn",produces="application/text; charset=utf8")
 	public @ResponseBody String checkUserid(@RequestParam String userid) {
 		String result = service.checkUserid(userid);
 		return result;
 	}
 
 	// 회원 가입 시 1개의 저장소 부여
-	@RequestMapping("newStorage.dvn")
-	public String newStorage(String strgname, String userid) {
-		
+	@RequestMapping(value="newStorage.dvn")
+	public String newStorage(String userid) {
+		String strgname="저장소이름";
 		System.out.println("Hi, 저장소 줄게");
+		
 		storageService.addStorage(strgname, userid);
 		return "joinus.sign-up-ok";
 	}

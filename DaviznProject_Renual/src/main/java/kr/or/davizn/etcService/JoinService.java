@@ -26,16 +26,15 @@ public class JoinService {
 	public String checkAccount(String account){
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 		int checkResult = dao.checkAccount(account);
-		if(checkResult == 0) return "You can use this account";
-		else return "You can't use this account. Alreay exist";
+		if(checkResult == 0) return "can email";
+		else return "can't email";
 	}
 
-	
 	//아이디 중복확인
 	public String checkUserid(String userid){
 			DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 			int checkResult = dao.checkUserid(userid);
-			if(checkResult == 0) return "You can use this id";
-			else return "You can't use this id. Alreay exist";
-		}
+			if(checkResult == 0) return "can id";
+			else return "can't id";
+	}
 }
