@@ -52,6 +52,7 @@ public class CommunityboardController {
 	@RequestMapping(value = "/community/communitywrite.dvn",method= RequestMethod.POST)
 	public String noticeReg(CommunityBoardDTO dto) 
 			throws IOException, ClassNotFoundException, SQLException {
+		System.out.println("등록처리");
 		String url = "community.community-list";
 		try {
 			url = communityboardservice.noticeReg(dto);

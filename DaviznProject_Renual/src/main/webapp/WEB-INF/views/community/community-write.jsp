@@ -22,7 +22,6 @@
 								<thead class="board-thead">
 								
 									<tr>
-									
 											<!-- <th scope="col" class="ellipsis board-w-title">제목</th>
 											<th colspan="2" scope="col" class="board-w-title-input">
 												<input type="text" name = "BOARD_SUBJECT" id="board_subject" class="form-control">
@@ -32,7 +31,7 @@
 												<label for="inputEmail3" class="col-sm-1 control-label board-w-t">제목</label>
 												<div class="col-sm-11">
 													<input type="text" class="form-control" id="board-subject" name="boardsubject"
-														placeholder="제목을 입력하세요.">
+														placeholder="제목을 입력하세요." required="required">
 												</div>
 											</div>
 										</td>

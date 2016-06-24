@@ -103,7 +103,7 @@
 											</div>
 											<!-- /.modal-dialog -->
 										</div>
-										<a class="btn btn-default" href="QnA.dvn" role="button">목록</a>
+										<a class="btn btn-default" href="${pageContext.request.contextPath}/QnAList.dvn" role="button">목록</a>
 									</div>
 								</td>
 

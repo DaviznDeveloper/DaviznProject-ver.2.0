@@ -54,7 +54,7 @@ public class CommunityBoard {
 	public String noticeReg(CommunityBoardDTO n) throws Exception {
 		CommunityBoardDAO communityBoardDAO = SqlSession.getMapper(CommunityBoardDAO.class);
 		communityBoardDAO.insert(n);
-		return "redirect:community.dvn";
+		return "redirect:/communityList.dvn";
 	}
 
 }

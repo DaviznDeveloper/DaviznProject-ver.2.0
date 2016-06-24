@@ -25,8 +25,8 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd"
                     authentication-failure-handler-ref="loginFailureHandler"
                      authentication-failure-url="/no/addStorage.dvn?error" 
                      />
-  <security:logout logout-success-url="/index.dvn" />                   
- <!--  <security:intercept-url pattern="/member/*.dvn" access="hasRole('ROLE_USER')"/>
+<!--   <security:logout logout-success-url="/index.dvn" />                   
+  <security:intercept-url pattern="/member/*.dvn" access="hasRole('ROLE_USER')"/>
   <security:intercept-url pattern="/QnA/*.dvn" access="hasRole('ROLE_USER')"/> 
   <security:intercept-url pattern="/community/*.dvn" access="hasRole('ROLE_USER')"/> 
   <security:intercept-url pattern="/customer/*Reg.htm" access="hasRole('ROLE_USER')" />

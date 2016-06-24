@@ -79,6 +79,7 @@
 							</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
+			<c:if test="${userid != null}">
 				<li>
 					<a class="btn dropdown-toggle h-menu-transition" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-envelope h-menu-tran-icon" aria-hidden="true"></span>
@@ -106,16 +107,9 @@
                               </a>
                           </li>
                        </ul>
-                       
-                       <%-- 
-					<li>
-						<a class="login_btn" href="${pageContext.request.contextPath}/login.navigation">
-							<button type="button" class="btn btn-info col-xs-12">로그인</button>
-						</a>
+                  
 					</li>
-					 --%>
-				</li>
-				
+				</c:if>
 				<li>
 				 <c:if test="${userid != null}">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -163,7 +157,8 @@
    		</se:authorize>
 				  -->
 			
-				<li>
+				<li>  
+				 <c:if test="${userid!=null}">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					<se:authentication property="name" var="LoingUser" />
 					<se:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
@@ -171,7 +166,7 @@
 					</se:authorize>		
 						<span class="caret"></span>
                        </a>
-                         
+                 
                        <ul class="dropdown-menu">
                           <li>
                               <a href="${pageContext.request.contextPath}/member/profile.dvn">
@@ -192,7 +187,7 @@
                           </li>
                           	
                        </ul>
-                       	
+                    </c:if> 	
 				</li>
 				 
 				<!-- login sidebar test -->
