@@ -16,7 +16,7 @@
 						</ol>
 						
 						<form action="" method="post">
-							
+							<input type="hidden">
 							<button type="button" class="btn btn-info sendNoteData">저장</button>
 							<button type="reset" class="btn btn-default">취소</button>
 							
