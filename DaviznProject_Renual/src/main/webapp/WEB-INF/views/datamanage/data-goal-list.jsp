@@ -42,7 +42,7 @@
 													<label for="inputgoalTitle" class="col-sm-2 control-label">목표 이름</label>
 													<div class="col-sm-10">
 														<input type="text" name="dataname" class="form-control" id="inputgoalTitle"
-															placeholder="이루고 싶은 목표를 입력하세요" required="required">
+															placeholder="이루고 싶은 목표를 입력하세요" required>
 													</div>
 												</div>
 												
@@ -53,7 +53,7 @@
 													<div class="col-sm-10  goal-Check-List-Box">
 														<div class="goal-check-input-box">
 															<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10"
-																placeholder="세부 목표를 입력하세요" required="required">
+																placeholder="세부 목표를 입력하세요" required>
 															<button type="button" class="close goal-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 														</div>
 													</div>

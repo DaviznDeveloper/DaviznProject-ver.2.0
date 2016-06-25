@@ -20,7 +20,3 @@
 					<div id="push"></div>
 				
 				</div>
-			
-			</div>
-			
-		</div>

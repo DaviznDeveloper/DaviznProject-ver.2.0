@@ -25,7 +25,7 @@
 							
 							<hr>
 							<input type="hidden" name="datatype" value="1">
-							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" required="required">
+							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" required>
 							
 							<br>
 							

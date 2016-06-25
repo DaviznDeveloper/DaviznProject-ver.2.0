@@ -52,11 +52,17 @@
 					</a>
 				</li>
 				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/communityNavigation.dvn">
+					<a href="${pageContext.request.contextPath}/QnANavigation.dvn">
 						<i class="fa fa-question-circle" aria-hidden="true"></i> 
 						&nbsp;1:1 문의&건의
 					</a>
-					
+				</li>
+				
+				<li class="nav_menu">
+					<a href="${pageContext.request.contextPath}/siteStatistics.dvn">
+						<i class="fa fa-eye" aria-hidden="true"></i>
+						&nbsp;사이트 통계
+					</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -64,28 +70,31 @@
 					<se:authorize access="hasRole('ROLE_USER')">
 						<a class="btn dropdown-toggle h-menu-transition" data-toggle="dropdown" href="#"> 
 							<span class="glyphicon glyphicon-envelope h-menu-tran-icon" aria-hidden="true"></span> 
-							<span class="badge h-menu-tran-badge-mail">4</span>
+							<span class="badge h-menu-tran-badge-mail">${msgCount}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<c:set var="message" value="${messagList}" />
 							<c:choose>
 								<c:when test="${message eq null}">
-									<li><a href="#"> 읽지 않은 메세지가 없습니다. </a></li>
+									<li><a href="#"> 새로운 메세지가 없습니다. </a></li>
 								</c:when>
 
 								<c:otherwise>
 									<c:forEach items="${alarmList}" var="al">
-										<li><a
-											href="${pageContext.request.contextPath}/main-profile.navigation">
+										<li><a href="${pageContext.request.contextPath}/main-profile.navigation">
 												id : 제목제목?? </a></li>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-							<li><a href="${pageContext.request.contextPath}/messageNavigation.dvn">전체 쪽지함 가기</a></li>
+							<li class="vertical-middle padding-vertical text-center">
+								<a href="${pageContext.request.contextPath}/messageNavigation.dvn">
+									<span class="notice-header-span notice-header-all">전체 쪽지 보기</span>
+								</a>
+							</li>
 							<c:if test="${alarmList}==null">
 								<c:forEach items="${alarmList}" var="al">
-									<li><a
-										href="${pageContext.request.contextPath}/main-profile.navigation">
+									<li>
+										<a href="${pageContext.request.contextPath}/main-profile.navigation">
 											id : 제목제목?? </a></li>
 								</c:forEach>
 							</c:if>
@@ -96,19 +105,28 @@
 				<se:authorize access="hasRole('ROLE_USER')">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-						<span class="badge h-menu-tran-badge-notice">${alarmCount}</span>
+						<span class="badge h-menu-tran-badge-notice">${notice}</span>
 					</a>
 					<ul class="dropdown-menu">
-						<c:forEach items="${alarmList}" var="al">
-							<li>
-								<a href="${pageContext.request.contextPath}/main-profile.navigation">
+						<c:set var="notice" value="${alarmList}" />
+						<c:choose>
+							<c:when test="${notice eq null}">
+								<li><a href="#"> 새로운 알림이 없습니다. </a></li>
+							</c:when>
+
+							<c:otherwise>
+								<c:forEach items="${alarmList}" var="al">
+									<li>
+										<a href="${pageContext.request.contextPath}/main-profile.navigation">
 											${al.datatype} ${al.dataname}일정이 종료되었습니다.
-								</a>
-							</li>
-						</c:forEach>
+										</a>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<li class="vertical-middle padding-vertical text-center">
 							<a href="${pageContext.request.contextPath}/main-profile.navigation">
-								<span class="notice-header-span notice-header-all">전체보기</span>
+								<span class="notice-header-span notice-header-all">전체 알림 보기</span>
 							</a>
 						</li>
 					</ul>

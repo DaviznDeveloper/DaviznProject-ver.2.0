@@ -212,14 +212,14 @@
 										</span>
 										<c:if test="${pdata.datatype eq 3}">
 	                           				<span class="pull-right margin-right-10">
-	                              				<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
+	                              				<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${pdata.strgseq}" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
 	                                 				<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
 	                              				</a>
 	                           				</span>
                            				</c:if>
 										<c:if test="${pdata.datatype eq 4}">
 	                           				<span class="pull-right margin-right-10">
-	                              				<a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
+	                              				<a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${pdata.strgseq}" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
 	                                 				<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
 	                              				</a>
 	                           				</span>

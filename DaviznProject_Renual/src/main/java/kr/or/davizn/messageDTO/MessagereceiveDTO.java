@@ -11,9 +11,19 @@ public class MessagereceiveDTO {
 	private Date message_date;
 	private int msg_alarm;
 	private String receiver;
+	private int checkedstate;
 	
 	
-	
+
+
+	public int getCheckedstate() {
+		return checkedstate;
+	}
+
+
+	public void setCheckedstate(int checkedstate) {
+		this.checkedstate = checkedstate;
+	}
 
 
 	public String getReceiver() {
@@ -35,7 +45,7 @@ public class MessagereceiveDTO {
 	public String toString() {
 		return "MessagereceiveDTO [message_num=" + message_num + ", sender=" + sender + ", message_title="
 				+ message_title + ", message_content=" + message_content + ", message_date=" + message_date
-				+ ", msg_alarm=" + msg_alarm + ", receiver=" + receiver + "]";
+				+ ", msg_alarm=" + msg_alarm + ", receiver=" + receiver + ", checkedstate=" + checkedstate + "]";
 	}
 
 
