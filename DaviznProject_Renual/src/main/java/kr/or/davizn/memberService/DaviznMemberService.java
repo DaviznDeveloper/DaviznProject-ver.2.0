@@ -34,9 +34,10 @@ public class DaviznMemberService {
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 		CommonsMultipartFile file = member.getUploadImage();
 		
-		 if(file.getSize()!=0){
-					 
-			 String fname = System.currentTimeMillis()+file.getOriginalFilename(); //파일명 얻기
+		 if(file.getSize()>0){
+			System.out.println("파일 사이즈가 0보다 큼");
+			System.out.println("파일 사이즈 : "+file.getSize());
+			 String fname = file.getOriginalFilename()+System.currentTimeMillis(); //파일명 얻기
 			 String path  = request.getRealPath("/resources/upload");
 			 String fullpath = path + "\\" + fname;
 			
@@ -47,9 +48,13 @@ public class DaviznMemberService {
 				  fs.close();
 			  }
 			 member.setProfile_img(fname);
+			 
 			
 		 }else{
-			 
+			 System.out.println("파일 사이즈가 0보다 작을 경우");
+			 System.out.println("파일 사이즈 : "+file.getSize());
+			 System.out.println("기존 파일 이름 : "+member.getProfile_img());
+			 //member.setProfile_img(member.getProfile_img());
 		 }
 		 
 		member.setUserid(principal.getName());
