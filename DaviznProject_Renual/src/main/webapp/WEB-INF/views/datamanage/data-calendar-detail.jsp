@@ -10,15 +10,23 @@
 
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-			               	<li><a href="${pageContext.request.contextPath}/userStrg.dvn">저장소 목록</a></li>
-			               	<li><a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${schedule.strgseq}">데이터 목록</a></li>
-							<li><a href="${pageContext.request.contextPath}/schedule/goScheduleList.dvn?strgseq=${schedule.strgseq}">일정 목록</a></li>
+							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 데이터 관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/renual/data-list.jsp">저장소 제목</a></li>
+							<li><a href="${pageContext.request.contextPath}/renual/data-list.jsp">일정관리 리스트</a></li>
 							<li class="active">일정관리 데이터 상세보기</li>
 						</ol>
 						<div id="wholehtml">
 						<div class="col-sm-10 col-sm-offset-1">
 						
 							<div class="calendar-detail-option">
+								<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
+										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
+									
+									<a href="${pageContext.request.contextPath}/schedule/deleteSchedule.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
+										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
+										</span></a>
+								
+							</div>
 	
 								<form action="${pageContext.request.contextPath}/schedule/updateSchedule.dvn?dataseq=${schedule.dataseq}" method="post" id="scheduleForm">
 													
@@ -156,12 +164,12 @@
 											</div>	
 										</div>
 									</div>
-									<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
+									<%-- <span class="glyphicon glyphicon-floppy-saved font-icon-green" 
 										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
 									
 									<a href="${pageContext.request.contextPath}/schedule/deleteSchedule.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
 										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
-										</span>
+										</span> --%>
 									</a>
 								</form>
 							</div>	

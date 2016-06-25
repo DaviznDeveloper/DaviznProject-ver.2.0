@@ -5,7 +5,7 @@ import java.sql.Date;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DaviznMemberDTO {
-
+	
 	private String userid;
 	private String password;
 	private String account;

@@ -63,6 +63,7 @@ public class DaviznMemberController {
 	@RequestMapping("profileModiAction.dvn")
 	public String ProfileModiAction(DaviznMemberDTO member, HttpServletRequest request,Principal principal) 
 			throws IOException{
+		System.out.println("회원 수정 컨트롤러");
 		String view = null;
 		int result = service.updateMember(member, request, principal);
 		if(result > 0){
