@@ -54,7 +54,7 @@
 	
 		<div id="wrap">
 			<div id="main">
-			
+				
 				<!-- Header  영역  -->
 				<tiles:insertAttribute name="header" />
 				

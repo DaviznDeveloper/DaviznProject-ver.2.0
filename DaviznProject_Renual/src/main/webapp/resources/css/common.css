@@ -673,6 +673,10 @@ html, body {
    margin-bottom: 10px;
 }
 
+.margin-bottom-50 {
+	margin-bottom: 50px;
+}
+
 .margin-left-10 {
    margin-left: 10px;
 }
@@ -768,5 +772,9 @@ html, body {
 
 .text-bold {
    font-weight: bold;
+}
+
+.width-200 {
+	width: 200px;
 }
 /* 쉬운 공통 설정 */

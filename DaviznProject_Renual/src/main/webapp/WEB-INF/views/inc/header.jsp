@@ -58,12 +58,14 @@
 					</a>
 				</li>
 				
-				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/siteStatistics.dvn">
-						<i class="fa fa-eye" aria-hidden="true"></i>
-						&nbsp;사이트 통계
-					</a>
-				</li>
+				<se:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="nav_menu">
+						<a href="${pageContext.request.contextPath}/siteStatistics.dvn">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							&nbsp;사이트 통계
+						</a>
+					</li>
+				</se:authorize>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
