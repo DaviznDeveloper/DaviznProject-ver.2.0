@@ -40,7 +40,7 @@ public class IndexController {
 		//session.setAttribute("alarmCount", result);
 		
 		session.setAttribute("msgCount", total);
-		session.setAttribute("notice", result);
+		session.setAttribute("armCount", result);
 		
 		return "home.index"; //select 시키면 됨
 	}

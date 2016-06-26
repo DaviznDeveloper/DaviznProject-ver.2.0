@@ -107,7 +107,7 @@
 				<se:authorize access="hasRole('ROLE_USER')">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-						<span class="badge h-menu-tran-badge-notice">${notice}</span>
+						<span class="badge h-menu-tran-badge-notice">${armCount}</span>
 					</a>
 					<ul class="dropdown-menu">
 						<c:set var="notice" value="${alarmList}" />
