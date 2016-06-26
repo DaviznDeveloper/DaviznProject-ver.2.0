@@ -22,9 +22,9 @@ public class NoteService {
 	SqlSession sqlsession;
 
 	// 노트 추가
-	public int addNoteData(String filepath) {
+	public int addNoteData(PersonalDataNoteDTO notedto) {
 		NoteDAO dao = sqlsession.getMapper(NoteDAO.class);
-		int result = dao.addNoteData(filepath);
+		int result = dao.addNoteData(notedto);
 		return result;
 
 	}

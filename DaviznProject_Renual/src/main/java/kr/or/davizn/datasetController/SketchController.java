@@ -48,11 +48,13 @@ public class SketchController {
 										throws IOException{
 		
 		personalService.addPersonalData(personaldto);
-		int dataseq = personaldto.getDataseq();
+		
+		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
 		String filepath = commonService.getFileName(principal.getName());
+		sketchdto.setFilepath(filepath);
 		commonService.makeFile(sketchdto.getDatatype(), sketchdto.getDatahtml(), principal.getName(), request, filepath);
-		sketchservice.addSketchData(filepath);
-		return "redirect:/sketch/detailNote.dvn?dataseq=" + dataseq +"&function=d";
+		sketchservice.addSketchData(sketchdto);
+		return "redirect:/sketch/detailsketch.dvn?dataseq=" + dataseq +"&function=d";
 	}
 	
 	@RequestMapping("detailsketch.dvn")

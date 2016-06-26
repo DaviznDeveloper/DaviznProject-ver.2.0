@@ -3,24 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.davizn.datainfoInterface.GroupDataDAO">
-<!-- 
-	<select id="getG_dataseq" parameterType="Integer" resultType="Integer">
-		select Max(g_dataseq) from groupdata where groupseq=#{groupseq}
-	</select>
-	
-	<insert id="addGroupDataTable" parameterType="kr.or.davizn.groupDTO.GroupDataDTO">
-		insert into groupdata (g_dataseq,groupseq,datatype,g_datacreate,dataname,userid,origin)
-		values (g_data_seq.nextval,#{groupseq},#{datatype},sysdate,#{dataname},#{userid},#{origin})
-	</insert>
-	
-	<insert id="addG_Note" parameterType="kr.or.davizn.groupDTO.G_NoteDTO">
-		insert into g_note(g_dataseq,datatype,filepath)
-		values (#{g_dataseq},1,#{filepath})
-	</insert>
-	
-	<select id="getG_ShareDatalist" parameterType="Integer" resultType="kr.or.davizn.groupDTO.GroupDataDTO">
-		select * from groupdata where origin='p' and groupseq=#{groupseq}
-	</select> -->
+
 </mapper>
 
 

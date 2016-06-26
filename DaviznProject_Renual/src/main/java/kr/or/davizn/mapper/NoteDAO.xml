@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<!--노트 데이터 추가-->
-	<insert id="addNoteData" parameterType="String">
+	<insert id="addNoteData" parameterType="kr.or.davizn.datasetDTO.PersonalDataNoteDTO">
 		insert into note 
 		(dataseq,datatype,filepath,origin) 
 		values(

@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class GroupDataDTO {
 
-	private int g_dataseq;
 	private int dataseq;
 	private int groupseq;
 	private int datatype;
@@ -12,15 +11,7 @@ public class GroupDataDTO {
 	private String dataname;
 	private String origin;
 	private Date g_datacreate;
-	public int getG_dataseq() {
-		return g_dataseq;
-	}
-	public void setG_dataseq(int g_dataseq) {
-		this.g_dataseq = g_dataseq;
-	}
-	public int getDataseq() {
-		return dataseq;
-	}
+	
 	public void setDataseq(int dataseq) {
 		this.dataseq = dataseq;
 	}

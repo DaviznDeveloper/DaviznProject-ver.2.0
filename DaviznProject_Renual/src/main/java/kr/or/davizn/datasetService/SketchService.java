@@ -26,9 +26,9 @@ public class SketchService {
 	SqlSession sqlsession;
 
 	//스케치 데이터 추가
-	public int addSketchData(String filepath){
+	public int addSketchData(PersonalDataSketchDTO sketchdto){
 		SketchDAO sketchdao = sqlsession.getMapper(SketchDAO.class);
-		int result = sketchdao.addSketch(filepath);
+		int result = sketchdao.addSketch(sketchdto);
 		return result;
 	}
 	

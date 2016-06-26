@@ -43,13 +43,17 @@ public class NoteController {
 	@Transactional
 	public String addPersonalData(Model model, PersonalDataDTO personaldto, PersonalDataNoteDTO notedto,
 			Principal principal, HttpServletRequest request) throws IOException {
+		
 		personalService.addPersonalData(personaldto);
+		
 		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
 		String datahtml = notedto.getDatahtml();
 		String filepath = commonService.getFileName(principal.getName());
+		
+		notedto.setFilepath(filepath);
 		commonService.makeFile(personaldto.getDatatype(), datahtml, principal.getName(), request,filepath);
-		notedataService.addNoteData(filepath);
-		System.out.println("노트데이터 추가 컨트롤러 끝");
+		notedataService.addNoteData(notedto);
+
 		return "redirect:/note/detailNote.dvn?dataseq=" + dataseq +"&function=d";
 	}
 

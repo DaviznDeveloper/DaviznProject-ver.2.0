@@ -34,7 +34,7 @@
 								<div id="my-sketch" class="my-drawing"></div>
 							</div>
 							
-							<textarea id="datahtml" name="datahtml"></textarea>
+							<textarea id="sketchData" name="datahtml"></textarea>
 							
 						</form>
 						
