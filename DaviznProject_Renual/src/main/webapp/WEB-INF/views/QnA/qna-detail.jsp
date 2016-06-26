@@ -103,7 +103,7 @@
                                  </div>
                                  <!-- /.modal-dialog -->
                               </div>
-                              <a class="btn btn-default" href="${pageContext.request.contextPath}/QnAList.dvn" role="button">목록</a>
+                              <a class="btn btn-default" href="QnA.dvn" role="button">목록</a>
                            </div>
                         </td>
 
@@ -163,7 +163,7 @@
                                  
                                  <textarea rows="" class="form-control" name="replycontent"
                                     placeholder="댓글을 입력하세요." required="required"></textarea>
-                                 <input type="hidden" class="form-control" name="userid" value="${notice.userid}" >
+                                 <input type="hidden" class="form-control" name="userid" value="${userid}" >
                                  <input type="hidden" class="form-control" name="boardseq" value="${notice.boardseq}" >
                               </div>
 
@@ -199,5 +199,8 @@
 
 </div>
 
+</div>
+
+</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/qna.js"></script>

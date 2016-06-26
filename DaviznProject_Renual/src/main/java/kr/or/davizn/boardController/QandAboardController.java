@@ -64,8 +64,8 @@ public class QandAboardController {
    @RequestMapping("/QnA/Qnadetail2.dvn")
    public String noticeDetail2(int boardseq, Model model, Principal principal)
          throws ClassNotFoundException, SQLException {
-      System.out.println("컨트롤러 탐");
-      QandAboardDTO notice = QandAboardservice.noticeDetail2(boardseq);
+      System.out.println("관리자 컨트롤러 탐");
+      QandAboardDTO notice = QandAboardservice.noticeDetail(boardseq);
       List<QandAReplyDTO> replylist = QandAboardservice.replyDetail(boardseq);
       String user = principal.getName();
       System.out.println("user : " + user);

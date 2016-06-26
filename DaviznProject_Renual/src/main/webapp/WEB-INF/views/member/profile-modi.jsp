@@ -38,6 +38,7 @@
                         
                         <div class="col-md-12 no-padding">
                            <input type="text" value ="${member.userid}" name="userid" class="form-control" disabled="disabled">
+                           <intput type="hidden" name="profile_img" value="${member.profile_img}">
                         </div>
                         
                         <div class="col-md-12 no-padding">

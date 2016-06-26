@@ -22,6 +22,7 @@
 
 							<form action="${pageContext.request.contextPath}/goal/addGoal.dvn?strgseq=${strgseq}" id="gorl-create-form" method="post" class="form-horizontal">
 								<input type="hidden" name="datatype" value="3">
+								<input type="hidden" name="origin" value="personal"> 
 								<div id="goal-create-modal" class="modal fade">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
@@ -42,7 +43,7 @@
 													<label for="inputgoalTitle" class="col-sm-2 control-label">목표 이름</label>
 													<div class="col-sm-10">
 														<input type="text" name="dataname" class="form-control" id="inputgoalTitle"
-															placeholder="이루고 싶은 목표를 입력하세요" required>
+															placeholder="이루고 싶은 목표를 입력하세요" required="required">
 													</div>
 												</div>
 												
@@ -53,7 +54,7 @@
 													<div class="col-sm-10  goal-Check-List-Box">
 														<div class="goal-check-input-box">
 															<input type="text" name="detailnames" class="form-control goalCheckList margin-bottom-10"
-																placeholder="세부 목표를 입력하세요" required>
+																placeholder="세부 목표를 입력하세요" required="required">
 															<button type="button" class="close goal-check-input-box-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 														</div>
 													</div>

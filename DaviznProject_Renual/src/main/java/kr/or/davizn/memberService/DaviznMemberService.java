@@ -33,9 +33,11 @@ public class DaviznMemberService {
 	public int updateMember(DaviznMemberDTO member, HttpServletRequest request, Principal principal) throws IOException{
 		DaviznMemberDAO dao = sqlsession.getMapper(DaviznMemberDAO.class);
 		CommonsMultipartFile file = member.getUploadImage();
-		 if(file != null){
-			 
-			 String fname = System.currentTimeMillis()+file.getOriginalFilename(); //파일명 얻기
+		String originFilename = member.getProfile_img();
+		
+		 if(file.getSize()>0){
+			
+			 String fname = file.getOriginalFilename()+System.currentTimeMillis(); //파일명 얻기
 			 String path  = request.getRealPath("/resources/upload");
 			 String fullpath = path + "\\" + fname;
 			
@@ -46,8 +48,14 @@ public class DaviznMemberService {
 				  fs.close();
 			  }
 			 member.setProfile_img(fname);
-			 member.setUserid(principal.getName());
+			 
+			
+		 }else{
+			
+			 member.setProfile_img(originFilename);
 		 }
+		 
+		member.setUserid(principal.getName());
 		int result = dao.updateMember(member);
 		return result;
 	}

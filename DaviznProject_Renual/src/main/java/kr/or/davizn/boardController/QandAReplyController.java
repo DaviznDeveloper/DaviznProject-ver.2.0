@@ -16,32 +16,34 @@ import kr.or.davizn.boardService.QandAReply;
 @Controller
 @RequestMapping("/QnA/")
 public class QandAReplyController {
-	@Autowired
-	private QandAReply QandAReplyService;
+   @Autowired
+   private QandAReply QandAReplyService;
 
-	// 댓글 처리
-	@RequestMapping(value = "replyWrite.dvn", method = RequestMethod.POST)
-	public String noticeReg(QandAReplyDTO dto, HttpServletRequest request)
-			throws IOException, ClassNotFoundException, SQLException {
-		String url = "QnA.qna-list";
-		try {
-			url = QandAReplyService.replyReg(dto, request);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return url;
+   // 댓글 처리
+   @RequestMapping(value = "replyWrite.dvn", method = RequestMethod.POST)
+   public String noticeReg(QandAReplyDTO dto, HttpServletRequest request)
+         throws IOException, ClassNotFoundException, SQLException {
+      System.out.println("댓글 컨트롤러");
+      String url = "QnA.qna-detail2";
+      System.out.println(url);
+      try {
+         url = QandAReplyService.replyReg(dto, request);
+      } catch (Exception e) {
+         System.out.println(e.getMessage());
+      }
+      return url;
 
-	}
-	
-	@RequestMapping(value="deleteReply.dvn")
-	public String deleteReply(int boardseq, int replynum){
-		String url = "QnA.qna-list";
-		try {
-			url = QandAReplyService.delReply(replynum, url)+"?boardseq="+boardseq;
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return url;
-	}
+   }
+   
+   @RequestMapping(value="deleteReply.dvn")
+   public String deleteReply(int boardseq, int replynum){
+      String url = "QnA.qna-list";
+      try {
+         url = QandAReplyService.delReply(replynum, url)+"?boardseq="+boardseq;
+      }catch (Exception e) {
+         e.printStackTrace();
+      }
+      return url;
+   }
 
 }

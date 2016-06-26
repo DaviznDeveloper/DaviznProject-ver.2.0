@@ -20,7 +20,7 @@
                <li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
                <li><a href="${pageContext.request.contextPath}/userStrg.dvn">저장소 목록</a></li>
                <li><a href="${pageContext.request.contextPath}/personalData/showPersonalDataList.dvn?strgseq=${strgseq}">데이터 목록</a></li>
-               <li><a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${strgseq}">목표 목록</a></li>
+               <li><a href="${pageContext.request.contextPath}/goal/showGoalList.dvn?strgseq=${strgseq}">목표 목록</a></li>
                <li class="active">${dataname}</li>
 
 				</ol>
@@ -38,6 +38,7 @@
 				</div>
 				
 				<form action="${pageContext.request.contextPath}/goal/updateGoal.dvn?dataseq=${dataseq}&strgseq=${strgseq}" method="post" class="form-horizontal" id="goalcreateForm">
+					<input type="hidden" name="origin" value="personal">
 					<input type="hidden" name="goalhtml" id="goalhtml" value="">
 					<input type="hidden" name="datatype" value="3">
 					<div id="goal-modi-modal" class="modal fade">

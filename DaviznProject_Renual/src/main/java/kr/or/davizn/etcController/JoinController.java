@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.or.davizn.dataService.UserStrgService;
+import kr.or.davizn.datainfoService.UserStrgService;
 import kr.or.davizn.etcService.JoinService;
 import kr.or.davizn.memberDTO.DaviznMemberDTO;
-import kr.or.davizn.memberService.DaviznMemberService;
 
 @Controller
 @RequestMapping("/join/")

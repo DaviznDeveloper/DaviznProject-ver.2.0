@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.davizn.dataInterface.UserStrgDAO">
+<mapper namespace="kr.or.davizn.datainfoInterface.UserStrgDAO">
 
    <!--저장소 개수 구하기-->
    <select id="countUserstrg" resultType="java.lang.Integer">
@@ -16,13 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </insert>
      
    <!-- 저장소 이름 변경 -->
-    <update id="modifyStorageName" parameterType="kr.or.davizn.dataDTO.UserStrgDTO">
+    <update id="modifyStorageName" parameterType="kr.or.davizn.datainfoDTO.UserStrgDTO">
       update userstrg set strgseq=#{strgseq}, strgname=#{strgname}
    </update> 
    
    
    <!-- 저장소 리스트 출력 -->
-   <select id="showStorageList" parameterType="String" resultType="kr.or.davizn.dataDTO.UserStrgDTO">
+   <select id="showStorageList" parameterType="String" resultType="kr.or.davizn.datainfoDTO.UserStrgDTO">
       select * from userstrg where userid=#{userid} order by strgseq
    </select>
    
