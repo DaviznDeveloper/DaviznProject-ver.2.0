@@ -163,7 +163,7 @@
 											
 											<textarea rows="" class="form-control" name="replycontent"
 												placeholder="댓글을 입력하세요." required="required"></textarea>
-											<input type="hidden" class="form-control" name="userid" value="${notice.userid}" >
+											<input type="hidden" class="form-control" name="userid" value="${userid}" >
 											<input type="hidden" class="form-control" name="boardseq" value="${notice.boardseq}" >
 										</div>
 

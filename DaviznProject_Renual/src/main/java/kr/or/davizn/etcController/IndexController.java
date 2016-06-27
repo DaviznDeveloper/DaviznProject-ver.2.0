@@ -28,8 +28,8 @@ public class IndexController {
 		System.out.println(userid);
 		int result=alarm.getCount(userid);
 		session.setAttribute("userid", userid);
-		//session.setAttribute("alarmList", alarm.showAlarmList(userid, model));
-		//session.setAttribute("alarmCount", result);
+		session.setAttribute("alarmList", alarm.showAlarmList(userid, model));
+		session.setAttribute("alarmCount", result);
 		return "home.index"; //select 시키면 됨
 	}
 	

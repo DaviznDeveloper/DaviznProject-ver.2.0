@@ -23,7 +23,9 @@ public class QandAReplyController {
 	@RequestMapping(value = "replyWrite.dvn", method = RequestMethod.POST)
 	public String noticeReg(QandAReplyDTO dto, HttpServletRequest request)
 			throws IOException, ClassNotFoundException, SQLException {
-		String url = "QnA.qna-list";
+		System.out.println("댓글 컨트롤러");
+		String url = "QnA.qna-detail2";
+		System.out.println(url);
 		try {
 			url = QandAReplyService.replyReg(dto, request);
 		} catch (Exception e) {

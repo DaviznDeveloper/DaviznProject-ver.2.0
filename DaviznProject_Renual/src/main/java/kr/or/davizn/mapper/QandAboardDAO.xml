@@ -53,5 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="boardSearch" resultType="kr.or.davizn.boardDTO.QandAboardDTO">
         select * from qnaboard where  ${keyfield} like '%${keyword}%' order by boardseq desc
     </select>
+    
+    <!-- 암호 인증  -->
+    <select id="checkPwd" resultType="String">
+    	select boardpwd from qnaboard where boardseq=#{boardseq}
+    </select>
 	
 </mapper>

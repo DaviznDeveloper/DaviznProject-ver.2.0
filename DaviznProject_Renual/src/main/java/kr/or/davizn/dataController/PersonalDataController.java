@@ -3,6 +3,7 @@ package kr.or.davizn.dataController;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +19,7 @@ import kr.or.davizn.dataDTO.PersonalDataDTO;
 import kr.or.davizn.dataDTO.UserStrgDTO;
 import kr.or.davizn.dataService.PersonalService;
 import kr.or.davizn.dataService.UserStrgService;
+import kr.or.davizn.etcService.Alarm;
 import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupService.GroupInfoService;
 
@@ -32,6 +33,8 @@ public class PersonalDataController {
    private GroupInfoService groupInfoService;
    @Autowired
    private UserStrgService storageService;
+   @Autowired
+   private Alarm alarmservice;
    
    //데이터의 모든 내용을 생성, 수정시 file로 저장하는 기능. 
    @RequestMapping("managefile.dvn")
@@ -66,7 +69,8 @@ public class PersonalDataController {
  	@RequestMapping("detailPersonalData.dvn")
  	public String detailPersonalData(@RequestParam int datatype,
  									 @RequestParam int strgseq,
- 									 @RequestParam int dataseq){
+ 									 @RequestParam int dataseq) throws ClassNotFoundException, SQLException{
+ 		System.out.println("타긴 하냐?");
  		String view = null;
  		if(datatype==1){
  			//노트 데이터 상세 보기

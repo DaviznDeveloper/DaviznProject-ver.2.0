@@ -10,7 +10,6 @@ import kr.or.davizn.memberService.AuthorityService;
 @Controller
 @RequestMapping("/auth/")
 public class AuthController {
-/*<<<<<<< HEAD*/
 	
 	@Autowired
 	private AuthorityService service;

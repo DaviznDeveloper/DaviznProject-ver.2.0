@@ -29,6 +29,7 @@ public interface QandAboardDAO {
 	public List<QandAReplyDTO> replylist(int boardseq) throws ClassNotFoundException, SQLException;
 	//게시글 검색
 	public List<QandAboardDTO> boardSearch(Map<String, String> map) throws ClassNotFoundException, SQLException;
-			
+	//권한 체크
+	public String checkPwd(int boardseq) throws ClassNotFoundException, SQLException;
 		
 }

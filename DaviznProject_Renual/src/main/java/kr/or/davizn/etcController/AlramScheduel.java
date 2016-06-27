@@ -15,7 +15,7 @@ public class AlramScheduel {
 	@Scheduled(cron="*/30 * * * * *")
 	public void alram2() throws Exception{
 		
-		//System.out.println("알람2울어라/11!@#!@#");
+		System.out.println("알람2울어라/11!@#!@#");
 		//alarm.insertAlram();
 		//alarm.insertscheduel();
 	

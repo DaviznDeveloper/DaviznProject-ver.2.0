@@ -52,7 +52,7 @@
 					</a>
 				</li>
 				<li class="nav_menu">
-					<a href="${pageContext.request.contextPath}/communityNavigation.dvn">
+					<a href="${pageContext.request.contextPath}/QnANavigation.dvn">
 						<i class="fa fa-question-circle" aria-hidden="true"></i> 
 						&nbsp;1:1 문의&건의
 					</a>
@@ -101,13 +101,18 @@
 					<ul class="dropdown-menu">
 						<c:forEach items="${alarmList}" var="al">
 							<li>
-								<a href="${pageContext.request.contextPath}/main-profile.navigation">
+								<a href="${pageContext.request.contextPath}/personalData/detailPersonalData.dvn?datatype=${al.datatype}&strgseq=${al.strgseq}&dataseq=${al.dataseq}">
 											${al.datatype} ${al.dataname}일정이 종료되었습니다.
+								<input type="hidden" name="strgseq" value="${al.strgseq}">
+	                            <input type="hidden" name="dataseq" value="${al.dataseq}">
+	                            <input type="hidden" name="dataseq" value="${al.alarmseq}">
+	                            ${al.strgseq}
+	                            ${al.dataseq}
 								</a>
 							</li>
 						</c:forEach>
 						<li class="vertical-middle padding-vertical text-center">
-							<a href="${pageContext.request.contextPath}/main-profile.navigation">
+							<a href="${pageContext.request.contextPath}/wholeAlarm.dvn">
 								<span class="notice-header-span notice-header-all">전체보기</span>
 							</a>
 						</li>

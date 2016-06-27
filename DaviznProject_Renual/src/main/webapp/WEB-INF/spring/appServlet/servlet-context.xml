@@ -48,17 +48,6 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
-	
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">	
-		<property name="defaultEncoding" value="UTF-8"/>
-		<property name="basenames">
-			<list>
-				<!-- properties파일의 이름을 등록한다. 등록되어 있지 않을 시에 디폴트로 message.properties파일을 찾는다. -->
-				<value>/WEB-INF/classes/</value>
-			</list>
-		</property>
-	</bean>
 
 	
 	

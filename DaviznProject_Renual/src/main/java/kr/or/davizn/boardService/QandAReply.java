@@ -18,12 +18,9 @@ public class QandAReply {
 		// 댓글 등록		
 		public String replyReg(QandAReplyDTO n, HttpServletRequest request) throws Exception {
 			QandAreplyDAO QandAreplyDao = SqlSession.getMapper(QandAreplyDAO.class);
-			System.out.println("댓글 서비스 등장");
-			System.out.println(n);
-			System.out.println(n.getBoardseq());
 			QandAreplyDao.insertReply(n);
-			System.out.println("Insert 완료");
-			return "redirect:/QnA/Qnadetail.dvn?boardseq="+n.getBoardseq();
+			System.out.println(n);
+			return "redirect:/QnA/Qnadetail2.dvn?boardseq="+n.getBoardseq();
 		}
 		
 		public String delReply(int replynum, String userid) throws ClassNotFoundException, SQLException{
