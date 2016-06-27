@@ -116,7 +116,7 @@
 												    </div>
 												</div>
 												<div class="col-sm-6 pull-left margin-top-10">
-													<h3 class="goal-list-title">${goal.goalname}</h3>
+													<h3 class="goal-list-title">${goal.dataname}</h3>
 												</div>
 												<div class="col-sm-5 pull-left">
 													<h4>

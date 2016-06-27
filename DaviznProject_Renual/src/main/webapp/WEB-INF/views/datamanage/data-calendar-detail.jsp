@@ -18,6 +18,14 @@
 						<div id="wholehtml">
 						<div class="col-sm-10 col-sm-offset-1">
 						
+						<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
+										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
+									
+									<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
+										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
+										</span>
+									</a>
+						
 							<div class="calendar-detail-option">
 	
 								<form action="${pageContext.request.contextPath}/schedule/updateSchedule.dvn?dataseq=${schedule.dataseq}" method="post" id="scheduleForm">
@@ -157,13 +165,13 @@
 											</div>	
 										</div>
 									</div>
-									<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
+									<%-- <span class="glyphicon glyphicon-floppy-saved font-icon-green" 
 										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
 									
 									<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
 										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
 										</span>
-									</a>
+									</a> --%>
 								</form>
 							</div>	
 						</div>	

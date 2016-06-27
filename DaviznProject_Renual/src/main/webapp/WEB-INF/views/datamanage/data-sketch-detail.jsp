@@ -38,7 +38,7 @@
 							</div>
 							<div class="panel-body">
 								<!-- 여기에 src 경로로 el 추가 -->
-								<img src="${sketch.datahtml}" id="sketchView">
+								<img id="sketch-detail-img" src="${sketch.datahtml}" id="sketchView">
 							</div>
 						</div>
 						

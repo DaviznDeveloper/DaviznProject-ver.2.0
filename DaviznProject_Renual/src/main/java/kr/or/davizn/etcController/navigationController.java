@@ -67,5 +67,11 @@ public class navigationController {
 
 		return "redirect:/message/message.dvn"; //redirect:/message.dvn
 	}
-
+	
+	//알람 전체보기 페이지 이동
+	@RequestMapping("wholeAlarm.dvn")
+	public String alarmList(){
+		System.out.println("알람 네비 탐");
+		return "redirect:/alarm/alarmList.dvn";
+	}
 }

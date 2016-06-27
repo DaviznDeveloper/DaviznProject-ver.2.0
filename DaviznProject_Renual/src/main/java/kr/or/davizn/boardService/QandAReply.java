@@ -13,21 +13,21 @@ import kr.or.davizn.boardInterface.QandAreplyDAO;
 
 @Service
 public class QandAReply {
-      @Autowired
-      SqlSession SqlSession;
-      // 댓글 등록      
-      public String replyReg(QandAReplyDTO n, HttpServletRequest request) throws Exception {
-         QandAreplyDAO QandAreplyDao = SqlSession.getMapper(QandAreplyDAO.class);
-         QandAreplyDao.insertReply(n);
-         System.out.println(n);
-         return "redirect:/QnA/Qnadetail2.dvn?boardseq="+n.getBoardseq();
-      }
-      
-      public String delReply(int replynum, String userid) throws ClassNotFoundException, SQLException{
-         System.out.println("시퀀스 :"+replynum);
-         QandAreplyDAO QandAreplyDao = SqlSession.getMapper(QandAreplyDAO.class);
-         QandAreplyDao.deleteReply(replynum);
+		@Autowired
+		SqlSession SqlSession;
+		// 댓글 등록		
+		public String replyReg(QandAReplyDTO n, HttpServletRequest request) throws Exception {
+			QandAreplyDAO QandAreplyDao = SqlSession.getMapper(QandAreplyDAO.class);
+			QandAreplyDao.insertReply(n);
+			System.out.println(n);
+			return "redirect:/QnA/Qnadetail2.dvn?boardseq="+n.getBoardseq();
+		}
+		
+		public String delReply(int replynum, String userid) throws ClassNotFoundException, SQLException{
+			System.out.println("시퀀스 :"+replynum);
+			QandAreplyDAO QandAreplyDao = SqlSession.getMapper(QandAreplyDAO.class);
+			QandAreplyDao.deleteReply(replynum);
 
-         return "redirect:/QnA/Qnadetail.dvn";
-      }
+			return "redirect:/QnA/Qnadetail.dvn";
+		}
 }

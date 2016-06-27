@@ -8,8 +8,8 @@
 					<div class="col-md-12 content-container">
 	
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/QnAList.dvn">1:1 문의&건의</a></li>
+							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">홈</a></li>
+							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">1:1 문의&건의</a></li>
 							<li class="active">글쓰기</li>
 						</ol>
 						
@@ -52,6 +52,17 @@
 										</td>
 										
 									</tr>
+									
+									<tr>
+									
+										<div class="form-group">
+											<th colspan="1" scope="col" class="">
+												<input type="checkbox" id="notice_check" class="" name="boardnotice">
+												&nbsp;&nbsp;공지
+											</th>
+										</div>
+										
+									</tr>
 								
 								</thead>
 								
@@ -62,7 +73,7 @@
 										<div class="form-group">
 											
 											<td colspan="3">
-												 <textarea id="summernote" class="summernote" name="boardcontent" rows="20" required></textarea>			        
+												 <textarea id="summernote" class="summernote" name="boardcontent" rows="20" required="required"></textarea>			        
 											</td>
 										
 										</div>
