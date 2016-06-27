@@ -3,6 +3,15 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<script type="text/javascript">
+$('.nav-tabs>li>a').on('click',function(){
+    index = $(this).parent().index() + 1;
+    $('.nav-tabs>li').removeClass('active')
+    $('.tab-pane').hide();
+    $('.t'+ index).fadeIn();
+    $(this).parent('li').addClass('active');
+});
+</script>
             <!-- content -->
             <div class="container">
             
@@ -106,19 +115,10 @@
                               <a href="#groupDataHistory" aria-controls="groupDataHistory" role="tab" data-toggle="tab">그룹 데이터 히스토리</a>
                            </li>
                         </ul>
-               <script>
-               	$(function(){
-               		$("li[role=presentation]").click(function(){
-               			$(this).siblings().removeClass("active");
-               			$(this).addClass("active");
-               			$(".tab-pane").removeClass("active").css("display","none");
-               			$($(this).children("a").attr("href")).addClass("active").css("display","");
-               		})
-               	})
-               </script>
+
                         <!-- Tab panes -->
                         <div class="tab-content">
-                           <div role="tabpanel" class="tab-pane active" id="groupMember">
+                           <div role="tabpanel" class="tab-pane active t1" id="groupMember">
                               <br>
                               <div class="bs-example"
                                  data-example-id="panel-without-body-with-table">
@@ -405,7 +405,7 @@
                               </div>
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane" id="groupGorl">
+                           <div role="tabpanel" class="tab-pane t2" id="groupGorl">
 
                               <br>
 
@@ -464,7 +464,7 @@
                               
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane" id="groupData">
+                           <div role="tabpanel" class="tab-pane t3" id="groupData">
                               <br>
                               
                               <div class="col-sm-12 no-padding margin-bottom-10">
@@ -505,7 +505,7 @@
                               
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane" id="groupDataHistory">
+                           <div role="tabpanel" class="tab-pane t4" id="groupDataHistory">
                               <br>
                               
                               <div class="col-sm-12 no-padding margin-bottom-10">
@@ -571,6 +571,8 @@
 			e.preventDefault();
 			$(this).tab('show');
 		}); */
+           
+    
 
 		var contextPath = '${pageContext.request.contextPath}'
 
@@ -590,4 +592,5 @@
 			});
 		});
 	});
+	
 </script>

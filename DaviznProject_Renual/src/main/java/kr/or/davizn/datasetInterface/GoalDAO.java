@@ -24,7 +24,7 @@ public interface GoalDAO {
 	 * 각각의 값들을 가져와서 service에서 새로운 dto에 넣을 예정
 	 * */	
    	public List<PersonalDataGoalDTO> getGoalList(int strgseq);
-	public int getDetailGoalCounts(int strgseq);
+	public int getDetailGoalCounts(int dataseq);
 	
 	//상세 목표 데이터 보기
 	public List<PersonalDataGoalDTO> detailGoal(int dataseq);

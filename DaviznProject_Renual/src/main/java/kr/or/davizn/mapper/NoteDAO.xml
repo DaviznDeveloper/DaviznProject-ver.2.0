@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{dataseq},1,#{filepath},#{origin})
 	</insert>
 	
-	<!-- 한 건의 노트를 상세하게 보여주기 위하여 personaldata에서 select -->
+	<!-- 한 건의 노트를 상세하게 보여주기 위하여 groupdata에서 select -->
 	<select id="detailGNote" resultType="kr.or.davizn.datasetDTO.PersonalDataNoteDTO">
 		select *
 		from groupdata g join note n 

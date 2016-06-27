@@ -5,7 +5,8 @@
     
 <mapper namespace="kr.or.davizn.groupInterface.ManageVersionDAO">
 	<insert id="addverison" parameterType="kr.or.davizn.groupDTO.VersionDTO">
-		insert into managever values(version_seq.nextval,#{groupseq},#{dataseq},#{filename},sysdate)
+		insert into managever (versionseq,groupseq,dataseq,filename,modifytime,comments)
+		values(version_seq.nextval,#{groupseq},#{dataseq},#{filename},sysdate,#{comments})
    	</insert>
 </mapper>
 

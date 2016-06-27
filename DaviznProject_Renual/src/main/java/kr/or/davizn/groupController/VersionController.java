@@ -16,4 +16,8 @@ public class VersionController {
 	@Autowired
 	NoteService noteService;
 
+	@RequestMapping("addVersion")
+	public void addVersion(){
+		
+	}
 }
