@@ -38,11 +38,7 @@ public class GroupInfoService {
 		groupInfoDAO.addGroupInfo(groupInfoDTO);	
 	}
 	
-	public void addGroupMember(GroupMemberDTO groupMemberDTO){
-		GroupInfoDAO groupInfoDAO = sqlsession.getMapper(GroupInfoDAO.class);
-		groupInfoDAO.addGroupMember(groupMemberDTO);
-	}
-	
+
 	public void addAuths(int groupseq){
 		
 		GroupInfoDAO groupInfoDAO = sqlsession.getMapper(GroupInfoDAO.class);

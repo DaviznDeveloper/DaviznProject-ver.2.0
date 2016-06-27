@@ -41,11 +41,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(group_seq.nextval,#{groupname},#{g_introduce},#{groupmaster},sysdate)
 	</insert>
 	
-	<insert id="addGroupMember" parameterType="kr.or.davizn.groupDTO.GroupMemberDTO">
-		insert into groupmember(g_memberseq,joinindate,groupseq,userid) 
-		values(gmember_seq.nextval,sysdate,#{groupseq},#{userid})
-	</insert>
-	
 	<insert id="addGroupAuth" parameterType="kr.or.davizn.groupDTO.GroupAuthDTO">
 		insert into groupauth(role_name,groupseq)
         values (#{role_name},#{groupseq})

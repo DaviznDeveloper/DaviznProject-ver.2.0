@@ -4,5 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.davizn.groupInterface.ApplyGroupDAO">
+
+
+	<select id="getApplylist" parameterType="Integer" resultType="kr.or.davizn.groupDTO.ApplyGroupDTO">
+		select * from applygroup where groupseq=#{groupseq}
+	</select>
+	
+	<select id="checkMember" parameterType="kr.or.davizn.groupDTO.ApplyGroupDTO" resultType="Integer">
+		select count(g_applyseq) from applygroup where userid=#{userid} and groupseq=#{groupseq}
+	</select>
+	
+	<insert id="addApplyMember" parameterType="kr.or.davizn.groupDTO.ApplyGroupDTO">
+		insert into applygroup (g_applyseq,userid,groupseq,applydate)
+		values(gapply_seq.nextval,#{userid},#{groupseq},sysdate)
+	</insert>
+	
+	<delete id="deleteApply">
+		delete applygroup where userid=#{userid} and groupseq=#{groupseq}
+	</delete>
 </mapper>
 

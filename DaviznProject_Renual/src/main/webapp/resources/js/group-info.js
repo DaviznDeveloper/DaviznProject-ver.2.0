@@ -6,7 +6,7 @@ $(function() {
 		console.log(userid+groupseq);
 		$.ajax({
 			type : "POST",
-			url : getContextPath()+"/group/applyGroup.dvn",
+			url : getContextPath()+"/apply/applyGroup.dvn",
 			data : {
 				"groupseq" : groupseq
 			},

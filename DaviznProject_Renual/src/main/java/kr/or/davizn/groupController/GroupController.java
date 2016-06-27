@@ -7,16 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.datainfoService.GroupDataService;
+import kr.or.davizn.groupDTO.ApplyGroupDTO;
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
+import kr.or.davizn.groupService.ApplyGroupService;
 import kr.or.davizn.groupService.GroupInfoService;
+import kr.or.davizn.groupService.GroupMemberService;
 import kr.or.davizn.memberDTO.AuthorityDTO;
 import kr.or.davizn.memberService.AuthorityService;
 
@@ -30,6 +32,10 @@ public class GroupController {
    GroupDataService groupdataService;
    @Autowired
    AuthorityService authorityService;
+   @Autowired
+   ApplyGroupService applyService;
+   @Autowired
+   GroupMemberService gmService;
    
    
    @RequestMapping("goGroupMain.dvn")
@@ -44,7 +50,6 @@ public class GroupController {
       model.addAttribute("groupList",groupList);
       model.addAttribute("rlist", randomList);
       
-      System.out.println("controller에서의 userid" + principal.getName());
       
       return "group.group-main";
    }
@@ -64,10 +69,9 @@ public class GroupController {
        * groupmember 테이블에 userid, 그룹 고유번호 추가 
        */
       int groupseq = groupInfoService.getGroupseq();   
-      System.out.println("방금 groupinfo 데이터에 넣은 그룹의 groupseq : " + groupseq);
       groupMemberDTO.setUserid(principal.getName());
       groupMemberDTO.setGroupseq(groupseq);
-      groupInfoService.addGroupMember(groupMemberDTO);   
+      gmService.addGroupMember(groupMemberDTO);   
 
       
       /*
@@ -91,15 +95,18 @@ public class GroupController {
    
    @RequestMapping("goGroupInfo.dvn")
    public String goGroupInfo(Principal principal,int groupseq,Model model){
-	   //해당 id의 그룹권한 체크
-	   
-	   //id가 갖고 있는 권한들 갖고 오기
 	   List<AuthorityDTO> authoList = authorityService.getMemberAuths(principal.getName());
+	   List<ApplyGroupDTO> applylist = applyService.showApplylist(groupseq);
+	   List<GroupMemberDTO> memberlist = gmService.getMemberlis(groupseq); 
+	   
 	   model.addAttribute("groupseq",groupseq);
 	   model.addAttribute("userid",principal.getName());
+	   model.addAttribute("authoList",authoList);
+	   model.addAttribute("memberlist",memberlist);
+	   model.addAttribute("applylist",applylist);
+	   
 	   for(AuthorityDTO dto:authoList){
 		   if(dto.getRole_name().equals("ROLE_"+groupseq+"_M")){
-			   System.out.println("master입니다.");
 			   return "group.group-info-master";
 		   }
 	   }
@@ -109,28 +116,15 @@ public class GroupController {
    //그룹 검색 리스트 얻기
    @RequestMapping("searchGroupList.dvn")
    public @ResponseBody List<GroupInfoDTO> searchGroupList(String keyword){
-      
       List<GroupInfoDTO> searchList = groupInfoService.searchGroupList(keyword);
-      System.out.println("검색 리스트 : "+searchList);
       return searchList;
    }
    
-   //그룹에 가입신청하기
-   @RequestMapping(value="applyGroup.dvn")
-   @Transactional
-   public @ResponseBody String applyGroup(Principal principal,@RequestParam int groupseq){
-	   System.out.println("들어오나??????????????????????????????");
-	   GroupMemberDTO groupMemberDTO = new GroupMemberDTO();
-	   AuthorityDTO authorityDTO = new AuthorityDTO();
-	   String role_name = "ROLE_"+groupseq+"_W";
-	   
-	   groupMemberDTO.setUserid(principal.getName());
-	   groupMemberDTO.setGroupseq(groupseq);
-	   groupInfoService.addGroupMember(groupMemberDTO);   
-	   
-	   authorityDTO.setUserid(principal.getName());
-	   authorityDTO.setRole_name(role_name);
-	   groupInfoService.addAuthDesign(authorityDTO);
-	   return "Apply Success.";
-   }
+   
+ 
+   
+   
+   
+   
+  
 }

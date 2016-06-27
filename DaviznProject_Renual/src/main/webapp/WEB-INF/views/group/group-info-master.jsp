@@ -7,7 +7,7 @@
 				<div class="container">
 				
 					<div class="col-md-12 content-container">
-
+					<c:set var="group" value=""/>
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/renual/index.jsp">홈</a></li>
 							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 그룹</a></li>
@@ -95,9 +95,6 @@
 								<ul class="nav nav-tabs" role="tablist">
 									<li role="presentation" class="active">
 										<a href="#groupMember" aria-controls="groupMember" role="tab" data-toggle="tab">그룹 인원</a>
-									</li>
-									<li role="presentation">
-										<a href="#groupGorl" aria-controls="groupGorl" role="tab" data-toggle="tab">그룹 목표</a>
 									</li>
 									<li role="presentation">
 										<a href="#groupData" aria-controls="groupData" role="tab" data-toggle="tab">그룹 데이터</a>
@@ -218,7 +215,7 @@
 											</div>
 											
 											<!-- 가입 승인 또는 회원  -->
-											<form action="" method="post">
+											<form action="${pageContext.request.contextPath}/groupMember/recognizeGroupMember.dvn?groupseq=${groupseq}" method="post">
 												<div class="panel panel-success">
 													<div class="panel-heading">
 														
@@ -348,46 +345,17 @@
 													</div>
 													
 													<ul class="list-group">
+														<c:forEach var="applymember" items="${applylist}">
 														<li class="list-group-item">
 															<span class="checkbox group-info-member-search-check no-margin">
 																<label>
-																	<input type="checkbox" id="blankCheckbox" name="userid" value="kglim" aria-label="...">
-																	kglim (kglim@gmail.com)
+																	<input type="checkbox" id="blankCheckbox" name="userid" value="${applymember.userid}" aria-label="...">
+																	${applymember.userid} ${appymember.applydate}
 																</label>
 															</span>
 														</li>
-														<li class="list-group-item">
-															<span class="checkbox group-info-member-search-check no-margin">
-																<label>
-																	<input type="checkbox" id="blankCheckbox" name="userid" value="egoing" aria-label="...">
-																	egoing (egoing@gmail.com)
-																</label>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<span class="checkbox group-info-member-search-check no-margin">
-																<label>
-																	<input type="checkbox" id="blankCheckbox" name="userid" value="alphago" aria-label="...">
-																	alphago (alphago@gmail.com)
-																</label>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<span class="checkbox group-info-member-search-check no-margin">
-																<label>
-																	<input type="checkbox" id="blankCheckbox" name="userid" value="Zuckerberg" aria-label="...">
-																	Zuckerberg (Zuckerberg@gmail.com)
-																</label>
-															</span>
-														</li>
-														<li class="list-group-item">
-															<span class="checkbox group-info-member-search-check no-margin">
-																<label>
-																	<input type="checkbox" id="blankCheckbox" name="userid" value="tobi" aria-label="...">
-																	tobi (tobi@gmail.com)
-																</label>
-															</span>
-														</li>
+														
+														</c:forEach>
 													</ul>
 														
 												</div>
