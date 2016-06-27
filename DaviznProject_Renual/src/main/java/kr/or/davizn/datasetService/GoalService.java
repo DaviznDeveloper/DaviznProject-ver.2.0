@@ -72,6 +72,10 @@ public class GoalService {
    public List<PersonalDataGoalDTO> showGoalList(int strgseq) {
       GoalDAO dao = sqlsession.getMapper(GoalDAO.class);
       List<PersonalDataGoalDTO> goalList = dao.getGoalList(strgseq);
+      for(PersonalDataGoalDTO dto:goalList){
+    	  int detailcount = dao.getDetailGoalCounts(dto.getDataseq());
+    	  dto.setDetailcount(detailcount);
+      }
       return goalList;
    }
 }

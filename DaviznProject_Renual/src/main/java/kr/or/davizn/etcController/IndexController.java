@@ -39,8 +39,8 @@ public class IndexController {
 		int total= msgcontroller.getMessageCount(userid);
 		 
 		session.setAttribute("userid", userid);
-		//session.setAttribute("alarmList", alarm.showAlarmList(userid, model));
-		//session.setAttribute("alarmCount", result);
+		session.setAttribute("alarmList", alarm.showAlarmList(userid, model));
+		session.setAttribute("alarmCount", result);
 		
 		session.setAttribute("msgCount", total);
 

@@ -14,7 +14,7 @@ public class VersionService {
 	
 	public int addVersion(VersionDTO versiondto){
 		ManageVersionDAO versiondao = sqlsession.getMapper(ManageVersionDAO.class);
-		versiondao.addverison(versiondto);
-		return 0;
+		int result = versiondao.addverison(versiondto);
+		return result;
 	}
 }

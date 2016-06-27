@@ -22,6 +22,7 @@ public class GroupDataService {
 	@Autowired
 	SqlSession sqlsession;
 	
+	//groupseq를 통하여 최근 저장된 dataseq 가져오기
 	public int getG_dataseq(int groupseq){
 		int dataseq;
 		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
@@ -29,6 +30,7 @@ public class GroupDataService {
 		return dataseq;
 	}
 	
+	//파일 복사하기
 	public int copyFile(HttpServletRequest request, String p_file, String g_file, int datatype) throws IOException{
 		String fpath = null;
 		if(datatype == 1) fpath = request.getRealPath("/resources/notefile");
@@ -51,6 +53,7 @@ public class GroupDataService {
 		return result;
 	}
 	
+	//groupdata 테이블에 insert
 	public void addGroupDataTable(GroupDataDTO groupdatadto){
 		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
 		groupDataDAO.addGroupDataTable(groupdatadto);
@@ -61,11 +64,19 @@ public class GroupDataService {
 		groupDataDAO.deleteGroupDataTable(dataseq);
 	}
 	
+	public GroupDataDTO getOneGroupData(int dataseq){
+		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
+		return groupDataDAO.getOneGroupData(dataseq);
+	}
 	
 	public List<GroupDataDTO> getG_ShareDatalist(int groupseq){
 		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
 		return groupDataDAO.getG_ShareDatalist(groupseq);
 	}
 	
+	public void updateGroupdata(GroupDataDTO groupdatadto){
+		GroupDataDAO groupdataDAO = sqlsession.getMapper(GroupDataDAO.class);
+		groupdataDAO.updateGroupdata(groupdatadto);
+	}
 	
 }

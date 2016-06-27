@@ -17,8 +17,9 @@
 							<li class="active">그룹에 공유된 데이터 수정하기</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/groupdata/modifyShareData.dvn" method="post" id="noteForm">
+						<form action="${pageContext.request.contextPath}/note/modifyGroupNote.dvn" method="post" id="noteForm">
 							<input type="hidden" name="dataseq" value="${note.dataseq}">
+							<input type="hidden" name="datatype" value="1">
 							<div class="note-detail-option">
 							
 								<span data-toggle="modal" data-target="#group-data-push">
@@ -45,7 +46,7 @@
 
 													<div class="form-group">
 														<label for="groupPushComment">원본 수정에 대한 코멘트</label>
-														<textarea name="comment" id="groupPushComment" class="form-control textarea-size-fix"></textarea>
+														<textarea name="comments" id="groupPushComment" class="form-control textarea-size-fix"></textarea>
 													</div>
 												
 												</div>

@@ -16,7 +16,7 @@
 				</ol>
 		
 				<div class="note-detail-option">
-					<a href="${pageContext.request.contextPath}/groupdata/modifyShareData.dvn?dataseq=${note.dataseq}">
+					<a href="${pageContext.request.contextPath}/note/detailNote.dvn?dataseq=${note.dataseq}&function=m">
 						<span class="glyphicon glyphicon-pencil group-data-share-note-modi-btn" 
 							data-toggle="tooltip" title="노트 수정하기" aria-hidden="true"></span>
 					</a>

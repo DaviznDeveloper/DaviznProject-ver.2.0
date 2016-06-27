@@ -62,8 +62,10 @@ public class GoalController {
 	public String updateGoal(PersonalDataDTO personaldto, NewGoalDTO newGoal) throws ParseException {
 		int newdataseq = personaldto.getDataseq() + 1;
 		personalService.deletePersonalData(personaldto.getDataseq());
+		commonService.deleteDataseq(personaldto.getDataseq());
 		personaldto.setDataseq(newdataseq);
 		personalService.addPersonalData(personaldto);
+		commonService.addDataseq(newdataseq);
 		goalService.addNewGoal(newGoal);
 		return "redirect:detailGoal.dvn?dataseq=" + newdataseq;
 	}
