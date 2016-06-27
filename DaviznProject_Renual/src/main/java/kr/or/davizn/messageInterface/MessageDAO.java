@@ -1,7 +1,6 @@
 package kr.or.davizn.messageInterface;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 
 import kr.or.davizn.memberDTO.DaviznMemberDTO;
@@ -26,10 +25,16 @@ public interface MessageDAO {
 	// 받은쪽지함에서 삭제하기
 	public void deleteReceiverMessage(MessagesendDTO messagedto); 
 	// 알림체크하기
-	public List<HashMap<String, Object>> msgNotificationCheck(MessagereceiveDTO rcv_messagedto); 
+	public List<MessagereceiveDTO> msgNotificationCheck(MessagereceiveDTO messagereceivedto) throws ClassNotFoundException, SQLException; 
+	//msg_alarm 0 -> 1 로 변경
+	public void changeMsgNotificationState(MessagereceiveDTO messagereceivedto);
+	//checkedstate 0 -> 1 로 변경
+	public void changecheckedstate(int message_num);
+	//쪽지 갯수
+	public int getMessageCount(String userid) throws ClassNotFoundException, SQLException;
 	
-	public void changeNotificationState(MessagereceiveDTO rcv_messagedto);
 }
+
 
 
 

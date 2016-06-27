@@ -16,6 +16,8 @@
          <li><a href="#msg_send">보낸 쪽지함</a></li>
         </ul><!-- .nav-tabs -->   
         
+        <input type="hidden" id="userid" value="${userid}">
+        
         <div class="tab-content">
            <!-- 받은 쪽지함 시작 -->
          <div class="tab-pane active t1" id="msg_receive">

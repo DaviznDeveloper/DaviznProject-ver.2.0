@@ -74,7 +74,7 @@
 		<!-- Custom Script -->
 		<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/sideBar.js"></script>
-		<%-- <script src="${pageContext.request.contextPath}/resources/js/notification.js"></script> --%>
+		<script src="${pageContext.request.contextPath}/resources/js/notification.js"></script>
 
 	</head>
 

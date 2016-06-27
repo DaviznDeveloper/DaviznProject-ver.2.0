@@ -1,11 +1,12 @@
 $(function() {
          setInterval(function() {
-              if($('#sender').val() != ''){//////////////
+        	 var userid=$('#userid').val();
+              if(userid != ''){//////////////
              // 쪽지기능 알림
              $.ajax({
                   type : "post",
                   url : getContextPath()+"/message/msgNotificationCheck.dvn",
-                  data: {"receiver" : $('#sender').val()},
+                  data: {	"receiver" : userid},
                   success : function(data) {
                      if(data != ''){
                     	 alert('쪽지 체크');
@@ -19,7 +20,7 @@ $(function() {
                           $.ajax({
                               type : "post",
                               url : getContextPath()+"/message/changeMsgNotificationState.dvn",
-                              data : {"receiver" : $('#sender').val(), "message_num" : data[i].message_num},///////////////////
+                              data : {"receiver" : userid, "message_num" : data[i].message_num},///////////////////
                               success : function() {
                                  
                               }

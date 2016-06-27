@@ -78,7 +78,7 @@
 										</td>
 										
 										
-										<td scope="col" class="ellipsis board-l-writer userid">${n.nickname}</td>
+										<td scope="col" class="ellipsis board-l-writer userid">${n.userid}</td>
 										<td scope="col" class="ellipsis board-l-date boarddate">${n.boarddate}</td>
 										<td scope="col" class="ellipsis board-l-lookup boardreadcount">${n.boardreadcount}</td>
 										
