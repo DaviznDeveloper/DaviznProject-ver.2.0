@@ -49,6 +49,12 @@ public class navigationController {
        return "redirect:/QnAList.dvn";
     }
     
+    //사이트 통계 창 이동
+    @RequestMapping("siteStatistics.dvn")
+    public String moveSiteStatistics(){
+       return "redirect:/admin/site-statistics.dvn";
+    }
+    
 	// 사이트 관리 창 이동
 	@RequestMapping("admin.dvn")
 	public String moveAdmin() {

@@ -350,7 +350,7 @@
 									</div>
 									<div class="panel-body">
 									<c:forEach var="sharedata" items="${sharedatalist}">
-										<a href="${pageContext.request.contextPath}/sharedata/datailShareData.dvn" class="a-font">
+										<a href="${pageContext.request.contextPath}/groupdata/datailData.dvn?datatype=${sharedata.datatype}&dataseq=${sharedata.dataseq}" class="a-font">
 											<div class="col-sm-6">
 												<div class="panel panel-purple">
 													<div class="panel-heading">
@@ -372,7 +372,15 @@
 																    <c:when test="${sharedata.datatype eq '2'}">
 																        스케치형 데이터 입니다.
 																    </c:when>
-																
+																	
+																	<c:when test="${sharedata.datatype eq '3'}">
+																        목표형 데이터 입니다.
+																    </c:when>
+																    
+																    <c:when test="${sharedata.datatype eq '4'}">
+																        일정형 데이터 입니다.
+																    </c:when>
+																    
 																    <c:otherwise>
 																        다른 데이터입니다.
 																    </c:otherwise>
@@ -395,7 +403,7 @@
 																데이터 최종 수정일
 															</h4>
 															<p class="list-group-item-text">
-																${sharedata.sharedate}
+																${sharedata.datacreate}
 															</p>
 														</div>
 														

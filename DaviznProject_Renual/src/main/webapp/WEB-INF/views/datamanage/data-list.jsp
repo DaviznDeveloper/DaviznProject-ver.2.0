@@ -121,7 +121,7 @@
 															<h3>목표달성형 데이터</h3>
 															<p>목표달성형 데이터는 D-day를 지정하고 목표를 등록할 수 있어요.</p>
 															<p>
-																<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
+																<a href="${pageContext.request.contextPath}/goal/showGoalList.dvn?strgseq=${strgseq}" class="btn btn-primary" role="button">선택</a>
 															</p>
 														</div>
 													</div>
@@ -149,38 +149,6 @@
 								</select>
 							</div>
 						</div>
-						<%-- <table class="table table-hover data-list-table">
-							<colgroup>
-							<tbody>
-									<c:forEach var="d" items="${list2}">
-							<tr>
-								<td>
-									<div class="data-list-div">
-										<i class="fa fa-language chart-list-type" aria-hidden="true"></i>
-										<a href="#" data-toggle="tooltip" title="데이터 수정하기">
-											<span class="data-list-span">${d.dataname}</span>
-										</a>
-										<span class="data-list-span">${d.createdate}</span>
-									</div>
-								</td>
-								<td>
-									<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="데이터 수정하기">
-										<i class="fa fa-pencil chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
-										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
-										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
-									</a>
-									<a href="" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-									</a>
-								</td>
-							</tr>
-						</c:forEach>
-							</tbody>
-						</table> --%>
 						
 						<table class="table table-hover data-list-table">
 						<colgroup>
@@ -212,7 +180,7 @@
 										</span>
 										<c:if test="${pdata.datatype eq 3}">
 	                           				<span class="pull-right margin-right-10">
-	                              				<a href="${pageContext.request.contextPath}/goal/goGoalList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
+	                              				<a href="${pageContext.request.contextPath}/goal/showGoalList.dvn?strgseq=${pdata.strgseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="일정 및 목표 리스트 보기">
 	                                 				<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
 	                              				</a>
 	                           				</span>
@@ -224,24 +192,10 @@
 	                              				</a>
 	                           				</span>
                            				</c:if>
-									<%-- <span class="pull-right margin-right-10">
-										<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?strgseq=${pdata.strgseq}&dataseq=${pdata.dataseq}" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-											<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-										</a>
-									</span>
-									<span>
-										<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="목록 보기">
-                            	  			<i class="fa fa-list-ul chart-list-option" aria-hidden="true"></i>
-                           				</a>
-                           			</span>		
-									<span class="pull-right margin-right-10" data-toggle="tooltip" title="데이터 공유하기">
-										<div class="btn btn-info chart-list-option-btn" data-toggle="modal" data-target="#data-share${status.index}">
-											<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-										</div>
-									</span> --%> 
+							
 									<!-- modal -->
-									<form action="${pageContext.request.contextPath}/sharedata/addShareData.dvn" method="post">
-										<input type="hidden" id="dataseq" name="dataseq" value="${pdata.strgseq}">
+									<form action="${pageContext.request.contextPath}/groupdata/addShareData.dvn" method="post">
+										<input type="hidden" id="dataseq" name="dataseq" value="${pdata.dataseq}">
 										<input type="hidden" id="datatype" name="datatype" value="${pdata.datatype}">
 										<input type="hidden" id="dataname" name="dataname" value="${pdata.dataname}">
 	                     				<div class="modal fade" id="data-share${status.index}" tabindex="-1" role="dialog"
@@ -301,83 +255,7 @@
 							
 							</c:forEach>
 							
-							<!-- <tr>
-								<td>
-									<div class="data-list-div">
-										<i class="fa fa-bar-chart chart-list-type" aria-hidden="true"></i>
-										<a href="#" data-toggle="tooltip" title="데이터 수정하기">
-											<span class="data-list-span">여기는 제목입니다.</span>
-										</a>
-										<span class="data-list-span">2016-05-09 00:31:19</span>
-									</div>
-								</td>
-								<td>
-									<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="데이터 수정하기">
-										<i class="fa fa-pencil chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
-										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
-										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
-									</a>
-									<a href="" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-									</a>
-								</td>
-							</tr>
 							
-							<tr>
-								<td>
-									<div class="data-list-div">
-										<i class="fa fa-pie-chart chart-list-type" aria-hidden="true"></i>
-										<a href="#" data-toggle="tooltip" title="데이터 수정하기">
-											<span class="data-list-span">여기는 제목입니다.</span>
-										</a>
-										<span class="data-list-span">2016-05-09 00:31:19</span>
-									</div>
-								</td>
-								<td>
-									<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="데이터 수정하기">
-										<i class="fa fa-pencil chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
-										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
-										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
-									</a>
-									<a href="" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-									</a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>
-									<div class="data-list-div">
-										<i class="fa fa-area-chart chart-list-type" aria-hidden="true"></i>
-										<a href="#" data-toggle="tooltip" title="데이터 수정하기">
-											<span class="data-list-span">여기는 제목입니다.</span>
-										</a>
-										<span class="data-list-span">2016-05-09 00:31:19</span>
-									</div>
-								</td>
-								<td>
-									<a href="" class="btn btn-warning chart-list-option-btn" data-toggle="tooltip" title="데이터 수정하기">
-										<i class="fa fa-pencil chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-info chart-list-option-btn" data-toggle="tooltip" title="데이터 공유하기">
-										<i class="fa fa-share-alt chart-list-option" aria-hidden="true"></i>
-									</a>
-									<a href="" class="btn btn-success chart-list-option-btn chr-list-btn-dash" data-toggle="tooltip" title="대시보드에 추가하기">
-										<i class="fa fa-tachometer chart-list-option" aria-hidden="true" ></i>
-									</a>
-									<a href="" class="btn btn-danger chart-list-option-btn" data-toggle="tooltip" title="데이터 삭제하기">
-										<i class="fa fa-trash-o chart-list-option" aria-hidden="true"></i>
-									</a>
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 		

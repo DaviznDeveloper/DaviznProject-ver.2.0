@@ -32,7 +32,7 @@
 							<small class="note-detail-date">${note.datacreate}</small>
 						</h3>
 					</div>
-					<div class="panel-body">${note.value}</div>
+					<div class="panel-body">${note.datahtml}</div>
 				</div>
 					
 				<div id="push"></div>

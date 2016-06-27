@@ -2,20 +2,13 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.davizn.dataInterface.GoalDAO">
+<mapper namespace="kr.or.davizn.datasetInterface.GoalDAO">
 
-	
-   
-   <!-- PersonalData 테이블에 insert -->
-   <insert id="addPdata">
-      insert into personaldata (dataseq,strgseq,dataname,datatype,datacreate)
-      values(data_seq.nextval, ${param1}, #{param2}, 3, sysdate)
-   </insert>
-   
+
    <!-- Goal 테이블에 insert -->
    <insert id="addGoal">
-       insert into goal (dataseq,datatype,startdate,finaldate,goalpercent)
-      values((select Max(dataseq) from personaldata), 3, To_date('${param1}','MM/DD/YYYY HH24:MI'), To_date('${param2}','MM/DD/YYYY HH24:MI'), 0)
+       insert into goal (dataseq,datatype,startdate,finaldate,goalpercent,origin)
+      values((select Max(dataseq) from personaldata), 3, To_date('${startdate}','MM/DD/YYYY HH24:MI:SS'), To_date('${finaldate}','MM/DD/YYYY HH24:MI:SS'), 0,#{origin})
    </insert>
    
    <!-- DetailGoal 테이블에 insert -->
@@ -25,23 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </insert>
    
 
-   <!-- 목표 번호, 제목 가져오기 위해 PersonalData DTO 가져오기 -->
-   <select id="getPersonalDatas" parameterType="Integer" resultType="kr.or.davizn.dataDTO.PersonalDataDTO">
-      select * from personaldata where strgseq=#{strgseq} and datatype=3
-   </select>
-
    <!-- 상세 목표 갯수 구하기-->
    <select id="getDetailGoalCounts" parameterType="Integer" resultType="Integer">
       select count(detailgoalseq) from detailgoal where dataseq=#{dataseq}
    </select>
     
-   <!-- 종료날짜, 달성량 가져오기 위해 GoalDTO 가져오기-->
-   <select id="getGoals" parameterType="Integer" resultType="kr.or.davizn.dataDTO.GoalDTO">
-      select * from goal where dataseq = #{dataseq}
-   </select>
-	
+
 	<!--목표 데이터 상세보기-->
-	<select id="detailGoal" resultType="kr.or.davizn.dataDTO.PersonalDataGoalDTO">
+	<select id="detailGoal" resultType="kr.or.davizn.datasetDTO.PersonalDataGoalDTO">
 		select p.dataseq, dataname, startdate,finaldate,
 		(finaldate-startdate)*60*60*24 as goaldate, 
 		goalname, state, detailgoalseq, commentmsg,strgseq
@@ -51,6 +35,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on g.dataseq = d.dataseq
 		where p.dataseq=#{dataseq} order by detailgoalseq asc
 	</select>
+	
+	
+	<!-- 목표 리스트로 갖고오기 -->
+	<select id="getGoalList" resultType="kr.or.davizn.datasetDTO.PersonalDataGoalDTO">
+		select *
+		from personaldata p join goal g
+		on p.dataseq=g.dataseq
+		where p.strgseq=#{strgseq} order by p.dataseq asc
+	</select>
+	
+	
 		
 	<!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->
 	<update id="updateDetailGoalState" parameterType="int">
@@ -70,9 +65,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where dataseq=#{dataseq}
 	</update>
 	
-	<!--목표 데이터 삭제하기-->
-	<delete id="deleteGoal">
-		delete from personaldata where dataseq=#{dataseq}
-	</delete>
-
+	
 </mapper>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.davizn.datainfoDTO.GroupDataDTO;
 import kr.or.davizn.groupDTO.GroupAuthDTO;
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupListDTO;
@@ -19,6 +20,7 @@ public class GroupInfoService {
 	@Autowired
 	SqlSession sqlsession;
 	
+	//최근 groupseq
 	public int getGroupseq(){
 		int groupseq;
 		GroupInfoDAO groupInfoDAO = sqlsession.getMapper(GroupInfoDAO.class);
@@ -26,7 +28,11 @@ public class GroupInfoService {
 		return groupseq;
 	}
 	
-
+	public GroupDataDTO getGroup(int dataseq){
+		GroupInfoDAO groupInfoDAO = sqlsession.getMapper(GroupInfoDAO.class);
+		return groupInfoDAO.getGroup(dataseq);
+		
+	}
 	public void addGroupInfo(GroupInfoDTO groupInfoDTO){
 		GroupInfoDAO groupInfoDAO = sqlsession.getMapper(GroupInfoDAO.class);
 		groupInfoDAO.addGroupInfo(groupInfoDTO);	

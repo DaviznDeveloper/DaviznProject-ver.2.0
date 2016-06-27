@@ -6,7 +6,6 @@
 				
 		<!-- content -->
 		<div class="container">
-		
 			<div class="col-md-12 content-container">
 		
 				<ol class="breadcrumb">
@@ -17,11 +16,11 @@
 				</ol>
 		
 				<div class="note-detail-option">
-					<a href="${pageContext.request.contextPath}/sharedata/modifyNote">
+					<a href="${pageContext.request.contextPath}/groupdata/modifyShareData.dvn?dataseq=${note.dataseq}">
 						<span class="glyphicon glyphicon-pencil group-data-share-note-modi-btn" 
 							data-toggle="tooltip" title="노트 수정하기" aria-hidden="true"></span>
 					</a>
-					<a href="${pageContext.request.contextPath}/sharegdata/deleteNote">
+					<a href="${pageContext.request.contextPath}/groupdata/deletleShareData.dvn?dataseq=${note.dataseq}">
 						<span class="glyphicon glyphicon-trash group-data-share-note-modi-btn" 
 							data-toggle="tooltip" title="노트 삭제하기" aria-hidden="true"></span>
 					</a>
@@ -30,11 +29,11 @@
 				<div class="panel panel-purple-l note-detail-content">
 					<div class="panel-heading note-detail-title">
 						<h3 class="panel-title">
-							가나다라&nbsp;&nbsp;&nbsp;&nbsp;
-							<small class="note-detail-date">2016.06.14 에 'nameLim' 이 최종 수정.</small>
+							${note.dataname} &nbsp;&nbsp;&nbsp;&nbsp;
+							<small class="note-detail-date">${note.datacreate} 에 '${note.userid}' 이 최종 수정.</small>
 						</h3>
 					</div>
-					<div class="panel-body">Panel content</div>
+					<div class="panel-body">${note.datahtml}</div>
 				</div>
 		
 				<div id="push"></div>

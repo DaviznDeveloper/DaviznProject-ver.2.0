@@ -21,7 +21,8 @@
 							<div class="calendar-detail-option">
 	
 								<form action="${pageContext.request.contextPath}/schedule/updateSchedule.dvn?dataseq=${schedule.dataseq}" method="post" id="scheduleForm">
-													
+									<input type="hidden" name="datatype" value="4">
+									<input type="hidden" name="origin" value="personal">				
 									<br>
 							
 										<h4 class="text-center">당신의 일정을 계획하세요.</h4>
@@ -159,7 +160,7 @@
 									<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
 										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
 									
-									<a href="${pageContext.request.contextPath}/schedule/deleteSchedule.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
+									<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
 										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
 										</span>
 									</a>

@@ -22,9 +22,9 @@
 							</div>
 
 							<form action="${pageContext.request.contextPath}/schedule/createSchedule.dvn" method="post" class="form-horizontal">
-								
+								<input type="hidden" name="datatype" value="4">
 								<input type="hidden" name="strgseq" value="${strgseq}">
-								
+								<input type="hidden" name="origin" value="personal"> 
 								<div id="schedule-create-modal" class="modal fade">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">

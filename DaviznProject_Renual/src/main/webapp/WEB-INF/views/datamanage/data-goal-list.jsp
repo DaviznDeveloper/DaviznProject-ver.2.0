@@ -22,6 +22,7 @@
 
 							<form action="${pageContext.request.contextPath}/goal/addGoal.dvn?strgseq=${strgseq}" id="gorl-create-form" method="post" class="form-horizontal">
 								<input type="hidden" name="datatype" value="3">
+								<input type="hidden" name="origin" value="personal"> 
 								<div id="goal-create-modal" class="modal fade">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">

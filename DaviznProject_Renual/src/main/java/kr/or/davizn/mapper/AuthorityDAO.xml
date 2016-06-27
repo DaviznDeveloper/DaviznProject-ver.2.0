@@ -9,4 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into authdesign (role_name, userid) values('ROLE_USER', #{userid})
 	</insert> 
 
+	<select id="getMemberAuths" parameterType="String" resultType="kr.or.davizn.memberDTO.AuthorityDTO">
+		select * from authdesign where userid=#{userid}
+	</select>
 </mapper>

@@ -17,8 +17,8 @@
 							<li class="active">그룹에 공유된 데이터 수정하기</li>
 						</ol>
 						
-						<form action="" method="post">
-							
+						<form action="${pageContext.request.contextPath}/groupdata/modifyShareData.dvn" method="post" id="noteForm">
+							<input type="hidden" name="dataseq" value="${note.dataseq}">
 							<div class="note-detail-option">
 							
 								<span data-toggle="modal" data-target="#group-data-push">
@@ -45,7 +45,7 @@
 
 													<div class="form-group">
 														<label for="groupPushComment">원본 수정에 대한 코멘트</label>
-														<textarea name="" id="groupPushComment" class="form-control textarea-size-fix"></textarea>
+														<textarea name="comment" id="groupPushComment" class="form-control textarea-size-fix"></textarea>
 													</div>
 												
 												</div>
@@ -55,7 +55,7 @@
 												<div class="row col-sm-12 center-block">
 												
 													<button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
-													<button type="submit" class="btn btn-primary">확인</button>
+													<button type="button" id="sendNoteData" class="btn btn-primary">확인</button>
 													
 												</div>
 											</div>
@@ -70,7 +70,7 @@
 										data-toggle="tooltip" title="내 저장소에 저장하기" aria-hidden="true"></span>
 								</span>
 								</a>
-								<a href="">
+								<a href="${pageContext.request.contextPath}/groupdata/getDataToMine.dvn">
 									<span class="group-data-share-note-modi-btn" data-toggle="tooltip" title="데이터 히스토리 보기" aria-hidden="true">
 										<i class="fa fa-code-fork" aria-hidden="true"></i>
 									</span>
@@ -163,11 +163,11 @@
 								<!-- Modal -->
 							</div>
 						
-							<input type="text" name="" class="form-control input-lg note-title" placeholder="제목을 입력하세요">
+							<input type="text" name="dataname" class="form-control input-lg note-title" placeholder="제목을 입력하세요" value=${note.dataname}>
 							
 							<br>
 							
-							<textarea name="inputArticleContents" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
+							<textarea name="datahtml" id="ckeditor" class="ckeditor-box" rows="50" cols="50">${note.datahtml}</textarea>
 							
 						</form>
 				

@@ -7,7 +7,7 @@
 				
 				<!-- content -->
 				<div class="container">
-				
+				<input type="hidden" name="datatype" value="2">
 					<div class="col-sm-12 content-container">
 
 						<ol class="breadcrumb">
@@ -17,8 +17,9 @@
 							<li class="active">스케치형 데이터 만들기</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/sketch/writeSketchData.dvn?strgseq=${strgseq}" method="post" id="sketchForm">
-						
+						<form action="${pageContext.request.contextPath}/sketch/addSketchData.dvn?strgseq=${strgseq}" method="post" id="sketchForm">
+							<input type="hidden" name="origin" value="personal"> 
+							<input type="hidden" name="datatype" value="2">
 							<div class="note-detail-option">
 								<span class="glyphicon glyphicon-save sketch-save-btn" 
 									data-toggle="tooltip" title="노트 저장하기" aria-hidden="true"></span>
@@ -33,7 +34,7 @@
 								<div id="my-sketch" class="my-drawing"></div>
 							</div>
 							
-							<textarea id="sketchData" name="sketchData"></textarea>
+							<textarea id="sketchData" name="datahtml"></textarea>
 							
 						</form>
 						

@@ -17,8 +17,9 @@
 							<li class="active">스케치형 데이터 수정하기</li>
 						</ol>
 						
-						<form action="${pageContext.request.contextPath}/sketch/ModifySketchAction.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}" method="post" id="sketchModiForm">
-						
+						<form action="${pageContext.request.contextPath}/sketch/modifySketch.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}" method="post" id="sketchModiForm">
+							<input type="hidden" name="origin" value="personal">
+							<input type="hidden" name="datatype" value="2">
 							<div class="note-detail-option">
 								<span class="glyphicon glyphicon-save sketch-save-btn" 
 									data-toggle="tooltip" title="스케치 수정하기" aria-hidden="true"></span>
@@ -34,7 +35,7 @@
 								<div id="my-sketch" class="my-drawing"></div>
 							</div>
 							
-							<textarea id="sketchData" name="sketchData"></textarea>
+							<textarea id="datahtml" name="datahtml"></textarea>
 							
 						</form>
 						
@@ -64,7 +65,7 @@
         );
 		
 		/* 요기에 스케치 데이터 el로 넣기 */
-		var sketchData = '${sketch.value}'
+		var sketchData = '${sketch.datahtml}'
 		
 		var newImage = new Image()
 	    newImage.src = sketchData;
@@ -74,10 +75,10 @@
 			var sketchTitle = $(".sketch-title").val();
 			var sketchData = lc.getImage().toDataURL();
 			
-			$("#sketchData").val(sketchData);
+			$("#datahtml").val(sketchData);
 			
 			console.log(sketchTitle);
-			console.log($("#sketchData").val());
+			console.log($("#datahtml").val());
 			
 			$('#sketchModiForm').submit();
 			

@@ -26,7 +26,7 @@
 							
 							<br>
 							
-							<textarea name="inputArticleContents" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
+							<textarea name="datahtml" id="ckeditor" class="ckeditor-box" rows="50" cols="50"></textarea>
 							
 						</form>
 				
@@ -45,10 +45,11 @@
 <script type="text/javascript">
 
 	$(function() {
-		var sendNoteData='${note.value}'
+		var sendNoteData='${note.datahtml}'
 		CKEDITOR.instances.ckeditor.setData(sendNoteData);
 		$('#ckeditor').val(sendNoteData);
 		
 	});
 
+	
 </script>

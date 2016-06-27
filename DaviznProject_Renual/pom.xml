@@ -205,6 +205,13 @@
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
         </dependency>
+        
+        <!--자바 객체->json 변환-->
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.2.4</version>
+      </dependency>
 	</dependencies>
     <build>
         <plugins>

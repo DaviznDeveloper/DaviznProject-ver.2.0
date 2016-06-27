@@ -7,7 +7,7 @@
 				
 				<!-- content -->
 				<div class="container">
-				
+				<input type="hidden" name="datatype" value="2">
 					<div class="col-sm-12 content-container">
 
 						<ol class="breadcrumb">
@@ -18,7 +18,7 @@
 						</ol>
 		
 						<div class="note-detail-option">
-							<a href="${pageContext.request.contextPath}/sketch/ModifySketchView.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}">
+							<a href="${pageContext.request.contextPath}/sketch/detailsketch.dvn?dataseq=${sketch.dataseq}&strgseq=${sketch.strgseq}&function=m">
 								<span class="glyphicon glyphicon-pencil sketch-save-btn" 
 									data-toggle="tooltip" title="스캐치 수정하기" aria-hidden="true"></span>
 							</a>
@@ -38,7 +38,7 @@
 							</div>
 							<div class="panel-body">
 								<!-- 여기에 src 경로로 el 추가 -->
-								<img src="${sketch.value}" id="sketchView">
+								<img src="${sketch.datahtml}" id="sketchView">
 							</div>
 						</div>
 						
