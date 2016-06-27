@@ -8,7 +8,7 @@
 
                <ol class="breadcrumb">
                   <li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-                  <li class="active">데이터 관리(경로 체크)</li>
+                  <li class="active">데이터 관리</li>
                </ol>
              
             

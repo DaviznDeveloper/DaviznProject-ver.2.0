@@ -27,7 +27,7 @@
 							
 							<!-- value값으로 스케치 제목 el 넣기 -->
 							<input type="text" name="dataname" class="form-control input-lg sketch-title" 
-								placeholder="제목을 입력하세요" value="${sketch.dataname}">
+								placeholder="제목을 입력하세요" value="${sketch.dataname}" required="required">
 							
 							<br>
 					

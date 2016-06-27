@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--상세 화면에서 달성 퍼센트 변경하기-->
 	<update id="updateGoalPercent">
 		update goal
-		set goalpercent=(select trunc(100/(select count(*) from detailgoal where dataseq=#{dataseq})
+		set goalpercent=(select round(100/(select count(*) from detailgoal where dataseq=#{dataseq})
 		*(select count(*) from detailgoal where state=1 and dataseq=#{dataseq})) from dual)
 		where dataseq=#{dataseq}
 	</update>

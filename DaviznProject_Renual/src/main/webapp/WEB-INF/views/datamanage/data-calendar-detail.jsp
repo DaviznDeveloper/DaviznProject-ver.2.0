@@ -18,6 +18,15 @@
 						<div id="wholehtml">
 						<div class="col-sm-10 col-sm-offset-1">
 						
+						
+									<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
+										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
+									
+									<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
+										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
+										</span>
+									</a>
+						
 							<div class="calendar-detail-option">
 	
 								<form action="${pageContext.request.contextPath}/schedule/updateSchedule.dvn?dataseq=${schedule.dataseq}" method="post" id="scheduleForm">
@@ -81,7 +90,7 @@
 												<div id="calendar-notice-btn" class="pull-right margin-top-5">
 
 												<c:choose>
-													<c:when test="${schedule.state==1}">
+													<c:when test="${schedule.state eq 1}">
 														<input type="checkbox" name="state" id="myswitch" value="1" checked="checked">
 													</c:when>
 													<c:otherwise>
@@ -110,10 +119,18 @@
 
 											<div class="btn-group" data-toggle="buttons">
 											
-											<c:if test="${schedule.alramdate}">
-											
-											</c:if>
-											
+												<c:if test="${schedule.priority eq 5}">
+													<label class="btn btn-default calender-priority active">
+													<input type="radio" name="priority" value="5" id="priority1" autocomplete="off" checked="checked">
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority!=5}">
 												<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="5" id="priority1" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
@@ -121,8 +138,23 @@
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
-												</label> 
-												<label class="btn btn-default calender-priority">
+												</label>
+												</c:if>
+												
+
+												<c:if test="${schedule.priority eq 4}">
+													<label class="btn btn-default calender-priority active">
+													<input type="radio" name="priority" value="4" id="priority2" autocomplete="off" checked="checked">
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority!=4}">
+													<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="4" id="priority2" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
@@ -130,7 +162,21 @@
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 												</label>
-												<label class="btn btn-default calender-priority">
+												</c:if>
+												 
+												<c:if test="${schedule.priority eq 3}">
+													<label class="btn btn-default calender-priority active">
+													<input type="radio" name="priority" value="3" id="priority3" autocomplete="off" checked="checked">
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority != 3}">
+													<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="3" id="priority3" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
@@ -138,6 +184,20 @@
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority eq 2}">
+													<label class="btn btn-default calender-priority active">
+													<input type="radio" name="priority" value="2" id="priority4" autocomplete="off" checked="checked">
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority != 2}">
 												<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="2" id="priority4" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
@@ -146,24 +206,34 @@
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 												</label>
-												<label class="btn btn-default calender-priority">
+												</c:if>
+												
+												<c:if test="${schedule.priority eq 1}">
+													<label class="btn btn-default calender-priority active">
+													<input type="radio" name="priority" value="1" id="priority5" autocomplete="off" checked="checked">
+													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+													<i class="fa fa-star-o" aria-hidden="true"></i>
+												</label>
+												</c:if>
+												
+												<c:if test="${schedule.priority != 1}">
+													<label class="btn btn-default calender-priority">
 													<input type="radio" name="priority" value="1" id="priority5" autocomplete="off">
 													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
 													<i class="fa fa-star-o" aria-hidden="true"></i>
-												</label>			
+												</label>
+												</c:if>
+															
 											</div>	
 										</div>
 									</div>
-									<span class="glyphicon glyphicon-floppy-saved font-icon-green" 
-										data-toggle="tooltip" title="일정 저장하기" aria-hidden="true" id="Updateschedule"></span>		
 									
-									<a href="${pageContext.request.contextPath}/personalData/deletePersonalData.dvn?dataseq=${schedule.dataseq}&strgseq=${schedule.strgseq}">
-										<span class="glyphicon glyphicon-trash font-icon-green" data-toggle="tooltip" title="일정 삭제하기" aria-hidden="true">
-										</span>
-									</a>
 								</form>
 							</div>	
 						</div>	
@@ -177,6 +247,7 @@
 <script src="${pageContext.request.contextPath}/resources/lib/switch/switchable.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/manage-file.js"></script>
+
 <script type="text/javascript">
 
 	$(function(){

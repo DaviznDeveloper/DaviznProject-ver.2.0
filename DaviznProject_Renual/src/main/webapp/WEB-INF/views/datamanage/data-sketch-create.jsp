@@ -26,7 +26,7 @@
 								<span class="sketch-save-text"></span>
 							</div>
 						
-							<input type="text" name="dataname" class="form-control input-lg sketch-title" placeholder="제목을 입력하세요">
+							<input type="text" name="dataname" class="form-control input-lg sketch-title" placeholder="제목을 입력하세요" required="required">
 							
 							<br>
 					

@@ -39,7 +39,7 @@ public class ScheduleController {
 		model.addAttribute("strgseq",strgseq);
 		
 		return "datamanage.data-calendar-create";
-		/*return "redirect:/schedule/detailSchedule.dvn?dataseq=" + dataseq + "&model=" + model;*/
+		
 	}
 	
 	//일정 데이터 만들기
@@ -52,7 +52,7 @@ public class ScheduleController {
 		schservice.addSchedule(schedule);
 		
 		return "redirect:/schedule/detailSchedule.dvn?dataseq=" + dataseq;
-		/*return "redirect:goScheduleList.dvn?strgseq="+strgseq;*/
+	
 	}
 	
 	//일정 데이터 상세보기
@@ -62,6 +62,7 @@ public class ScheduleController {
 		model.addAttribute("schedule", schedule);
 		return "datamanage.data-calendar-detail";
 	}
+	
 	//일정 데이터 수정하기
 	@RequestMapping("updateSchedule.dvn")
 	public String updateSchedule(String dataname,int dataseq,PersonaldataSchDTO schedule){

@@ -207,11 +207,7 @@
 														<i class="fa fa-star-o" aria-hidden="true"></i>
 													</c:forEach>
 													</c:if>
-													<!-- <i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i> -->
+													
 												</div>
 											</div>
 											
@@ -253,11 +249,7 @@
 														<i class="fa fa-star-o" aria-hidden="true"></i>
 													</c:forEach>
 													</c:if>
-													<!-- <i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star calendar-star" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i>
-													<i class="fa fa-star-o" aria-hidden="true"></i> -->
+												
 												</div>
 											</div>
 											

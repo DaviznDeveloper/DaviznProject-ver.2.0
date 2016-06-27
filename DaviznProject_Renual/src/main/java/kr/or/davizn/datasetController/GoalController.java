@@ -16,6 +16,7 @@ import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.NewGoalDTO;
 import kr.or.davizn.datasetDTO.PersonalDataGoalDTO;
+import kr.or.davizn.datasetService.DataseqsService;
 import kr.or.davizn.datasetService.GoalService;
 
 @Controller
@@ -27,6 +28,7 @@ public class GoalController {
 	PersonalService personalService;
 	@Autowired
 	CommonDataService commonService;
+	
 	
 	
 	@RequestMapping("showGoalList.dvn")
@@ -44,7 +46,6 @@ public class GoalController {
 		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
 		commonService.addDataseq(dataseq);
 		goalService.addNewGoal(newGoal);
-		
 		return "redirect:detailGoal.dvn?dataseq=" + dataseq;
 	}
 
@@ -60,12 +61,17 @@ public class GoalController {
 	@RequestMapping("updateGoal.dvn")
 	@Transactional
 	public String updateGoal(PersonalDataDTO personaldto, NewGoalDTO newGoal) throws ParseException {
+		
 		int newdataseq = personaldto.getDataseq() + 1;
 		personalService.deletePersonalData(personaldto.getDataseq());
+		commonService.deleteDataseq(personaldto.getDataseq());
 		personaldto.setDataseq(newdataseq);
 		personalService.addPersonalData(personaldto);
+		
+		commonService.addDataseq(newdataseq);
 		goalService.addNewGoal(newGoal);
-		return "redirect:detailGoal.dvn?dataseq=" + newdataseq;
+		
+		return "redirect:detailGoal.dvn?dataseq="+newdataseq;
 	}
 
 	// 세부 목표 상태 비동기 변경
@@ -84,7 +90,7 @@ public class GoalController {
 
 	// 상세화면에서 달성 퍼센트 변경
 	@RequestMapping("updateGoalpercent.dvn")
-	public String updateGoalpercent(@RequestParam int dataseq) {
+	public @ResponseBody String updateGoalpercent(@RequestParam int dataseq) {
 		int result = goalService.updateGoalPercent(dataseq);
 		return "달성 퍼센트 update 완료";
 	}
