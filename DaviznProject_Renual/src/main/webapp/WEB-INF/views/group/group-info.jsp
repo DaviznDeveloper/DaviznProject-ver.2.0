@@ -6,7 +6,8 @@
 				
 				<!-- content -->
 				<div class="container">
-				
+					<input type="hidden" id="groupseq" name="groupseq" value="${groupseq}">
+					<input type="hidden" id="userid" name="userid" value="${userid}">
 					<div class="col-md-12 content-container">
 
 						<ol class="breadcrumb">
@@ -126,7 +127,7 @@
 														
 														<!-- 그룹원이 아닐 경우 보여져야 하는 버튼 -->
 														<div class="pull-right margin-right-10">
-															<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#group-create">
+															<button type="button" id="applygroup" name="applygroup" class="btn btn-primary btn-xs">
 																이 그룹에 가입 신청
 															</button>
 															

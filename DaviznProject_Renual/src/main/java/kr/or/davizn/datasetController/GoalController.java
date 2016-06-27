@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
+import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.NewGoalDTO;
 import kr.or.davizn.datasetDTO.PersonalDataGoalDTO;
@@ -24,7 +25,10 @@ public class GoalController {
 	GoalService goalService;
 	@Autowired
 	PersonalService personalService;
-
+	@Autowired
+	CommonDataService commonService;
+	
+	
 	@RequestMapping("showGoalList.dvn")
 	public String showGoalList(Model model, @RequestParam int strgseq) {
 		List<PersonalDataGoalDTO> goalList = goalService.showGoalList(strgseq);
@@ -37,8 +41,10 @@ public class GoalController {
 	@Transactional
 	public String addGoal(NewGoalDTO newGoal, PersonalDataDTO personaldto) throws ParseException {
 		personalService.addPersonalData(personaldto);
-		goalService.addNewGoal(newGoal);
 		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
+		commonService.addDataseq(dataseq);
+		goalService.addNewGoal(newGoal);
+		
 		return "redirect:detailGoal.dvn?dataseq=" + dataseq;
 	}
 

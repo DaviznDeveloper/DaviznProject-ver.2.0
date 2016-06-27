@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
 import kr.or.davizn.datainfoDTO.UserStrgDTO;
+import kr.or.davizn.datainfoInterface.CommonDataDAO;
+import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datainfoService.UserStrgService;
 import kr.or.davizn.groupDTO.GroupListDTO;
@@ -26,7 +28,8 @@ public class PersonalDataController {
    private GroupInfoService groupInfoService;
    @Autowired
    private UserStrgService storageService;
-   
+   @Autowired
+   private CommonDataService commonService;
 
    
    //데이터 리스트 보기
@@ -76,6 +79,7 @@ public class PersonalDataController {
  	public String deletePersonalNoteData(@RequestParam int dataseq,
  										@RequestParam int strgseq){
  		personalDataService.deletePersonalData(dataseq);
+ 		commonService.deleteDataseq(dataseq);
  		return "redirect:showPersonalDataList.dvn?strgseq="+strgseq;	
  	}
  	

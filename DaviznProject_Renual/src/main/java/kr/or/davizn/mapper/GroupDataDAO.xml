@@ -4,6 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.davizn.datainfoInterface.GroupDataDAO">
 
+	<select id="getG_dataseq" parameterType="Integer" resultType="Integer">
+		select max(dataseq) from groupdata where groupseq=#{groupseq} 
+	</select>
+  	
+  	<select id="getG_ShareDatalist" parameterType="Integer" resultType="kr.or.davizn.datainfoDTO.GroupDataDTO">
+  		select * from groupdata where groupseq=#{groupseq}
+  	</select>
+  	
+  	<insert id="addGroupDataTable">
+  		insert into groupdata (dataseq, groupseq, datatype, datacreate,userid, dataname)
+  		values(data_seq.nextval, #{groupseq}, #{datatype}, sysdate, #{userid}, #{dataname})
+  	</insert>
+	
+	<delete id="deleteGroupDataTable">
+		delete groupdata where dataseq=#{dataseq}
+	</delete>
 </mapper>
-
-

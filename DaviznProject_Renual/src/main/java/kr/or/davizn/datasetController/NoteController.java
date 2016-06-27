@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.davizn.datainfoDTO.GroupDataDTO;
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
+import kr.or.davizn.datainfoInterface.GroupDataDAO;
 import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.PersonalDataNoteDTO;
@@ -37,7 +39,13 @@ public class NoteController {
 		return "datamanage.data-note-create";
 	}
 
-	
+	@RequestMapping("modify.dvn")
+	public String modify(GroupDataDTO groupdto,HttpServletRequest request,@RequestParam String datahtml) throws IOException{
+		int dataseq = groupdto.getDataseq();
+		String dataname = groupdto.getDataname();
+		notedataService.modifyNoteFile(dataseq, request, datahtml);
+		return "redirect:/version/addVersion.dvn?dataseq="+dataseq+"&groupseq="+groupdto.getGroupseq();
+	}
 	// 노트 데이터 추가
 	@RequestMapping("addNoteData.dvn")
 	@Transactional
@@ -50,8 +58,10 @@ public class NoteController {
 		String datahtml = notedto.getDatahtml();
 		String filepath = commonService.getFileName(principal.getName());
 		
+		notedto.setDataseq(dataseq);
 		notedto.setFilepath(filepath);
 		commonService.makeFile(personaldto.getDatatype(), datahtml, principal.getName(), request,filepath);
+		commonService.addDataseq(dataseq);
 		notedataService.addNoteData(notedto);
 
 		return "redirect:/note/detailNote.dvn?dataseq=" + dataseq +"&function=d";
@@ -63,11 +73,16 @@ public class NoteController {
 							HttpServletRequest request, @RequestParam String function) throws IOException {
 		
 		PersonalDataNoteDTO note = notedataService.detailNote(request, dataseq);
-		
 		model.addAttribute("note", note);
-		if(function.equals("d")) return "datamanage.data-note-detail";
-		else if(function.equals("m")) return "datamanage.data-note-modi";
-		else return "datamanage.data-note-detail";
+		if(function.equals("d")) {
+			if(note.getOrigin().equals("personal"))return "datamanage.data-note-detail";
+			else if(note.getOrigin().equals("group")) return "group.group-data-share-note-detail";
+		}
+		else if(function.equals("m")){
+			if(note.getOrigin().equals("personal"))return "datamanage.data-note-modi";
+			else if(note.getOrigin().equals("group")) return "group.group-data-share-note-modi";
+		}
+		return "datamanage.data-note-detail";
 	}
 
 	// 노트 데이터 수정(실제 DB update)
@@ -80,6 +95,8 @@ public class NoteController {
 		String dataname = personaldataDTO.getDataname();
 		notedataService.modifyNoteFile(dataseq, request, datahtml);
 		personalService.updatePersonaldata(dataseq, dataname);
+		
+		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
 		return "redirect:/note/detailNote.dvn?dataseq="+dataseq+"&function=d";
 	}
 }

@@ -53,6 +53,7 @@ public class SketchController {
 		String filepath = commonService.getFileName(principal.getName());
 		sketchdto.setFilepath(filepath);
 		commonService.makeFile(sketchdto.getDatatype(), sketchdto.getDatahtml(), principal.getName(), request, filepath);
+		commonService.addDataseq(dataseq);
 		sketchservice.addSketchData(sketchdto);
 		return "redirect:/sketch/detailsketch.dvn?dataseq=" + dataseq +"&function=d";
 	}

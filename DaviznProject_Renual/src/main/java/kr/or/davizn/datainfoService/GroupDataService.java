@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.davizn.datainfoDTO.GroupDataDTO;
+import kr.or.davizn.datainfoInterface.GroupDataDAO;
 import kr.or.davizn.datasetDTO.PersonalDataNoteDTO;
 
 @Service
@@ -22,11 +23,10 @@ public class GroupDataService {
 	SqlSession sqlsession;
 	
 	public int getG_dataseq(int groupseq){
-		/*int g_dataseq;
+		int dataseq;
 		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
-		g_dataseq = groupDataDAO.getG_dataseq(groupseq);
-		return g_dataseq;*/
-		return 0;
+		dataseq = groupDataDAO.getG_dataseq(groupseq);
+		return dataseq;
 	}
 	
 	public int copyFile(HttpServletRequest request, String p_file, String g_file, int datatype) throws IOException{
@@ -48,22 +48,24 @@ public class GroupDataService {
 		outputStream.close();
 		inputStream.close();
 		
-		return 0;
+		return result;
 	}
 	
 	public void addGroupDataTable(GroupDataDTO groupdatadto){
-		/*GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
-		groupDataDAO.addGroupDataTable(groupdatadto);*/
+		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
+		groupDataDAO.addGroupDataTable(groupdatadto);
 	}
 	
-	public void addG_Note(PersonalDataNoteDTO notedto){
-		/*GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
-		groupDataDAO.addG_Note(notedto);*/
+	public void deleteGroupDataTable(int dataseq){
+		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
+		groupDataDAO.deleteGroupDataTable(dataseq);
 	}
+	
 	
 	public List<GroupDataDTO> getG_ShareDatalist(int groupseq){
-		/*GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
-		return groupDataDAO.getG_ShareDatalist(groupseq);*/
-		return null;
+		GroupDataDAO groupDataDAO = sqlsession.getMapper(GroupDataDAO.class);
+		return groupDataDAO.getG_ShareDatalist(groupseq);
 	}
+	
+	
 }

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.davizn.datainfoService.GroupDataService;
@@ -16,6 +18,7 @@ import kr.or.davizn.groupDTO.GroupListDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
 import kr.or.davizn.groupService.GroupInfoService;
 import kr.or.davizn.memberDTO.AuthorityDTO;
+import kr.or.davizn.memberService.AuthorityService;
 
 @Controller
 @RequestMapping("/group/")
@@ -23,9 +26,11 @@ public class GroupController {
    
    @Autowired
    GroupInfoService groupInfoService;
-
    @Autowired
    GroupDataService groupdataService;
+   @Autowired
+   AuthorityService authorityService;
+   
    
    @RequestMapping("goGroupMain.dvn")
    public String goGroupMain(Principal principal,Model model){
@@ -85,12 +90,22 @@ public class GroupController {
    }
    
    @RequestMapping("goGroupInfo.dvn")
-   public String goGroupInfo(Principal principal){
-      //해당 id의 그룹권한 체크
-      return "group.group-info";
+   public String goGroupInfo(Principal principal,int groupseq,Model model){
+	   //해당 id의 그룹권한 체크
+	   
+	   //id가 갖고 있는 권한들 갖고 오기
+	   List<AuthorityDTO> authoList = authorityService.getMemberAuths(principal.getName());
+	   model.addAttribute("groupseq",groupseq);
+	   model.addAttribute("userid",principal.getName());
+	   for(AuthorityDTO dto:authoList){
+		   if(dto.getRole_name().equals("ROLE_"+groupseq+"_M")){
+			   System.out.println("master입니다.");
+			   return "group.group-info-master";
+		   }
+	   }
+	   return "group.group-info";
    }
    
-
    //그룹 검색 리스트 얻기
    @RequestMapping("searchGroupList.dvn")
    public @ResponseBody List<GroupInfoDTO> searchGroupList(String keyword){
@@ -98,5 +113,24 @@ public class GroupController {
       List<GroupInfoDTO> searchList = groupInfoService.searchGroupList(keyword);
       System.out.println("검색 리스트 : "+searchList);
       return searchList;
+   }
+   
+   //그룹에 가입신청하기
+   @RequestMapping(value="applyGroup.dvn")
+   @Transactional
+   public @ResponseBody String applyGroup(Principal principal,@RequestParam int groupseq){
+	   System.out.println("들어오나??????????????????????????????");
+	   GroupMemberDTO groupMemberDTO = new GroupMemberDTO();
+	   AuthorityDTO authorityDTO = new AuthorityDTO();
+	   String role_name = "ROLE_"+groupseq+"_W";
+	   
+	   groupMemberDTO.setUserid(principal.getName());
+	   groupMemberDTO.setGroupseq(groupseq);
+	   groupInfoService.addGroupMember(groupMemberDTO);   
+	   
+	   authorityDTO.setUserid(principal.getName());
+	   authorityDTO.setRole_name(role_name);
+	   groupInfoService.addAuthDesign(authorityDTO);
+	   return "Apply Success.";
    }
 }

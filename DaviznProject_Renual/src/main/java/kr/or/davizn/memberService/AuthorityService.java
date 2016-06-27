@@ -1,10 +1,13 @@
 package kr.or.davizn.memberService;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.davizn.memberDTO.AuthorityDTO;
 import kr.or.davizn.memberInterface.AuthorityDAO;
 
 @Service
@@ -20,4 +23,8 @@ public class AuthorityService {
 		return result;
 	}
 	
+	public List<AuthorityDTO> getMemberAuths(String userid){
+		AuthorityDAO dao = sqlsession.getMapper(AuthorityDAO.class);
+		return dao.getMemberAuths(userid);
+	}
 }

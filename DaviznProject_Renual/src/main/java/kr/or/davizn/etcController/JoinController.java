@@ -39,6 +39,7 @@ public class JoinController {
 	// 회원가입 이메일 중복 비동기 처리
 	@RequestMapping(value="checkAccount.dvn" ,produces="application/text; charset=utf8")
 	public @ResponseBody String checkAccount(@RequestParam String account) {
+		System.out.println("이메일 체크 들어옴");
 		String result = service.checkAccount(account);
 		return result;
 	}
@@ -46,6 +47,7 @@ public class JoinController {
 	//회원가입 회원 아이디 중복 비동기 처리
 	@RequestMapping(value="checkUserid.dvn",produces="application/text; charset=utf8")
 	public @ResponseBody String checkUserid(@RequestParam String userid) {
+		System.out.println("체크 id 컨트롤러 들어옴");
 		String result = service.checkUserid(userid);
 		return result;
 	}

@@ -5,11 +5,19 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.davizn.datainfoInterface.CommonDataDAO;
+import kr.or.davizn.datainfoInterface.GroupDataDAO;
+
 @Service
 public class CommonDataService {
+	@Autowired
+	SqlSession sqlsession;
+	
 	@Transactional
 	public void makeFile(int datatype, String datahtml, String userid,
 			HttpServletRequest request, String fileName) throws IOException {
@@ -31,5 +39,14 @@ public class CommonDataService {
 		String endformat = ".txt";
 		String fileName = fname + endformat;
 		return fileName;
+	}
+	
+	public void addDataseq(int dataseq){
+		CommonDataDAO commonDAO = sqlsession.getMapper(CommonDataDAO.class);
+		commonDAO.addDataseq(dataseq);
+	}
+	public void deleteDataseq(int dataseq){
+		CommonDataDAO commonDAO = sqlsession.getMapper(CommonDataDAO.class);
+		commonDAO.deleteDataseq(dataseq);
 	}
 }

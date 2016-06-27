@@ -413,7 +413,7 @@
 										<br>
 										
 										<div class="col-sm-12 no-padding margin-bottom-10">
-											<a href="">
+											<a href="${pageContext.request.contextPath}/group/addGroup.dvn">
 												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 목표 페이지로 이동
 											</a>
 										</div>
@@ -459,7 +459,7 @@
 										<br>
 										
 										<div class="col-sm-12 no-padding margin-bottom-10">
-											<a href="">
+											<a href="${pageContext.request.contextPath}/groupdata/showG_Datalist.dvn?groupseq=${groupseq}">
 												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 데이터 페이지로 이동
 											</a>
 										</div>

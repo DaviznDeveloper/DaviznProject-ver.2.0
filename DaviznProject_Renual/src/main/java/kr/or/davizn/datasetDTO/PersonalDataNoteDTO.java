@@ -12,7 +12,14 @@ public class PersonalDataNoteDTO {
 	private int datatype;
 	private Date datacreate;
 	private String origin;
+	private String userid;
 	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public int getDataseq() {
 		return dataseq;
 	}

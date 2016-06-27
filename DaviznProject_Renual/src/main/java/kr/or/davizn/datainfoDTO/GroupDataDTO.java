@@ -3,15 +3,24 @@ package kr.or.davizn.datainfoDTO;
 import java.sql.Date;
 
 public class GroupDataDTO {
-
+	/*
+	 * DATASEQ	NUMBER
+GROUPSEQ	NUMBER
+DATATYPE	NUMBER
+DATACREATE	DATE
+USERID	VARCHAR2(50 BYTE)
+DATANAME	VARCHAR2(200 BYTE)
+	 * */
 	private int dataseq;
 	private int groupseq;
 	private int datatype;
 	private String userid;
 	private String dataname;
-	private String origin;
-	private Date g_datacreate;
+	private Date datacreate;
 	
+	public int getDataseq() {
+		return dataseq;
+	}
 	public void setDataseq(int dataseq) {
 		this.dataseq = dataseq;
 	}
@@ -39,17 +48,11 @@ public class GroupDataDTO {
 	public void setDataname(String dataname) {
 		this.dataname = dataname;
 	}
-	public String getOrigin() {
-		return origin;
+	public Date getDatacreate() {
+		return datacreate;
 	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-	public Date getG_datacreate() {
-		return g_datacreate;
-	}
-	public void setG_datacreate(Date g_datacreate) {
-		this.g_datacreate = g_datacreate;
+	public void setDatacreate(Date datacreate) {
+		this.datacreate = datacreate;
 	}
 	
 	

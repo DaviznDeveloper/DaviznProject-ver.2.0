@@ -1,5 +1,6 @@
 $(function() {
-         setInterval(function() {
+         /*setInterval(function() {
+        	 var userid=$('#user-msg').val();
               if($('#sender').val() != ''){//////////////
              // 쪽지기능 알림
              $.ajax({
@@ -30,9 +31,9 @@ $(function() {
        
                });
           }
-       }, 5000); 
+       }, 5000); */
 
-
+	/*
     $('#receiver').keyup(function() {
        $.ajax({
               type : "post",
@@ -89,4 +90,4 @@ function getContextPath(){
     var offset=location.href.indexOf(location.host)+location.host.length;
     var ctxPath=location.href.substring(offset,location.href.indexOf('/',offset+1));
     return ctxPath;
-}
+}*/

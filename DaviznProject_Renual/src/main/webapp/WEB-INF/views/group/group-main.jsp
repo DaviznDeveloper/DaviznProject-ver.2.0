@@ -24,7 +24,7 @@
 								</button>
 								<br><br>
 								
-								<form action="${pageContext.request.contextPath}/group/addGroup.dvn" method="post" class="form-horizontal">
+								<form action="${pageContext.request.contextPath}/groupdata/showG_Datalist.dvn?groupseq=" method="post" class="form-horizontal">
 									<div id="group-create" class="modal fade">
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
@@ -81,7 +81,7 @@
 							
 							<div class="col-sm-12 no-padding">
 								<c:forEach var="grouplist" items="${groupList}">
-                 		 		<a href="${pageContext.request.contextPath}/group/goGroupInfo.dvn">
+                 		 		<a href="${pageContext.request.contextPath}/group/goGroupInfo.dvn?groupseq=${grouplist.groupseq}">
 									<div class="panel panel-primary">
 										<div class="panel-body">
 										
@@ -160,7 +160,7 @@
 							
 						<div id="removeList">
 							<c:forEach items="${rlist}" var="rgroup">
-							<a href="">
+							<a href="${pageContext.request.contextPath}/group/goGroupInfo.dvn?groupseq=${rgroup.groupseq}">
 								<div class="col-sm-12 no-padding">
 									<div class="panel panel-warning">
 											<div class="panel-body">

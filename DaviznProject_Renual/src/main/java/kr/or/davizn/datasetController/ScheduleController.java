@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
+import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.PersonaldataSchDTO;
 import kr.or.davizn.datasetService.ScheduleService;
@@ -22,7 +23,8 @@ public class ScheduleController {
 	ScheduleService schservice;
 	@Autowired
 	PersonalService personalService;
-	
+	@Autowired
+	CommonDataService commonService;
 	
 	//일정 리스트 가기
 	@RequestMapping("goScheduleList.dvn")
@@ -45,8 +47,10 @@ public class ScheduleController {
 	@Transactional
 	public String createSchedule(PersonalDataDTO personaldto,PersonaldataSchDTO schedule,Model model){
 		personalService.addPersonalData(personaldto);
-		schservice.addSchedule(schedule);
 		int dataseq = personalService.getDataseq(personaldto.getStrgseq());
+		commonService.addDataseq(dataseq);
+		schservice.addSchedule(schedule);
+		
 		return "redirect:/schedule/detailSchedule.dvn?dataseq=" + dataseq;
 		/*return "redirect:goScheduleList.dvn?strgseq="+strgseq;*/
 	}
