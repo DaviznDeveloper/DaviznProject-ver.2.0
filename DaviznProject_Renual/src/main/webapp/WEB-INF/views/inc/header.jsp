@@ -23,6 +23,8 @@
 				height="40px">
 			</a>
 		</div>
+		<se:authentication property="name" var="UserMsg" />
+			<input type="hidden" id="user-msg" value="${UserMsg}">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-left header-menu">
 				<li class="nav_menu">

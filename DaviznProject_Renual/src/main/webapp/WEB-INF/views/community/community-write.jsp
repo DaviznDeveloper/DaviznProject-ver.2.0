@@ -8,8 +8,8 @@
 					<div class="col-md-12 content-container">
 	
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/ui/index.jsp">커뮤니티</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
+							<li><a href="${pageContext.request.contextPath}/communityList.dvn">커뮤니티</a></li>
 							<li class="active">글쓰기</li>
 						</ol>
 						
@@ -32,8 +32,9 @@
 												<label for="inputEmail3" class="col-sm-1 control-label board-w-t">제목</label>
 												<div class="col-sm-11">
 													<input type="text" class="form-control" id="board-subject" name="boardsubject"
-														placeholder="제목을 입력하세요.">
+														placeholder="제목을 입력하세요." required>
 												</div>
+												<input type="hidden" class="form-control" name="userid" value="${userid}" readonly="true">
 											</div>
 										</td>
 										
@@ -43,7 +44,7 @@
 									
 										<div class="form-group">
 											<th colspan="1" scope="col" class="">
-												<input type="checkbox" id="notice_check" class="" name="notice_check">
+												<input type="checkbox" id="notice_check" class="" name="boardnotice">
 												&nbsp;&nbsp;공지
 											</th>
 										</div>
@@ -59,7 +60,7 @@
 										<div class="form-group">
 											
 											<td colspan="3">
-												<textarea id="summernote" class="summernote" name="boardcontent"></textarea>
+												<textarea id="summernote" class="summernote" name="boardcontent" required></textarea>
 											</td>
 										
 										</div>
@@ -74,7 +75,7 @@
 											
 												<div class="text-center">
 													<button type="submit" class="btn btn-success" id = "write_submit">완료</button>
-													<a class="btn btn-default" href="community.dvn" role="button">취소</a>
+													<a class="btn btn-default" href="communityList.dvn" role="button">취소</a>
 												</div>
 												
 											</td>

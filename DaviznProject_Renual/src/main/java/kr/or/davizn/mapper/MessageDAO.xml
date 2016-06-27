@@ -9,14 +9,14 @@
 	<select id="getSendMsgList"  parameterType="String"  resultType="kr.or.davizn.messageDTO.MessagesendDTO">
 		select message_num, receiver , message_title, message_content,  message_date, sender
 		from sendmessage 
-		where sender=#{userid}
+		where sender=#{userid} order by  message_num desc
 	</select>
 	
 	<!-- 받은 쪽지함 목록을 가져옴 -->
 	<select id="getReceiveMsgList" parameterType="String"  resultType="kr.or.davizn.messageDTO.MessagesendDTO">
 		select message_num, sender , message_title, message_content,  message_date, msg_alarm, receiver, checkedstate
 		from receivemessage
-		where receiver=#{userid}
+		where receiver=#{userid} order by  message_num desc 
 		
 	</select>
 	

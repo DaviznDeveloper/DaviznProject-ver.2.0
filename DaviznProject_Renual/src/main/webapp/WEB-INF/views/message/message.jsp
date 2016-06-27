@@ -41,7 +41,7 @@
                         
                         <td>
                            
-                           <a data-toggle="modal" data-target="#msg_content">${i.message_title}</a>      
+                           <a href="${pageContext.request.contextPath}/message/changecheckedstate.dvn?message_num=${i.message_num}" data-toggle="modal" data-target="#msg_content">${i.message_title}</a>    
                            <!-- Modal -->
                            <div class="modal fade" id="msg_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                              <div class="modal-dialog" role="document">
@@ -63,7 +63,7 @@
                         
                         <td>${i.message_date}</td>
                         <td>
-                           <a class="btn btn-danger" href="${pageContext.request.contextPath}/deleteReceiveMessage.dvn?message_num=${i.message_num}">삭제</a>
+                           <a class="btn btn-danger" href="${pageContext.request.contextPath}/message/deleteReceiveMessage.dvn?message_num=${i.message_num}">삭제</a>
                         </td>
                      </tr>
 
@@ -156,7 +156,7 @@
                         
                         <td>${i.message_date}</td>
                         <td>
-                           <a class="btn btn-danger" href="${pageContext.request.contextPath}/deleteSendMessage.dvn?message_num=${i.message_num}">삭제</a>
+                           <a class="btn btn-danger" href="${pageContext.request.contextPath}/message/deleteSendMessage.dvn?message_num=${i.message_num}">삭제</a>
                         </td>
                      </tr>
 
