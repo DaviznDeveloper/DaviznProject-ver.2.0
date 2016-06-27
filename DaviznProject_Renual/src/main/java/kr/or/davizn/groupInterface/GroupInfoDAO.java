@@ -2,7 +2,7 @@ package kr.or.davizn.groupInterface;
 
 import java.util.List;
 
-
+import kr.or.davizn.datainfoDTO.GroupDataDTO;
 import kr.or.davizn.groupDTO.GroupAuthDTO;
 import kr.or.davizn.groupDTO.GroupInfoDTO;
 import kr.or.davizn.groupDTO.GroupMemberDTO;
@@ -10,6 +10,7 @@ import kr.or.davizn.memberDTO.AuthorityDTO;
 
 public interface GroupInfoDAO {
 
+	public GroupDataDTO getGroup(int dataseq);
 	//그룹 랜덤으로 5개 가져오기
 	public List<GroupInfoDTO> randomGroupList();
 	//검색한 그룹 리스트 가져오기
@@ -34,5 +35,5 @@ public interface GroupInfoDAO {
 	public List<GroupInfoDTO> getGroupList(String userid);
 	//public int deleteGroup();
 	//public int updateGroup();
-
+	
 }

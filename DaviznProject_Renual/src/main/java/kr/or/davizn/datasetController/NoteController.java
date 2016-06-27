@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.davizn.datainfoDTO.GroupDataDTO;
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
-import kr.or.davizn.datainfoInterface.GroupDataDAO;
 import kr.or.davizn.datainfoService.CommonDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.PersonalDataNoteDTO;
 import kr.or.davizn.datasetService.NoteService;
+import kr.or.davizn.groupService.GroupInfoService;
 
 @Controller
 @RequestMapping("/note/")
@@ -30,7 +30,8 @@ public class NoteController {
 	PersonalService personalService;
 	@Autowired
 	CommonDataService commonService;
-	
+	@Autowired
+	GroupInfoService groupinfoService;
 	
 	// data-list.jsp에서 modal 창을 통한 노트 데이터 추가하기 창으로 이동.
 	@RequestMapping("moveNoteCreate.dvn")
@@ -40,8 +41,9 @@ public class NoteController {
 	}
 
 	@RequestMapping("modify.dvn")
-	public String modify(GroupDataDTO groupdto,HttpServletRequest request,@RequestParam String datahtml) throws IOException{
-		int dataseq = groupdto.getDataseq();
+	public String modify(@RequestParam int dataseq,HttpServletRequest request,@RequestParam String datahtml) throws IOException{
+		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
+		GroupDataDTO groupdto = groupinfoService.getGroup(dataseq);
 		String dataname = groupdto.getDataname();
 		notedataService.modifyNoteFile(dataseq, request, datahtml);
 		return "redirect:/version/addVersion.dvn?dataseq="+dataseq+"&groupseq="+groupdto.getGroupseq();

@@ -350,7 +350,7 @@
 									</div>
 									<div class="panel-body">
 									<c:forEach var="sharedata" items="${sharedatalist}">
-										<a href="${pageContext.request.contextPath}/version/addVersion.dvn?dataseq=${sharedata.dataseq}" class="a-font">
+										<a href="${pageContext.request.contextPath}/groupdata/datailData.dvn?datatype=${sharedata.datatype}&dataseq=${sharedata.dataseq}" class="a-font">
 											<div class="col-sm-6">
 												<div class="panel panel-purple">
 													<div class="panel-heading">
