@@ -9,7 +9,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
-			<li><a href="${pageContext.request.contextPath}/QnA.dvn">1:1
+			<li><a href="${pageContext.request.contextPath}/QnANavigation.dvn">1:1
 					문의&건의</a></li>
 			<li class="active">글 상세보기</li>
 		</ol>
