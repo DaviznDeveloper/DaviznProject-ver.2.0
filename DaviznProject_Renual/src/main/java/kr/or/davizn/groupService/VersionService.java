@@ -1,5 +1,7 @@
 package kr.or.davizn.groupService;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,13 @@ public class VersionService {
 	
 	public int addVersion(VersionDTO versiondto){
 		ManageVersionDAO versiondao = sqlsession.getMapper(ManageVersionDAO.class);
-		versiondao.addverison(versiondto);
-		return 0;
+		System.out.println(versiondto.getGroupseq()+"/"+versiondto.getDataseq()+"/"+versiondto.getFilename()+"/"+versiondto.getComments()+"/"+versiondto.getUserid()+"/"+versiondto.getDataname());
+		int result = versiondao.addverison(versiondto);
+		return result;
+	}
+	
+	public List<VersionDTO> getVersionlist(int dataseq){
+		ManageVersionDAO versiondao = sqlsession.getMapper(ManageVersionDAO.class);
+		return versiondao.getVersionlist(dataseq);
 	}
 }

@@ -11,10 +11,8 @@
 					<div class="col-md-12 content-container">
 
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath}/renual/index.jsp">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 그룹</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">그룹 데이터</a></li>
-							<li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">그룹에 공유된 데이터</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.dvn">홈</a></li>
+               				<li><a href="${pageContext.request.contextPath}/groupNavi.dvn">내 그룹</a></li>
 							<li class="active">그룹에 공유된 데이터 히스토리</li>
 						</ol>
 						
@@ -60,78 +58,42 @@
 							<h4>데이터 히스토리</h4>
 							
 							<!-- 한 묶음 (첫번째 리스트는 active-purple 클래스 추가해야 함) -->
-							<div class="list-group">
-								<a href="#" class="list-group-item active-purple">
-									<p class="list-group-item-text margin-bottom-10">2016.06.21. 23:34</p>
-									<h4 class="list-group-item-heading">
-										<span class="text-bold">seulki</span> 님이 
-										<span class="text-bold">[목표관리 정의서]</span> 원본 데이터를 수정.
-									</h4>
-									<p class="list-group-item-text">
-										[그룹 목표관리] - 타임라인 기능 구현 완료!!
-									</p>
-									
-								</a>
-							</div>
+							<c:forEach items="${versionlist}" var="versionlist" varStatus="status">
+								<c:choose>
+
+    								<c:when test="${status.index eq 0}">
+        								<div class="list-group">
+										<a href="#" class="list-group-item active-purple">
+											<p class="list-group-item-text margin-bottom-10">${versionlist.modifytime}</p>
+											<h4 class="list-group-item-heading">
+												<span class="text-bold">${versionlist.userid}</span> 님이 
+												<span class="text-bold">[${versionlist.dataname}]</span> 원본 데이터를 수정.
+											</h4>
+											<p class="list-group-item-text">
+												${versionlist.comments}
+											</p>
+										
+										</a>
+										</div>
+   									</c:when>
+								    <c:otherwise>
+								        <div class="list-group">
+											<a href="#" class="list-group-item">
+												<p class="list-group-item-text margin-bottom-10">2016.06.20. 17:42</p>
+												<h4 class="list-group-item-heading">
+													<span class="text-bold">${versionlist.userid}</span> 님이 
+													<span class="text-bold">[${versionlist.dataname}]</span> 원본 데이터를 수정.
+												</h4>
+												<p class="list-group-item-text">
+													${versionlist.comments}
+												</p>
+										
+											</a>
+										</div>
+								    </c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<div class="list-group">
-								<a href="#" class="list-group-item">
-									<p class="list-group-item-text margin-bottom-10">2016.06.20. 17:42</p>
-									<h4 class="list-group-item-heading">
-										<span class="text-bold">seulki</span> 님이 
-										<span class="text-bold">[목표관리 정의서]</span> 원본 데이터를 수정.
-									</h4>
-									<p class="list-group-item-text">
-										[그룹 목표관리] - 타임라인 기능 구현 수정 ㅠㅠ
-									</p>
-									
-								</a>
-							</div>
-							
-							<div class="list-group">
-								<a href="#" class="list-group-item">
-									<p class="list-group-item-text margin-bottom-10">2016.06.19. 13:11</p>
-									<h4 class="list-group-item-heading">
-										<span class="text-bold">seulki</span> 님이 
-										<span class="text-bold">[목표관리 정의서]</span> 원본 데이터를 수정.
-									</h4>
-									<p class="list-group-item-text">
-										[그룹 목표관리] - 타임라인 기능 구현 시작~
-									</p>
-									
-								</a>
-							</div>
-							
-							<div class="list-group">
-								<a href="#" class="list-group-item">
-									<p class="list-group-item-text margin-bottom-10">2016.06.19. 13:11</p>
-									<h4 class="list-group-item-heading">
-										<span class="text-bold">seulki</span> 님이 
-										<span class="text-bold">[목표관리 정의서]</span> 원본 데이터를 수정.
-									</h4>
-									<p class="list-group-item-text">
-										[그룹 목표관리] - 타임라인 기능 구현 시작~
-									</p>
-									
-								</a>
-							</div>
-							
-							<div class="list-group">
-								<a href="#" class="list-group-item">
-									<p class="list-group-item-text margin-bottom-10">2016.06.19. 13:11</p>
-									<h4 class="list-group-item-heading">
-										<span class="text-bold">seulki</span> 님이 
-										<span class="text-bold">[목표관리 정의서]</span> 원본 데이터를 수정.
-									</h4>
-									<p class="list-group-item-text">
-										[그룹 목표관리] - 타임라인 기능 구현 시작~
-									</p>
-									
-								</a>
-							</div>
-				
-						</div>
-						
 					</div>	
 				
 				</div>

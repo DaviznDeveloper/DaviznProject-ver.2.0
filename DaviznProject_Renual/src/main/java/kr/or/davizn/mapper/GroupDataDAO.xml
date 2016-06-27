@@ -8,6 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select max(dataseq) from groupdata where groupseq=#{groupseq} 
 	</select>
   	
+  	<select id="getOneGroupData" resultType="kr.or.davizn.datainfoDTO.GroupDataDTO">
+  		select * from groupdata where dataseq=#{dataseq}
+  	</select>
+  	
   	<select id="getG_ShareDatalist" parameterType="Integer" resultType="kr.or.davizn.datainfoDTO.GroupDataDTO">
   		select * from groupdata where groupseq=#{groupseq}
   	</select>
@@ -20,4 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteGroupDataTable">
 		delete groupdata where dataseq=#{dataseq}
 	</delete>
+	
+	<update id="updateGroupdata">
+		update groupdata set dataname=#{dataname} where dataseq=#{dataseq}
+	</update>
+	
 </mapper>

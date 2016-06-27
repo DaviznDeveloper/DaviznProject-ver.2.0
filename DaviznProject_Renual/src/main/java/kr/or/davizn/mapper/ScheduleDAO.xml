@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!--일정 상세보기-->
    <select id="detailSchedule" resultType="kr.or.davizn.datasetDTO.PersonaldataSchDTO">
-      select p.dataname, s.schcontext,s.startdate,s.finaldate,
+      select p.dataname, s.schcontext,s.startdate,s.finaldate, s.state,
             s.alramdate,s.priority,p.dataseq,p.strgseq
             from personaldata p join schedule s
             on p.dataseq = s.dataseq

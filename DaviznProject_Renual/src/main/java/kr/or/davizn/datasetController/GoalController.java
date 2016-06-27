@@ -62,9 +62,12 @@ public class GoalController {
 	public String updateGoal(PersonalDataDTO personaldto, NewGoalDTO newGoal) throws ParseException {
 		int newdataseq = personaldto.getDataseq() + 1;
 		personalService.deletePersonalData(personaldto.getDataseq());
+		commonService.deleteDataseq(personaldto.getDataseq());
 		personaldto.setDataseq(newdataseq);
 		personalService.addPersonalData(personaldto);
+		commonService.addDataseq(newdataseq);
 		goalService.addNewGoal(newGoal);
+		
 		return "redirect:detailGoal.dvn?dataseq=" + newdataseq;
 	}
 
@@ -84,7 +87,7 @@ public class GoalController {
 
 	// 상세화면에서 달성 퍼센트 변경
 	@RequestMapping("updateGoalpercent.dvn")
-	public String updateGoalpercent(@RequestParam int dataseq) {
+	public @ResponseBody String updateGoalpercent(@RequestParam int dataseq) {
 		int result = goalService.updateGoalPercent(dataseq);
 		return "달성 퍼센트 update 완료";
 	}

@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.or.davizn.datainfoDTO.GroupDataDTO;
 import kr.or.davizn.datainfoDTO.PersonalDataDTO;
 import kr.or.davizn.datainfoService.CommonDataService;
+import kr.or.davizn.datainfoService.GroupDataService;
 import kr.or.davizn.datainfoService.PersonalService;
 import kr.or.davizn.datasetDTO.PersonalDataNoteDTO;
 import kr.or.davizn.datasetService.NoteService;
+import kr.or.davizn.groupDTO.VersionDTO;
 import kr.or.davizn.groupService.GroupInfoService;
+import kr.or.davizn.groupService.VersionService;
 
 @Controller
 @RequestMapping("/note/")
@@ -32,6 +35,10 @@ public class NoteController {
 	CommonDataService commonService;
 	@Autowired
 	GroupInfoService groupinfoService;
+	@Autowired
+	GroupDataService groupdataService;
+	@Autowired
+	VersionService versionService;
 	
 	// data-list.jsp에서 modal 창을 통한 노트 데이터 추가하기 창으로 이동.
 	@RequestMapping("moveNoteCreate.dvn")
@@ -40,14 +47,26 @@ public class NoteController {
 		return "datamanage.data-note-create";
 	}
 
-	@RequestMapping("modify.dvn")
-	public String modify(@RequestParam int dataseq,HttpServletRequest request,@RequestParam String datahtml) throws IOException{
-		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
-		GroupDataDTO groupdto = groupinfoService.getGroup(dataseq);
-		String dataname = groupdto.getDataname();
+	@RequestMapping("modifyGroupNote.dvn")
+	public String modify(HttpServletRequest request,VersionDTO versiondto,GroupDataDTO groupdatadto,Principal principal) throws IOException{
+		int dataseq = versiondto.getDataseq();
+		int datatype = groupdatadto.getDatatype();
+		int groupseq = groupdataService.getOneGroupData(dataseq).getGroupseq();
+		String datahtml = versiondto.getDatahtml();
+		String fileName = commonService.getFileName(principal.getName());
+		String userid = principal.getName();
+
+		versiondto.setUserid(userid);
+		versiondto.setGroupseq(groupseq);
+		versiondto.setFilename(fileName);
+		commonService.makeFile(datatype, datahtml, userid, request, fileName);
+		groupdataService.updateGroupdata(groupdatadto);
 		notedataService.modifyNoteFile(dataseq, request, datahtml);
-		return "redirect:/version/addVersion.dvn?dataseq="+dataseq+"&groupseq="+groupdto.getGroupseq();
+		versionService.addVersion(versiondto);
+		return "redirect:/version/showVerionlist.dvn?dataseq="+dataseq;
 	}
+	
+	
 	// 노트 데이터 추가
 	@RequestMapping("addNoteData.dvn")
 	@Transactional
@@ -98,8 +117,8 @@ public class NoteController {
 		notedataService.modifyNoteFile(dataseq, request, datahtml);
 		personalService.updatePersonaldata(dataseq, dataname);
 		
-		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
-		return "redirect:/note/detailNote.dvn?dataseq="+dataseq+"&function=d";
+/*		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
+*/		return "redirect:/note/detailNote.dvn?dataseq="+dataseq+"&function=d";
 	}
 	
 	// 노트 데이터 수정(실제 DB update)

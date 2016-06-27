@@ -72,7 +72,7 @@ public class GroupDataController {
 		}
 		return "redirect:/groupdata/showG_Datalist.dvn?groupseq="+groupseq;
 	}
-	
+
 	@RequestMapping("showG_Datalist.dvn")
 	public String showG_Datalist(Model model,@RequestParam int groupseq){
 		List<GroupDataDTO> sharedatalist = groupdataService.getG_ShareDatalist(groupseq);
@@ -102,8 +102,18 @@ public class GroupDataController {
 	
 	
 	@RequestMapping("modifyShareData.dvn")
-	public String modifyShareData(int dataseq){
-		return null;
+	public String modifyShareData(GroupDataDTO groupdatadto,HttpServletRequest request,@RequestParam String datahtml){
+		
+		int dataseq = groupdatadto.getDataseq();
+		int datatype = groupdatadto.getDatatype();
+		String dataname = groupdatadto.getDataname();
+		
+		if(datatype==1){
+			return "redirect:/note/modifyGroupNote.dvn?dataseq=" + dataseq +"&request="+request+"&dataname="+dataname+"&datahtml="+datahtml;
+		}
+		else if(datatype==2){return "redirect:/sketch/detailsketch.dvn";}
+		else if(datatype==3){return "redirect:/goal/detailGoal.dvn";}
+		else {return "redirect:/schedule/detailSchedule.dvn";}
 	}
 	
 	@RequestMapping("deletleShareData.dvn")

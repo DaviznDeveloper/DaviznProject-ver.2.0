@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!--개인데이터 삭제하기-->
-	<delete id="deletePersonalData">
+	<delete id="deletePersonalData" parameterType="kr.or.davizn.datainfoDTO.GroupDataDTO">
 		delete from personaldata where dataseq=#{dataseq}
 	</delete>
 </mapper>

@@ -13,14 +13,17 @@ MODIFYTIME	DATE*/
 	private int dataseq;
 	private String filename;
 	private Date modifytime;
-	private String Comments;
+	private String comments;
+	private String dataname;
+	private String datahtml;
+	private String userid;
 	
 	
-	public String getComments() {
-		return Comments;
+	public String getUserid() {
+		return userid;
 	}
-	public void setComments(String comments) {
-		Comments = comments;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public int getVersionseq() {
 		return versionseq;
@@ -52,6 +55,25 @@ MODIFYTIME	DATE*/
 	public void setModifytime(Date modifytime) {
 		this.modifytime = modifytime;
 	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	public String getDataname() {
+		return dataname;
+	}
+	public void setDataname(String dataname) {
+		this.dataname = dataname;
+	}
+	public String getDatahtml() {
+		return datahtml;
+	}
+	public void setDatahtml(String datahtml) {
+		this.datahtml = datahtml;
+	}
+	
 	
 	
 }
