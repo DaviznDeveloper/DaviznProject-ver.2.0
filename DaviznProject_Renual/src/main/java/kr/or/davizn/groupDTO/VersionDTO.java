@@ -13,6 +13,15 @@ MODIFYTIME	DATE*/
 	private int dataseq;
 	private String filename;
 	private Date modifytime;
+	private String Comments;
+	
+	
+	public String getComments() {
+		return Comments;
+	}
+	public void setComments(String comments) {
+		Comments = comments;
+	}
 	public int getVersionseq() {
 		return versionseq;
 	}

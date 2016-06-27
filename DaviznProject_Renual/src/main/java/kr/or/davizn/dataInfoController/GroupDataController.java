@@ -51,6 +51,7 @@ public class GroupDataController {
 		groupdataService.addGroupDataTable(groupdatadto);
 		int g_dataseq = groupdataService.getG_dataseq(groupseq);
 		commonService.addDataseq(g_dataseq);
+		
 		if(groupdatadto.getDatatype() == 1){
 			PersonalDataNoteDTO notedto = noteService.detailNote(request, dataseq);
 			String p_file = notedto.getFilepath();
@@ -89,9 +90,20 @@ public class GroupDataController {
 		else {return "redirect:/schedule/detailSchedule.dvn";}
 	}
 	
+	@RequestMapping("getDataToMine.dvn")
+	public String getDataToMine(GroupDataDTO groupdata){
+		int datatype = groupdata.getDatatype();
+		int dataseq = groupdata.getDataseq();
+		if(datatype==1){return "redirect:/note/detailNote.dvn?dataseq=" + dataseq +"&function=d";}
+		else if(datatype==2){return "redirect:/sketch/detailsketch.dvn";}
+		else if(datatype==3){return "redirect:/goal/detailGoal.dvn";}
+		else {return "redirect:/schedule/detailSchedule.dvn";}
+	}
+	
+	
 	@RequestMapping("modifyShareData.dvn")
 	public String modifyShareData(int dataseq){
-		return "redirect:/note/detailNote.dvn?dataseq=" + dataseq +"&function=m";
+		return null;
 	}
 	
 	@RequestMapping("deletleShareData.dvn")

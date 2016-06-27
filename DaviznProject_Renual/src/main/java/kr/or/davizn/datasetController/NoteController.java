@@ -101,4 +101,7 @@ public class NoteController {
 		PersonalDataNoteDTO notedto = notedataService.detailNote(request, dataseq);
 		return "redirect:/note/detailNote.dvn?dataseq="+dataseq+"&function=d";
 	}
+	
+	// 노트 데이터 수정(실제 DB update)
+	//@RequestMapping("modifyNoteAction_Group.dvn")
 }

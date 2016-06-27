@@ -24,7 +24,7 @@
 								</button>
 								<br><br>
 								
-								<form action="${pageContext.request.contextPath}/group/addgroup.dvn" method="post" class="form-horizontal">
+								<form action="${pageContext.request.contextPath}/group/addGroup.dvn" method="post" class="form-horizontal">
 									<div id="group-create" class="modal fade">
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
