@@ -1,0 +1,78 @@
+@CHARSET "UTF-8";
+
+/* group-main */
+.group-main-groupbox-groupname {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.group-main-history-font {
+	color: #589cff;
+	font-weight: bold;
+}
+
+.group-main-icon-fonts {
+	font-size: 20px;
+	color: #3059ff;
+}
+
+.group-info-member-ul {
+	padding: 10px 15px;
+	margin: 0px;
+}
+
+.group-info-member-list {
+	display: inline;
+}
+
+.group-info-member-table {
+	padding: 10px 15px;
+}
+
+.group-info-member-table table tbody tr th {
+	width: 30px;
+	padding-left: 0px;
+}
+
+.group-info-member-checkbox {
+	width: 20px;
+}
+
+.group-info-member-img {
+	width: 30px;
+	height: 30px;
+}
+
+.group-info-member-img img {
+	width: 100%;
+}
+
+.group-info-goal-persent {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.group-info-member-selected {
+	margin-left: 16px;
+}
+
+#group-info-member-header {
+	width: 50%;
+}
+
+.group-info-member-search-check {
+	width: 20%;
+}
+
+.group-data-share-note-modi-btn {
+	padding: 10px;
+	font-size: 25px;
+	color: #565656;
+	-webkit-transition: color 0.5s, -webkit-transform 0.3s;
+    transition: color 0.5s, transform 0.3s;
+}
+
+.group-data-share-note-modi-btn:hover {
+	color: #ca64f7;
+	cursor: pointer;
+}
