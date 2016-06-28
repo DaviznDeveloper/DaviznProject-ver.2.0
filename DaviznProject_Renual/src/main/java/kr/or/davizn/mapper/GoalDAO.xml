@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.davizn.datasetInterface.GoalDAO">
+
+
+   <!-- Goal 테이블에 insert -->
+   <insert id="addGoal">
+       insert into goal (dataseq,datatype,startdate,finaldate,goalpercent,origin)
+      values((select Max(dataseq) from personaldata), 3, To_date('${startdate}','MM/DD/YYYY HH24:MI:SS'), To_date('${finaldate}','MM/DD/YYYY HH24:MI:SS'), 0,#{origin})
+   </insert>
+   
+   <!-- DetailGoal 테이블에 insert -->
+   <insert id="addDetailGoal">
+      insert into detailgoal (detailgoalseq, dataseq, goalname, state)
+      values(detailgoal_seq.nextval, (select max(dataseq) from personaldata), #{goalname},0)
+   </insert>
+   
+
+   <!-- 상세 목표 갯수 구하기-->
+   <select id="getDetailGoalCounts" parameterType="Integer" resultType="Integer">
+      select count(detailgoalseq) from detailgoal where dataseq=#{dataseq}
+   </select>
+    
+
+	<!--목표 데이터 상세보기-->
+	<select id="detailGoal" resultType="kr.or.davizn.datasetDTO.PersonalDataGoalDTO">
+		select p.dataseq, dataname, startdate,finaldate,
+		(finaldate-startdate)*60*60*24 as goaldate, 
+		goalname, state, detailgoalseq, commentmsg,strgseq
+		from personaldata p join goal g
+		on p.dataseq=g.dataseq
+		join detailgoal d
+		on g.dataseq = d.dataseq
+		where p.dataseq=#{dataseq} order by detailgoalseq asc
+	</select>
+	
+	
+	<!-- 목표 리스트로 갖고오기 -->
+	<select id="getGoalList" resultType="kr.or.davizn.datasetDTO.PersonalDataGoalDTO">
+		select *
+		from personaldata p join goal g
+		on p.dataseq=g.dataseq
+		where p.strgseq=#{strgseq} order by p.dataseq asc
+	</select>
+	
+	
+		
+	<!-- 상세 목표의 상태 변경(0(not check)->1(check)) -->
+	<update id="updateDetailGoalState" parameterType="int">
+		update detailgoal set state=1 where detailgoalseq=#{detailgoalseq}
+	</update>
+	
+	<!--상세 목표의 달성 메세지 변경-->
+	<update id="updateDetailComment">
+		update detailgoal set commentmsg=#{param1} where detailgoalseq=#{param2}
+	</update>
+	
+	<!--상세 화면에서 달성 퍼센트 변경하기-->
+	<update id="updateGoalPercent">
+		update goal
+		set goalpercent=(select round(100/(select count(*) from detailgoal where dataseq=#{dataseq})
+		*(select count(*) from detailgoal where state=1 and dataseq=#{dataseq})) from dual)
+		where dataseq=#{dataseq}
+	</update>
+	
+	
+</mapper>
