@@ -49,23 +49,31 @@ public class NoteController {
 	
 
 	@RequestMapping("modifyGroupNote.dvn")
-	public String modify(HttpServletRequest request,VersionDTO versiondto,GroupDataDTO groupdatadto,Principal principal) throws IOException{
-		int dataseq = versiondto.getDataseq();
-		int datatype = groupdatadto.getDatatype();
-		int groupseq = groupdataService.getOneGroupData(dataseq).getGroupseq();
-		String datahtml = versiondto.getDatahtml();
-		String fileName = commonService.getFileName(principal.getName());
-		String userid = principal.getName();
+	   public String modify(HttpServletRequest request,VersionDTO versiondto,
+			   GroupDataDTO groupdatadto,Principal principal,Model model) throws IOException{
+		   
+	      int dataseq = versiondto.getDataseq();
+	      int datatype = groupdatadto.getDatatype();
+	      int groupseq = groupdataService.getOneGroupData(dataseq).getGroupseq();
+	      String datahtml = versiondto.getDatahtml();
+	      String fileName = commonService.getFileName(principal.getName());
+	      String userid = principal.getName();
 
-		versiondto.setUserid(userid);
-		versiondto.setGroupseq(groupseq);
-		versiondto.setFilename(fileName);
-		commonService.makeFile(datatype, datahtml, userid, request, fileName);
-		groupdataService.updateGroupdata(groupdatadto);
-		notedataService.modifyNoteFile(dataseq, request, datahtml);
-		versionService.addVersion(versiondto);
-		return "redirect:/version/showVerionlist.dvn?dataseq="+dataseq;
-	}
+	      versiondto.setUserid(userid);
+	      versiondto.setGroupseq(groupseq);
+	      versiondto.setFilename(fileName);
+	      commonService.makeFile(datatype, datahtml, userid, request, fileName);
+	      groupdataService.updateGroupdata(groupdatadto);
+	      notedataService.modifyNoteFile(dataseq, request, datahtml);
+	      PersonalDataNoteDTO note = notedataService.detailNote(request, dataseq);
+	      model.addAttribute("datahtml", datahtml);
+	      model.addAttribute("dataname", note.getDataname());
+	      model.addAttribute("userid", userid);
+	      model.addAttribute("datacreate", note.getDatacreate());
+	      model.addAttribute("dataseq", note.getDataseq());
+	      
+	      return "group.group-data-share-history";
+	   }
 	
    // 노트 데이터 추가
    @RequestMapping("addNoteData.dvn")

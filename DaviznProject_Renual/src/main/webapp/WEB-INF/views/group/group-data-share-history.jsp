@@ -24,15 +24,17 @@
 						
 							<div id="group-data-detail-history-showbox">
 								<!-- 해당 데이터의 상세 내용 -->
-								<div class="panel panel-purple-l note-detail-content">
+								
+								<div class="panel panel-purple-l note-detail-content" id="imgDiv">
+									
 									<div class="panel-heading note-detail-title">
 										<h3 class="panel-title">
-											목표관리 정의서&nbsp;&nbsp;&nbsp;&nbsp;
-											<small class="note-detail-date">2016.06.21 에 'seulki' 님이 최종 수정.</small>
+											${dataname}&nbsp;&nbsp;&nbsp;&nbsp;
+											<small class="note-detail-date">${datacreate}에 '${userid}'님이 최종 수정.</small>
 										</h3>
 									</div>
 									<div class="panel-body">
-										누구나 한번쯤은 자기만의 세계로<br>
+										<!--  누구나 한번쯤은 자기만의 세계로<br>
 										빠져들게 되는 순간이 있지이~이이<br>
 										<br>
 										그렇지만 나는 제자리로 오지 못했어<br>
@@ -45,12 +47,13 @@
 										다시 시작할 줄 모오르니~이이<br>
 										<br>
 										이제~에엔 세사~항에 나가고 싶어<br>
-										당당히 내 모습을 보여줘야~아 해~애에<br>
+										당당히 내 모습을 보여줘야~아 해~애에<br>  -->
+										${datahtml}
 									</div>
 								</div>
+								<img src="" id="printImg">
 								<!-- 해당 데이터의 상세 내용 -->
 							</div>
-							
 						</div>
 						
 						<div class="col-sm-6 margin-bottom-10">
@@ -103,5 +106,21 @@
 			</div>
 			
 		</div>
+<script>
+   $(function(){
+	   html2canvas($("#imgDiv"), {
+	         onrendered: function(canvas) { 
+	            var img = canvas.toDataURL("image/png");
+	            console.log(img);
+	            $('#printImg').attr('src',img);
+	 			$('#imgDiv').hide();
+	         }
+	      });
+	   
+	   
+   });
+</script>
 
 <script src="${pageContext.request.contextPath}/resources/js/group-info.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/html2canvas.js"></script>
+
