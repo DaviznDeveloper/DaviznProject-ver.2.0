@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.or.davizn.groupInterface.GroupMemberDAO">
 
 	<insert id="addGroupMember" parameterType="kr.or.davizn.groupDTO.GroupMemberDTO">
-		insert into groupmember(g_memberseq,joinindate,groupseq,userid) 
-		values(gmember_seq.nextval,sysdate,#{groupseq},#{userid})
+		insert into groupmember(g_memberseq,joinindate,groupseq,userid,role_name) 
+		values(gmember_seq.nextval,sysdate,#{groupseq},#{userid},#{role_name})
 	</insert>
 	
 	<select id="getMemberlist" parameterType="Integer" resultType="kr.or.davizn.groupDTO.GroupMemberDTO">

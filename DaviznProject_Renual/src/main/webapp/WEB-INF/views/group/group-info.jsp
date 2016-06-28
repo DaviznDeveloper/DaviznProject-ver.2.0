@@ -2,12 +2,16 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-				
+				<c:set var="ROLE_MASER" value="${Role_Master}"/>
+				<c:set var="ROLE_WRITER" value="${Role_Writer}"/>
+				<c:set var="ROLE_READER" value="${Role_Reader}"/>
 				<!-- content -->
 				<div class="container">
 					<input type="hidden" id="groupseq" name="groupseq" value="${groupseq}">
 					<input type="hidden" id="userid" name="userid" value="${userid}">
+					
 					<div class="col-md-12 content-container">
 
 						<ol class="breadcrumb">
@@ -117,21 +121,27 @@
 													<div class="checkbox no-margin">
 														<!-- 그룹원일 경우 보여져야 하는 버튼 -->
 														<div class="pull-right">
+															<security:authorize access="hasRole('${ROLE_WRITER}') or hasRole('${ROLE_READER}')">
+											                   <a href="" id="group-info-member-delete" class="btn btn-danger btn-xs">
+																	<i class="fa fa-user-times" aria-hidden="true"></i>
+																	그룹 탈퇴
+																</a>
+										                  </security:authorize>
 															<!-- 그룹탈퇴 컨트롤러로 바로 찍어주기 -->
-															<a href="" id="group-info-member-delete" class="btn btn-danger btn-xs">
-																<i class="fa fa-user-times" aria-hidden="true"></i>
-																그룹 탈퇴
-															</a>
+															
 														</div>
 														<!-- 그룹원일 경우 보여져야 하는 버튼 -->
 														
 														<!-- 그룹원이 아닐 경우 보여져야 하는 버튼 -->
 														<div class="pull-right margin-right-10">
-															<button type="button" id="applygroup" name="applygroup" class="btn btn-primary btn-xs">
-																이 그룹에 가입 신청
-															</button>
+															<security:authorize access="!hasRole('${ROLE_WRITER}') and !hasRole('${ROLE_READER}')">
+											                   <button type="button" id="applygroup" name="applygroup" class="btn btn-primary btn-xs">
+																	이 그룹에 가입 신청
+																</button>
+										                  </security:authorize>
 															
-															<!-- modal form -->
+										<!-- 					
+															modal form
 															<form action="" method="post" class="form-horizontal">
 																<div id="group-join-application" class="modal fade">
 																	<div class="modal-dialog modal-lg">
@@ -165,13 +175,13 @@
 																			</div>
 																			
 																		</div>
-																		<!-- /.modal-content -->
+																		/.modal-content
 																	</div>
-																	<!-- /.modal-dialog -->
+																	/.modal-dialog
 																</div>
-																<!-- /.modal -->
+																/.modal
 															</form>
-															<!-- modal form -->
+															modal form -->
 														</div>
 														<!-- 그룹원이 아닐 경우 보여져야 하는 버튼 -->
 														DaviznDeveloper 의 그룹원
@@ -181,36 +191,26 @@
 												<div class="group-info-member-table">
 													<table class="table">
 														<tbody>
-															<tr>
-																<th scope="row">1</th>
-																<td>Davizn</td>
-																<td class="text-center">그룹장</td>
-																<td class="text-center">2016.06.19</td>
-															</tr>
-															<tr>
-																<th scope="row">2</th>
-																<td>seulki</td>
-																<td class="text-center">그룹원</td>
-																<td class="text-center">2016.06.19</td>
-															</tr>
-															<tr>
-																<th scope="row">3</th>
-																<td>nameLim</td>
-																<td class="text-center">그룹원</td>
-																<td class="text-center">2016.06.19</td>
-															</tr>
-															<tr>
-																<th scope="row">4</th>
-																<td>jungjin</td>
-																<td class="text-center">그룹원</td>
-																<td class="text-center">2016.06.19</td>
-															</tr>
-															<tr>
-																<th scope="row">5</th>
-																<td>wonsuk</td>
-																<td class="text-center">그룹원</td>
-																<td class="text-center">2016.06.19</td>
-															</tr>
+															<c:forEach var="member" items="${memberlist}" varStatus="status">
+																<c:choose>
+																	<c:when test="${ member.role_name eq ROLE_MASER}">
+																		<tr>
+																			<th scope="row"></th>
+																			<td>${member.userid}</td>
+																			<td class="text-center">그룹장</td>
+																			<td class="text-center">${member.joinindate}</td>
+																		</tr>
+																	</c:when>
+																	<c:otherwise>
+																		<tr>
+																			<th scope="row"></th>
+																			<td>${member.userid}</td>
+																			<td class="text-center">그룹원</td>
+																			<td class="text-center">${member.joinindate}</td>
+																		</tr>
+																	</c:otherwise>
+																</c:choose>
+															</c:forEach>
 														</tbody>
 													</table>
 												</div>
@@ -283,7 +283,7 @@
 										
 										<!-- 그룹원일 경우 보여져야 하는 링크 -->
 										<div class="col-sm-12 no-padding margin-bottom-10">
-											<a href="">
+											<a href="${pageContext.request.contextPath}/groupdata/showG_Datalist.dvn?groupseq=${groupseq}">
 												<i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 그룹 데이터 페이지로 이동
 											</a>
 										</div>

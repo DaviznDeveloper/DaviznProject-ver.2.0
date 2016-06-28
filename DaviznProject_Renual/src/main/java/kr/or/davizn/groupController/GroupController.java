@@ -59,7 +59,7 @@ public class GroupController {
    public String addGroup(GroupInfoDTO groupInfoDTO,Principal principal){
       GroupMemberDTO groupMemberDTO = new GroupMemberDTO();
       AuthorityDTO authorityDTO = new AuthorityDTO();
-   
+      
       /* groupinfo 테이블에 그룹 정보 추가 */
       groupInfoDTO.setGroupmaster(principal.getName());
       groupInfoService.addGroupInfo(groupInfoDTO);
@@ -68,11 +68,13 @@ public class GroupController {
        * 방금 groupinfo에 추가한 그룹의 고유번호(groupseq) 가져와서
        * groupmember 테이블에 userid, 그룹 고유번호 추가 
        */
-      int groupseq = groupInfoService.getGroupseq();   
+      int groupseq = groupInfoService.getGroupseq();  
+      String role_name = "ROLE_"+groupseq+"_M";
+     
       groupMemberDTO.setUserid(principal.getName());
       groupMemberDTO.setGroupseq(groupseq);
+      groupMemberDTO.setRole_name(role_name);
       gmService.addGroupMember(groupMemberDTO);   
-
       
       /*
        * 생성하는 그룹 접근을 위한 권한 생성
@@ -85,7 +87,7 @@ public class GroupController {
        * 그룹을 생성하는 사람이므로 마스터 권한을 제공한다.
        * 해당하는 권한과 id를 authdesign 테이블에 추가한다.
        */
-      String role_name = "ROLE_"+groupseq+"_M";
+      
       authorityDTO.setUserid(principal.getName());
       authorityDTO.setRole_name(role_name);
       groupInfoService.addAuthDesign(authorityDTO);
@@ -99,11 +101,23 @@ public class GroupController {
 	   List<ApplyGroupDTO> applylist = applyService.showApplylist(groupseq);
 	   List<GroupMemberDTO> memberlist = gmService.getMemberlis(groupseq); 
 	   
+	   
+	   
+	   
+	   for(GroupMemberDTO dto:memberlist){
+		   System.err.println("Role name은 "+dto.getRole_name());
+	   }
+	   
+	   
+	   
 	   model.addAttribute("groupseq",groupseq);
 	   model.addAttribute("userid",principal.getName());
 	   model.addAttribute("authoList",authoList);
 	   model.addAttribute("memberlist",memberlist);
 	   model.addAttribute("applylist",applylist);
+	   model.addAttribute("Role_Master","ROLE_"+groupseq+"_M");
+	   model.addAttribute("Role_Writer","ROLE_"+groupseq+"_W");
+	   model.addAttribute("Role_Reader","ROLE_"+groupseq+"_R");
 	   
 	   for(AuthorityDTO dto:authoList){
 		   if(dto.getRole_name().equals("ROLE_"+groupseq+"_M")){

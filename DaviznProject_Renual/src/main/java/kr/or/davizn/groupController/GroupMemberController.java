@@ -44,6 +44,7 @@ public class GroupMemberController {
 	
 		   groupMemberDTO.setUserid(userid2);
 		   groupMemberDTO.setGroupseq(groupseq);
+		   groupMemberDTO.setRole_name(role_name);
 		   gmservice.addGroupMember(groupMemberDTO);   
 	   
 		   authorityDTO.setUserid(userid2);
