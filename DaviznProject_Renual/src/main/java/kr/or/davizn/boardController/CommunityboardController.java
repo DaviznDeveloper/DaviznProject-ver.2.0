@@ -30,7 +30,7 @@ public class CommunityboardController {
 	
 	//글 목록보기
 	@RequestMapping("communityList.dvn")
-	public String notices(String pg, Model model, @RequestParam(defaultValue="5", required=false)String rowSize) throws ClassNotFoundException , SQLException {
+	public String notices(String pg, Model model, @RequestParam(defaultValue="10", required=false)String rowSize) throws ClassNotFoundException , SQLException {
 		System.out.println("리스트 탐");
 		List<CommunityBoardDTO> list = communityboardservice.notices(pg, model, Integer.parseInt(rowSize));
 		System.out.println("list : " + list);

@@ -3,21 +3,14 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-$('.nav-tabs>li>a').on('click',function(){
-    index = $(this).parent().index() + 1;
-    $('.nav-tabs>li').removeClass('active')
-    $('.tab-pane').hide();
-    $('.t'+ index).fadeIn();
-    $(this).parent('li').addClass('active');
-});
-</script>
+   <c:set var="ROLE_MASER" value="${Role_Master}"/>
+            <c:set var="ROLE_WRITER" value="${Role_Writer}"/>
+            <c:set var="ROLE_READER" value="${Role_Reader}"/>
             <!-- content -->
             <div class="container">
             
                <div class="col-md-12 content-container">
-
+               <c:set var="group" value=""/>
                   <ol class="breadcrumb">
                      <li><a href="${pageContext.request.contextPath}/renual/index.jsp">홈</a></li>
                      <li><a href="${pageContext.request.contextPath}/renual/data-repo.jsp">내 그룹</a></li>
@@ -25,6 +18,7 @@ $('.nav-tabs>li>a').on('click',function(){
                   </ol>
                   
                   <div class="col-sm-3 no-padding margin-bottom-10">
+
                      <a href="#" class="thumbnail profile-thumbnail no-margin" data-toggle="tooltip" title="그룹정보 수정하기"> 
                         <img id="profile-preview" src="${pageContext.request.contextPath}/resources/img/avatar.png" alt="...">
                      </a>
@@ -106,18 +100,16 @@ $('.nav-tabs>li>a').on('click',function(){
                               <a href="#groupMember" aria-controls="groupMember" role="tab" data-toggle="tab">그룹 인원</a>
                            </li>
                            <li role="presentation">
-                              <a href="#groupGorl" aria-controls="groupGorl" role="tab" data-toggle="tab">그룹 목표</a>
-                           </li>
-                           <li role="presentation">
                               <a href="#groupData" aria-controls="groupData" role="tab" data-toggle="tab">그룹 데이터</a>
                            </li>
                            <li role="presentation">
                               <a href="#groupDataHistory" aria-controls="groupDataHistory" role="tab" data-toggle="tab">그룹 데이터 히스토리</a>
                            </li>
                         </ul>
+               
                         <!-- Tab panes -->
                         <div class="tab-content">
-                           <div role="tabpanel" class="tab-pane active t1" id="groupMember">
+                           <div role="tabpanel" class="tab-pane active" id="groupMember">
                               <br>
                               <div class="bs-example"
                                  data-example-id="panel-without-body-with-table">
@@ -159,66 +151,26 @@ $('.nav-tabs>li>a').on('click',function(){
                                        <div class="group-info-member-table">
                                           <table class="table">
                                              <tbody>
-                                                <tr>
-                                                   <th scope="row">
-                                                      <div class="checkbox no-margin">
-                                                         <label>
-                                                            <input type="checkbox" class="blankCheckbox" name="userid" value="Davizn" aria-label="...">
-                                                         </label>
-                                                      </div>
-                                                   </th>
-                                                   <td>Davizn</td>
-                                                   <td class="text-center">그룹장</td>
-                                                   <td class="text-center">2016.06.19</td>
-                                                </tr>
-                                                <tr>
-                                                   <th scope="row">
-                                                      <div class="checkbox no-margin">
-                                                         <label>
-                                                            <input type="checkbox" class="blankCheckbox" name="userid" value="seulki" aria-label="...">
-                                                         </label>
-                                                      </div>
-                                                   </th>
-                                                   <td>seulki</td>
-                                                   <td class="text-center">그룹원</td>
-                                                   <td class="text-center">2016.06.19</td>
-                                                </tr>
-                                                <tr>
-                                                   <th scope="row">
-                                                      <div class="checkbox no-margin">
-                                                         <label>
-                                                            <input type="checkbox" class="blankCheckbox" name="userid" value="nameLim" aria-label="...">
-                                                         </label>
-                                                      </div>
-                                                   </th>
-                                                   <td>nameLim</td>
-                                                   <td class="text-center">그룹원</td>
-                                                   <td class="text-center">2016.06.19</td>
-                                                </tr>
-                                                <tr>
-                                                   <th scope="row">
-                                                      <div class="checkbox no-margin">
-                                                         <label>
-                                                            <input type="checkbox" class="blankCheckbox" name="userid" value="jungjin" aria-label="...">
-                                                         </label>
-                                                      </div>
-                                                   </th>
-                                                   <td>jungjin</td>
-                                                   <td class="text-center">그룹원</td>
-                                                   <td class="text-center">2016.06.19</td>
-                                                </tr>
-                                                <tr>
-                                                   <th scope="row">
-                                                      <div class="checkbox no-margin">
-                                                         <label>
-                                                            <input type="checkbox" class="blankCheckbox" name="userid" value="wonsuk" aria-label="...">
-                                                         </label>
-                                                      </div>
-                                                   </th>
-                                                   <td>wonsuk</td>
-                                                   <td class="text-center">그룹원</td>
-                                                   <td class="text-center">2016.06.19</td>
-                                                </tr>
+                                                <c:forEach var="member" items="${memberlist}" varStatus="status">
+                                                <c:choose>
+                                                   <c:when test="${ member.role_name eq ROLE_MASER}">
+                                                      <tr>
+                                                         <th scope="row"></th>
+                                                         <td>${member.userid}</td>
+                                                         <td class="text-center">그룹장</td>
+                                                         <td class="text-center">${member.joinindate}</td>
+                                                      </tr>
+                                                   </c:when>
+                                                   <c:otherwise>
+                                                      <tr>
+                                                         <th scope="row"></th>
+                                                         <td>${member.userid}</td>
+                                                         <td class="text-center">그룹원</td>
+                                                         <td class="text-center">${member.joinindate}</td>
+                                                      </tr>
+                                                   </c:otherwise>
+                                                </c:choose>
+                                             </c:forEach>
                                              </tbody>
                                           </table>
                                        </div>
@@ -226,7 +178,7 @@ $('.nav-tabs>li>a').on('click',function(){
                                  </div>
                                  
                                  <!-- 가입 승인 또는 회원  -->
-                                 <form action="" method="post">
+                                 <form action="${pageContext.request.contextPath}/groupMember/recognizeGroupMember.dvn?groupseq=${groupseq}" method="post">
                                     <div class="panel panel-success">
                                        <div class="panel-heading">
                                           
@@ -356,46 +308,17 @@ $('.nav-tabs>li>a').on('click',function(){
                                        </div>
                                        
                                        <ul class="list-group">
+                                          <c:forEach var="applymember" items="${applylist}">
                                           <li class="list-group-item">
                                              <span class="checkbox group-info-member-search-check no-margin">
                                                 <label>
-                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="kglim" aria-label="...">
-                                                   kglim (kglim@gmail.com)
+                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="${applymember.userid}" aria-label="...">
+                                                   ${applymember.userid} ${appymember.applydate}
                                                 </label>
                                              </span>
                                           </li>
-                                          <li class="list-group-item">
-                                             <span class="checkbox group-info-member-search-check no-margin">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="egoing" aria-label="...">
-                                                   egoing (egoing@gmail.com)
-                                                </label>
-                                             </span>
-                                          </li>
-                                          <li class="list-group-item">
-                                             <span class="checkbox group-info-member-search-check no-margin">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="alphago" aria-label="...">
-                                                   alphago (alphago@gmail.com)
-                                                </label>
-                                             </span>
-                                          </li>
-                                          <li class="list-group-item">
-                                             <span class="checkbox group-info-member-search-check no-margin">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="Zuckerberg" aria-label="...">
-                                                   Zuckerberg (Zuckerberg@gmail.com)
-                                                </label>
-                                             </span>
-                                          </li>
-                                          <li class="list-group-item">
-                                             <span class="checkbox group-info-member-search-check no-margin">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" name="userid" value="tobi" aria-label="...">
-                                                   tobi (tobi@gmail.com)
-                                                </label>
-                                             </span>
-                                          </li>
+                                          
+                                          </c:forEach>
                                        </ul>
                                           
                                     </div>
@@ -404,7 +327,7 @@ $('.nav-tabs>li>a').on('click',function(){
                               </div>
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane t2" id="groupGorl">
+                           <div role="tabpanel" class="tab-pane" id="groupGorl">
 
                               <br>
 
@@ -463,7 +386,7 @@ $('.nav-tabs>li>a').on('click',function(){
                               
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane t3" id="groupData">
+                           <div role="tabpanel" class="tab-pane" id="groupData">
                               <br>
                               
                               <div class="col-sm-12 no-padding margin-bottom-10">
@@ -504,7 +427,7 @@ $('.nav-tabs>li>a').on('click',function(){
                               
                            </div>
                            
-                           <div role="tabpanel" class="tab-pane t4" id="groupDataHistory">
+                           <div role="tabpanel" class="tab-pane" id="groupDataHistory">
                               <br>
                               
                               <div class="col-sm-12 no-padding margin-bottom-10">
@@ -563,33 +486,24 @@ $('.nav-tabs>li>a').on('click',function(){
 
 <script src="${pageContext.request.contextPath}/resources/js/group-info-master.js"></script>
 <script type="text/javascript">
-
-	$(function() {
-		/* 
-		$('#myTab a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		}); */
-           
-    
-
-		var contextPath = '${pageContext.request.contextPath}'
-
-		$('#inviteBtn').click(function() {
-			$.ajax({
-				url : contextPath + "/groupNavi/searchGroupList.dvn",
-				type : "get",
-				data : {
-					"keyword" : $('#keyword').val()
-				},
-				success : function(data) {
-
-				},
-				error : function(data) {
-					alert('실패');
-				}
-			});
-		});
-	});
-	
+   $(function(){
+      
+      var contextPath='${pageContext.request.contextPath}'
+      
+      $('#inviteBtn').click(function(){
+         $.ajax({
+              url : contextPath+"/groupNavi/searchGroupList.dvn",
+              type: "get",
+              data : { "keyword" : $('#keyword').val() },
+              success : function(data){
+                 
+                 
+              },
+              error :function(data){
+                 alert('실패');
+              }
+          });
+      });
+   });
+   
 </script>
