@@ -42,12 +42,12 @@
 									
 									<tr>
 									
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<th colspan="1" scope="col" class="">
 												<input type="checkbox" id="notice_check" class="" name="boardnotice">
 												&nbsp;&nbsp;공지
 											</th>
-										</div>
+										</div> -->
 										
 									</tr>
 								

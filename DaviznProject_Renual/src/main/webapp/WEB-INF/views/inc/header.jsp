@@ -99,29 +99,30 @@
                </se:authorize>
             </li>
             <li>
-	           <se:authorize access="hasRole('ROLE_USER')">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-						<span class="badge h-menu-tran-badge-notice">${alarmCount}</span>
-					</a>
-					<ul class="dropdown-menu">
-						<c:forEach items="${alarmList}" var="al">
-							<li>
-								<a href="${pageContext.request.contextPath}/personalData/detailPersonalData.dvn?datatype=${al.datatype}&strgseq=${al.strgseq}&dataseq=${al.dataseq}">
-											${al.datatype} ${al.dataname}일정이 종료되었습니다.
-								<input type="hidden" name="strgseq" value="${al.strgseq}">
-	                            <input type="hidden" name="dataseq" value="${al.dataseq}">
-	                            <input type="hidden" name="dataseq" value="${al.alarmseq}">
-								</a>
-							</li>
-						</c:forEach>
-						<li class="vertical-middle padding-vertical text-center">
-							<a href="${pageContext.request.contextPath}/wholeAlarm.dvn">
-								<span class="notice-header-span notice-header-all">전체보기</span>
-							</a>
-						</li>
-					</ul>
-				</se:authorize>
+	            <se:authorize access="hasRole('ROLE_USER')">
+               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                  <span class="badge h-menu-tran-badge-notice">${alarmCount}</span>
+               </a>
+               <ul class="dropdown-menu">
+                  <c:forEach items="${alarmList}" var="al">
+                     <li>
+                        <a href="${pageContext.request.contextPath}/personalData/detailPersonalData2.dvn?datatype=${al.datatype}&strgseq=${al.strgseq}&dataseq=${al.dataseq}&alarmseq=${al.alarmseq}">
+                                 ${al.datatype} ${al.dataname}일정이 종료되었습니다.
+                        <input type="hidden" name="strgseq" value="${al.strgseq}">
+                               <input type="hidden" name="dataseq" value="${al.dataseq}">
+                               <input type="hidden" name="alarmseq" value="${al.alarmseq}">
+                        </a>
+                     </li>
+                  </c:forEach>
+                  <li class="vertical-middle padding-vertical text-center">
+                     <a href="${pageContext.request.contextPath}/wholeAlarm.dvn">
+                        <span class="notice-header-span notice-header-all">전체보기</span>
+                     </a>
+                  </li>
+               </ul>
+            </se:authorize>
+
          </li>
          <li>
             <se:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
